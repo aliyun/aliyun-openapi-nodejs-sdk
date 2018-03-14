@@ -1,4 +1,5 @@
 # aliyun-openapi-nodejs-sdk
+
 Aliyun OpenAPI Node.js SDK
 
 ## 标准 SDK
@@ -20,7 +21,7 @@ Aliyun OpenAPI Node.js SDK
 | ImageSearch |  2018-01-20 | [@alicloud/imagesearch-2018-01-20](https://www.npmjs.com/package/@alicloud/imagesearch-2018-01-20) |
 
 
-如果您所需要使用的云产品是通过 POP 网关开放，但上述的产品列表中不存在您需要的产品或对应版本，请提 issue，描述所需的产品名及版本号，相关人员会为您生成并发布到 NPM 仓库中。
+如果您所需要使用的云产品是通过 POP 网关开放，但上述的产品列表中不存在您需要的产品或对应版本，请提 [issue](https://github.com/aliyun/aliyun-openapi-nodejs-sdk/issues/new)，描述所需的产品名及版本号，相关人员会为您生成并发布到 NPM 仓库中。
 
 ## 自定义 SDK
 
@@ -31,3 +32,5 @@ Aliyun OpenAPI Node.js SDK
 |    产品名    | 版本号 | NPM 包名 | 相关链接 |
 | ----------- | ------ | -------- | -------- |
 | 函数计算 |  2016-08-15 | [@alicloud/fc](https://www.npmjs.com/package/@alicloud/fc) | |
+
+如果上述列表中没有您需要的云产品及相关版本，请提交一个 [issue](https://github.com/aliyun/aliyun-openapi-nodejs-sdk/issues/new)，我们将尽快提供相关 Node.js SDK。
