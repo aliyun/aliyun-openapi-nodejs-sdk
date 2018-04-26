@@ -39,6 +39,7 @@ Aliyun OpenAPI Node.js SDK
 
 |    产品名    | 版本号 | NPM 包名 | 相关链接 |
 | ----------- | ------ | -------- | -------- |
-| 函数计算 |  2016-08-15 | [@alicloud/fc](https://www.npmjs.com/package/@alicloud/fc) | |
+| 函数计算 | 2016-08-15 | [@alicloud/fc](https://www.npmjs.com/package/@alicloud/fc) | https://github.com/aliyun/fc-nodejs-sdk |
+| OSS(对象存储) |  | [ali-oss](https://www.npmjs.com/package/ali-oss) | https://github.com/ali-sdk/ali-oss |
 
 如果上述列表中没有您需要的云产品及相关版本，请提交一个 [issue](https://github.com/aliyun/aliyun-openapi-nodejs-sdk/issues/new)，我们将尽快提供相关 Node.js SDK。
