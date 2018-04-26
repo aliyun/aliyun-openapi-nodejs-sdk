@@ -1,0 +1,18 @@
+{
+  "name": "@alicloud/imm-2017-09-06",
+  "version": "1.0.1",
+  "description": "imm 2017-09-06 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.5.1"
+  },
+  "devDependencies": {
+    "mocha": "^5.0.5",
+    "should": "^13.2.1"
+  }
+}

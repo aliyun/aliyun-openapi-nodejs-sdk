@@ -1,0 +1,6 @@
+test
+package-lock.json
+.DS_Store
+thumbs.db
+!.gitkeep
+.git
