@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/cs-2015-12-15",
+  "version": "1.0.0",
+  "description": "CS 2015-12-15 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.5.1"
+  }
+}
