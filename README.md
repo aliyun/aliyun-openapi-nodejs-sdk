@@ -16,14 +16,18 @@ Aliyun OpenAPI Node.js SDK
 
 延伸 SDK 是基于核心 SDK 及云产品 OpenAPI 元数据自动生成而得到的 SDK。延伸 SDK 能提示用户方法名、参数、及参数校验等扩展功能。下列是已生成的产品 SDK：
 
-|    产品名    | 版本号 | NPM 包名 | 相关链接 |
+|    产品名    |  版本号 |  NPM 包名 | 相关链接  |
 | ----------- | ------ | -------- | -------- |
-| CS(容器服务) | 2016-08-01 | [@alicloud/cs-2016-08-01](https://www.npmjs.com/package/@alicloud/cs-2015-12-15) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/CS-2015-12-15 |
-| Dds(MongoDB) | Dds-2015-12-012015-12-01 | [@alicloud/dds-2015-12-01](https://www.npmjs.com/package/@alicloud/dds-2015-12-01) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/Dds-2015-12-01 |
-| ImageSearch | 2018-01-20 | [@alicloud/imagesearch-2018-01-20](https://www.npmjs.com/package/@alicloud/imagesearch-2018-01-20) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/ImageSearch-2018-01-20|
-| imm |  2017-09-06 | [@alicloud/imm-2017-09-06](https://www.npmjs.com/package/@alicloud/imm-2017-09-06) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/imm-2017-09-06 |
+| RAM(负载均衡) | 2015-05-01 | [@alicloud/ram-2015-05-01](https://www.npmjs.com/package/@alicloud/ram-2015-05-01) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/Ram-2015-05-01 |
+| SLB(负载均衡) | 2014-05-15 | [@alicloud/slb-2014-05-15](https://www.npmjs.com/package/@alicloud/slb-2014-05-15) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/Slb-2014-05-15 |
+| RDS(云数据库) | 2014-08-15 | [@alicloud/rds-2014-08-15](https://www.npmjs.com/package/@alicloud/rds-2014-08-15) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/Rds-2014-08-15 |
+| ROS(资源编排) | 2015-09-01 | [@alicloud/ros-2015-09-01](https://www.npmjs.com/package/@alicloud/ros-2015-09-01) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/ROS-2015-09-01 |
+| CS(容器服务) | 2016-08-01 | [@alicloud/cs-2016-08-01](https://www.npmjs.com/package/@alicloud/cs-2015-12-15) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/CS-2015-12-15 |
+| Dds(MongoDB) | Dds-2015-12-012015-12-01 | [@alicloud/dds-2015-12-01](https://www.npmjs.com/package/@alicloud/dds-2015-12-01) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/Dds-2015-12-01 |
+| ImageSearch | 2018-01-20 | [@alicloud/imagesearch-2018-01-20](https://www.npmjs.com/package/@alicloud/imagesearch-2018-01-20) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/ImageSearch-2018-01-20|
+| imm |  2017-09-06 | [@alicloud/imm-2017-09-06](https://www.npmjs.com/package/@alicloud/imm-2017-09-06) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/imm-2017-09-06 |
 | Iot |  2017-04-20 | [@alicloud/iot-2017-04-20](https://www.npmjs.com/package/@alicloud/iot-2017-04-20) |  |
-| Push |  2016-08-01 | [@alicloud/push-2016-08-01](https://www.npmjs.com/package/@alicloud/push-2016-08-01) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/Push-2016-08-01 |
+| Push |  2016-08-01 | [@alicloud/push-2016-08-01](https://www.npmjs.com/package/@alicloud/push-2016-08-01) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/Push-2016-08-01 |
 
 如果您所需要使用的云产品是通过 POP 网关开放，但上述的产品列表中不存在您需要的产品或对应版本，请提 [issue](https://github.com/aliyun/aliyun-openapi-nodejs-sdk/issues/new)，描述所需的产品名及版本号，相关人员会为您生成并发布到 NPM 仓库中。
 
