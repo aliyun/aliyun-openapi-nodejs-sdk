@@ -28,6 +28,7 @@ Aliyun OpenAPI Node.js SDK
 | imm |  2017-09-06 | [@alicloud/imm-2017-09-06](https://www.npmjs.com/package/@alicloud/imm-2017-09-06) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/imm-2017-09-06 |
 | Iot |  2017-04-20 | [@alicloud/iot-2017-04-20](https://www.npmjs.com/package/@alicloud/iot-2017-04-20) |  |
 | Push |  2016-08-01 | [@alicloud/push-2016-08-01](https://www.npmjs.com/package/@alicloud/push-2016-08-01) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/Push-2016-08-01 |
+| Dm(邮件推送) | 2017-06-22 | [@alicloud/dm-2017-06-22](https://www.npmjs.com/package/@alicloud/dm-2017-06-22) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/Dm-2017-06-22 |
 
 如果您所需要使用的云产品是通过 POP 网关开放，但上述的产品列表中不存在您需要的产品或对应版本，请提 [issue](https://github.com/aliyun/aliyun-openapi-nodejs-sdk/issues/new)，描述所需的产品名及版本号，相关人员会为您生成并发布到 NPM 仓库中。
 
