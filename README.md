@@ -18,7 +18,7 @@ Aliyun OpenAPI Node.js SDK
 
 |    产品名    |  版本号 |  NPM 包名 | 相关链接  |
 | ----------- | ------ | -------- | -------- |
-| RAM(负载均衡) | 2015-05-01 | [@alicloud/ram-2015-05-01](https://www.npmjs.com/package/@alicloud/ram-2015-05-01) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/Ram-2015-05-01 |
+| RAM(权限控制) | 2015-05-01 | [@alicloud/ram-2015-05-01](https://www.npmjs.com/package/@alicloud/ram-2015-05-01) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/Ram-2015-05-01 |
 | SLB(负载均衡) | 2014-05-15 | [@alicloud/slb-2014-05-15](https://www.npmjs.com/package/@alicloud/slb-2014-05-15) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/Slb-2014-05-15 |
 | RDS(云数据库) | 2014-08-15 | [@alicloud/rds-2014-08-15](https://www.npmjs.com/package/@alicloud/rds-2014-08-15) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/Rds-2014-08-15 |
 | ROS(资源编排) | 2015-09-01 | [@alicloud/ros-2015-09-01](https://www.npmjs.com/package/@alicloud/ros-2015-09-01) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/ROS-2015-09-01 |
