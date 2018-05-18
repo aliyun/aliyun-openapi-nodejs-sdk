@@ -3,10 +3,16 @@
   "version": "1.0.0",
   "description": "Nlp 2018-04-08 Node.js SDK",
   "main": "lib/client.js",
-  "scripts": {},
+  "scripts": {
+    "test": "mocha -R spec test/*.test.js"
+  },
   "author": "Jackson Tian",
   "license": "MIT",
   "dependencies": {
     "@alicloud/pop-core": "^1.5.1"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^5.1.1"
   }
 }
