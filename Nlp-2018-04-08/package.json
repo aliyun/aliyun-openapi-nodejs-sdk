@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/nlp-2018-04-08",
+  "version": "1.0.0",
+  "description": "Nlp 2018-04-08 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.5.1"
+  }
+}
