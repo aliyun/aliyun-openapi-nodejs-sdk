@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/dyplsapi-2017-05-25",
+  "version": "1.0.0",
+  "description": "Dyplsapi 2017-05-25 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.5.1"
+  }
+}
