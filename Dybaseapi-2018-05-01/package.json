@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/dybaseapi-2018-05-01",
+  "version": "1.0.0",
+  "description": "Dybaseapi 2018-05-01 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.5.1"
+  }
+}
