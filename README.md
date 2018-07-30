@@ -23,7 +23,7 @@ Aliyun OpenAPI Node.js SDK
 | RDS(云数据库) | 2014-08-15 | [@alicloud/rds-2014-08-15](https://www.npmjs.com/package/@alicloud/rds-2014-08-15) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/Rds-2014-08-15 |
 | ROS(资源编排) | 2015-09-01 | [@alicloud/ros-2015-09-01](https://www.npmjs.com/package/@alicloud/ros-2015-09-01) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/ROS-2015-09-01 |
 | CS(容器服务) | 2016-08-01 | [@alicloud/cs-2016-08-01](https://www.npmjs.com/package/@alicloud/cs-2015-12-15) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/CS-2015-12-15 |
-| Dds(MongoDB) | Dds-2015-12-012015-12-01 | [@alicloud/dds-2015-12-01](https://www.npmjs.com/package/@alicloud/dds-2015-12-01) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/Dds-2015-12-01 |
+| Dds(MongoDB) | 2015-12-01 | [@alicloud/dds-2015-12-01](https://www.npmjs.com/package/@alicloud/dds-2015-12-01) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/Dds-2015-12-01 |
 | ImageSearch | 2018-01-20 | [@alicloud/imagesearch-2018-01-20](https://www.npmjs.com/package/@alicloud/imagesearch-2018-01-20) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/ImageSearch-2018-01-20|
 | imm |  2017-09-06 | [@alicloud/imm-2017-09-06](https://www.npmjs.com/package/@alicloud/imm-2017-09-06) | https://github.com/aliyun/aliyun-openapi-nodejs-sdk/tree/master/imm-2017-09-06 |
 | Iot |  2017-04-20 | [@alicloud/iot-2017-04-20](https://www.npmjs.com/package/@alicloud/iot-2017-04-20) |  |
