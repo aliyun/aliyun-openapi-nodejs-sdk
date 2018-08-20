@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/snsuapi-2018-07-09",
+  "version": "1.0.0",
+  "description": "Snsuapi 2018-07-09 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.5.1"
+  }
+}

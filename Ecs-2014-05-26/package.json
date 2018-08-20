@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/ecs-2014-05-26",
+  "version": "1.0.0",
+  "description": "Ecs 2014-05-26 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.5.1"
+  }
+}
