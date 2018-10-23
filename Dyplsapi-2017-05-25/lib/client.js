@@ -102,6 +102,32 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} PoolKey - poolKey. required.
+   * @param {Long} SpecId - specId. required.
+   * @param {String} City - city. required.
+   * @param {String} SecretNo - secretNo. optional.
+   */
+  buySecretNo(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'PoolKey')) {
+      throw new TypeError('parameter "PoolKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'SpecId')) {
+      throw new TypeError('parameter "SpecId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'City')) {
+      throw new TypeError('parameter "City" is required');
+    }
+
+    return this.request('BuySecretNo', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} PoolKey - poolKey. optional.
    * @param {String} ProductType - productType. optional.
    * @param {String} CallId - callId. required.
@@ -135,6 +161,26 @@ class Client extends RPCClient {
     }
 
     return this.request('QuerySubscriptionDetail', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} PoolKey - poolKey. required.
+   * @param {String} SecretNo - secretNo. required.
+   */
+  releaseSecretNo(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'PoolKey')) {
+      throw new TypeError('parameter "PoolKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'SecretNo')) {
+      throw new TypeError('parameter "SecretNo" is required');
+    }
+
+    return this.request('ReleaseSecretNo', params, options);
   }
 
   /**
