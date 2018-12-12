@@ -1,0 +1,18 @@
+{
+  "name": "@alicloud/location-2015-06-12",
+  "version": "1.0.0",
+  "description": "Location 2015-06-12 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {
+    "test": "mocha -R spec test/*.test.js"
+  },
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.1"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^5.2.0"
+  }
+}
