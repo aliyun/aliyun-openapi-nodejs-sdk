@@ -14,7 +14,7 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {String} ProjectId - projectId. optional.
+   * @param {String} ServiceId - serviceId. optional.
    */
   getAlgorithmList(params = {}, options = {}) {
     return this.request('GetAlgorithmList', params, options);
