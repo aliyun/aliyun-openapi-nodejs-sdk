@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/alimt-2019-01-07",
+  "version": "1.0.0",
+  "description": "alimt 2019-01-07 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.1"
+  }
+}

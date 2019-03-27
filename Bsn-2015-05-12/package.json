@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/bsn-2015-05-12",
+  "version": "1.0.0",
+  "description": "Bsn 2015-05-12 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.1"
+  }
+}

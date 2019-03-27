@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/promotion-intl-service-2016-09-05",
+  "version": "1.0.0",
+  "description": "Promotion-Intl-Service 2016-09-05 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.1"
+  }
+}

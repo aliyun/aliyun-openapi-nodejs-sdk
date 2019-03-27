@@ -63,6 +63,7 @@ class Client extends RPCClient {
    * @param {Long} BandId - bandId. required.
    * @param {String} Direction - direction. required.
    * @param {Long} TargetBandwidth - targetBandwidth. required.
+   * @param {String} BandScene - bandScene. optional.
    */
   bandStartSpeedUp(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'IpAddress')) {
@@ -131,6 +132,56 @@ class Client extends RPCClient {
     }
 
     return this.request('BandStopSpeedUp', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} Token - token. required.
+   * @param {String} Duration - duration. optional.
+   * @param {String} Ip - ip. optional.
+   * @param {String} PublicIp - publicIp. optional.
+   * @param {String} PublicPort - publicPort. optional.
+   * @param {String} DestinationIpAddress - destinationIpAddress. optional.
+   */
+  mobileStartSpeedUp(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Token')) {
+      throw new TypeError('parameter "Token" is required');
+    }
+
+    return this.request('MobileStartSpeedUp', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} CorrelationId - correlationId. required.
+   */
+  mobileStatusQuery(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'CorrelationId')) {
+      throw new TypeError('parameter "CorrelationId" is required');
+    }
+
+    return this.request('MobileStatusQuery', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} CorrelationId - correlationId. required.
+   */
+  mobileStopSpeedUp(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'CorrelationId')) {
+      throw new TypeError('parameter "CorrelationId" is required');
+    }
+
+    return this.request('MobileStopSpeedUp', params, options);
   }
 
 }

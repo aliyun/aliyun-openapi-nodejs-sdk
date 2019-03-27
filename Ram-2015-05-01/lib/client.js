@@ -250,6 +250,14 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} UserName - UserName. optional.
+   * @param {String} UserAccessKeyId - UserAccessKeyId. optional.
+   */
+  getAccessKeyLastUsed(params = {}, options = {}) {
+    return this.request('GetAccessKeyLastUsed', params, options);
+  }
+
+  /**
    */
   getAccountAlias(params = {}, options = {}) {
     return this.request('GetAccountAlias', params, options);

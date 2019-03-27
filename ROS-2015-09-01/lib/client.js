@@ -14,6 +14,16 @@ class Client extends ROAClient {
     return this.delete(path, {}, headers, opts);
   }
 
+  cancelUpdateStack(stackName, stackId, body, headers = {}, opts = {}) {
+    const path = `/stacks/${stackName}/${stackId}/cancel`;
+    return this.put(path, {}, body, headers, opts);
+  }
+
+  continueCreateStack(stackName, stackId, body, headers = {}, opts = {}) {
+    const path = `/stacks/${stackName}/${stackId}/continue`;
+    return this.post(path, {}, body, headers, opts);
+  }
+
   createStacks(body, headers = {}, opts = {}) {
     const path = `/stacks`;
     return this.post(path, {}, body, headers, opts);
@@ -79,6 +89,11 @@ class Client extends ROAClient {
     return this.post(path, {}, body, headers, opts);
   }
 
+  getStackPolicy(stackName, stackId, headers = {}, opts = {}) {
+    const path = `/stacks/${stackName}/${stackId}/policy`;
+    return this.get(path, {}, headers, opts);
+  }
+
   inquiryStack(body, headers = {}, opts = {}) {
     const path = `/stacks/inquiry`;
     return this.post(path, {}, body, headers, opts);
@@ -86,6 +101,11 @@ class Client extends ROAClient {
 
   previewStack(body, headers = {}, opts = {}) {
     const path = `/stacks/preview`;
+    return this.post(path, {}, body, headers, opts);
+  }
+
+  setStackPolicy(stackName, stackId, body, headers = {}, opts = {}) {
+    const path = `/stacks/${stackName}/${stackId}/policy`;
     return this.post(path, {}, body, headers, opts);
   }
 

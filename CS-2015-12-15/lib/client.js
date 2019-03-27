@@ -9,6 +9,11 @@ class Client extends ROAClient {
     super(config);
   }
 
+  abandonCluster(clusterId, headers = {}, opts = {}) {
+    const path = `/clusters/${clusterId}/abandon`;
+    return this.delete(path, {}, headers, opts);
+  }
+
   addAgilityCluster(body, headers = {}, opts = {}) {
     const path = `/add_agility_cluster`;
     return this.post(path, {}, body, headers, opts);
@@ -44,9 +49,19 @@ class Client extends ROAClient {
     return this.post(path, {}, body, headers, opts);
   }
 
+  createEdasClusterRole(clusterId, body, headers = {}, opts = {}) {
+    const path = `/clusters/${clusterId}/clusterroles`;
+    return this.post(path, {}, body, headers, opts);
+  }
+
+  createEdasClusterRoleBinding(clusterId, body, headers = {}, opts = {}) {
+    const path = `/clusters/${clusterId}/clusterrolebindings`;
+    return this.post(path, {}, body, headers, opts);
+  }
+
   createTemplate(body, headers = {}, opts = {}) {
     const path = `/templates`;
-    return this.put(path, {}, body, headers, opts);
+    return this.post(path, {}, body, headers, opts);
   }
 
   deleteCluster(clusterId, headers = {}, opts = {}) {
@@ -57,6 +72,11 @@ class Client extends ROAClient {
   deleteClusterNode(clusterId, ip, query, headers = {}, opts = {}) {
     const path = `/clusters/${clusterId}/ip/${ip}`;
     return this.delete(path, query, headers, opts);
+  }
+
+  deleteTemplate(templateId, headers = {}, opts = {}) {
+    const path = `/templates/${templateId}`;
+    return this.delete(path, {}, headers, opts);
   }
 
   describeAgilityTunnelAgentInfo(token, headers = {}, opts = {}) {
@@ -81,6 +101,11 @@ class Client extends ROAClient {
 
   describeClusterDetail(clusterId, headers = {}, opts = {}) {
     const path = `/clusters/${clusterId}`;
+    return this.get(path, {}, headers, opts);
+  }
+
+  describeClusterEndpoints(clusterId, headers = {}, opts = {}) {
+    const path = `/clusters/${clusterId}/endpoints`;
     return this.get(path, {}, headers, opts);
   }
 
@@ -124,9 +149,19 @@ class Client extends ROAClient {
     return this.get(path, {}, headers, opts);
   }
 
+  describeClusterUserKubeconfig(clusterId, headers = {}, opts = {}) {
+    const path = `/k8s/${clusterId}/user_config`;
+    return this.get(path, {}, headers, opts);
+  }
+
   describeClusters(query, headers = {}, opts = {}) {
     const path = `/clusters`;
     return this.get(path, query, headers, opts);
+  }
+
+  describeEdasClusterToken(clusterId, headers = {}, opts = {}) {
+    const path = `/k8s/${clusterId}/token`;
+    return this.get(path, {}, headers, opts);
   }
 
   describeImages(query, headers = {}, opts = {}) {
@@ -144,6 +179,11 @@ class Client extends ROAClient {
     return this.get(path, query, headers, opts);
   }
 
+  describeMonitorToken(clusterId, headers = {}, opts = {}) {
+    const path = `/k8s/${clusterId}/monitor/token`;
+    return this.get(path, {}, headers, opts);
+  }
+
   describeServiceContainers(clusterId, serviceId, headers = {}, opts = {}) {
     const path = `/clusters/${clusterId}/services/${serviceId}/containers`;
     return this.get(path, {}, headers, opts);
@@ -159,9 +199,9 @@ class Client extends ROAClient {
     return this.get(path, {}, headers, opts);
   }
 
-  describeTemplates(headers = {}, opts = {}) {
+  describeTemplates(query, headers = {}, opts = {}) {
     const path = `/templates`;
-    return this.get(path, {}, headers, opts);
+    return this.get(path, query, headers, opts);
   }
 
   describeUserContainers(regionId, query, headers = {}, opts = {}) {
@@ -177,6 +217,11 @@ class Client extends ROAClient {
   gatherLogsToken(token, body, headers = {}, opts = {}) {
     const path = `/token/${token}/gather_logs`;
     return this.post(path, {}, body, headers, opts);
+  }
+
+  getCidrsForVpc(vpcId, headers = {}, opts = {}) {
+    const path = `/api/v1/vpc/${vpcId}/cidrs`;
+    return this.get(path, {}, headers, opts);
   }
 
   getClusterProjects(clusterId, headers = {}, opts = {}) {
@@ -196,6 +241,11 @@ class Client extends ROAClient {
 
   modifyClusterName(body, headers = {}, opts = {}) {
     const path = `/clusters/${clusterId}/name/${clusterName}`;
+    return this.post(path, {}, body, headers, opts);
+  }
+
+  reBindSecurityGroup(clusterId, body, headers = {}, opts = {}) {
+    const path = `/clusters/${clusterId}/rebind_sg`;
     return this.post(path, {}, body, headers, opts);
   }
 
@@ -219,9 +269,24 @@ class Client extends ROAClient {
     return this.post(path, {}, body, headers, opts);
   }
 
+  updateEdasClusterRole(clusterId, body, headers = {}, opts = {}) {
+    const path = `/clusters/${clusterId}/clusterroles`;
+    return this.put(path, {}, body, headers, opts);
+  }
+
+  updateEdasClusterRoleBinding(clusterId, body, headers = {}, opts = {}) {
+    const path = `/clusters/${clusterId}/clusterrolebindings`;
+    return this.put(path, {}, body, headers, opts);
+  }
+
   updateSubUserResouces(body, headers = {}, opts = {}) {
     const path = `/ram/resources`;
     return this.post(path, {}, body, headers, opts);
+  }
+
+  updateTemplate(templateId, body, headers = {}, opts = {}) {
+    const path = `/templates/${templateId}`;
+    return this.put(path, {}, body, headers, opts);
   }
 
   upgradeClusterComponents(clusterId, componentId, body, headers = {}, opts = {}) {

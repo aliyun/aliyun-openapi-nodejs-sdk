@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/dcdn-2018-01-15",
+  "version": "1.0.0",
+  "description": "dcdn 2018-01-15 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.1"
+  }
+}

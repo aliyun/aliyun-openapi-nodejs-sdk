@@ -53,6 +53,30 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} RegionId - regionId. required.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} ClientToken - clientToken. optional.
+   * @param {String} LoadBalancerId - loadBalancerId. required.
+   * @param {String} BackendServers - backendServers. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   */
+  addBackendServersAsyn(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'LoadBalancerId')) {
+      throw new TypeError('parameter "LoadBalancerId" is required');
+    }
+
+    return this.request('AddBackendServersAsyn', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
@@ -174,6 +198,7 @@ class Client extends RPCClient {
    * @param {String} SourceItems - sourceItems. required.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} ListenerProtocol - protocol. optional.
    * @param {String} Tags - tagsRam. optional.
    */
   addListenerWhiteListItem(params = {}, options = {}) {
@@ -267,6 +292,34 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} ClientToken - clientToken. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   * @param {String} VServerGroupId - groupId. required.
+   * @param {String} BackendServers - backendServers. required.
+   */
+  addVServerGroupBackendServersAsyn(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'VServerGroupId')) {
+      throw new TypeError('parameter "VServerGroupId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'BackendServers')) {
+      throw new TypeError('parameter "BackendServers" is required');
+    }
+
+    return this.request('AddVServerGroupBackendServersAsyn', params, options);
+  }
+
+  /**
    * @param {String} RegionId - regionId. required.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
@@ -290,11 +343,34 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} data - data. required.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   */
+  checkSlbOrder(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'data')) {
+      throw new TypeError('parameter "data" is required');
+    }
+
+    return this.request('CheckSlbOrder', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} access_key_id - accessKeyId. optional.
    * @param {String} Tags - tagsRam. optional.
    * @param {String} RegionId - regionId. required.
    * @param {String} AclName - aclName. required.
+   * @param {String} AddressIPVersion - ipVersion. optional. default: ipv4.
    */
   createAccessControlList(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -306,6 +382,43 @@ class Client extends RPCClient {
     }
 
     return this.request('CreateAccessControlList', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   * @param {String} LoadBalancerId - loadBalancerId. required.
+   * @param {Integer} ListenerPort - listenerPort. required.
+   * @param {String} Domain - domain. required.
+   * @param {String} ServerCertificateId - certKeyId. required.
+   */
+  createDomainExtension(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'LoadBalancerId')) {
+      throw new TypeError('parameter "LoadBalancerId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ListenerPort')) {
+      throw new TypeError('parameter "ListenerPort" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Domain')) {
+      throw new TypeError('parameter "Domain" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ServerCertificateId')) {
+      throw new TypeError('parameter "ServerCertificateId" is required');
+    }
+
+    return this.request('CreateDomainExtension', params, options);
   }
 
   /**
@@ -332,6 +445,9 @@ class Client extends RPCClient {
    * @param {String} PricingCycle - pricingCycle. optional.
    * @param {Integer} Duration - duration. optional.
    * @param {Boolean} AutoPay - autoPay. optional. default: false.
+   * @param {String} AddressIPVersion - ipVersion. optional. default: ipv4.
+   * @param {String} Address - address. optional.
+   * @param {Integer} Ratio - ratio. optional.
    */
   createLoadBalancer(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -350,7 +466,7 @@ class Client extends RPCClient {
    * @param {Integer} Bandwidth - bandwidth. optional. default: -1.
    * @param {Integer} ListenerPort - listenerPort. required.
    * @param {Integer} BackendServerPort - backendServerPort. optional.
-   * @param {String} XForwardedFor - forwardedFor. optional. default: off.
+   * @param {String} XForwardedFor - forwardedFor. optional. default: on.
    * @param {String} Scheduler - scheduler. optional. default: wrr.
    * @param {String} StickySession - stickySession. required.
    * @param {String} StickySessionType - stickySessionType. optional.
@@ -378,6 +494,7 @@ class Client extends RPCClient {
    * @param {String} AclType - aclType. optional.
    * @param {String} AclStatus - aclStatus. optional.
    * @param {String} VpcIds - vpcIds. optional.
+   * @param {String} Description - comment. optional.
    * @param {String} ListenerForward - listenerForward. optional.
    * @param {Integer} ForwardPort - forwardPort. optional.
    * @param {Integer} IdleTimeout - idleTimeout. optional.
@@ -412,7 +529,7 @@ class Client extends RPCClient {
    * @param {Integer} Bandwidth - bandwidth. required.
    * @param {Integer} ListenerPort - listenerPort. required.
    * @param {Integer} BackendServerPort - backendServerPort. optional.
-   * @param {String} XForwardedFor - forwardedFor. optional. default: off.
+   * @param {String} XForwardedFor - forwardedFor. optional. default: on.
    * @param {String} Scheduler - scheduler. optional. default: wrr.
    * @param {String} StickySession - stickySession. required.
    * @param {String} StickySessionType - stickySessionType. optional.
@@ -442,8 +559,11 @@ class Client extends RPCClient {
    * @param {String} AclType - aclType. optional.
    * @param {String} AclStatus - aclStatus. optional.
    * @param {String} VpcIds - vpcIds. optional.
+   * @param {String} Description - comment. optional.
    * @param {Integer} IdleTimeout - idleTimeout. optional.
    * @param {Integer} RequestTimeout - requestTimeout. optional.
+   * @param {String} EnableHttp2 - enableHttp2. optional.
+   * @param {String} TLSCipherPolicy - tlsCipherPolicy. optional.
    */
   createLoadBalancerHTTPSListener(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'LoadBalancerId')) {
@@ -502,7 +622,9 @@ class Client extends RPCClient {
    * @param {String} PayType - payType. optional. default: PayOnDemand.
    * @param {String} PricingCycle - pricingCycle. optional.
    * @param {Integer} Duration - duration. optional.
+   * @param {String} AddressIPVersion - ipVersion. optional. default: ipv4.
    * @param {Boolean} AutoPay - autoPay. optional. default: false.
+   * @param {Integer} Ratio - ratio. optional.
    */
   createLoadBalancerPro(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -543,6 +665,7 @@ class Client extends RPCClient {
    * @param {String} AclType - aclType. optional.
    * @param {String} AclStatus - aclStatus. optional.
    * @param {String} VpcIds - vpcIds. optional.
+   * @param {String} Description - comment. optional.
    */
   createLoadBalancerTCPListener(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'LoadBalancerId')) {
@@ -588,6 +711,7 @@ class Client extends RPCClient {
    * @param {String} AclType - aclType. optional.
    * @param {String} AclStatus - aclStatus. optional.
    * @param {String} VpcIds - vpcIds. optional.
+   * @param {String} Description - comment. optional.
    */
   createLoadBalancerUDPListener(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'LoadBalancerId')) {
@@ -688,6 +812,7 @@ class Client extends RPCClient {
    * @param {String} Tags - tagsRam. optional.
    * @param {String} LoadBalancerId - loadBalancerId. required.
    * @param {Integer} ListenerPort - listenerPort. required.
+   * @param {String} ListenerProtocol - protocol. optional.
    * @param {String} RuleList - ruleList. required.
    */
   createRules(params = {}, options = {}) {
@@ -802,6 +927,28 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   * @param {String} DomainExtensionId - domainExtensionId. required.
+   */
+  deleteDomainExtension(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DomainExtensionId')) {
+      throw new TypeError('parameter "DomainExtensionId" is required');
+    }
+
+    return this.request('DeleteDomainExtension', params, options);
+  }
+
+  /**
    * @param {String} RegionId - regionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
@@ -826,6 +973,7 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} LoadBalancerId - loadBalancerId. required.
    * @param {Integer} ListenerPort - listenerPort. required.
+   * @param {String} ListenerProtocol - protocol. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} access_key_id - accessKeyId. optional.
    * @param {String} Tags - tagsRam. optional.
@@ -1025,8 +1173,10 @@ class Client extends RPCClient {
    * @param {String} Tags - tagsRam. optional.
    * @param {String} RegionId - regionId. required.
    * @param {String} AclName - aclName. optional.
+   * @param {String} AddressIPVersion - ipVersion. optional.
    * @param {Integer} PageSize - pageSize. optional.
    * @param {Integer} PageNumber - pageNum. optional.
+   * @param {RepeatList} Tag - tagList. optional.
    */
   describeAccessControlLists(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -1075,6 +1225,46 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} RegionId - regionId. required.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   * @param {String} TaskId - taskId. required.
+   */
+  describeAsynTaskResult(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TaskId')) {
+      throw new TypeError('parameter "TaskId" is required');
+    }
+
+    return this.request('DescribeAsynTaskResult', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} AddressType - addressType. optional.
+   * @param {String} AddressIPVersion - addressIPVersion. optional.
+   */
+  describeAvailableResource(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    return this.request('DescribeAvailableResource', params, options);
+  }
+
+  /**
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -1083,6 +1273,7 @@ class Client extends RPCClient {
    * @param {String} RegionId - regionId. required.
    * @param {String} CACertificateId - certificateId. optional.
    * @param {String} ResourceGroupId - resourceGroupId. optional.
+   * @param {RepeatList} Tag - tagList. optional.
    */
   describeCACertificates(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -1090,6 +1281,33 @@ class Client extends RPCClient {
     }
 
     return this.request('DescribeCACertificates', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} CertificateId - certificateId. required.
+   * @param {String} CertType - certType. required.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   */
+  describeCertificateRelations(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'CertificateId')) {
+      throw new TypeError('parameter "CertificateId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'CertType')) {
+      throw new TypeError('parameter "CertType" is required');
+    }
+
+    return this.request('DescribeCertificateRelations', params, options);
   }
 
   /**
@@ -1136,6 +1354,34 @@ class Client extends RPCClient {
     }
 
     return this.request('DescribeDomainCcWhiteList', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   * @param {String} LoadBalancerId - loadBalancerId. required.
+   * @param {Integer} ListenerPort - listenerPort. required.
+   * @param {String} DomainExtensionId - domainExtensionId. optional.
+   */
+  describeDomainExtensions(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'LoadBalancerId')) {
+      throw new TypeError('parameter "LoadBalancerId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ListenerPort')) {
+      throw new TypeError('parameter "ListenerPort" is required');
+    }
+
+    return this.request('DescribeDomainExtensions', params, options);
   }
 
   /**
@@ -1193,6 +1439,7 @@ class Client extends RPCClient {
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} access_key_id - accessKeyId. optional.
    * @param {String} Tags - tagsRam. optional.
+   * @param {String} ListenerProtocol - protocol. optional.
    * @param {String} RegionId - regionId. optional.
    */
   describeHealthStatus(params = {}, options = {}) {
@@ -1204,12 +1451,53 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} LoadBalancerId - loadBalancerId. required.
+   */
+  describeHighDefinitionMonitorLogAttribute(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'LoadBalancerId')) {
+      throw new TypeError('parameter "LoadBalancerId" is required');
+    }
+
+    return this.request('DescribeHighDefinitionMonitorLogAttribute', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   * @param {Boolean} OnlyAmount - onlyAmount. optional.
+   */
+  describeIdleInstancesForGlobal(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    return this.request('DescribeIdleInstancesForGlobal', params, options);
+  }
+
+  /**
    * @param {String} RegionId - regionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} LoadBalancerId - loadBalancerId. required.
    * @param {Integer} ListenerPort - listenerPort. required.
+   * @param {String} ListenerProtocol - protocol. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} access_key_id - accessKeyId. optional.
    * @param {String} Tags - tagsRam. optional.
@@ -1235,6 +1523,7 @@ class Client extends RPCClient {
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} access_key_id - accessKeyId. optional.
    * @param {String} Tags - tagsRam. optional.
+   * @param {Boolean} IncludeReservedData - includeReservedData. optional.
    */
   describeLoadBalancerAttribute(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'LoadBalancerId')) {
@@ -1264,6 +1553,30 @@ class Client extends RPCClient {
     }
 
     return this.request('DescribeLoadBalancerAutoReleaseTime', params, options);
+  }
+
+  /**
+   * @param {String} RegionId - regionId. required.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} LoadBalancerId - loadBalancerId. required.
+   * @param {String} EcsInstances - ecsInstances. optional.
+   * @param {String} VServerGroupId - serverGroupId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   */
+  describeLoadBalancerBackendServers(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'LoadBalancerId')) {
+      throw new TypeError('parameter "LoadBalancerId" is required');
+    }
+
+    return this.request('DescribeLoadBalancerBackendServers', params, options);
   }
 
   /**
@@ -1363,6 +1676,29 @@ class Client extends RPCClient {
    * @param {String} access_key_id - accessKeyId. optional.
    * @param {String} Tags - tagsRam. optional.
    */
+  describeLoadBalancerTCPListenerAttributePro(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'LoadBalancerId')) {
+      throw new TypeError('parameter "LoadBalancerId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ListenerPort')) {
+      throw new TypeError('parameter "ListenerPort" is required');
+    }
+
+    return this.request('DescribeLoadBalancerTCPListenerAttributePro', params, options);
+  }
+
+  /**
+   * @param {String} RegionId - regionId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} LoadBalancerId - loadBalancerId. required.
+   * @param {Integer} ListenerPort - listenerPort. required.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   */
   describeLoadBalancerUDPListenerAttribute(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'LoadBalancerId')) {
       throw new TypeError('parameter "LoadBalancerId" is required');
@@ -1381,6 +1717,8 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} RegionId - regionId. required.
    * @param {String} ServerId - serverId. optional.
+   * @param {String} AddressIPVersion - ipVersion. optional.
+   * @param {String} LoadBalancerStatus - status. optional.
    * @param {String} LoadBalancerId - loadBalancerId. optional.
    * @param {String} LoadBalancerName - loadBalancerName. optional.
    * @param {String} ServerIntranetAddress - serverIntranetAddress. optional.
@@ -1399,6 +1737,8 @@ class Client extends RPCClient {
    * @param {String} ResourceGroupId - resourceGroupId. optional.
    * @param {Integer} PageNumber - pageNumber. optional. default: 0.
    * @param {Integer} PageSize - pageSize. optional. default: 10.
+   * @param {RepeatList} Tag - tagList. optional.
+   * @param {String} Fuzzy - allFieldsFuzzyString. optional.
    */
   describeLoadBalancers(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -1429,6 +1769,40 @@ class Client extends RPCClient {
     }
 
     return this.request('DescribeLoadBalancersEcs', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} ServerId - serverId. optional.
+   * @param {String} LoadBalancerId - loadBalancerId. optional.
+   * @param {String} LoadBalancerName - loadBalancerName. optional.
+   * @param {String} ServerIntranetAddress - serverIntranetAddress. optional.
+   * @param {String} AddressType - addressType. optional.
+   * @param {String} InternetChargeType - internetChargeType. optional.
+   * @param {String} VpcId - vpcId. optional.
+   * @param {String} VSwitchId - virtualSwitchId. optional.
+   * @param {String} NetworkType - networkType. optional.
+   * @param {String} Address - address. optional.
+   * @param {String} MasterZoneId - masterZoneId. optional.
+   * @param {String} SlaveZoneId - slaveZoneId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   * @param {String} PayType - payType. optional.
+   * @param {String} ResourceGroupId - resourceGroupId. optional.
+   * @param {Integer} PageNumber - pageNumber. optional. default: 0.
+   * @param {Integer} PageSize - pageSize. optional. default: 10.
+   * @param {String} FilterFuzzyMode - filterFuzzyMode. optional. default: on.
+   */
+  describeLoadBalancersPro(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    return this.request('DescribeLoadBalancersPro', params, options);
   }
 
   /**
@@ -1537,6 +1911,7 @@ class Client extends RPCClient {
    * @param {String} access_key_id - accessKeyId. optional.
    * @param {String} Tags - tagsRam. optional.
    * @param {String} LoadBalancerId - loadBalancerId. required.
+   * @param {Boolean} IncludeListener - includeListener. optional.
    */
   describeMasterSlaveServerGroups(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -1674,6 +2049,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AcceptLanguage - acceptLanguage. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
@@ -1729,6 +2105,7 @@ class Client extends RPCClient {
    * @param {String} access_key_id - accessKeyId. optional.
    * @param {String} Tags - tagsRam. optional.
    * @param {String} LoadBalancerId - loadBalancerId. required.
+   * @param {String} ListenerProtocol - protocol. optional.
    * @param {Integer} ListenerPort - listenerPort. required.
    */
   describeRules(params = {}, options = {}) {
@@ -1776,9 +2153,23 @@ class Client extends RPCClient {
    * @param {String} access_key_id - accessKeyId. optional.
    * @param {String} Tags - tagsRam. optional.
    * @param {String} ResourceGroupId - resourceGroupId. optional.
+   * @param {RepeatList} Tag - tagList. optional.
    */
   describeServerCertificates(params = {}, options = {}) {
     return this.request('DescribeServerCertificates', params, options);
+  }
+
+  /**
+   * @param {String} RegionId - regionId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   */
+  describeSlbQuotas(params = {}, options = {}) {
+    return this.request('DescribeSlbQuotas', params, options);
   }
 
   /**
@@ -1858,6 +2249,8 @@ class Client extends RPCClient {
    * @param {String} access_key_id - accessKeyId. optional.
    * @param {String} Tags - tagsRam. optional.
    * @param {String} LoadBalancerId - loadBalancerId. required.
+   * @param {Boolean} IncludeRule - includeRule. optional.
+   * @param {Boolean} IncludeListener - includeListener. optional.
    */
   describeVServerGroups(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -1964,6 +2357,30 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} ResourceType - resourceType. required.
+   * @param {String} NextToken - nextToken. optional.
+   * @param {RepeatList} ResourceId - resourceIdList. optional.
+   * @param {RepeatList} Tag - tagList. optional.
+   */
+  listTagResources(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ResourceType')) {
+      throw new TypeError('parameter "ResourceType" is required');
+    }
+
+    return this.request('ListTagResources', params, options);
+  }
+
+  /**
    * @param {String} RegionId - regionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
@@ -1999,6 +2416,7 @@ class Client extends RPCClient {
    * @param {String} access_key_id - accessKeyId. optional.
    * @param {String} Tags - tagsRam. optional.
    * @param {Boolean} AutoPay - autoPay. optional. default: false.
+   * @param {Integer} Ratio - ratio. optional.
    */
   modifyLoadBalancerInternetSpec(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'LoadBalancerId')) {
@@ -2032,6 +2450,33 @@ class Client extends RPCClient {
     }
 
     return this.request('ModifyLoadBalancerPayType', params, options);
+  }
+
+  /**
+   * @param {String} RegionId - regionId. required.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   * @param {String} LoadBalancerId - loadBalancerId. required.
+   * @param {String} Address - address. required.
+   */
+  modifyLoadBalancerVPCAddress(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'LoadBalancerId')) {
+      throw new TypeError('parameter "LoadBalancerId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Address')) {
+      throw new TypeError('parameter "Address" is required');
+    }
+
+    return this.request('ModifyLoadBalancerVPCAddress', params, options);
   }
 
   /**
@@ -2084,6 +2529,30 @@ class Client extends RPCClient {
     }
 
     return this.request('ModifyVServerGroupBackendServers', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   * @param {String} VServerGroupId - groupId. required.
+   * @param {String} OldBackendServers - oldBackendServers. optional.
+   * @param {String} NewBackendServers - newBackendServers. optional.
+   */
+  modifyVServerGroupBackendServersAsyn(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'VServerGroupId')) {
+      throw new TypeError('parameter "VServerGroupId" is required');
+    }
+
+    return this.request('ModifyVServerGroupBackendServersAsyn', params, options);
   }
 
   /**
@@ -2212,6 +2681,33 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} RegionId - regionId. required.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} LoadBalancerId - loadBalancerId. required.
+   * @param {String} BackendServers - backendServers. required.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   */
+  removeBackendServersAsyn(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'LoadBalancerId')) {
+      throw new TypeError('parameter "LoadBalancerId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'BackendServers')) {
+      throw new TypeError('parameter "BackendServers" is required');
+    }
+
+    return this.request('RemoveBackendServersAsyn', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
@@ -2333,6 +2829,7 @@ class Client extends RPCClient {
    * @param {String} SourceItems - sourceItems. required.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} ListenerProtocol - protocol. optional.
    * @param {String} Tags - tagsRam. optional.
    */
   removeListenerWhiteListItem(params = {}, options = {}) {
@@ -2430,6 +2927,34 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} ClientToken - clientToken. optional.
+   * @param {String} Tags - tagsRam. optional.
+   * @param {String} VServerGroupId - groupId. required.
+   * @param {String} BackendServers - backendServers. required.
+   */
+  removeVServerGroupBackendServersAsyn(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'VServerGroupId')) {
+      throw new TypeError('parameter "VServerGroupId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'BackendServers')) {
+      throw new TypeError('parameter "BackendServers" is required');
+    }
+
+    return this.request('RemoveVServerGroupBackendServersAsyn', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
@@ -2481,6 +3006,35 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   * @param {String} LoadBalancerId - loadBalancerId. required.
+   * @param {Integer} RenewalDuration - renewalDuration. optional.
+   * @param {String} RenewalCycUnit - renewalCycUnit. optional. default: Month.
+   * @param {String} RenewalStatus - renewalStatus. required.
+   */
+  setAutoRenewStatus(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'LoadBalancerId')) {
+      throw new TypeError('parameter "LoadBalancerId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RenewalStatus')) {
+      throw new TypeError('parameter "RenewalStatus" is required');
+    }
+
+    return this.request('SetAutoRenewStatus', params, options);
+  }
+
+  /**
    * @param {String} RegionId - regionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
@@ -2497,6 +3051,30 @@ class Client extends RPCClient {
     }
 
     return this.request('SetBackendServers', params, options);
+  }
+
+  /**
+   * @param {String} RegionId - regionId. required.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} LoadBalancerId - loadBalancerId. required.
+   * @param {String} ClientToken - clientToken. optional.
+   * @param {String} BackendServers - backendServers. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   */
+  setBackendServersAsyn(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'LoadBalancerId')) {
+      throw new TypeError('parameter "LoadBalancerId" is required');
+    }
+
+    return this.request('SetBackendServersAsyn', params, options);
   }
 
   /**
@@ -2526,6 +3104,75 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   * @param {String} DomainExtensionId - domainExtensionId. required.
+   * @param {String} ServerCertificateId - certKeyId. required.
+   */
+  setDomainExtensionAttribute(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DomainExtensionId')) {
+      throw new TypeError('parameter "DomainExtensionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ServerCertificateId')) {
+      throw new TypeError('parameter "ServerCertificateId" is required');
+    }
+
+    return this.request('SetDomainExtensionAttribute', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} LoadBalancerId - loadBalancerId. required.
+   * @param {String} LogProject - logProject. required.
+   * @param {String} LogStore - logStore. required.
+   * @param {String} LogType - logType. required.
+   * @param {String} Status - status. required.
+   */
+  setHighDefinitionMonitorLogStatus(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'LoadBalancerId')) {
+      throw new TypeError('parameter "LoadBalancerId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'LogProject')) {
+      throw new TypeError('parameter "LogProject" is required');
+    }
+
+    if (!hasOwnProperty(params, 'LogStore')) {
+      throw new TypeError('parameter "LogStore" is required');
+    }
+
+    if (!hasOwnProperty(params, 'LogType')) {
+      throw new TypeError('parameter "LogType" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Status')) {
+      throw new TypeError('parameter "Status" is required');
+    }
+
+    return this.request('SetHighDefinitionMonitorLogStatus', params, options);
+  }
+
+  /**
    * @param {String} RegionId - regionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
@@ -2535,6 +3182,7 @@ class Client extends RPCClient {
    * @param {String} AccessControlStatus - accessControlStatus. required.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} ListenerProtocol - protocol. optional.
    * @param {String} Tags - tagsRam. optional.
    */
   setListenerAccessControlStatus(params = {}, options = {}) {
@@ -2612,14 +3260,14 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} LoadBalancerId - loadBalancerId. required.
    * @param {Integer} ListenerPort - listenerPort. required.
-   * @param {Integer} Bandwidth - bandwidth. required.
+   * @param {Integer} Bandwidth - bandwidth. optional.
    * @param {String} XForwardedFor - forwardedFor. optional.
    * @param {String} Scheduler - scheduler. optional.
-   * @param {String} StickySession - stickySession. required.
+   * @param {String} StickySession - stickySession. optional.
    * @param {String} StickySessionType - stickySessionType. optional.
    * @param {Integer} CookieTimeout - cookieTimeout. optional.
    * @param {String} Cookie - cookie. optional.
-   * @param {String} HealthCheck - healthCheck. required.
+   * @param {String} HealthCheck - healthCheck. optional.
    * @param {String} HealthCheckDomain - healthCheckDomain. optional.
    * @param {String} HealthCheckURI - healthCheckURI. optional.
    * @param {Integer} HealthyThreshold - healthyThreshold. optional.
@@ -2644,6 +3292,7 @@ class Client extends RPCClient {
    * @param {String} VpcIds - vpcIds. optional.
    * @param {Integer} IdleTimeout - idleTimeout. optional.
    * @param {Integer} RequestTimeout - requestTimeout. optional.
+   * @param {String} Description - comment. optional.
    */
   setLoadBalancerHTTPListenerAttribute(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'LoadBalancerId')) {
@@ -2652,18 +3301,6 @@ class Client extends RPCClient {
 
     if (!hasOwnProperty(params, 'ListenerPort')) {
       throw new TypeError('parameter "ListenerPort" is required');
-    }
-
-    if (!hasOwnProperty(params, 'Bandwidth')) {
-      throw new TypeError('parameter "Bandwidth" is required');
-    }
-
-    if (!hasOwnProperty(params, 'StickySession')) {
-      throw new TypeError('parameter "StickySession" is required');
-    }
-
-    if (!hasOwnProperty(params, 'HealthCheck')) {
-      throw new TypeError('parameter "HealthCheck" is required');
     }
 
     return this.request('SetLoadBalancerHTTPListenerAttribute', params, options);
@@ -2676,14 +3313,14 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} LoadBalancerId - loadBalancerId. required.
    * @param {Integer} ListenerPort - listenerPort. required.
-   * @param {Integer} Bandwidth - bandwidth. required.
+   * @param {Integer} Bandwidth - bandwidth. optional.
    * @param {String} XForwardedFor - forwardedFor. optional.
    * @param {String} Scheduler - scheduler. optional.
-   * @param {String} StickySession - stickySession. required.
+   * @param {String} StickySession - stickySession. optional.
    * @param {String} StickySessionType - stickySessionType. optional.
    * @param {Integer} CookieTimeout - cookieTimeout. optional.
    * @param {String} Cookie - cookie. optional.
-   * @param {String} HealthCheck - healthCheck. required.
+   * @param {String} HealthCheck - healthCheck. optional.
    * @param {String} HealthCheckDomain - healthCheckDomain. optional.
    * @param {String} HealthCheckURI - healthCheckURI. optional.
    * @param {Integer} HealthyThreshold - healthyThreshold. optional.
@@ -2710,6 +3347,9 @@ class Client extends RPCClient {
    * @param {String} VpcIds - vpcIds. optional.
    * @param {Integer} IdleTimeout - idleTimeout. optional.
    * @param {Integer} RequestTimeout - requestTimeout. optional.
+   * @param {String} EnableHttp2 - enableHttp2. optional.
+   * @param {String} TLSCipherPolicy - tlsCipherPolicy. optional.
+   * @param {String} Description - comment. optional.
    */
   setLoadBalancerHTTPSListenerAttribute(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'LoadBalancerId')) {
@@ -2718,18 +3358,6 @@ class Client extends RPCClient {
 
     if (!hasOwnProperty(params, 'ListenerPort')) {
       throw new TypeError('parameter "ListenerPort" is required');
-    }
-
-    if (!hasOwnProperty(params, 'Bandwidth')) {
-      throw new TypeError('parameter "Bandwidth" is required');
-    }
-
-    if (!hasOwnProperty(params, 'StickySession')) {
-      throw new TypeError('parameter "StickySession" is required');
-    }
-
-    if (!hasOwnProperty(params, 'HealthCheck')) {
-      throw new TypeError('parameter "HealthCheck" is required');
     }
 
     return this.request('SetLoadBalancerHTTPSListenerAttribute', params, options);
@@ -2788,7 +3416,7 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} LoadBalancerId - loadBalancerId. required.
    * @param {Integer} ListenerPort - listenerPort. required.
-   * @param {Integer} Bandwidth - bandwidth. required.
+   * @param {Integer} Bandwidth - bandwidth. optional.
    * @param {String} Scheduler - scheduler. optional.
    * @param {Integer} PersistenceTimeout - persistenceTimeout. optional.
    * @param {Integer} EstablishedTimeout - estTimeout. optional.
@@ -2814,6 +3442,7 @@ class Client extends RPCClient {
    * @param {String} AclType - aclType. optional.
    * @param {String} AclStatus - aclStatus. optional.
    * @param {String} VpcIds - vpcIds. optional.
+   * @param {String} Description - comment. optional.
    */
   setLoadBalancerTCPListenerAttribute(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'LoadBalancerId')) {
@@ -2822,10 +3451,6 @@ class Client extends RPCClient {
 
     if (!hasOwnProperty(params, 'ListenerPort')) {
       throw new TypeError('parameter "ListenerPort" is required');
-    }
-
-    if (!hasOwnProperty(params, 'Bandwidth')) {
-      throw new TypeError('parameter "Bandwidth" is required');
     }
 
     return this.request('SetLoadBalancerTCPListenerAttribute', params, options);
@@ -2838,7 +3463,55 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} LoadBalancerId - loadBalancerId. required.
    * @param {Integer} ListenerPort - listenerPort. required.
-   * @param {Integer} Bandwidth - bandwidth. required.
+   * @param {Integer} Bandwidth - bandwidth. optional.
+   * @param {String} Scheduler - scheduler. optional.
+   * @param {Integer} PersistenceTimeout - persistenceTimeout. optional.
+   * @param {Integer} EstablishedTimeout - estTimeout. optional.
+   * @param {Integer} HealthyThreshold - healthyThreshold. optional.
+   * @param {Integer} UnhealthyThreshold - unhealthyThreshold. optional.
+   * @param {Integer} HealthCheckConnectTimeout - healthCheckConnectTimeout. optional.
+   * @param {Integer} HealthCheckConnectPort - healthCheckConnectPort. optional.
+   * @param {Integer} HealthCheckInterval - healthCheckInterval. optional.
+   * @param {String} HealthCheckDomain - healthCheckDomain. optional.
+   * @param {String} HealthCheckURI - healthCheckURI. optional.
+   * @param {String} HealthCheckHttpCode - healthCheckHttpCode. optional.
+   * @param {String} HealthCheckType - healthCheckType. optional.
+   * @param {String} SynProxy - synProxy. optional.
+   * @param {Integer} MaxConnection - maxConnection. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   * @param {String} VServerGroup - enableRsPool. optional.
+   * @param {String} VServerGroupId - rsPoolName. optional.
+   * @param {String} MasterSlaveServerGroupId - masterSlaveServerGroupId. optional.
+   * @param {String} MasterSlaveServerGroup - enableMasterSlaveRsPool. optional.
+   * @param {String} AclId - aclId. optional.
+   * @param {String} AclType - aclType. optional.
+   * @param {String} AclStatus - aclStatus. optional.
+   * @param {String} VpcIds - vpcIds. optional.
+   * @param {String} Description - comment. optional.
+   * @param {Integer} Mss - mss. optional.
+   */
+  setLoadBalancerTCPListenerAttributePro(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'LoadBalancerId')) {
+      throw new TypeError('parameter "LoadBalancerId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ListenerPort')) {
+      throw new TypeError('parameter "ListenerPort" is required');
+    }
+
+    return this.request('SetLoadBalancerTCPListenerAttributePro', params, options);
+  }
+
+  /**
+   * @param {String} RegionId - regionId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} LoadBalancerId - loadBalancerId. required.
+   * @param {Integer} ListenerPort - listenerPort. required.
+   * @param {Integer} Bandwidth - bandwidth. optional.
    * @param {String} Scheduler - scheduler. optional.
    * @param {Integer} PersistenceTimeout - persistenceTimeout. optional.
    * @param {Integer} HealthyThreshold - healthyThreshold. optional.
@@ -2860,6 +3533,7 @@ class Client extends RPCClient {
    * @param {String} AclType - aclType. optional.
    * @param {String} AclStatus - aclStatus. optional.
    * @param {String} VpcIds - vpcIds. optional.
+   * @param {String} Description - comment. optional.
    */
   setLoadBalancerUDPListenerAttribute(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'LoadBalancerId')) {
@@ -2868,10 +3542,6 @@ class Client extends RPCClient {
 
     if (!hasOwnProperty(params, 'ListenerPort')) {
       throw new TypeError('parameter "ListenerPort" is required');
-    }
-
-    if (!hasOwnProperty(params, 'Bandwidth')) {
-      throw new TypeError('parameter "Bandwidth" is required');
     }
 
     return this.request('SetLoadBalancerUDPListenerAttribute', params, options);
@@ -2986,6 +3656,22 @@ class Client extends RPCClient {
    * @param {String} Tags - tagsRam. optional.
    * @param {String} RuleId - ruleId. required.
    * @param {String} VServerGroupId - rsPoolName. optional.
+   * @param {String} RuleName - ruleName. optional.
+   * @param {String} ListenerSync - listenerSync. optional.
+   * @param {String} Scheduler - scheduler. optional.
+   * @param {String} StickySession - stickySession. optional.
+   * @param {String} StickySessionType - stickySessionType. optional.
+   * @param {Integer} CookieTimeout - cookieTimeout. optional.
+   * @param {String} Cookie - cookie. optional.
+   * @param {String} HealthCheck - healthCheck. optional.
+   * @param {String} HealthCheckDomain - healthCheckDomain. optional.
+   * @param {String} HealthCheckURI - healthCheckURI. optional.
+   * @param {Integer} HealthyThreshold - healthyThreshold. optional.
+   * @param {Integer} UnhealthyThreshold - unhealthyThreshold. optional.
+   * @param {Integer} HealthCheckTimeout - healthCheckTimeout. optional.
+   * @param {Integer} HealthCheckInterval - healthCheckInterval. optional.
+   * @param {Integer} HealthCheckConnectPort - healthCheckConnectPort. optional.
+   * @param {String} HealthCheckHttpCode - healthCheckHttpCode. optional.
    */
   setRule(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -3051,6 +3737,30 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} Tags - tagsRam. optional.
+   * @param {String} VServerGroupId - groupId. required.
+   * @param {String} VServerGroupName - groupName. optional.
+   * @param {String} BackendServers - backendServers. optional.
+   */
+  setVServerGroupAttributeAsyn(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'VServerGroupId')) {
+      throw new TypeError('parameter "VServerGroupId" is required');
+    }
+
+    return this.request('SetVServerGroupAttributeAsyn', params, options);
+  }
+
+  /**
    * @param {String} RegionId - regionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
@@ -3059,6 +3769,7 @@ class Client extends RPCClient {
    * @param {Integer} ListenerPort - listenerPort. required.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} ListenerProtocol - protocol. optional.
    * @param {String} Tags - tagsRam. optional.
    */
   startLoadBalancerListener(params = {}, options = {}) {
@@ -3082,6 +3793,7 @@ class Client extends RPCClient {
    * @param {Integer} ListenerPort - listenerPort. required.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} ListenerProtocol - protocol. optional.
    * @param {String} Tags - tagsRam. optional.
    */
   stopLoadBalancerListener(params = {}, options = {}) {
@@ -3094,6 +3806,65 @@ class Client extends RPCClient {
     }
 
     return this.request('StopLoadBalancerListener', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} ResourceType - resourceType. required.
+   * @param {RepeatList} ResourceId - resourceIdList. required.
+   * @param {RepeatList} Tag - tagList. required.
+   */
+  tagResources(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ResourceType')) {
+      throw new TypeError('parameter "ResourceType" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ResourceId')) {
+      throw new TypeError('parameter "ResourceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Tag')) {
+      throw new TypeError('parameter "Tag" is required');
+    }
+
+    return this.request('TagResources', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} access_key_id - accessKeyId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} ResourceType - resourceType. required.
+   * @param {RepeatList} ResourceId - resourceIdList. required.
+   * @param {RepeatList} TagKey - tagList. optional.
+   * @param {Boolean} All - all. optional. default: false.
+   */
+  untagResources(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ResourceType')) {
+      throw new TypeError('parameter "ResourceType" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ResourceId')) {
+      throw new TypeError('parameter "ResourceId" is required');
+    }
+
+    return this.request('UntagResources', params, options);
   }
 
   /**

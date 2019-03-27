@@ -14,6 +14,30 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} TaskId - taskId. required.
+   * @param {String} Data - data. required.
+   * @param {String} Status - status. required.
+   * @param {String} Message - message. optional.
+   * @param {Float} Progress - progress. optional.
+   */
+  asyncResponsePost(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'TaskId')) {
+      throw new TypeError('parameter "TaskId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Data')) {
+      throw new TypeError('parameter "Data" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Status')) {
+      throw new TypeError('parameter "Status" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('AsyncResponsePost', params, options);
+  }
+
+  /**
    * @param {String} ServiceId - serviceId. optional.
    */
   getAlgorithmList(params = {}, options = {}) {
@@ -21,10 +45,9 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {String} ServiceId - serviceId. optional.
+   * @param {String} TaskId - taskId. optional.
    */
   getAsyncServiceResult(params = {}, options = {}) {
-    options.method = 'POST';
     return this.request('GetAsyncServiceResult', params, options);
   }
 
@@ -105,10 +128,9 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {String} ServiceId - serviceId. optional.
+   * @param {String} TaskId - taskId. optional.
    */
   getServiceResultAsync(params = {}, options = {}) {
-    options.method = 'POST';
     return this.request('GetServiceResultAsync', params, options);
   }
 
@@ -126,6 +148,8 @@ class Client extends RPCClient {
   /**
    * @param {String} ServiceId - serviceId. optional.
    * @param {String} Params - params. optional.
+   * @param {String} RequestData - requestData. optional.
+   * @param {Boolean} IsShowInput - isShowInput. optional.
    */
   invokeServiceAsync(params = {}, options = {}) {
     options.method = 'POST';

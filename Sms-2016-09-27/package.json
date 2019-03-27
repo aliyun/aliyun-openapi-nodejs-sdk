@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/sms-2016-09-27",
+  "version": "1.0.0",
+  "description": "Sms 2016-09-27 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.1"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/cms-2016-09-22",
+  "version": "1.0.0",
+  "description": "Cms 2016-09-22 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.1"
+  }
+}

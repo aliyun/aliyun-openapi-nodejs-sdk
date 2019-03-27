@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/yundun-bastionhost-2018-10-10",
+  "version": "1.0.0",
+  "description": "Yundun-bastionhost 2018-10-10 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.1"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/imm-2017-09-06",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "imm 2017-09-06 Node.js SDK",
   "main": "lib/client.js",
   "scripts": {
