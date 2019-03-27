@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/itaas-2017-05-05",
+  "version": "1.0.0",
+  "description": "ITaaS 2017-05-05 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.1"
+  }
+}

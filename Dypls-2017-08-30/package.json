@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/dypls-2017-08-30",
+  "version": "1.0.0",
+  "description": "Dypls 2017-08-30 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.1"
+  }
+}

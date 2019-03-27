@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/ddospro-2017-07-26",
+  "version": "1.0.0",
+  "description": "DDoSPro 2017-07-26 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.1"
+  }
+}

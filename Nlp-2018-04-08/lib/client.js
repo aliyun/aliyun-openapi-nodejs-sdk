@@ -14,6 +14,16 @@ class Client extends ROAClient {
     return this.post(path, {}, body, headers, opts);
   }
 
+  iE(domain, body, headers = {}, opts = {}) {
+    const path = `/nlp/api/ie/${domain}`;
+    return this.post(path, {}, body, headers, opts);
+  }
+
+  kWE(domain, body, headers = {}, opts = {}) {
+    const path = `/nlp/api/kwe/${domain}`;
+    return this.post(path, {}, body, headers, opts);
+  }
+
   reviewAnalysis(domain, body, headers = {}, opts = {}) {
     const path = `/nlp/api/reviewanalysis/${domain}`;
     return this.post(path, {}, body, headers, opts);
@@ -21,6 +31,11 @@ class Client extends ROAClient {
 
   sentiment(domain, body, headers = {}, opts = {}) {
     const path = `/nlp/api/sentiment/${domain}`;
+    return this.post(path, {}, body, headers, opts);
+  }
+
+  textStructure(domain, body, headers = {}, opts = {}) {
+    const path = `/nlp/api/textstructure/${domain}`;
     return this.post(path, {}, body, headers, opts);
   }
 

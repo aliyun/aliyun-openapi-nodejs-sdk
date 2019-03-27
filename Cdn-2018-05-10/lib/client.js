@@ -498,6 +498,18 @@ class Client extends RPCClient {
 
   /**
    * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} SSLPub - cert. required.
+   */
+  describeCdnDomainByCertificate(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'SSLPub')) {
+      throw new TypeError('parameter "SSLPub" is required');
+    }
+
+    return this.request('DescribeCdnDomainByCertificate', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
    * @param {String} SecurityToken - securityToken. optional.
    * @param {String} DomainName - domainName. required.
    * @param {String} FunctionNames - functionNames. optional.
@@ -537,6 +549,13 @@ class Client extends RPCClient {
     }
 
     return this.request('DescribeCdnDomainLogs', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   */
+  describeCdnHttpsDomainList(params = {}, options = {}) {
+    return this.request('DescribeCdnHttpsDomainList', params, options);
   }
 
   /**
@@ -689,27 +708,26 @@ class Client extends RPCClient {
 
   /**
    * @param {Long} OwnerId - ownerId. optional.
-   * @param {String} SecurityToken - securityToken. optional.
    * @param {String} DomainName - domainName. required.
-   * @param {String} LocationNames - locationNames. required.
-   * @param {String} IspNames - ispNames. required.
    * @param {String} TimePoint - timePoint. required.
+   * @param {String} IspNames - ispName. required.
+   * @param {String} LocationNames - locName. required.
    */
   describeDomainBpsDataByTimeStamp(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DomainName')) {
       throw new TypeError('parameter "DomainName" is required');
     }
 
-    if (!hasOwnProperty(params, 'LocationNames')) {
-      throw new TypeError('parameter "LocationNames" is required');
+    if (!hasOwnProperty(params, 'TimePoint')) {
+      throw new TypeError('parameter "TimePoint" is required');
     }
 
     if (!hasOwnProperty(params, 'IspNames')) {
       throw new TypeError('parameter "IspNames" is required');
     }
 
-    if (!hasOwnProperty(params, 'TimePoint')) {
-      throw new TypeError('parameter "TimePoint" is required');
+    if (!hasOwnProperty(params, 'LocationNames')) {
+      throw new TypeError('parameter "LocationNames" is required');
     }
 
     return this.request('DescribeDomainBpsDataByTimeStamp', params, options);
@@ -1196,6 +1214,7 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} DomainName - domainName. required.
    * @param {String} StartTime - startTime. optional.
+   * @param {String} EndTime - endTime. optional.
    * @param {String} SortBy - sortBy. optional.
    * @param {String} Percent - percent. optional. default: false.
    */

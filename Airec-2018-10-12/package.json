@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/airec-2018-10-12",
+  "version": "1.0.0",
+  "description": "Airec 2018-10-12 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.1"
+  }
+}

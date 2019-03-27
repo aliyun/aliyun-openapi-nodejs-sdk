@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/dataworks-public-2018-06-01",
+  "version": "1.0.0",
+  "description": "dataworks-public 2018-06-01 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.1"
+  }
+}

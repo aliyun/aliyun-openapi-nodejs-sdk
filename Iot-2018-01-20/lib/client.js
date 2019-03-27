@@ -15,6 +15,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} ApplyId - applyId. required.
    */
   acceptTransfer(params = {}, options = {}) {
@@ -44,6 +45,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} TagName - tagName. required.
    * @param {String} TagKey - tagKey. required.
@@ -82,6 +84,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} IotId - iotId. optional.
    * @param {String} DeviceName - deviceName. optional.
@@ -105,6 +108,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} IotId - iotId. optional.
    * @param {String} DeviceName - deviceName. optional.
@@ -128,6 +132,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} Count - count. required.
    */
@@ -145,6 +150,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} Count - count. required.
    */
@@ -162,6 +168,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceNames - deviceNames. required.
    */
@@ -178,6 +185,29 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} DisplayName - displayName. optional.
+   * @param {String} DataAssetUid - dataAssetUid. optional.
+   * @param {String} DataAssetName - dataAssetName. optional.
+   * @param {String} DataAssetType - dataAssetType. optional.
+   * @param {Long} StartHoldingTime - startHoldingTime. optional.
+   * @param {Integer} HoldingCycleValue - holdingCycleValue. optional.
+   * @param {String} HoldingCycleUnits - holdingCycleUnits. optional.
+   */
+  applyDataAsset(params = {}, options = {}) {
+    return this.request('ApplyDataAsset', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} AsyncRequestId - asyncRequestId. optional.
+   * @param {String} JobId - jobId. optional.
+   */
+  asyncExecuteQueryJobForDownload(params = {}, options = {}) {
+    return this.request('AsyncExecuteQueryJobForDownload', params, options);
+  }
+
+  /**
    * @param {String} AppUuid - appUuid. optional.
    * @param {RepeatList} ServiceIdList - serviceIdList. optional.
    */
@@ -187,6 +217,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} TargetAliyunPk - targetAliyunPk. required.
    * @param {RepeatList} DeviceName - deviceNames. required.
@@ -209,6 +240,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   authorizeProduct(params = {}, options = {}) {
@@ -221,6 +253,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} GroupId - groupId. required.
    * @param {RepeatList} Device - devices. optional.
    */
@@ -234,6 +267,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {RepeatList} PropertyId - propertyIds. optional.
    * @param {RepeatList} ServiceId - serviceIds. optional.
@@ -249,6 +283,20 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {RepeatList} ThingIdTagsList - thingIdTagsList. required.
+   */
+  batchAddThingTags(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ThingIdTagsList')) {
+      throw new TypeError('parameter "ThingIdTagsList" is required');
+    }
+
+    return this.request('BatchAddThingTags', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} GwProductKey - gwProductKey. required.
    * @param {String} GwDeviceName - gwDeviceName. required.
    * @param {Json} Ext - ext. required.
@@ -276,6 +324,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {RepeatList} DeviceName - deviceNames. optional.
    */
@@ -289,6 +338,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} ApplyId - applyId. optional.
    */
@@ -302,6 +352,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} ApplyId - applyId. optional.
    */
@@ -315,6 +366,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    */
   batchDeleteBlankProductKeyFirmware(params = {}, options = {}) {
     return this.request('BatchDeleteBlankProductKeyFirmware', params, options);
@@ -322,6 +374,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {RepeatList} ProductKey - productKeys. optional.
    * @param {RepeatList} DeviceName - deviceNames. optional.
    */
@@ -331,6 +384,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} GroupId - groupId. required.
    * @param {RepeatList} Device - devices. optional.
    */
@@ -344,6 +398,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {RepeatList} ProductKey - productKeys. optional.
    * @param {RepeatList} DeviceName - deviceNames. optional.
    */
@@ -353,6 +408,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {RepeatList} TagKeys - tagKeys. required.
    */
@@ -370,6 +426,20 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {RepeatList} ThingIdTagsList - thingIdTagsList. required.
+   */
+  batchDeleteThingTags(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ThingIdTagsList')) {
+      throw new TypeError('parameter "ThingIdTagsList" is required');
+    }
+
+    return this.request('BatchDeleteThingTags', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} FirmwareName - firmwareName. required.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} UpgradeType - upgradeType. required.
@@ -380,6 +450,9 @@ class Client extends RPCClient {
    * @param {RepeatList} DeviceName - deviceNames. optional.
    * @param {Boolean} Diff - diff. optional.
    * @param {RepeatList} SrcFirmwareName - srcFirmwareNames. optional.
+   * @param {Long} FireTime - fireTime. optional.
+   * @param {Long} RetryInterval - retryInterval. optional.
+   * @param {Integer} RetryCount - retryCount. optional.
    */
   batchDeviceUpgrade(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'FirmwareName')) {
@@ -407,8 +480,10 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} TagString - tagString. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   batchForceUpdateProductTag(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -424,23 +499,18 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
-   * @param {String} ProductKey - productKey. required.
-   * @param {RepeatList} DeviceName - deviceNames. required.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {RepeatList} DeviceName - deviceNames. optional.
+   * @param {RepeatList} IotId - iotIds. optional.
    */
   batchGetDeviceState(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ProductKey')) {
-      throw new TypeError('parameter "ProductKey" is required');
-    }
-
-    if (!hasOwnProperty(params, 'DeviceName')) {
-      throw new TypeError('parameter "DeviceName" is required');
-    }
-
     return this.request('BatchGetDeviceState', params, options);
   }
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} DriverIds - driverIds. required.
    */
   batchGetDriver(params = {}, options = {}) {
@@ -499,6 +569,25 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} RuleIds - sceneIds. required.
+   */
+  batchGetEdgeInstanceAutomationRule(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RuleIds')) {
+      throw new TypeError('parameter "RuleIds" is required');
+    }
+
+    return this.request('BatchGetEdgeInstanceAutomationRule', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RuleIds - sceneIds. required.
    * @param {String} InstanceId - instanceId. required.
    */
@@ -516,6 +605,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RuleIds - sceneIds. required.
    * @param {String} InstanceId - instanceId. required.
    */
@@ -533,6 +623,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} RuleIds - sceneIds. optional.
    */
@@ -546,14 +637,10 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
-   * @param {String} InstanceId - instanceId. required.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} Devices - devices. required.
    */
   batchGetEdgeInstanceDeviceStatus(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'InstanceId')) {
-      throw new TypeError('parameter "InstanceId" is required');
-    }
-
     if (!hasOwnProperty(params, 'Devices')) {
       throw new TypeError('parameter "Devices" is required');
     }
@@ -563,6 +650,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} Functions - functions. required.
    */
@@ -580,6 +668,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} StreamGuIds - streamGuIds. required.
    */
@@ -695,6 +784,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} Count - count. required.
    */
@@ -712,6 +802,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} Count - count. required.
    */
@@ -729,6 +820,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Long} ApplyId - applyId. required.
    */
@@ -746,6 +838,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Long} ApplyId - applyId. required.
    */
@@ -763,6 +856,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {RepeatList} DeviceName - deviceNames. required.
    */
@@ -780,6 +874,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {RepeatList} DeviceName - deviceNames. required.
    */
@@ -797,6 +892,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {RepeatList} Firmware - firmwares. optional.
    */
   batchUpdateFirmware(params = {}, options = {}) {
@@ -805,6 +901,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} TagString - tagString. required.
    */
@@ -821,7 +918,19 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AppUuid - appUuid. optional.
+   * @param {String} Domain - domain. optional.
+   * @param {String} CertBody - certBody. optional.
+   * @param {String} CertKey - certKey. optional.
+   * @param {String} CertName - certName. optional.
+   */
+  bindAppDomain(params = {}, options = {}) {
+    return this.request('BindAppDomain', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} RuleId - sceneId. required.
    */
@@ -856,6 +965,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
@@ -901,6 +1011,24 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {RepeatList} Devices - devices. required.
+   */
+  bindDevicesToEdgeInstance(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Devices')) {
+      throw new TypeError('parameter "Devices" is required');
+    }
+
+    return this.request('BindDevicesToEdgeInstance', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {Long} GroupId - groupId. required.
    * @param {String} DriverTemplateId - driverTemplateId. optional.
    * @param {String} DriverId - driverId. optional.
@@ -920,6 +1048,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} RoleArn - roleArn. required.
    * @param {String} ServiceName - serviceName. required.
@@ -992,6 +1121,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
@@ -1036,6 +1166,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} RoleArn - roleArn. required.
    * @param {String} RoleName - roleName. required.
@@ -1080,6 +1211,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} StreamGuId - streamGuId. required.
    */
@@ -1139,6 +1271,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {RepeatList} CancelDevice - cancelDevices. required.
    */
   cancelAuthorizedDevices(params = {}, options = {}) {
@@ -1151,6 +1284,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} TargetAliyunPk - targetAliyunPk. required.
    */
@@ -1168,6 +1302,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} FirmwareName - firmwareName. required.
    * @param {Long} TaskId - taskId. required.
    */
@@ -1185,7 +1320,30 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   */
+  cancelEdgeInstanceDeployment(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    return this.request('CancelEdgeInstanceDeployment', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} JobId - jobId. optional.
+   */
+  cancelQueryJob(params = {}, options = {}) {
+    return this.request('CancelQueryJob', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   cancelReleaseProduct(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -1197,6 +1355,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} ApplyId - applyId. required.
    */
   cancelTransferApply(params = {}, options = {}) {
@@ -1226,6 +1385,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} AlinkJson - alinkJson. required.
    * @param {Integer} Type - type. required.
@@ -1248,6 +1408,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} AlinkJson - alinkJson. required.
    * @param {Integer} Type - type. required.
@@ -1270,6 +1431,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} GwProductKey - gwProductKey. required.
@@ -1297,6 +1459,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductCode - productCode. required.
    */
   checkCloudProductOpenStatus(params = {}, options = {}) {
@@ -1347,6 +1510,12 @@ class Client extends RPCClient {
   }
 
   /**
+   */
+  checkLVCloudProductOpened(params = {}, options = {}) {
+    return this.request('CheckLVCloudProductOpened', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} Sql - sql. optional.
    * @param {Long} TaskId - taskId. optional.
@@ -1384,6 +1553,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} SrcProductKey - srcProductKey. required.
    * @param {String} TargetProductKey - targetProductKey. required.
    */
@@ -1397,6 +1567,24 @@ class Client extends RPCClient {
     }
 
     return this.request('CopyProductAbility', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {RepeatList} ActivationCode - activationCodes. required.
+   */
+  createActivationCodeOrder(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ActivationCode')) {
+      throw new TypeError('parameter "ActivationCode" is required');
+    }
+
+    return this.request('CreateActivationCodeOrder', params, options);
   }
 
   /**
@@ -1461,7 +1649,27 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} DeclareType - declareType. optional.
+   * @param {String} DeclareId - declareId. optional.
+   * @param {String} DeclareName - declareName. optional.
+   * @param {String} DataModelId - dataModelId. optional.
+   * @param {String} DataModelName - dataModelName. optional.
+   * @param {String} DataModelVersion - dataModelVersion. optional.
+   * @param {String} DeclareVersionId - declareVersionId. optional.
+   * @param {String} Uuid - uuid. optional.
+   * @param {Integer} InsertOpt - insertOpt. optional.
+   * @param {Integer} UpdateOpt - updateOpt. optional.
+   * @param {Integer} DeleteOpt - deleteOpt. optional.
+   * @param {Integer} SelectOpt - selectOpt. optional.
+   * @param {Integer} SubscribeOpt - subscribeOpt. optional.
+   */
+  createAppDataModelDeclare(params = {}, options = {}) {
+    return this.request('CreateAppDataModelDeclare', params, options);
+  }
+
+  /**
    * @param {String} ConfigureUuid - configureUuid. required.
+   * @param {String} ConfigureVersionUuid - configureVersionUuid. optional.
    * @param {String} Name - name. required.
    * @param {String} HostingType - hostingType. optional.
    * @param {String} DeployRegionId - deployRegionId. optional.
@@ -1487,6 +1695,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} ConfigureUuid - configureUuid. required.
+   * @param {String} ConfigureVersionUuid - configureVersionUuid. optional.
    * @param {String} Name - name. required.
    * @param {String} DeployRegionId - deployRegionId. optional.
    * @param {String} HostingType - hostingType. optional.
@@ -1535,6 +1744,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RuleName - sceneName. required.
    * @param {String} RuleContent - sceneContent. optional.
    * @param {String} RuleDescription - remark. optional.
@@ -1549,6 +1759,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} DestFirmwareName - destFirmwareName. required.
    * @param {RepeatList} SrcFirmwareName - srcFirmwareNames. required.
    * @param {String} ProductKey - productKey. required.
@@ -1573,6 +1784,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} GwProductKey - gwProductKey. required.
    * @param {String} GwDeviceName - gwDeviceName. required.
    * @param {String} ProductKey - productKey. required.
@@ -1602,6 +1814,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} EventType - eventType. required.
    * @param {String} EventName - eventName. required.
@@ -1632,6 +1845,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} EventType - eventType. required.
    * @param {String} EventName - eventName. required.
@@ -1661,6 +1875,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} DataType - dataType. required.
    * @param {Integer} RwFlag - rwFlag. required.
@@ -1697,6 +1912,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} DataType - dataType. required.
    * @param {Integer} RwFlag - rwFlag. required.
@@ -1732,6 +1948,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} CallType - callType. required.
    * @param {String} ServiceName - serviceName. required.
@@ -1763,6 +1980,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} CallType - callType. required.
    * @param {String} ServiceName - serviceName. required.
@@ -1793,6 +2011,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} Id - id. optional.
    * @param {String} Name - name. optional.
    * @param {String} Type - type. optional.
@@ -1806,6 +2025,8 @@ class Client extends RPCClient {
    * @param {String} DbName - dbName. optional.
    * @param {String} GmtCreate - gmtCreate. optional.
    * @param {String} GmtModified - gmtModified. optional.
+   * @param {String} VpcId - vpcId. optional.
+   * @param {String} InstanceId - instanceId. optional.
    */
   createDataSource(params = {}, options = {}) {
     return this.request('CreateDataSource', params, options);
@@ -1825,6 +2046,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} SuperGroupId - superGroupId. optional.
    * @param {String} GroupName - groupName. required.
    * @param {String} GroupDesc - groupDesc. optional.
@@ -1839,6 +2061,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} DriverName - name. required.
    * @param {String} Description - description. optional.
    * @param {String} Url - ossAddress. required.
@@ -1893,6 +2116,7 @@ class Client extends RPCClient {
    * @param {String} StorageHost - storageHost. optional.
    * @param {String} StoragePath - storagePath. optional.
    * @param {String} ServiceCidr - serviceCidr. optional.
+   * @param {String} EnvironmentVars - envs. optional.
    */
   createEdgeCluster(params = {}, options = {}) {
     return this.request('CreateEdgeCluster', params, options);
@@ -1900,6 +2124,22 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} Name - name. required.
+   * @param {String} Tags - tags. optional.
+   * @param {String} Source - source. optional.
+   */
+  createEdgeClusterInstance(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Name')) {
+      throw new TypeError('parameter "Name" is required');
+    }
+
+    return this.request('CreateEdgeClusterInstance', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} Name - name. required.
    * @param {String} Tags - tags. optional.
    * @param {String} ProductKey - productKey. optional.
@@ -1915,6 +2155,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    */
   createEdgeInstanceDeployment(params = {}, options = {}) {
@@ -1927,6 +2168,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} TopicFilter - topicFilter. optional.
    * @param {String} SourceType - sourceType. required.
@@ -1953,6 +2195,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} Project - project. optional.
    * @param {String} LogStore - logStore. optional.
@@ -1980,6 +2223,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} FirmwareName - firmwareName. required.
    * @param {String} DestVersion - destVersion. required.
@@ -2008,6 +2252,27 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} RuleName - name. required.
+   * @param {String} RuleContent - content. required.
+   * @param {String} RuleDescription - description. optional.
+   * @param {String} RuleType - ruleType. optional.
+   */
+  createFlowRule(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RuleName')) {
+      throw new TypeError('parameter "RuleName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RuleContent')) {
+      throw new TypeError('parameter "RuleContent" is required');
+    }
+
+    return this.request('CreateFlowRule', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} Protocol4ChildDevice - protocol4ChildDevice. required.
@@ -2109,6 +2374,15 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} FolderName - folderName. optional.
+   * @param {String} ParentFolderId - parentFolderId. optional.
+   */
+  createJobFolder(params = {}, options = {}) {
+    return this.request('CreateJobFolder', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} Name - name. optional.
    * @param {String} Email - email. optional.
    * @param {String} Phone - phone. optional.
@@ -2119,7 +2393,33 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} Name - name. required.
+   * @param {String} Description - description. optional.
+   */
+  createLdpApp(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Name')) {
+      throw new TypeError('parameter "Name" is required');
+    }
+
+    return this.request('CreateLdpApp', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} Type - type. required.
+   */
+  createOssUploadAddress(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Type')) {
+      throw new TypeError('parameter "Type" is required');
+    }
+
+    return this.request('CreateOssUploadAddress', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductName - productName. required.
    * @param {Integer} NodeType - nodeType. required.
    * @param {Integer} DataFormat - dataFormat. optional.
@@ -2129,6 +2429,7 @@ class Client extends RPCClient {
    * @param {Long} CategoryId - categoryId. optional.
    * @param {String} ProtocolType - protocolType. optional.
    * @param {String} NetType - netType. optional.
+   * @param {String} JoinPermissionId - joinPermissionId. optional.
    */
   createProduct(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductName')) {
@@ -2144,6 +2445,33 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductName - productName. required.
+   * @param {Integer} NodeType - nodeType. required.
+   * @param {Integer} DataFormat - dataFormat. optional.
+   * @param {String} Description - description. optional.
+   * @param {String} AliyunCommodityCode - aliyunCommodityCode. optional.
+   * @param {Boolean} Id2 - id2. optional.
+   * @param {Long} CategoryId - categoryId. optional.
+   * @param {String} ProtocolType - protocolType. optional.
+   * @param {String} NetType - netType. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  createProductBiz(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductName')) {
+      throw new TypeError('parameter "ProductName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'NodeType')) {
+      throw new TypeError('parameter "NodeType" is required');
+    }
+
+    return this.request('CreateProductBiz', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductName - productName. required.
    * @param {Integer} NodeType - nodeType. required.
    * @param {Integer} DataFormat - dataFormat. optional.
@@ -2156,6 +2484,7 @@ class Client extends RPCClient {
    * @param {String} GroupId - groupId. optional.
    * @param {String} GroupType - groupType. optional.
    * @param {String} NetType - netType. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   createProductInGroup(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductName')) {
@@ -2171,6 +2500,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductName - productName. required.
    * @param {Integer} NodeType - nodeType. required.
    * @param {Integer} DataFormat - dataFormat. optional.
@@ -2194,6 +2524,25 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {RepeatList} ProductTag - productTags. required.
+   */
+  createProductTags(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ProductTag')) {
+      throw new TypeError('parameter "ProductTag" is required');
+    }
+
+    return this.request('CreateProductTags', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} TopicShortName - topicShortName. required.
    * @param {String} Operation - operation. optional.
@@ -2213,6 +2562,51 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {String} TopicShortName - topicShortName. required.
+   * @param {String} Operation - operation. optional.
+   * @param {String} Desc - desc. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  createProductTopicBiz(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TopicShortName')) {
+      throw new TypeError('parameter "TopicShortName" is required');
+    }
+
+    return this.request('CreateProductTopicBiz', params, options);
+  }
+
+  /**
+   * @param {String} ProjectName - projectName. required.
+   * @param {String} Description - description. optional.
+   */
+  createProject(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProjectName')) {
+      throw new TypeError('parameter "ProjectName" is required');
+    }
+
+    return this.request('CreateProject', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} JobName - jobName. optional.
+   * @param {String} SqlStatement - sqlStatement. optional.
+   * @param {String} FolderId - folderId. optional.
+   * @param {String} ServiceRank - serviceRank. optional.
+   */
+  createQueryJobBySQL(params = {}, options = {}) {
+    return this.request('CreateQueryJobBySQL', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} Select - select. optional.
    * @param {String} ShortTopic - shortTopic. optional.
    * @param {String} Where - where. optional.
@@ -2232,6 +2626,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} RuleId - ruleId. required.
    * @param {String} Type - type. required.
    * @param {String} Configuration - configuration. required.
@@ -2255,6 +2650,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} ScriptName - scriptName. required.
    * @param {String} ScriptContent - scriptContent. required.
@@ -2282,6 +2678,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} ScriptContent - scriptContent. required.
    * @param {String} ScriptType - scriptType. required.
@@ -2305,6 +2702,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} ScriptContent - scriptContent. required.
    * @param {String} ScriptType - scriptType. required.
@@ -2328,6 +2726,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} ScriptName - scriptName. required.
    * @param {String} ScriptContent - scriptContent. required.
@@ -2372,6 +2771,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} SrcTopic - srcTopic. required.
    * @param {RepeatList} DstTopic - dstTopics. required.
@@ -2390,12 +2790,14 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} FunctionType - functionType. required.
    * @param {String} FunctionCode - functionCode. required.
    * @param {String} Args - args. optional.
    * @param {String} Environment - environment. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   debugAbility(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -2423,6 +2825,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} FunctionType - functionType. required.
@@ -2456,6 +2859,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} RuleId - ruleId. optional.
    * @param {String} Sql - sql. optional.
    * @param {String} JsonInfo - jsonInfo. required.
@@ -2477,6 +2881,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} AbilityType - abilityType. required.
    * @param {Long} AbilityId - abilityId. required.
@@ -2500,6 +2905,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} AbilityType - abilityType. required.
    * @param {Long} AbilityId - abilityId. required.
@@ -2548,6 +2954,13 @@ class Client extends RPCClient {
    */
   deleteAppConfig(params = {}, options = {}) {
     return this.request('DeleteAppConfig', params, options);
+  }
+
+  /**
+   * @param {String} Uuid - uuid. optional.
+   */
+  deleteAppDataModelDeclare(params = {}, options = {}) {
+    return this.request('DeleteAppDataModelDeclare', params, options);
   }
 
   /**
@@ -2606,6 +3019,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RuleId - sceneId. required.
    */
   deleteAutomationRule(params = {}, options = {}) {
@@ -2630,6 +3044,14 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} DataAssetUid - dataAssetUid. optional.
+   */
+  deleteDataAsset(params = {}, options = {}) {
+    return this.request('DeleteDataAsset', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {Long} Id - id. optional.
    */
   deleteDataSource(params = {}, options = {}) {
@@ -2638,6 +3060,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} IotId - iotId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} DeviceName - deviceName. optional.
@@ -2648,6 +3071,30 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {String} DeviceName - deviceName. required.
+   * @param {Long} FileStoreId - fileStoreId. required.
+   */
+  deleteDeviceFileStore(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeviceName')) {
+      throw new TypeError('parameter "DeviceName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'FileStoreId')) {
+      throw new TypeError('parameter "FileStoreId" is required');
+    }
+
+    return this.request('DeleteDeviceFileStore', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} GroupId - groupId. required.
    */
   deleteDeviceGroup(params = {}, options = {}) {
@@ -2660,6 +3107,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -2677,19 +3125,13 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
-   * @param {String} DeviceName - deviceName. required.
-   * @param {String} ProductKey - productKey. required.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} IotId - iotId. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} ProductKey - productKey. optional.
    * @param {String} PropKey - propKey. required.
    */
   deleteDeviceProp(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'DeviceName')) {
-      throw new TypeError('parameter "DeviceName" is required');
-    }
-
-    if (!hasOwnProperty(params, 'ProductKey')) {
-      throw new TypeError('parameter "ProductKey" is required');
-    }
-
     if (!hasOwnProperty(params, 'PropKey')) {
       throw new TypeError('parameter "PropKey" is required');
     }
@@ -2699,6 +3141,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} DriverId - driverId. required.
    */
   deleteDriver(params = {}, options = {}) {
@@ -2730,6 +3173,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    */
   deleteEdgeInstance(params = {}, options = {}) {
@@ -2742,6 +3186,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {Long} RouteId - routeId. required.
    */
@@ -2783,6 +3228,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} FirmwareName - firmwareName. required.
    */
@@ -2796,6 +3242,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} Code - code. required.
@@ -2859,6 +3306,26 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} FolderId - folderId. optional.
+   */
+  deleteJobFolder(params = {}, options = {}) {
+    return this.request('DeleteJobFolder', params, options);
+  }
+
+  /**
+   * @param {String} AppId - appId. required.
+   */
+  deleteLdpApp(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppId')) {
+      throw new TypeError('parameter "AppId" is required');
+    }
+
+    return this.request('DeleteLdpApp', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   deleteProduct(params = {}, options = {}) {
@@ -2871,6 +3338,21 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  deleteProductBiz(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    return this.request('DeleteProductBiz', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   deleteProductPop(params = {}, options = {}) {
@@ -2883,6 +3365,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} TagKey - tagKey. required.
    */
@@ -2900,6 +3383,25 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {RepeatList} ProductTagKey - tagKeys. required.
+   */
+  deleteProductTags(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ProductTagKey')) {
+      throw new TypeError('parameter "ProductTagKey" is required');
+    }
+
+    return this.request('DeleteProductTags', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} TopicId - topicId. required.
    */
   deleteProductTopic(params = {}, options = {}) {
@@ -2908,6 +3410,28 @@ class Client extends RPCClient {
     }
 
     return this.request('DeleteProductTopic', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} TopicId - topicId. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  deleteProductTopicBiz(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'TopicId')) {
+      throw new TypeError('parameter "TopicId" is required');
+    }
+
+    return this.request('DeleteProductTopicBiz', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} JobId - jobId. optional.
+   */
+  deleteQueryJob(params = {}, options = {}) {
+    return this.request('DeleteQueryJob', params, options);
   }
 
   /**
@@ -2929,6 +3453,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} RuleId - ruleId. required.
    */
   deleteRule(params = {}, options = {}) {
@@ -2941,6 +3466,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} ActionId - actionId. required.
    */
   deleteRuleAction(params = {}, options = {}) {
@@ -2965,6 +3491,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ScriptCode - scriptCode. required.
    */
   deleteScriptDraft(params = {}, options = {}) {
@@ -2977,6 +3504,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ScriptCode - scriptCode. required.
    */
   deleteScriptDraftPop(params = {}, options = {}) {
@@ -2985,6 +3513,15 @@ class Client extends RPCClient {
     }
 
     return this.request('DeleteScriptDraftPop', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {Long} Id - id. optional.
+   * @param {Long} TaskId - taskId. optional.
+   */
+  deleteSqlTaskView(params = {}, options = {}) {
+    return this.request('DeleteSqlTaskView', params, options);
   }
 
   /**
@@ -3003,6 +3540,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} SrcTopic - srcTopic. required.
    * @param {RepeatList} DstTopic - dstTopics. required.
@@ -3021,6 +3559,30 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} ConfigName - configName. required.
+   * @param {String} Payload - payload. required.
+   */
+  deployCustomConfigToEdgeInstance(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ConfigName')) {
+      throw new TypeError('parameter "ConfigName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Payload')) {
+      throw new TypeError('parameter "Payload" is required');
+    }
+
+    return this.request('DeployCustomConfigToEdgeInstance', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    */
   describeRegions(params = {}, options = {}) {
     return this.request('DescribeRegions', params, options);
@@ -3028,6 +3590,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} FirmwareName - firmwareName. required.
    */
   deviceUpgradeCount(params = {}, options = {}) {
@@ -3040,6 +3603,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RuleId - sceneId. required.
    */
   disableAutomationRule(params = {}, options = {}) {
@@ -3052,6 +3616,41 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} RuleId - sceneId. required.
+   */
+  disableEdgeInstanceAutomationRule(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RuleId')) {
+      throw new TypeError('parameter "RuleId" is required');
+    }
+
+    return this.request('DisableEdgeInstanceAutomationRule', params, options);
+  }
+
+  /**
+   * @param {String} AppUuid - appUuid. required.
+   * @param {String} Name - name. required.
+   */
+  disableOperationIngress(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppUuid')) {
+      throw new TypeError('parameter "AppUuid" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Name')) {
+      throw new TypeError('parameter "Name" is required');
+    }
+
+    return this.request('DisableOperationIngress', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} IotId - iotId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} DeviceName - deviceName. optional.
@@ -3062,6 +3661,19 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} IotId - iotId. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  disableThingBiz(params = {}, options = {}) {
+    return this.request('DisableThingBiz', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -3079,8 +3691,10 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   doDeviceOffline(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -3096,8 +3710,10 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   doDeviceOnline(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -3109,6 +3725,15 @@ class Client extends RPCClient {
     }
 
     return this.request('DoDeviceOnline', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} AsyncRequestId - asyncRequestId. optional.
+   * @param {String} JobId - jobId. optional.
+   */
+  downloadAsyncDatasetContentFile(params = {}, options = {}) {
+    return this.request('DownloadAsyncDatasetContentFile', params, options);
   }
 
   /**
@@ -3130,6 +3755,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RuleId - sceneId. required.
    */
   enableAutomationRule(params = {}, options = {}) {
@@ -3142,6 +3768,42 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} RuleId - sceneId. required.
+   */
+  enableEdgeInstanceAutomationRule(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RuleId')) {
+      throw new TypeError('parameter "RuleId" is required');
+    }
+
+    return this.request('EnableEdgeInstanceAutomationRule', params, options);
+  }
+
+  /**
+   * @param {String} AppUuid - appUuid. required.
+   * @param {String} Name - name. required.
+   * @param {Long} ExpireInterval - expireInterval. optional.
+   */
+  enableOperationIngress(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppUuid')) {
+      throw new TypeError('parameter "AppUuid" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Name')) {
+      throw new TypeError('parameter "Name" is required');
+    }
+
+    return this.request('EnableOperationIngress', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} IotId - iotId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} DeviceName - deviceName. optional.
@@ -3152,6 +3814,19 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} IotId - iotId. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  enableThingBiz(params = {}, options = {}) {
+    return this.request('EnableThingBiz', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -3203,7 +3878,30 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} Type - type. optional.
+   * @param {String} AppUuid - appUuid. required.
+   * @param {String} ServiceName - serviceName. required.
+   * @param {String} CpuCapacityLimit - cpuCapacityLimit. optional.
+   * @param {String} MemCapacityLimit - memCapacityLimit. optional.
+   * @param {String} CpuCapacityRequest - cpuCapacityRequest. optional.
+   * @param {String} MemCapacityRequest - memCapacityRequest. optional.
+   * @param {Integer} ReplicaCount - replicaCount. optional.
+   */
+  expandAppResource(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppUuid')) {
+      throw new TypeError('parameter "AppUuid" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ServiceName')) {
+      throw new TypeError('parameter "ServiceName" is required');
+    }
+
+    return this.request('ExpandAppResource', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} FirmwareName - firmwareName. required.
    */
   finishVerifyTask(params = {}, options = {}) {
@@ -3216,6 +3914,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} GroupId - groupId. required.
    * @param {String} TagString - tagString. required.
    */
@@ -3233,9 +3932,11 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} ProductKey - productKey. required.
    * @param {String} Props - props. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   forceSetDeviceProp(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DeviceName')) {
@@ -3259,6 +3960,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} UploadType - uploadType. required.
@@ -3281,6 +3983,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    */
   generateOssUploadUri(params = {}, options = {}) {
     return this.request('GenerateOssUploadUri', params, options);
@@ -3288,6 +3991,15 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   */
+  generateOssUriForTsl(params = {}, options = {}) {
+    return this.request('GenerateOssUriForTsl', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} ScriptType - scriptType. required.
    */
@@ -3305,6 +4017,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} ScriptType - scriptType. required.
    */
@@ -3348,6 +4061,7 @@ class Client extends RPCClient {
    * @param {Boolean} Cloned - cloned. optional.
    * @param {Integer} LpRelated - lpRelated. optional.
    * @param {Boolean} NeedPublishing - needPublishing. optional.
+   * @param {Boolean} AllVersionsRequired - allVersionsRequired. optional.
    */
   getAppConfigList(params = {}, options = {}) {
     return this.request('GetAppConfigList', params, options);
@@ -3400,6 +4114,24 @@ class Client extends RPCClient {
    */
   getAppNodes(params = {}, options = {}) {
     return this.request('GetAppNodes', params, options);
+  }
+
+  /**
+   * @param {String} AppUuid - appUuid. optional.
+   */
+  getAppOperatingInfo(params = {}, options = {}) {
+    return this.request('GetAppOperatingInfo', params, options);
+  }
+
+  /**
+   * @param {String} AppUuid - appUuid. required.
+   */
+  getAppPermissionList(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppUuid')) {
+      throw new TypeError('parameter "AppUuid" is required');
+    }
+
+    return this.request('GetAppPermissionList', params, options);
   }
 
   /**
@@ -3473,6 +4205,14 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} MetaCode - metaCode. optional.
+   * @param {String} NodeId - nodeId. optional.
+   */
+  getAppUploadPath(params = {}, options = {}) {
+    return this.request('GetAppUploadPath', params, options);
+  }
+
+  /**
    * @param {String} AppConfigId - appConfigId. optional.
    * @param {String} NodeId - nodeId. optional.
    * @param {RepeatList} PropertyList - propertyList. optional.
@@ -3482,7 +4222,23 @@ class Client extends RPCClient {
   }
 
   /**
+   */
+  getArrears(params = {}, options = {}) {
+    return this.request('GetArrears', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} AsyncRequestId - asyncRequestId. optional.
+   * @param {String} JobId - jobId. optional.
+   */
+  getAsyncQueryJobRequestStatus(params = {}, options = {}) {
+    return this.request('GetAsyncQueryJobRequestStatus', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RuleId - sceneId. required.
    */
   getAutomationRule(params = {}, options = {}) {
@@ -3491,6 +4247,17 @@ class Client extends RPCClient {
     }
 
     return this.request('GetAutomationRule', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {Integer} CurrentPage - currentPage. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   * @param {Integer} Junior - junior. optional.
+   * @param {String} ProductName - productName. optional.
+   */
+  getAvailableProductList(params = {}, options = {}) {
+    return this.request('GetAvailableProductList', params, options);
   }
 
   /**
@@ -3507,6 +4274,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -3531,6 +4299,18 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} DataAssetUid - dataAssetUid. optional.
+   * @param {String} DataAssetName - dataAssetName. optional.
+   * @param {String} DataAssetType - dataAssetType. optional.
+   * @param {Json} Page - page. optional.
+   * @param {Json} Order - order. optional.
+   */
+  getDataAssetList(params = {}, options = {}) {
+    return this.request('GetDataAssetList', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {Long} Id - id. optional.
    */
   getDataSource(params = {}, options = {}) {
@@ -3551,6 +4331,24 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {Long} TimeFrame - timeFrame. required.
+   * @param {String} SceneId - sceneId. required.
+   * @param {String} IotInfos - iotInfos. optional.
+   */
+  getDeviceEventsForBim(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'TimeFrame')) {
+      throw new TypeError('parameter "TimeFrame" is required');
+    }
+
+    if (!hasOwnProperty(params, 'SceneId')) {
+      throw new TypeError('parameter "SceneId" is required');
+    }
+
+    return this.request('GetDeviceEventsForBim', params, options);
+  }
+
+  /**
    */
   getDeviceProductList(params = {}, options = {}) {
     return this.request('GetDeviceProductList', params, options);
@@ -3558,6 +4356,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} ProductKey - productKey. required.
    * @param {String} PropName - propName. required.
@@ -3580,6 +4379,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} ProductKey - productKey. required.
    * @param {String} PropName - propName. required.
@@ -3602,6 +4402,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} ProductKey - productKey. required.
    * @param {String} ShadowMessage - shadowMessage. optional.
@@ -3620,6 +4421,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} IotId - iotId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} DeviceName - deviceName. optional.
@@ -3630,11 +4432,28 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} IotId - iotId. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  getDeviceStatusBiz(params = {}, options = {}) {
+    return this.request('GetDeviceStatusBiz', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotId - iotId. required.
+   * @param {String} SceneId - sceneId. required.
    */
   getDeviceStatusForBim(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'IotId')) {
       throw new TypeError('parameter "IotId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'SceneId')) {
+      throw new TypeError('parameter "SceneId" is required');
     }
 
     return this.request('GetDeviceStatusForBim', params, options);
@@ -3642,6 +4461,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -3659,6 +4479,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -3676,6 +4497,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -3692,7 +4514,15 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AppUuid - appUuid. optional.
+   */
+  getDomainNameConfig(params = {}, options = {}) {
+    return this.request('GetDomainNameConfig', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} DriverId - driverId. required.
    */
   getDriver(params = {}, options = {}) {
@@ -3717,6 +4547,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. optional.
    */
@@ -3730,6 +4561,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. optional.
    */
@@ -3743,6 +4575,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    */
   getEdgeInstance(params = {}, options = {}) {
@@ -3755,6 +4588,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -3772,6 +4606,20 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} Name - name. required.
+   */
+  getEdgeInstanceByName(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Name')) {
+      throw new TypeError('parameter "Name" is required');
+    }
+
+    return this.request('GetEdgeInstanceByName', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {Integer} StartTime - startTime. required.
    * @param {Integer} EndTime - endTime. required.
@@ -3815,6 +4663,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {Long} RouteId - routeId. required.
    */
@@ -3832,6 +4681,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    */
   getEdgeInstanceSls(params = {}, options = {}) {
@@ -3843,9 +4693,13 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {String} NodeId - nodeId. optional.
+   * @param {String} NodeId - nodeId. required.
    */
   getEdgeNode(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'NodeId')) {
+      throw new TypeError('parameter "NodeId" is required');
+    }
+
     return this.request('GetEdgeNode', params, options);
   }
 
@@ -3858,12 +4712,25 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} DeviceName - deviceName. optional.
    * @param {String} IotId - iotId. optional.
    */
   getGatewayBySubDevice(params = {}, options = {}) {
     return this.request('GetGatewayBySubDevice', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} IotId - iotId. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  getGatewayBySubDeviceBiz(params = {}, options = {}) {
+    return this.request('GetGatewayBySubDeviceBiz', params, options);
   }
 
   /**
@@ -3936,17 +4803,34 @@ class Client extends RPCClient {
   }
 
   /**
+   */
+  getLVCategoryList(params = {}, options = {}) {
+    return this.request('GetLVCategoryList', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {Json} IotId - iotIds. optional.
+   * @param {String} SceneId - sceneId. optional.
    */
   getMultiDeviceStatusForBim(params = {}, options = {}) {
     return this.request('GetMultiDeviceStatusForBim', params, options);
   }
 
   /**
+   * @param {String} AppUuid - appUuid. optional.
+   * @param {String} PodName - podName. optional.
+   */
+  getNamespacedPodEvent(params = {}, options = {}) {
+    return this.request('GetNamespacedPodEvent', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. required.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   getNetStatusReport(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'AccessKeyId')) {
@@ -3966,6 +4850,20 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} TaskId - taskId. required.
+   */
+  getNodesAddingTask(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'TaskId')) {
+      throw new TypeError('parameter "TaskId" is required');
+    }
+
+    return this.request('GetNodesAddingTask', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} DriverName - driverName. required.
    */
   getOfficialDriver(params = {}, options = {}) {
@@ -3981,6 +4879,32 @@ class Client extends RPCClient {
    */
   getOnsInfoList(params = {}, options = {}) {
     return this.request('GetOnsInfoList', params, options);
+  }
+
+  /**
+   * @param {String} AppUuid - appUuid. required.
+   * @param {String} Name - name. required.
+   */
+  getOperationIngress(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppUuid')) {
+      throw new TypeError('parameter "AppUuid" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Name')) {
+      throw new TypeError('parameter "Name" is required');
+    }
+
+    return this.request('GetOperationIngress', params, options);
+  }
+
+  /**
+   * @param {String} AppUuid - appUuid. optional.
+   * @param {String} PodName - podName. optional.
+   * @param {String} Container - container. optional.
+   * @param {Integer} TailLines - tailLines. optional.
+   */
+  getPodContainerLog(params = {}, options = {}) {
+    return this.request('GetPodContainerLog', params, options);
   }
 
   /**
@@ -4016,9 +4940,41 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} TableName - tableName. optional.
+   */
+  getProductAbilityOverviewData(params = {}, options = {}) {
+    return this.request('GetProductAbilityOverviewData', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} AbilityType - abilityType. optional.
+   * @param {String} ProductKey - productKey. optional.
+   */
+  getProductAbilityTableList(params = {}, options = {}) {
+    return this.request('GetProductAbilityTableList', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} AbilityType - abilityType. optional.
+   * @param {String} ProductKey - productKey. optional.
+   */
+  getProductAbilityTableTree(params = {}, options = {}) {
+    return this.request('GetProductAbilityTableTree', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
    */
   getProductList(params = {}, options = {}) {
     return this.request('GetProductList', params, options);
+  }
+
+  /**
+   */
+  getProductListByRelation(params = {}, options = {}) {
+    return this.request('GetProductListByRelation', params, options);
   }
 
   /**
@@ -4042,6 +4998,37 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} JobId - jobId. optional.
+   */
+  getQueryJob(params = {}, options = {}) {
+    return this.request('GetQueryJob', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} RequestIdX - requestIdX. optional.
+   */
+  getQueryJobExecLog(params = {}, options = {}) {
+    return this.request('GetQueryJobExecLog', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   */
+  getQueryJobFolderTree(params = {}, options = {}) {
+    return this.request('GetQueryJobFolderTree', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} FolderUID - folderUID. optional.
+   */
+  getQueryJobListByFolderUID(params = {}, options = {}) {
+    return this.request('GetQueryJobListByFolderUID', params, options);
+  }
+
+  /**
    * @param {String} AppUuid - appUuid. optional.
    */
   getRegisterAppService(params = {}, options = {}) {
@@ -4050,6 +5037,25 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {String} DeviceName - deviceName. required.
+   */
+  getRemoteDebugServiceMeta(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeviceName')) {
+      throw new TypeError('parameter "DeviceName" is required');
+    }
+
+    return this.request('GetRemoteDebugServiceMeta', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -4067,6 +5073,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} RuleId - ruleId. required.
    */
   getRule(params = {}, options = {}) {
@@ -4079,6 +5086,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} ActionId - actionId. required.
    */
   getRuleAction(params = {}, options = {}) {
@@ -4091,6 +5099,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} ScriptId - scriptId. required.
    */
   getScript(params = {}, options = {}) {
@@ -4103,6 +5112,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ScriptCode - scriptCode. required.
    */
   getScriptDraft(params = {}, options = {}) {
@@ -4115,6 +5125,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ScriptCode - scriptCode. required.
    */
   getScriptDraftPop(params = {}, options = {}) {
@@ -4127,6 +5138,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   getScriptGenerate(params = {}, options = {}) {
@@ -4139,6 +5151,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   getScriptGeneratePop(params = {}, options = {}) {
@@ -4151,6 +5164,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   getScriptGenerateStatus(params = {}, options = {}) {
@@ -4163,6 +5177,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   getScriptGenerateStatusPop(params = {}, options = {}) {
@@ -4175,6 +5190,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} ScriptId - scriptId. required.
    */
   getScriptPop(params = {}, options = {}) {
@@ -4186,8 +5202,16 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AppConfigId - appConfigId. optional.
+   */
+  getServiceNameAndPort(params = {}, options = {}) {
+    return this.request('GetServiceNameAndPort', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} SceneId - sceneId. required.
+   * @param {String} SysCode - sysCode. optional.
    */
   getShareInfo(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'SceneId')) {
@@ -4195,6 +5219,44 @@ class Client extends RPCClient {
     }
 
     return this.request('GetShareInfo', params, options);
+  }
+
+  /**
+   * @param {String} IotInstanceId - iotInstanceId. required.
+   */
+  getSolutionInstance(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'IotInstanceId')) {
+      throw new TypeError('parameter "IotInstanceId" is required');
+    }
+
+    return this.request('GetSolutionInstance', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} SourceUid - sourceUid. optional.
+   * @param {String} TableName - tableName. optional.
+   */
+  getSourceOverviewData(params = {}, options = {}) {
+    return this.request('GetSourceOverviewData', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   * @param {Integer} PageNo - pageNo. optional.
+   */
+  getSystemSourceTableList(params = {}, options = {}) {
+    return this.request('GetSystemSourceTableList', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   * @param {Integer} PageNo - pageNo. optional.
+   */
+  getSystemSourceTableListV2(params = {}, options = {}) {
+    return this.request('GetSystemSourceTableListV2', params, options);
   }
 
   /**
@@ -4230,6 +5292,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} DeviceName - deviceName. optional.
    * @param {String} IotId - iotId. optional.
@@ -4268,6 +5331,40 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   * @param {Integer} PageNo - pageNo. optional.
+   */
+  getUserSourceTableList(params = {}, options = {}) {
+    return this.request('GetUserSourceTableList', params, options);
+  }
+
+  /**
+   * @param {Json} ServiceIds - serviceIds. required.
+   * @param {String} AppId - appId. optional.
+   */
+  grantApiServices(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ServiceIds')) {
+      throw new TypeError('parameter "ServiceIds" is required');
+    }
+
+    return this.request('GrantApiServices', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} SceneId - sceneId. required.
+   */
+  importDemoScene(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'SceneId')) {
+      throw new TypeError('parameter "SceneId" is required');
+    }
+
+    return this.request('ImportDemoScene', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} TslStr - tslStr. required.
    */
@@ -4281,6 +5378,24 @@ class Client extends RPCClient {
     }
 
     return this.request('ImportTsl', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {String} TslUrl - tslUrl. required.
+   */
+  importTslFromOss(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TslUrl')) {
+      throw new TypeError('parameter "TslUrl" is required');
+    }
+
+    return this.request('ImportTslFromOss', params, options);
   }
 
   /**
@@ -4304,6 +5419,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} IotId - iotId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} DeviceName - deviceName. optional.
@@ -4324,6 +5440,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} Identifier - identifier. required.
@@ -4351,6 +5468,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {RepeatList} DeviceName - deviceNames. required.
    * @param {String} Identifier - identifier. required.
@@ -4377,7 +5495,25 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AppUuid - appUuid. required.
+   * @param {String} Name - name. required.
+   */
+  isOperable(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppUuid')) {
+      throw new TypeError('parameter "AppUuid" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Name')) {
+      throw new TypeError('parameter "Name" is required');
+    }
+
+    return this.request('IsOperable', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   listAllCategory(params = {}, options = {}) {
     return this.request('ListAllCategory', params, options);
@@ -4391,9 +5527,33 @@ class Client extends RPCClient {
    * @param {String} Status - status. optional.
    * @param {String} Deployed - deployed. optional.
    * @param {Integer} LpRelatedNotIn - lpRelatedNotIn. optional.
+   * @param {RepeatList} MultiStatus - multiStatus. optional.
    */
   listApp(params = {}, options = {}) {
     return this.request('ListApp', params, options);
+  }
+
+  /**
+   * @param {String} DeclareId - declareId. optional.
+   * @param {String} DataModelName - dataModelName. optional.
+   * @param {String} DeclareType - declareType. optional.
+   * @param {String} DataModelId - dataModelId. optional.
+   * @param {String} DeclareVersionId - declareVersionId. optional.
+   * @param {Integer} PageNo - pageNo. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   */
+  listAppDataModelDeclare(params = {}, options = {}) {
+    return this.request('ListAppDataModelDeclare', params, options);
+  }
+
+  /**
+   * @param {String} DeploymentUuid - deploymentUuid. optional.
+   * @param {String} Keyword - keyword. optional.
+   * @param {Integer} PageNo - pageNo. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   */
+  listAppDeploymentMessage(params = {}, options = {}) {
+    return this.request('ListAppDeploymentMessage', params, options);
   }
 
   /**
@@ -4483,10 +5643,12 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} Junior - junior. optional.
    * @param {String} ProductName - productName. optional.
    * @param {Integer} CurrentPage - currentPage. optional.
    * @param {Integer} PageSize - pageSize. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   listAvailableProducts(params = {}, options = {}) {
     return this.request('ListAvailableProducts', params, options);
@@ -4494,6 +5656,8 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   listCategory(params = {}, options = {}) {
     return this.request('ListCategory', params, options);
@@ -4501,7 +5665,9 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} CategoryType - categoryType. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   listCategoryStdAbility(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'CategoryType')) {
@@ -4509,6 +5675,42 @@ class Client extends RPCClient {
     }
 
     return this.request('ListCategoryStdAbility', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {Long} DataSourceId - dataSourceId. optional.
+   * @param {Long} TaskId - taskId. optional.
+   * @param {String} TableName - tableName. optional.
+   * @param {String} ColumnType - columnType. optional.
+   * @param {Boolean} IsPrimary - isPrimary. optional.
+   */
+  listColumns(params = {}, options = {}) {
+    return this.request('ListColumns', params, options);
+  }
+
+  /**
+   * @param {Integer} PageNo - pageNo. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   * @param {String} ConfigUuid - configUuid. optional.
+   * @param {String} ConfigVersionUuid - configVersionUuid. optional.
+   */
+  listConfigNodeImage(params = {}, options = {}) {
+    return this.request('ListConfigNodeImage', params, options);
+  }
+
+  /**
+   * @param {Integer} PageNo - pageNo. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   * @param {String} ConfigUuid - configUuid. required.
+   * @param {String} AppUuid - appUuid. optional.
+   */
+  listConfigVersion(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ConfigUuid')) {
+      throw new TypeError('parameter "ConfigUuid" is required');
+    }
+
+    return this.request('ListConfigVersion', params, options);
   }
 
   /**
@@ -4572,6 +5774,26 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {String} DeviceName - deviceName. required.
+   * @param {Integer} CurrentPage - currentPage. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   */
+  listDeviceFileStores(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeviceName')) {
+      throw new TypeError('parameter "DeviceName" is required');
+    }
+
+    return this.request('ListDeviceFileStores', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {Integer} PageSize - pageSize. required.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} Type - type. optional.
@@ -4610,6 +5832,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} Page - page. optional. default: 1.
    * @param {Integer} PageSize - pageSize. optional. default: 10.
    * @param {String} ProductKey - productKey. optional.
@@ -4800,6 +6023,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} CategoryType - categoryType. optional.
    * @param {String} Name - name. optional.
@@ -4814,6 +6038,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} CategoryType - categoryType. optional.
    * @param {String} Name - name. optional.
@@ -4828,12 +6053,14 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} Page - page. optional. default: 1.
    * @param {Integer} PageSize - pageSize. optional. default: 10.
    * @param {String} AliyunCommodityCode - aliyunCommodityCode. optional.
    * @param {String} Name - name. optional.
    * @param {Integer} NodeType - nodeType. optional.
    * @param {Integer} Status - status. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   listProduct(params = {}, options = {}) {
     return this.request('ListProduct', params, options);
@@ -4841,6 +6068,22 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {Integer} CurrentPage - page. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   * @param {RepeatList} ProductTag - productTags. required.
+   */
+  listProductByTags(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductTag')) {
+      throw new TypeError('parameter "ProductTag" is required');
+    }
+
+    return this.request('ListProductByTags', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   listProductCustomAbility(params = {}, options = {}) {
@@ -4853,6 +6096,20 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   */
+  listProductServeData(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    return this.request('ListProductServeData', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   listProductStdAbility(params = {}, options = {}) {
@@ -4865,7 +6122,9 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   listProductTag(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -4877,6 +6136,20 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   */
+  listProductTags(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    return this.request('ListProductTags', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
    */
@@ -4894,6 +6167,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} RuleId - ruleId. required.
    */
   listRuleActions(params = {}, options = {}) {
@@ -4906,6 +6180,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} ProductKey - productKey. required.
    */
@@ -4919,6 +6194,17 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {Long} TaskId - taskId. optional.
+   * @param {Json} Page - page. optional.
+   * @param {Long} Id - id. optional.
+   */
+  listSqlTaskView(params = {}, options = {}) {
+    return this.request('ListSqlTaskView', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} CurrentPage - currentPage. optional. default: 1.
    * @param {Integer} PageSize - pageSize. optional. default: 10.
    * @param {Integer} AbilityType - abilityType. required.
@@ -4971,6 +6257,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} SiteType - siteType. required.
    * @param {String} RuleDataFormat - ruleDataFormat. required.
    */
@@ -4988,6 +6275,17 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {Long} DataSourceId - dataSourceId. optional.
+   * @param {Long} TaskId - taskId. optional.
+   * @param {Json} Page - page. optional.
+   * @param {Json} TableName - tableName. optional.
+   */
+  listTables(params = {}, options = {}) {
+    return this.request('ListTables', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} LocatingInfo - locatingInfo. required.
    */
   locateDeviceByFingerprint(params = {}, options = {}) {
@@ -4999,6 +6297,18 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} Method - method. optional.
+   * @param {String} Platform - platform. optional.
+   * @param {String} ProjectId - projectId. optional.
+   * @param {Json} Params - params. optional.
+   */
+  lpPortalAccessService(params = {}, options = {}) {
+    return this.request('LpPortalAccessService', params, options);
+  }
+
+  /**
    * @param {String} IotId - iotId. required.
    */
   modifyDeviceStatus(params = {}, options = {}) {
@@ -5007,6 +6317,18 @@ class Client extends RPCClient {
     }
 
     return this.request('ModifyDeviceStatus', params, options);
+  }
+
+  /**
+   * @param {String} IotInstanceId - iotInstanceId. required.
+   * @param {String} IotInstanceName - iotInstanceName. optional.
+   */
+  modifySolutionInstance(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'IotInstanceId')) {
+      throw new TypeError('parameter "IotInstanceId" is required');
+    }
+
+    return this.request('ModifySolutionInstance', params, options);
   }
 
   /**
@@ -5024,6 +6346,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} DeviceListStr - deviceListStr. optional.
    * @param {String} GwIotId - gwIotId. optional.
    * @param {String} GwProductKey - gwProductKey. optional.
@@ -5035,6 +6358,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} Count - count. required.
    */
@@ -5052,6 +6376,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Long} applyId - ApplyId. required.
    */
@@ -5069,6 +6394,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {RepeatList} DeviceName - deviceNames. required.
    */
@@ -5086,6 +6412,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -5103,6 +6430,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -5120,6 +6448,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -5137,6 +6466,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -5154,6 +6484,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} ThingMethod - thingMethod. required.
@@ -5192,6 +6523,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Long} ApplyId - applyId. required.
    */
@@ -5209,6 +6541,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -5226,6 +6559,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} EventType - eventType. optional.
    * @param {String} DeviceName - deviceName. required.
@@ -5257,6 +6591,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} Identifier - identifier. required.
@@ -5299,6 +6634,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -5316,6 +6652,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} Identifier - identifier. optional.
@@ -5346,6 +6683,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   openQueryDeviceStatistics(params = {}, options = {}) {
@@ -5358,6 +6696,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   openQueryProduct(params = {}, options = {}) {
@@ -5370,6 +6709,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} Page - page. required.
    * @param {Integer} PageSize - pageSize. required.
    */
@@ -5387,6 +6727,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. optional.
    */
@@ -5400,6 +6741,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} ProductKey - productKey. required.
    * @param {String} Items - items. required.
@@ -5422,6 +6764,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} Identifier - identifier. required.
@@ -5449,15 +6792,17 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} Identifier - identifier. required.
    * @param {String} OutputJson - outputJson. required.
-   * @param {String} StartTime - startTime. required.
+   * @param {String} StartTime - startTime. optional.
    * @param {String} EndTime - endTime. optional.
    * @param {Integer} Delay - delay. optional.
    * @param {Integer} Interval - interval. optional.
    * @param {Integer} Count - count. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   postDeviceEventsRegularly(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -5476,15 +6821,12 @@ class Client extends RPCClient {
       throw new TypeError('parameter "OutputJson" is required');
     }
 
-    if (!hasOwnProperty(params, 'StartTime')) {
-      throw new TypeError('parameter "StartTime" is required');
-    }
-
     return this.request('PostDeviceEventsRegularly', params, options);
   }
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} PropertyJson - propertyJson. required.
@@ -5507,14 +6849,16 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} PropertyJson - propertyJson. required.
-   * @param {String} StartTime - startTime. required.
+   * @param {String} StartTime - startTime. optional.
    * @param {String} EndTime - endTime. optional.
    * @param {Integer} Delay - delay. optional.
    * @param {Integer} Interval - interval. optional.
    * @param {Integer} Count - count. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   postDevicePropertiesRegularly(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -5529,15 +6873,22 @@ class Client extends RPCClient {
       throw new TypeError('parameter "PropertyJson" is required');
     }
 
-    if (!hasOwnProperty(params, 'StartTime')) {
-      throw new TypeError('parameter "StartTime" is required');
-    }
-
     return this.request('PostDevicePropertiesRegularly', params, options);
   }
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {Long} TaskId - taskId. optional.
+   * @param {String} Components - components. optional.
+   * @param {String} Params - params. optional.
+   */
+  previewTaskSql(params = {}, options = {}) {
+    return this.request('PreviewTaskSql', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} Qos - qos. optional. default: 0.
    * @param {String} TopicFullName - topicFullName. required.
@@ -5561,6 +6912,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} TopicFullName - topicFullName. required.
    * @param {String} MessageContent - messageContent. required.
@@ -5594,6 +6946,13 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} ConfigureUuid - configureUuid. optional.
+   */
+  publishImageUpgradeConfigVersion(params = {}, options = {}) {
+    return this.request('PublishImageUpgradeConfigVersion', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} SceneId - sceneId. optional.
    */
@@ -5611,6 +6970,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -5628,6 +6988,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} Scope - scope. optional.
    * @param {String} IotId - iotId. optional.
@@ -5639,6 +7000,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} Scope - scope. optional.
    * @param {String} IotId - iotId. optional.
@@ -5650,6 +7012,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   queryAlinkTopicList(params = {}, options = {}) {
@@ -5662,7 +7025,9 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} AliyunPk - aliyunPk. optional.
+   * @param {String} TargetAliyunPk - targetAliyunPk. optional.
    */
   queryAliyunUserInfo(params = {}, options = {}) {
     return this.request('QueryAliyunUserInfo', params, options);
@@ -5670,8 +7035,10 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   queryAllDeviceListByAuthProduct(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -5683,6 +7050,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
    */
@@ -5700,6 +7068,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
    * @param {String} Name - name. optional.
@@ -5714,6 +7083,23 @@ class Client extends RPCClient {
     }
 
     return this.request('QueryAllProductListPop', params, options);
+  }
+
+  /**
+   * @param {Integer} CurrentPage - currentPage. required.
+   * @param {Integer} PageSize - pageSize. required.
+   * @param {String} AppId - appId. optional.
+   */
+  queryApiServices(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'CurrentPage')) {
+      throw new TypeError('parameter "CurrentPage" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    return this.request('QueryApiServices', params, options);
   }
 
   /**
@@ -5744,6 +7130,13 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} DataModelId - dataModelId. optional.
+   */
+  queryAppDataModelDetail(params = {}, options = {}) {
+    return this.request('QueryAppDataModelDetail', params, options);
+  }
+
+  /**
    * @param {Integer} PageSize - pageSize. optional.
    * @param {Integer} PageNo - pageNo. optional.
    * @param {String} DeviceName - deviceName. optional.
@@ -5754,6 +7147,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} CurrentPage - currentPage. optional.
    * @param {Integer} PageSize - pageSize. optional.
    * @param {RepeatList} ProductKeyList - productKeyList. optional.
@@ -5813,6 +7207,22 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AppUuid - appUuid. required.
+   * @param {String} ServiceName - serviceName. required.
+   */
+  queryAppResourceConfig(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppUuid')) {
+      throw new TypeError('parameter "AppUuid" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ServiceName')) {
+      throw new TypeError('parameter "ServiceName" is required');
+    }
+
+    return this.request('QueryAppResourceConfig', params, options);
+  }
+
+  /**
    * @param {String} DeviceType - deviceType. optional.
    */
   queryAppUnifyEvent(params = {}, options = {}) {
@@ -5835,6 +7245,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} TargetAliyunPk - targetAliyunPk. optional.
    * @param {Integer} CurrentPage - currentPage. optional.
@@ -5846,6 +7257,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} TargetAliyunPk - targetAliyunPk. optional.
    * @param {Integer} CurrentPage - currentPage. optional.
@@ -5857,7 +7269,16 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Integer} PageNo - pageNo. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   */
+  queryAuthorizedAppList(params = {}, options = {}) {
+    return this.request('QueryAuthorizedAppList', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RuleName - name. optional.
    * @param {Integer} PageSize - pageSize. required.
    * @param {Integer} CurrentPage - currentPage. required.
@@ -5876,6 +7297,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} ApplyId - applyId. required.
    */
   queryBatchApplyDeviceList(params = {}, options = {}) {
@@ -5888,6 +7310,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Long} ApplyId - applyId. required.
    */
@@ -5905,6 +7328,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} ApplyId - applyId. required.
    */
@@ -5922,6 +7346,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} ApplyId - applyId. required.
    */
@@ -5939,6 +7364,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Long} ApplyId - applyId. required.
    */
@@ -5956,6 +7382,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Long} ApplyId - applyId. required.
    */
@@ -5973,6 +7400,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Long} ApplyId - applyId. required.
    */
@@ -5990,6 +7418,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} GwProductKey - gwProductKey. required.
    * @param {String} GwDeviceName - gwDeviceName. required.
    * @param {String} ProductKey - productKey. required.
@@ -6017,6 +7446,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ConfigId - configId. required.
    * @param {Boolean} ContainedOssUrl - containedOssUrl. required.
    */
@@ -6034,6 +7464,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ConfigId - configId. required.
    * @param {Boolean} ContainedOssUrl - containedOssUrl. required.
    */
@@ -6051,6 +7482,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} RegionName - regionName. required.
    * @param {String} RoleName - roleName. required.
@@ -6074,6 +7506,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} RegionName - regionName. required.
    * @param {String} RoleName - roleName. required.
@@ -6107,6 +7540,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} RegionName - regionName. required.
    * @param {String} RoleName - roleName. required.
@@ -6135,12 +7569,14 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. optional.
    * @param {Long} StartTime - startTime. optional.
    * @param {Long} EndTime - endTime. optional.
    * @param {Integer} CurrentPage - currentPage. optional.
    * @param {Integer} PageSize - pageSize. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   queryDebugOnlineLog(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -6152,6 +7588,26 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {Long} StartTime - startTime. optional.
+   * @param {Long} EndTime - endTime. optional.
+   * @param {Integer} CurrentPage - currentPage. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  queryDebugOnlineLogContent(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    return this.request('QueryDebugOnlineLogContent', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RuleId - sceneId. required.
    * @param {Integer} StartTime - startTime. required.
    * @param {Integer} EndTime - endTime. required.
@@ -6189,9 +7645,10 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
-   * @param {Integer} PageSize - pageSize. optional.
-   * @param {Integer} CurrentPage - currentPage. optional.
+   * @param {Integer} PageSize - pageSize. optional. default: 10.
+   * @param {Integer} CurrentPage - currentPage. optional. default: 1.
    */
   queryDevice(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -6203,6 +7660,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} AttributeCode - attributeCode. required.
@@ -6245,6 +7703,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} AttributeCode - attributeCode. required.
@@ -6283,6 +7742,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -6300,6 +7760,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -6317,6 +7778,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} ApplyId - applyId. required.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} CurrentPage - currentPage. optional. default: 1.
@@ -6337,6 +7799,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {Integer} CurrentPage - currentPage. optional. default: 1.
    * @param {Integer} PageSize - pageSize. optional. default: 10.
@@ -6347,6 +7810,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} IndistinctDevName - indistinctDevName. optional.
    * @param {Integer} PageNumber - pageNumber. optional.
@@ -6363,6 +7827,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {RepeatList} Tag - tags. optional.
    * @param {Integer} CurrentPage - currentPage. optional. default: 1.
    * @param {Integer} PageSize - pageSize. optional. default: 10.
@@ -6373,6 +7838,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -6390,6 +7856,19 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} IotId - iotId. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {RepeatList} Identifier - identifiers. optional.
+   */
+  queryDeviceDesiredProperty(params = {}, options = {}) {
+    return this.request('QueryDeviceDesiredProperty', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} IotId - iotId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} DeviceName - deviceName. optional.
@@ -6400,6 +7879,19 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} IotId - iotId. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  queryDeviceDetailBiz(params = {}, options = {}) {
+    return this.request('QueryDeviceDetailBiz', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -6428,6 +7920,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} IotId - iotId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} EventType - eventType. optional.
@@ -6452,6 +7945,33 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} IotId - iotId. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} EventType - eventType. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} Identifier - identifier. optional.
+   * @param {Long} StartTime - startTime. required.
+   * @param {Long} EndTime - endTime. required.
+   * @param {Integer} Asc - asc. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  queryDeviceEventDataBiz(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    return this.request('QueryDeviceEventDataBiz', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} EventType - eventType. optional.
    * @param {String} DeviceName - deviceName. required.
@@ -6516,6 +8036,30 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {Integer} CurrentPage - currentPage. required.
+   * @param {Integer} PageSize - pageSize. required.
+   * @param {String} InstanceId - instanceId. optional.
+   * @param {Integer} Status - onlineStatus. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {Integer} BindStatus - bindStatus. optional.
+   */
+  queryDeviceForEdge(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'CurrentPage')) {
+      throw new TypeError('parameter "CurrentPage" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    return this.request('QueryDeviceForEdge', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -6533,6 +8077,24 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} SuperGroupId - superGroupId. optional.
+   * @param {String} GroupName - groupName. optional.
+   * @param {Integer} CurrentPage - currentPage. optional. default: 1.
+   * @param {Integer} PageSize - pageSize. optional. default: 10.
+   * @param {String} Scope - scope. required.
+   */
+  queryDeviceGroupByFuzzyName(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Scope')) {
+      throw new TypeError('parameter "Scope" is required');
+    }
+
+    return this.request('QueryDeviceGroupByFuzzyName', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} GroupName - groupName. required.
    */
   queryDeviceGroupByName(params = {}, options = {}) {
@@ -6545,6 +8107,18 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {RepeatList} Tag - tags. optional.
+   * @param {Integer} CurrentPage - currentPage. optional. default: 1.
+   * @param {Integer} PageSize - pageSize. optional. default: 10.
+   */
+  queryDeviceGroupByTags(params = {}, options = {}) {
+    return this.request('QueryDeviceGroupByTags', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} GroupId - groupId. required.
    */
   queryDeviceGroupInfo(params = {}, options = {}) {
@@ -6557,6 +8131,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} SuperGroupId - superGroupId. optional.
    * @param {String} GroupName - groupName. optional.
    * @param {Integer} CurrentPage - currentPage. optional. default: 1.
@@ -6568,6 +8143,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} GroupId - groupId. required.
    */
   queryDeviceGroupTagList(params = {}, options = {}) {
@@ -6580,6 +8156,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} SuperGroupId - superGroupId. optional.
    * @param {String} GroupName - groupName. optional.
    */
@@ -6595,6 +8172,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} Type - type. required.
    * @param {String} DeviceName - deviceName. optional.
@@ -6615,6 +8193,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} CurrentPage - currentPage. optional. default: 1.
    * @param {Integer} PageSize - pageSize. optional. default: 10.
    * @param {String} GroupId - groupId. required.
@@ -6629,6 +8208,24 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {Integer} CurrentPage - currentPage. optional. default: 1.
+   * @param {Integer} PageSize - pageSize. optional. default: 10.
+   * @param {String} GroupId - groupId. required.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   */
+  queryDeviceListByFuzzyName(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'GroupId')) {
+      throw new TypeError('parameter "GroupId" is required');
+    }
+
+    return this.request('QueryDeviceListByFuzzyName', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
    * @param {String} GroupId - groupId. optional.
@@ -6654,6 +8251,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
    * @param {String} GroupId - groupId. required.
@@ -6677,6 +8275,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} DeviceName - deviceName. optional.
    * @param {String} Status - status. optional.
@@ -6685,6 +8284,8 @@ class Client extends RPCClient {
    * @param {String} AliyunCommodityCode - aliyunCommodityCode. optional.
    * @param {Integer} CurrentPage - currentPage. optional. default: 1.
    * @param {Integer} PageSize - pageSize. optional. default: 10.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   * @param {Boolean} Fuzzy - fuzzy. optional.
    */
   queryDevicePage(params = {}, options = {}) {
     return this.request('QueryDevicePage', params, options);
@@ -6707,6 +8308,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} DeviceName - deviceName. optional.
    * @param {Integer} CurrentPage - currentPage. required.
@@ -6748,10 +8350,23 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
-   * @param {String} DeviceName - deviceName. required.
-   * @param {String} ProductKey - productKey. required.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} IotId - iotId. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} ProductKey - productKey. optional.
    */
   queryDeviceProp(params = {}, options = {}) {
+    return this.request('QueryDeviceProp', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} DeviceName - deviceName. required.
+   * @param {String} ProductKey - productKey. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  queryDevicePropBiz(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DeviceName')) {
       throw new TypeError('parameter "DeviceName" is required');
     }
@@ -6760,11 +8375,12 @@ class Client extends RPCClient {
       throw new TypeError('parameter "ProductKey" is required');
     }
 
-    return this.request('QueryDeviceProp', params, options);
+    return this.request('QueryDevicePropBiz', params, options);
   }
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} IotId - iotId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
@@ -6867,6 +8483,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} IotId - iotId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} DeviceName - deviceName. optional.
@@ -6902,6 +8519,44 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} IotId - iotId. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} Identifier - identifier. required.
+   * @param {Long} StartTime - startTime. required.
+   * @param {Long} EndTime - endTime. required.
+   * @param {Integer} Asc - asc. required.
+   * @param {Integer} PageSize - pageSize. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  queryDevicePropertyDataBiz(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Identifier')) {
+      throw new TypeError('parameter "Identifier" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Asc')) {
+      throw new TypeError('parameter "Asc" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    return this.request('QueryDevicePropertyDataBiz', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} Identifier - identifier. required.
@@ -6944,6 +8599,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} IotId - iotId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} DeviceName - deviceName. optional.
@@ -6954,6 +8610,19 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} IotId - iotId. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  queryDevicePropertyStatusBiz(params = {}, options = {}) {
+    return this.request('QueryDevicePropertyStatusBiz', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
@@ -6977,6 +8646,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} IotId - iotId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} DeviceName - deviceName. optional.
@@ -7000,6 +8670,32 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} IotId - iotId. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} Identifier - identifier. optional.
+   * @param {Long} StartTime - startTime. required.
+   * @param {Long} EndTime - endTime. required.
+   * @param {Integer} Asc - asc. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  queryDeviceServiceDataBiz(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    return this.request('QueryDeviceServiceDataBiz', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} Identifier - identifier. optional.
@@ -7030,6 +8726,25 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {RepeatList} DeviceName - deviceNames. required.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   */
+  queryDeviceSession(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeviceName')) {
+      throw new TypeError('parameter "DeviceName" is required');
+    }
+
+    return this.request('QueryDeviceSession', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. optional.
    */
   queryDeviceStatistics(params = {}, options = {}) {
@@ -7038,6 +8753,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. optional.
    */
   queryDeviceStatisticsPop(params = {}, options = {}) {
@@ -7046,8 +8762,10 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   queryDeviceTopic(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -7063,6 +8781,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} FirmwareName - firmwareName. required.
    */
   queryDeviceUpgradeCount(params = {}, options = {}) {
@@ -7075,6 +8794,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} FirmwareName - firmwareName. required.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} DeviceName - deviceName. optional.
@@ -7104,6 +8824,25 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {String} DeviceName - deviceName. required.
+   */
+  queryDeviceUsedCapacity(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeviceName')) {
+      throw new TypeError('parameter "DeviceName" is required');
+    }
+
+    return this.request('QueryDeviceUsedCapacity', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   queryDeviceVersionCountByPk(params = {}, options = {}) {
@@ -7116,6 +8855,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} FirmwareName - firmwareName. required.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
@@ -7138,6 +8878,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} PageSize - pageSize. required.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} Type - type. optional.
@@ -7157,7 +8898,9 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   queryDynamicRegisterSwitch(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -7178,6 +8921,15 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   */
+  queryEdgeDisplayedTab(params = {}, options = {}) {
+    return this.request('QueryEdgeDisplayedTab', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} PageSize - pageSize. required.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {String} Name - name. optional.
@@ -7197,6 +8949,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
@@ -7219,6 +8972,30 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} FunctionId - functionId. required.
+   * @param {Integer} PageSize - pageSize. required.
+   * @param {Integer} CurrentPage - currentPage. required.
+   */
+  queryEdgeInstanceByFunction(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'FunctionId')) {
+      throw new TypeError('parameter "FunctionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    if (!hasOwnProperty(params, 'CurrentPage')) {
+      throw new TypeError('parameter "CurrentPage" is required');
+    }
+
+    return this.request('QueryEdgeInstanceByFunction', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
@@ -7241,6 +9018,25 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} DeployId - deployId. required.
+   */
+  queryEdgeInstanceDeployment(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeployId')) {
+      throw new TypeError('parameter "DeployId" is required');
+    }
+
+    return this.request('QueryEdgeInstanceDeployment', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
@@ -7263,6 +9059,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
@@ -7287,6 +9084,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
@@ -7310,6 +9108,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    */
   queryEdgeInstanceGateway(params = {}, options = {}) {
@@ -7322,6 +9121,73 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {Integer} CurrentPage - currentPage. required.
+   * @param {Integer} PageSize - pageSize. required.
+   * @param {Long} StartTime - startTime. optional.
+   * @param {Long} EndTime - endTime. optional.
+   */
+  queryEdgeInstanceHistoricDeployment(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'CurrentPage')) {
+      throw new TypeError('parameter "CurrentPage" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    return this.request('QueryEdgeInstanceHistoricDeployment', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} GwIotId - gwIotId. required.
+   * @param {String} ResourceType - resourceType. required.
+   * @param {RepeatList} ResourceIds - resourceIds. required.
+   */
+  queryEdgeInstanceLatestDeploySnapshot(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'GwIotId')) {
+      throw new TypeError('parameter "GwIotId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ResourceType')) {
+      throw new TypeError('parameter "ResourceType" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ResourceIds')) {
+      throw new TypeError('parameter "ResourceIds" is required');
+    }
+
+    return this.request('QueryEdgeInstanceLatestDeploySnapshot', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   */
+  queryEdgeInstanceLatestDeployment(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    return this.request('QueryEdgeInstanceLatestDeployment', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
@@ -7344,6 +9210,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
@@ -7367,6 +9234,20 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   */
+  queryEdgeInstanceStatistics(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    return this.request('QueryEdgeInstanceStatistics', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
@@ -7389,6 +9270,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} PageSize - pageSize. required.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {String} Name - name. optional.
@@ -7409,10 +9291,14 @@ class Client extends RPCClient {
   /**
    * @param {Integer} PageNo - pageNo. optional.
    * @param {Integer} PageSize - pageSize. optional.
-   * @param {String} ClusterId - clusterId. optional.
+   * @param {String} ClusterId - clusterId. required.
    * @param {String} Keywords - keywords. optional.
    */
   queryEdgeNodeList(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ClusterId')) {
+      throw new TypeError('parameter "ClusterId" is required');
+    }
+
     return this.request('QueryEdgeNodeList', params, options);
   }
 
@@ -7447,6 +9333,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} RegionName - regionName. required.
    * @param {String} RoleName - roleName. required.
@@ -7475,6 +9362,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} RegionName - regionName. required.
    * @param {String} RoleName - roleName. required.
@@ -7498,6 +9386,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} FirmwareName - firmwareName. required.
    */
   queryFirmwareByName(params = {}, options = {}) {
@@ -7510,6 +9399,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} PageSize - pageSize. optional.
    * @param {Integer} CurrentPage - currentPage. optional.
    * @param {Integer} DeleteStatus - deleteStatus. required.
@@ -7526,6 +9416,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} PageSize - pageSize. optional.
    * @param {Integer} CurrentPage - currentPage. optional.
    */
@@ -7535,6 +9426,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} FirmwareName - firmwareName. required.
    */
   queryFirmwareVerifyInfo(params = {}, options = {}) {
@@ -7547,6 +9439,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} Code - code. required.
@@ -7565,6 +9458,25 @@ class Client extends RPCClient {
     }
 
     return this.request('QueryGatewayServerConfig', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {Long} Start - start. required.
+   * @param {Long} End - end. required.
+   * @param {Json} IotIds - iotIds. optional.
+   */
+  queryGeoDeviceLocationTimeline(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Start')) {
+      throw new TypeError('parameter "Start" is required');
+    }
+
+    if (!hasOwnProperty(params, 'End')) {
+      throw new TypeError('parameter "End" is required');
+    }
+
+    return this.request('QueryGeoDeviceLocationTimeline', params, options);
   }
 
   /**
@@ -7612,6 +9524,31 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {Integer} CurrentPage - currentPage. required.
+   * @param {Integer} PageSize - pageSize. required.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} Status - status. optional.
+   * @param {String} GroupId - groupId. optional.
+   * @param {Long} TimeFrame - timeFrame. required.
+   */
+  queryGeoMultiDeviceEventsByPage(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'CurrentPage')) {
+      throw new TypeError('parameter "CurrentPage" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TimeFrame')) {
+      throw new TypeError('parameter "TimeFrame" is required');
+    }
+
+    return this.request('QueryGeoMultiDeviceEventsByPage', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} GeoProjectId - geoProjectId. required.
    */
   queryGeoProject(params = {}, options = {}) {
@@ -7631,6 +9568,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} RoleName - roleName. required.
    * @param {String} RoleArn - roleArn. required.
@@ -7654,6 +9592,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} RoleName - roleName. required.
    * @param {String} RoleArn - roleArn. required.
@@ -7674,6 +9613,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} RoleName - roleName. required.
    * @param {String} RoleArn - roleArn. required.
@@ -7692,6 +9632,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} RoleName - roleName. required.
    * @param {String} RoleArn - roleArn. required.
@@ -7711,6 +9652,30 @@ class Client extends RPCClient {
     }
 
     return this.request('QueryHitsSecurityIpForRule', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   */
+  queryJoinPermissions(params = {}, options = {}) {
+    return this.request('QueryJoinPermissions', params, options);
+  }
+
+  /**
+   * @param {Integer} CurrentPage - currentPage. required.
+   * @param {Integer} PageSize - pageSize. required.
+   */
+  queryLdpAppsList(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'CurrentPage')) {
+      throw new TypeError('parameter "CurrentPage" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    return this.request('QueryLdpAppsList', params, options);
   }
 
   /**
@@ -7791,6 +9756,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {Long} From - from. required.
    * @param {Long} To - to. required.
@@ -7802,6 +9768,7 @@ class Client extends RPCClient {
    * @param {String} Status - status. optional.
    * @param {Integer} PageSize - pageSize. optional.
    * @param {Integer} CurrentPage - currentPage. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   queryLogPage(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'From')) {
@@ -7820,7 +9787,26 @@ class Client extends RPCClient {
   }
 
   /**
+   */
+  queryMeasureList(params = {}, options = {}) {
+    return this.request('QueryMeasureList', params, options);
+  }
+
+  /**
+   */
+  queryMeasureSummary(params = {}, options = {}) {
+    return this.request('QueryMeasureSummary', params, options);
+  }
+
+  /**
+   */
+  queryMeasureTop(params = {}, options = {}) {
+    return this.request('QueryMeasureTop', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} UniMsgId - uniMsgId. required.
    */
   queryMessageInfo(params = {}, options = {}) {
@@ -7833,6 +9819,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} RegionName - regionName. required.
    * @param {String} RoleName - roleName. required.
@@ -7855,7 +9842,26 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Integer} CurrentPage - currentPage. required.
+   * @param {Integer} PageSize - pageSize. required.
+   * @param {String} ProjectId - projectId. optional.
+   * @param {Json} Sort - sort. optional.
+   */
+  queryMobileAppsList(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'CurrentPage')) {
+      throw new TypeError('parameter "CurrentPage" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    return this.request('QueryMobileAppsList', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   queryModelConfig(params = {}, options = {}) {
@@ -7879,6 +9885,31 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} RegionName - regionName. required.
+   * @param {String} RoleName - roleName. required.
+   * @param {String} RoleArn - roleArn. required.
+   */
+  queryMqInstancesForRule(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionName')) {
+      throw new TypeError('parameter "RegionName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RoleName')) {
+      throw new TypeError('parameter "RoleName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RoleArn')) {
+      throw new TypeError('parameter "RoleArn" is required');
+    }
+
+    return this.request('QueryMqInstancesForRule', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} RoleName - roleName. required.
    * @param {String} RoleArn - roleArn. required.
@@ -7897,10 +9928,12 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} RegionName - regionName. required.
    * @param {String} RoleName - roleName. required.
    * @param {String} RoleArn - roleArn. required.
+   * @param {String} InstanceId - instanceId. optional.
    */
   queryMqTopicsForRule(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionName')) {
@@ -7920,6 +9953,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} Status - status. optional.
    * @param {RepeatList} DeviceName - deviceNames. required.
@@ -7934,6 +9968,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} CurrentPage - currentPage. optional.
    * @param {Integer} PageSize - pageSize. optional.
    * @param {Long} ApplyId - applyId. required.
@@ -7959,6 +9994,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   queryProduct(params = {}, options = {}) {
@@ -7971,7 +10007,9 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   queryProductAbilityList(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -7983,6 +10021,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   queryProductAbilityListPop(params = {}, options = {}) {
@@ -7995,7 +10034,9 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   queryProductAllInfo(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -8007,6 +10048,21 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  queryProductBiz(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    return this.request('QueryProductBiz', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} PageSize - pageSize. optional. default: 10.
    * @param {Integer} CurrentPage - currentPage. optional. default: 1.
    */
@@ -8016,8 +10072,10 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} Identifier - identifier. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   queryProductEvent(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -8033,6 +10091,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} Identifier - identifier. required.
    */
@@ -8050,6 +10109,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - accessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
    * @param {String} AliyunCommodityCode - aliyunCommodityCode. optional.
@@ -8081,6 +10141,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} Page - page. required.
    * @param {Integer} PageSize - pageSize. required.
    * @param {String} AliyunCommodityCode - aliyunCommodityCode. optional.
@@ -8100,6 +10161,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   queryProductPop(params = {}, options = {}) {
@@ -8112,6 +10174,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} Identifier - identifier. required.
    */
@@ -8129,6 +10192,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} Identifier - identifier. required.
    */
@@ -8146,6 +10210,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} Identifier - identifier. required.
    */
@@ -8163,6 +10228,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} Identifier - identifier. required.
    */
@@ -8180,6 +10246,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   queryProductTopic(params = {}, options = {}) {
@@ -8192,6 +10259,21 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  queryProductTopicBiz(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    return this.request('QueryProductTopicBiz', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   queryProductWithScript(params = {}, options = {}) {
@@ -8203,7 +10285,24 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Integer} CurrentPage - currentPage. required.
+   * @param {Integer} PageSize - pageSize. required.
+   */
+  queryProjectsList(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'CurrentPage')) {
+      throw new TypeError('parameter "CurrentPage" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    return this.request('QueryProjectsList', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} OsType - osType. optional.
    * @param {Integer} ProtocolType - protocolType. optional.
    * @param {Integer} LanguageType - languageType. optional.
@@ -8214,6 +10313,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} RoleName - roleName. required.
    * @param {String} RoleArn - roleArn. required.
@@ -8237,6 +10337,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} RoleName - roleName. required.
    * @param {String} RoleArn - roleArn. required.
@@ -8260,6 +10361,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} RoleName - roleName. required.
    * @param {String} RoleArn - roleArn. required.
@@ -8280,6 +10382,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} RoleName - roleName. required.
    * @param {String} RoleArn - roleArn. required.
@@ -8298,8 +10401,11 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} CurrentPage - currentPage. optional.
    * @param {Integer} PageSize - pageSize. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {Integer} AuthType - authType. optional.
    */
   queryReceivedAuthProductList(params = {}, options = {}) {
     return this.request('QueryReceivedAuthProductList', params, options);
@@ -8307,6 +10413,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} currentPage - currentPage. optional.
    * @param {Integer} pageSize - pageSize. optional.
    */
@@ -8367,6 +10474,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   queryReducedTsl(params = {}, options = {}) {
@@ -8379,6 +10487,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductCode - productCode. required.
    */
   queryRuleForwardCloudRegion(params = {}, options = {}) {
@@ -8391,6 +10500,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} Type - type. required.
    */
@@ -8408,6 +10518,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   querySecureUpgradePublicKey(params = {}, options = {}) {
@@ -8420,6 +10531,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {Long} ServeId - serveId. required.
    */
@@ -8433,6 +10545,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {RepeatList} ExclusionServe - exclusionServes. optional.
    */
@@ -8442,6 +10555,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   queryServerCallback(params = {}, options = {}) {
@@ -8453,7 +10567,32 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Integer} CurrentPage - currentPage. required.
+   * @param {Integer} PageSize - pageSize. required.
+   * @param {String} ProjectId - projectId. optional.
+   * @param {Json} Sort - sort. optional.
+   */
+  queryServicesList(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'CurrentPage')) {
+      throw new TypeError('parameter "CurrentPage" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    return this.request('QueryServicesList', params, options);
+  }
+
+  /**
+   */
+  querySolutionInstance(params = {}, options = {}) {
+    return this.request('QuerySolutionInstance', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    */
   queryStandardUnit(params = {}, options = {}) {
     return this.request('QueryStandardUnit', params, options);
@@ -8461,6 +10600,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} AbilityType - abilityType. required.
    * @param {String} DeviceType - deviceType. required.
    * @param {String} Identifier - identifier. required.
@@ -8483,6 +10623,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} FirmwareName - firmwareName. required.
    */
   queryStrategyByFirName(params = {}, options = {}) {
@@ -8495,11 +10636,13 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} SubDeviceName - subDeviceName. optional.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   querySubDeviceList(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -8523,6 +10666,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} SubDeviceName - subDeviceName. optional.
@@ -8551,6 +10695,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RuleId - sceneId. required.
    * @param {Integer} StartTime - startTime. required.
    * @param {Integer} EndTime - endTime. required.
@@ -8588,6 +10733,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} GroupId - groupId. required.
    */
   querySuperDeviceGroup(params = {}, options = {}) {
@@ -8600,6 +10746,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} RegionName - regionName. required.
    * @param {String} RoleName - roleName. required.
@@ -8623,6 +10770,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} RegionName - regionName. required.
    * @param {String} RoleName - roleName. required.
@@ -8656,6 +10804,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} RegionName - regionName. required.
    * @param {String} RoleName - roleName. required.
@@ -8684,6 +10833,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} IotId - iotId. optional.
    * @param {String} DeviceName - deviceName. optional.
@@ -8711,6 +10861,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} IotId - iotId. optional.
    * @param {String} DeviceName - deviceName. optional.
@@ -8738,6 +10889,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} Identifier - identifier. required.
    * @param {String} Scope - scope. optional.
    * @param {String} Type - type. optional.
@@ -8752,6 +10904,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} Identifier - identifier. required.
    * @param {String} Scope - scope. optional.
    * @param {String} Type - type. optional.
@@ -8778,6 +10931,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} Topic - topic. required.
    */
@@ -8791,6 +10945,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} Topic - topic. required.
    */
@@ -8804,6 +10959,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} CurrentPage - currentPage. optional.
    * @param {Integer} PageSize - pageSize. optional.
    */
@@ -8813,6 +10969,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} ApplyId - applyId. required.
    * @param {String} deviceName - deviceName. optional.
    * @param {Integer} CurrentPage - currentPage. optional.
@@ -8828,11 +10985,13 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
    * @param {String} ServiceCode - serviceCode. optional.
    * @param {Integer} AccessMethod - accessMethod. optional.
    * @param {RepeatList} ServiceCodes - serviceCodes. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   queryUnimportedProducts(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'CurrentPage')) {
@@ -8848,6 +11007,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    */
   queryVersionsByPk(params = {}, options = {}) {
@@ -8860,8 +11020,10 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   queryVirtualDevice(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -8876,7 +11038,26 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Integer} CurrentPage - currentPage. required.
+   * @param {Integer} PageSize - pageSize. required.
+   * @param {String} ProjectId - projectId. optional.
+   * @param {Json} Sort - sort. optional.
+   */
+  queryWebAppsList(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'CurrentPage')) {
+      throw new TypeError('parameter "CurrentPage" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    return this.request('QueryWebAppsList', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductName - productName. required.
    * @param {String} DeviceName - deviceName. optional.
    * @param {String} DevicePropJson - devicePropJson. optional.
@@ -8891,6 +11072,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} Timeout - timeout. required.
    * @param {String} DeviceName - deviceName. required.
@@ -8919,6 +11101,15 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   */
+  ramAuth(params = {}, options = {}) {
+    return this.request('RamAuth', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} FirmwareName - firmwareName. required.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} DeviceName - deviceName. required.
@@ -8944,6 +11135,42 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} Name - name. optional.
+   * @param {String} Type - type. optional.
+   * @param {String} EndPoint - endPoint. optional.
+   * @param {String} AccessId - accessId. optional.
+   * @param {String} AccessKey - accessKey. optional.
+   * @param {String} Host - host. optional.
+   * @param {String} UserName - userName. optional.
+   * @param {String} Password - password. optional.
+   * @param {String} Port - port. optional.
+   * @param {String} DbName - dbName. optional.
+   * @param {String} SourceUid - sourceUid. optional.
+   */
+  refreshDataSource(params = {}, options = {}) {
+    return this.request('RefreshDataSource', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} AbilityType - abilityType. optional.
+   * @param {String} ProductKey - productKey. optional.
+   */
+  refreshProductAbilityTableList(params = {}, options = {}) {
+    return this.request('RefreshProductAbilityTableList', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} AbilityType - abilityType. optional.
+   * @param {String} ProductKey - productKey. optional.
+   */
+  refreshProductAbilityTableTree(params = {}, options = {}) {
+    return this.request('RefreshProductAbilityTableTree', params, options);
+  }
+
+  /**
    * @param {String} AppUuid - appUuid. optional.
    * @param {String} Domain - domain. optional.
    * @param {String} Protocol - protocol. optional.
@@ -8960,8 +11187,11 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. optional.
+   * @param {String} DevEui - devEui. optional.
+   * @param {String} PinCode - pinCode. optional.
    */
   registerDevice(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -8973,6 +11203,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. optional.
    */
@@ -9004,6 +11235,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} ApplyId - applyId. required.
    */
   rejectTransfer(params = {}, options = {}) {
@@ -9015,13 +11247,21 @@ class Client extends RPCClient {
   }
 
   /**
+   */
+  relateProduct(params = {}, options = {}) {
+    return this.request('RelateProduct', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} Template - template. optional.
    * @param {String} TemplateName - templateName. optional.
    * @param {String} TemplateIdentifier - templateIdentifier. optional.
    * @param {String} CategoryKey - categoryKey. optional.
    * @param {String} CategoryName - categoryName. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   releaseProduct(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -9033,6 +11273,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} IotId - iotId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} DeviceName - deviceName. optional.
@@ -9043,6 +11284,37 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} IotId - iotId. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  removeThingTopoBiz(params = {}, options = {}) {
+    return this.request('RemoveThingTopoBiz', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} FolderId - folderId. optional.
+   * @param {String} NewFolderName - newFolderName. optional.
+   */
+  renameJobFolder(params = {}, options = {}) {
+    return this.request('RenameJobFolder', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} JobId - jobId. optional.
+   * @param {String} NewJobName - newJobName. optional.
+   */
+  renameQueryJob(params = {}, options = {}) {
+    return this.request('RenameQueryJob', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} FirmwareName - firmwareName. required.
@@ -9065,6 +11337,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    */
   resetEdgeInstanceDeployments(params = {}, options = {}) {
@@ -9089,7 +11362,9 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   resetProductSecret(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -9101,6 +11376,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} DeviceName - deviceName. optional.
    * @param {String} IotId - iotId. optional.
@@ -9111,6 +11387,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} FirmwareName - firmwareName. required.
    * @param {Long} TaskId - taskId. required.
    */
@@ -9128,6 +11405,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} Input - input. required.
    * @param {String} ScriptContent - scriptContent. required.
    * @param {Integer} Type - type. required.
@@ -9155,6 +11433,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} Input - input. required.
    * @param {String} ScriptContent - scriptContent. required.
    * @param {Integer} Type - type. required.
@@ -9189,6 +11468,7 @@ class Client extends RPCClient {
    * @param {RepeatList} NodeList - nodeList. optional.
    * @param {RepeatList} NodeRelation - nodeRelation. optional.
    * @param {RepeatList} PropertyList - propertyList. optional.
+   * @param {String} OwnerOs - ownerOs. optional.
    */
   saveAppConfig(params = {}, options = {}) {
     return this.request('SaveAppConfig', params, options);
@@ -9224,24 +11504,28 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
-   * @param {String} DeviceName - deviceName. required.
-   * @param {String} ProductKey - productKey. required.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} IotId - iotId. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} ProductKey - productKey. optional.
    * @param {String} Props - props. required.
    */
   saveDeviceProp(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'DeviceName')) {
-      throw new TypeError('parameter "DeviceName" is required');
-    }
-
-    if (!hasOwnProperty(params, 'ProductKey')) {
-      throw new TypeError('parameter "ProductKey" is required');
-    }
-
     if (!hasOwnProperty(params, 'Props')) {
       throw new TypeError('parameter "Props" is required');
     }
 
     return this.request('SaveDeviceProp', params, options);
+  }
+
+  /**
+   * @param {String} ConfigUuid - configUuid. optional.
+   * @param {String} VersionName - versionName. optional.
+   * @param {String} Description - description. optional.
+   * @param {RepeatList} NodeImageList - nodeImageList. optional.
+   */
+  saveImageUpgradeConfigVersion(params = {}, options = {}) {
+    return this.request('SaveImageUpgradeConfigVersion', params, options);
   }
 
   /**
@@ -9275,6 +11559,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} MnsConfiguration - mnsConfiguration. optional.
    * @param {Integer} CallbackType - callbackType. required.
@@ -9312,6 +11597,18 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {Long} TaskId - taskId. optional.
+   * @param {String} ViewName - viewName. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceList - deviceList. optional.
+   */
+  saveSqlTaskView(params = {}, options = {}) {
+    return this.request('SaveSqlTaskView', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {Long} ServeId - serveId. required.
    * @param {String} Status - status. required.
@@ -9330,6 +11627,24 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} IotId - iotId. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} Items - items. required.
+   * @param {String} Versions - versions. optional.
+   */
+  setDeviceDesiredProperty(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Items')) {
+      throw new TypeError('parameter "Items" is required');
+    }
+
+    return this.request('SetDeviceDesiredProperty', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} GroupId - groupId. required.
    * @param {String} TagString - tagString. optional.
    */
@@ -9354,6 +11669,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} ProductKey - productKey. required.
    * @param {String} PropInfo - propInfo. required.
@@ -9376,6 +11692,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} IotId - iotId. optional.
    * @param {String} DeviceName - deviceName. optional.
    * @param {String} ProductKey - productKey. optional.
@@ -9391,6 +11708,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} ProductKey - productKey. required.
    * @param {String} Items - items. required.
@@ -9426,6 +11744,7 @@ class Client extends RPCClient {
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotId - iotId. required.
    * @param {Json} DeviceStatus - deviceStatus. optional.
+   * @param {String} SceneId - sceneId. optional.
    */
   setDeviceStatusForBim(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'IotId')) {
@@ -9448,6 +11767,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {RepeatList} DeviceName - deviceNames. required.
    * @param {String} ProductKey - productKey. required.
    * @param {String} Items - items. required.
@@ -9470,8 +11790,10 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} Status - status. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
    */
   setDynamicRegisterSwitch(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -9487,6 +11809,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
@@ -9542,6 +11865,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    */
   setLinkPlatformServiceOpen(params = {}, options = {}) {
     return this.request('SetLinkPlatformServiceOpen', params, options);
@@ -9555,6 +11879,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} Identifier - identifier. required.
    * @param {Integer} Status - status. required.
    * @param {String} Scope - scope. optional.
@@ -9574,6 +11899,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} Identifier - identifier. required.
    * @param {Integer} Status - status. required.
    * @param {String} Scope - scope. optional.
@@ -9625,6 +11951,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} RuleId - ruleId. required.
    */
   startRule(params = {}, options = {}) {
@@ -9648,6 +11975,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} RuleId - ruleId. required.
    */
   stopRule(params = {}, options = {}) {
@@ -9660,6 +11988,25 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {RepeatList} DeviceInfo - deviceInfos. required.
+   */
+  submitNodesAddingTask(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeviceInfo')) {
+      throw new TypeError('parameter "DeviceInfo" is required');
+    }
+
+    return this.request('SubmitNodesAddingTask', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} TargetAliyunPk - targetAliyunPk. required.
    * @param {Boolean} TransferTag - transferTag. required.
@@ -9683,6 +12030,17 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {Json} Page - page. optional.
+   * @param {Boolean} AsyncExecution - asyncExecution. optional.
+   * @param {String} JobId - jobId. optional.
+   */
+  syncExecQueryJob(params = {}, options = {}) {
+    return this.request('SyncExecQueryJob', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RuleId - sceneId. required.
    * @param {String} InstanceId - instanceId. optional.
    */
@@ -9718,6 +12076,15 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} FolderId - folderId. optional.
+   */
+  tryToDeleteJobFolderIfNecessarily(params = {}, options = {}) {
+    return this.request('TryToDeleteJobFolderIfNecessarily', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} RuleId - sceneId. required.
    */
@@ -9752,10 +12119,11 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
-   * @param {String} DeviceType - deviceType. required.
+   * @param {String} DeviceType - deviceType. optional.
    */
   unbindDeviceFromEdgeInstance(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'InstanceId')) {
@@ -9768,10 +12136,6 @@ class Client extends RPCClient {
 
     if (!hasOwnProperty(params, 'DeviceName')) {
       throw new TypeError('parameter "DeviceName" is required');
-    }
-
-    if (!hasOwnProperty(params, 'DeviceType')) {
-      throw new TypeError('parameter "DeviceType" is required');
     }
 
     return this.request('UnbindDeviceFromEdgeInstance', params, options);
@@ -9823,6 +12187,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} FunctionId - functionId. required.
    */
@@ -9857,6 +12222,30 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} ProductKey - productKey. required.
+   * @param {String} DeviceName - deviceName. required.
+   */
+  unbindGatewayFromEdgeInstance(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeviceName')) {
+      throw new TypeError('parameter "DeviceName" is required');
+    }
+
+    return this.request('UnbindGatewayFromEdgeInstance', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    */
   unbindRoleFromEdgeInstance(params = {}, options = {}) {
@@ -9881,6 +12270,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} StreamGuId - streamGuId. required.
    */
@@ -10000,6 +12390,11 @@ class Client extends RPCClient {
    * @param {String} AppConfigId - appConfigId. optional.
    * @param {String} PublishStatus - publishStatus. optional.
    * @param {String} VersionName - versionName. optional.
+   * @param {String} VersionDescription - versionDescription. optional.
+   * @param {String} ServiceName - serviceName. optional.
+   * @param {String} Port - port. optional.
+   * @param {String} Tag - tag. optional.
+   * @param {String} Path - path. optional.
    */
   updateAppConfigPublishStatus(params = {}, options = {}) {
     return this.request('UpdateAppConfigPublishStatus', params, options);
@@ -10014,6 +12409,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RuleId - sceneId. required.
    * @param {String} RuleName - sceneName. required.
    * @param {String} RuleContent - sceneContent. optional.
@@ -10033,6 +12429,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} GwProductKey - gwProductKey. required.
    * @param {String} GwDeviceName - gwDeviceName. required.
    * @param {String} ProductKey - productKey. required.
@@ -10075,6 +12472,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {Integer} SwitchStatus - switchStatus. required.
@@ -10097,6 +12495,17 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} DataAssetId - dataAssetId. optional.
+   * @param {Integer} HoldingCycleValue - holdingCycleValue. optional.
+   * @param {String} HoldingCycleUnits - holdingCycleUnits. optional.
+   */
+  updateDataAsset(params = {}, options = {}) {
+    return this.request('UpdateDataAsset', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} Id - id. optional.
    * @param {String} Name - name. optional.
    * @param {String} Type - type. optional.
@@ -10110,6 +12519,9 @@ class Client extends RPCClient {
    * @param {String} DbName - dbName. optional.
    * @param {String} GmtCreate - gmtCreate. optional.
    * @param {String} GmtModified - gmtModified. optional.
+   * @param {String} VpcId - vpcId. optional.
+   * @param {String} InstanceId - instanceId. optional.
+   * @param {String} SourceUid - sourceUid. optional.
    */
   updateDataSource(params = {}, options = {}) {
     return this.request('UpdateDataSource', params, options);
@@ -10144,6 +12556,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} GroupId - groupId. required.
    * @param {String} GroupDesc - groupDesc. optional.
    */
@@ -10157,6 +12570,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} ProductKey - productKey. required.
    * @param {String} ShadowMessage - shadowMessage. required.
@@ -10179,6 +12593,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} DriverName - name. optional.
    * @param {String} Description - description. optional.
    * @param {String} Url - ossAddress. optional.
@@ -10214,6 +12629,7 @@ class Client extends RPCClient {
    * @param {String} ClusterName - clusterName. optional.
    * @param {String} Tags - tags. optional.
    * @param {String} ServiceCidr - serviceCidr. optional.
+   * @param {String} EnvironmentVars - envs. optional.
    */
   updateEdgeCluster(params = {}, options = {}) {
     return this.request('UpdateEdgeCluster', params, options);
@@ -10221,6 +12637,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} Name - name. required.
    * @param {String} Tags - tags. optional.
@@ -10239,6 +12656,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} FunctionId - functionId. required.
    * @param {String} RunMode - runMode. required.
@@ -10264,6 +12682,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {Long} RouteId - routeId. required.
    * @param {String} TopicFilter - topicFilter. optional.
@@ -10295,6 +12714,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {Integer} Status - status. optional.
    * @param {Integer} Ttl - ttl. optional.
@@ -10318,6 +12738,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Long} EventId - eventId. required.
    * @param {Integer} EventType - eventType. required.
@@ -10354,6 +12775,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Long} EventId - eventId. required.
    * @param {Integer} EventType - eventType. required.
@@ -10405,6 +12827,27 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} RuleId - ruleId. required.
+   * @param {String} RuleName - name. required.
+   * @param {String} RuleContent - content. optional.
+   * @param {String} RuleDescription - description. optional.
+   */
+  updateFlowRule(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RuleId')) {
+      throw new TypeError('parameter "RuleId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RuleName')) {
+      throw new TypeError('parameter "RuleName" is required');
+    }
+
+    return this.request('UpdateFlowRule', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} Code - code. required.
@@ -10545,7 +12988,25 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AppId - appId. required.
+   * @param {String} Name - name. required.
+   * @param {String} Description - description. optional.
+   */
+  updateLdpApp(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppId')) {
+      throw new TypeError('parameter "AppId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Name')) {
+      throw new TypeError('parameter "Name" is required');
+    }
+
+    return this.request('UpdateLdpApp', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} ProductName - productName. required.
    * @param {String} Description - description. optional.
@@ -10564,6 +13025,27 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {String} ProductName - productName. required.
+   * @param {String} Description - description. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  updateProductBiz(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ProductName')) {
+      throw new TypeError('parameter "ProductName" is required');
+    }
+
+    return this.request('UpdateProductBiz', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} ProductName - productName. required.
    * @param {String} Description - description. optional.
@@ -10582,6 +13064,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Long} EventId - eventId. required.
    * @param {Integer} EventType - eventType. required.
@@ -10618,6 +13101,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Long} PropertyId - propertyId. required.
    * @param {Integer} DataType - dataType. required.
@@ -10661,6 +13145,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} ServiceId - serviceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} ServiceName - serviceName. required.
@@ -10690,6 +13175,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} TagName - tagName. optional.
    * @param {String} TagKey - tagKey. required.
@@ -10709,6 +13195,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} TagString - tagString. required.
    */
@@ -10726,6 +13213,25 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {RepeatList} ProductTag - productTags. required.
+   */
+  updateProductTags(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ProductTag')) {
+      throw new TypeError('parameter "ProductTag" is required');
+    }
+
+    return this.request('UpdateProductTags', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} Desc - desc. optional.
    * @param {String} Operation - operation. optional.
    * @param {String} TopicShortName - topicShortName. optional.
@@ -10737,6 +13243,20 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} Desc - desc. optional.
+   * @param {String} Operation - operation. optional.
+   * @param {String} TopicShortName - topicShortName. optional.
+   * @param {String} TopicId - topicId. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  updateProductTopicBiz(params = {}, options = {}) {
+    return this.request('UpdateProductTopicBiz', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Long} PropertyId - propertyId. required.
    * @param {Integer} DataType - dataType. required.
@@ -10780,6 +13300,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Long} PropertyId - propertyId. required.
    * @param {Integer} DataType - dataType. required.
@@ -10820,6 +13341,15 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} SqlStatement - sqlStatement. optional.
+   * @param {String} JobId - jobId. optional.
+   */
+  updateQueryJob(params = {}, options = {}) {
+    return this.request('UpdateQueryJob', params, options);
+  }
+
+  /**
    */
   updateRecordPlan(params = {}, options = {}) {
     return this.request('UpdateRecordPlan', params, options);
@@ -10838,6 +13368,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} RuleId - ruleId. required.
    * @param {String} Select - select. optional.
    * @param {String} ShortTopic - shortTopic. optional.
@@ -10857,6 +13388,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} ActionId - actionId. required.
    * @param {String} Type - type. required.
    * @param {String} Configuration - configuration. required.
@@ -10878,11 +13410,22 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AppUuid - appUuid. optional.
+   * @param {String} PublishStatus - publishStatus. optional.
+   */
+  updateSaaSAppPublishStatus(params = {}, options = {}) {
+    return this.request('UpdateSaaSAppPublishStatus', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} ScriptName - scriptName. optional.
    * @param {String} ScriptContent - scriptContent. optional.
    * @param {String} ScriptType - scriptType. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   * @param {String} ScriptCode - scriptCode. optional.
    */
   updateScript(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -10894,6 +13437,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ScriptContent - scriptContent. required.
    * @param {String} ScriptType - scriptType. required.
    * @param {String} ScriptCode - scriptCode. required.
@@ -10917,6 +13461,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ScriptContent - scriptContent. required.
    * @param {String} ScriptType - scriptType. required.
    * @param {String} ScriptCode - scriptCode. required.
@@ -10940,6 +13485,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} ScriptName - scriptName. optional.
    * @param {String} ScriptContent - scriptContent. optional.
@@ -10955,6 +13501,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} SecureUpgradeFlag - secureUpgradeFlag. required.
    */
@@ -10972,6 +13519,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} CallbackType - callbackType. required.
    */
@@ -10989,6 +13537,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} ServiceId - serviceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} ServiceName - serviceName. required.
@@ -11018,6 +13567,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} ServiceId - serviceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} ServiceName - serviceName. required.
@@ -11041,6 +13591,18 @@ class Client extends RPCClient {
     }
 
     return this.request('UpdateServicePop', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {Long} TaskId - taskId. optional.
+   * @param {String} ViewName - viewName. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceList - deviceList. optional.
+   * @param {Long} Id - id. optional.
+   */
+  updateSqlTaskView(params = {}, options = {}) {
+    return this.request('UpdateSqlTaskView', params, options);
   }
 
   /**
@@ -11089,7 +13651,24 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AppUuid - appUuid. required.
+   * @param {String} AppConfigVersionUuid - appConfigVersionUuid. required.
+   */
+  upgradeApp(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppUuid')) {
+      throw new TypeError('parameter "AppUuid" is required');
+    }
+
+    if (!hasOwnProperty(params, 'AppConfigVersionUuid')) {
+      throw new TypeError('parameter "AppConfigVersionUuid" is required');
+    }
+
+    return this.request('UpgradeApp', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} FirmwareName - firmwareName. required.
    * @param {String} ProductKey - productKey. optional.
@@ -11116,6 +13695,16 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} SqlStatement - sqlStatement. optional.
+   * @param {String} ServiceRank - serviceRank. optional.
+   */
+  validateSqlStatement(params = {}, options = {}) {
+    return this.request('ValidateSqlStatement', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} FirmwareName - firmwareName. required.
    * @param {String} ProductKey - productKey. optional.
    * @param {RepeatList} DeviceName - deviceNames. required.
@@ -11136,6 +13725,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} DeviceName - deviceName. optional.
    * @param {String} IotId - iotId. optional.

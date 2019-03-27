@@ -18,6 +18,54 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DeviceId - deviceId. optional.
+   */
+  addRtcAccount(params = {}, options = {}) {
+    return this.request('AddRtcAccount', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} CalledShowNumber - calledShowNumber. required.
+   * @param {String} CorpName - corpName. optional.
+   * @param {String} CalledNumber - calledNumber. required.
+   * @param {String} DialogId - dialogId. required.
+   * @param {Boolean} EarlyMediaAsr - earlyMediaAsr. optional.
+   * @param {String} TaskName - taskName. required.
+   * @param {Long} ScheduleTime - scheduleTime. optional.
+   * @param {Boolean} ScheduleCall - scheduleCall. optional.
+   * @param {String} TtsParam - ttsParam. optional.
+   * @param {String} TtsParamHead - ttsParamHead. optional.
+   * @param {Boolean} IsSelfLine - isSelfLine. optional.
+   */
+  batchRobotSmartCall(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'CalledShowNumber')) {
+      throw new TypeError('parameter "CalledShowNumber" is required');
+    }
+
+    if (!hasOwnProperty(params, 'CalledNumber')) {
+      throw new TypeError('parameter "CalledNumber" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DialogId')) {
+      throw new TypeError('parameter "DialogId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TaskName')) {
+      throw new TypeError('parameter "TaskName" is required');
+    }
+
+    return this.request('BatchRobotSmartCall', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} CallId - callId. required.
    */
   cancelCall(params = {}, options = {}) {
@@ -61,6 +109,27 @@ class Client extends RPCClient {
     }
 
     return this.request('ClickToDial', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} UserId - voipId. required.
+   * @param {String} DeviceId - deviceId. required.
+   * @param {Boolean} IsCustomAccount - isCustomAccount. optional.
+   */
+  getRtcToken(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'UserId')) {
+      throw new TypeError('parameter "UserId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeviceId')) {
+      throw new TypeError('parameter "DeviceId" is required');
+    }
+
+    return this.request('GetRtcToken', params, options);
   }
 
   /**
@@ -118,6 +187,42 @@ class Client extends RPCClient {
     }
 
     return this.request('QueryCallDetailByCallId', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} TaskId - taskId. required.
+   * @param {Long} QueryDate - queryDate. required.
+   * @param {String} Callee - callee. required.
+   */
+  queryCallDetailByTaskId(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'TaskId')) {
+      throw new TypeError('parameter "TaskId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'QueryDate')) {
+      throw new TypeError('parameter "QueryDate" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Callee')) {
+      throw new TypeError('parameter "Callee" is required');
+    }
+
+    return this.request('QueryCallDetailByTaskId', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} AuditStatus - auditStatus. optional.
+   */
+  queryRobotInfoList(params = {}, options = {}) {
+    return this.request('QueryRobotInfoList', params, options);
   }
 
   /**
@@ -196,6 +301,14 @@ class Client extends RPCClient {
    * @param {Boolean} ActionCodeBreak - actionCodeBreak. optional.
    * @param {String} OutId - outId. optional.
    * @param {String} DynamicId - dynamicId. optional.
+   * @param {Boolean} EarlyMediaAsr - earlyMediaAsr. optional.
+   * @param {String} VoiceCodeParam - voiceCodeParam. optional.
+   * @param {Integer} SessionTimeout - sessionTimeout. optional.
+   * @param {Integer} ActionCodeTimeBreak - actionCodeTimeBreak. optional.
+   * @param {String} TtsStyle - ttsStyle. optional.
+   * @param {Integer} TtsVolume - ttsVolume. optional.
+   * @param {Integer} TtsSpeed - ttsSpeed. optional.
+   * @param {Boolean} TtsConf - ttsConf. optional.
    */
   smartCall(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'CalledShowNumber')) {
@@ -235,6 +348,7 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} VoipId - voipId. required.
    * @param {String} DeviceId - deviceId. required.
+   * @param {Boolean} IsCustomAccount - isCustomAccount. optional.
    */
   voipGetToken(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'VoipId')) {

@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/yundunoem-partner-2017-09-06",
+  "version": "1.0.0",
+  "description": "Yundunoem-partner 2017-09-06 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.1"
+  }
+}

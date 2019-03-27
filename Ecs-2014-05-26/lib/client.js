@@ -17,6 +17,31 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} EventId - eventId. required.
+   */
+  acceptInquiredSystemEvent(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EventId')) {
+      throw new TypeError('parameter "EventId" is required');
+    }
+
+    return this.request('AcceptInquiredSystemEvent', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} RegionId - regionId. required.
    * @param {String} RouterInterfaceId - routerInterfaceId. required.
    */
@@ -59,6 +84,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -84,22 +110,14 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} RegionId - regionId. required.
    * @param {String} ResourceType - resourceType. required.
    * @param {String} ResourceId - resourceId. required.
-   * @param {String} Tag.1.Key - tagKey1. required.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. required.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
    */
   addTags(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -114,15 +132,43 @@ class Client extends RPCClient {
       throw new TypeError('parameter "ResourceId" is required');
     }
 
-    if (!hasOwnProperty(params, 'Tag.1.Key')) {
-      throw new TypeError('parameter "Tag.1.Key" is required');
-    }
-
-    if (!hasOwnProperty(params, 'Tag.1.Value')) {
-      throw new TypeError('parameter "Tag.1.Value" is required');
-    }
-
     return this.request('AddTags', params, options);
+  }
+
+  /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
+   * @param {String} ResourceGroupId - resourceGroupId. optional.
+   * @param {String} ZoneId - izNo. optional.
+   * @param {String} DedicatedHostName - dedicatedHostName. optional.
+   * @param {String} DedicatedHostType - hostType. required.
+   * @param {String} ActionOnMaintenance - actionOnMaintenance. optional.
+   * @param {String} Description - description. optional.
+   * @param {String} ChargeType - chargeType. optional.
+   * @param {Integer} Quantity - quantity. optional.
+   * @param {Integer} Period - period. optional.
+   * @param {String} PeriodUnit - periodUnit. optional.
+   * @param {Boolean} AutoRenew - autoRenew. optional.
+   * @param {Integer} AutoRenewPeriod - autoRenewPeriod. optional.
+   * @param {String} AutoReleaseTime - autoReleaseTime. optional.
+   * @param {String} ClientToken - clientToken. optional.
+   * @param {NetworkAttributes} NetworkAttributes - undefined. optional.
+   */
+  allocateDedicatedHosts(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DedicatedHostType')) {
+      throw new TypeError('parameter "DedicatedHostType" is required');
+    }
+
+    return this.request('AllocateDedicatedHosts', params, options);
   }
 
   /**
@@ -131,6 +177,7 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} RegionId - regionNo. required.
    * @param {String} Bandwidth - bandwidth. optional.
+   * @param {String} ISP - isp. optional.
    * @param {String} InternetChargeType - internetChargeType. optional. default: PayByBandwidth.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} ClientToken - token. optional.
@@ -144,6 +191,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -161,6 +209,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -182,6 +231,33 @@ class Client extends RPCClient {
     }
 
     return this.request('ApplyAutoSnapshotPolicy', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionNo. required.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} NetworkInterfaceId - eniId. required.
+   * @param {RepeatList} Ipv6Address - ipv6Addresses. optional.
+   * @param {Integer} Ipv6AddressCount - ipv6AddressCount. optional.
+   */
+  assignIpv6Addresses(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'NetworkInterfaceId')) {
+      throw new TypeError('parameter "NetworkInterfaceId" is required');
+    }
+
+    return this.request('AssignIpv6Addresses', params, options);
   }
 
   /**
@@ -215,6 +291,7 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionNo. optional.
    * @param {String} AllocationId - allocationId. required.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} OwnerAccount - ownerAccount. optional.
@@ -259,6 +336,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -283,6 +361,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -353,6 +432,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -383,6 +463,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -408,6 +489,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -421,8 +503,10 @@ class Client extends RPCClient {
    * @param {Long} SourceGroupOwnerId - groupOwnerAliUid. optional.
    * @param {String} SourceGroupOwnerAccount - groupOwnerAccount. optional.
    * @param {String} SourceCidrIp - sourceCidrIp. optional.
+   * @param {String} Ipv6SourceCidrIp - v6SourceCidrIp. optional.
    * @param {String} SourcePortRange - sourcePortRange. optional.
    * @param {String} DestCidrIp - destCidrIp. optional.
+   * @param {String} Ipv6DestCidrIp - v6DestCidrIp. optional.
    * @param {String} Policy - policy. optional. default: accept.
    * @param {String} Priority - level. optional. default: 1.
    * @param {String} NicType - nic. optional. default: internet.
@@ -454,6 +538,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -467,7 +552,9 @@ class Client extends RPCClient {
    * @param {Long} DestGroupOwnerId - groupOwnerAliUid. optional.
    * @param {String} DestGroupOwnerAccount - groupOwnerAccount. optional.
    * @param {String} DestCidrIp - destCidrIp. optional.
+   * @param {String} Ipv6DestCidrIp - v6DestCidrIp. optional.
    * @param {String} SourceCidrIp - sourceCidrIp. optional.
+   * @param {String} Ipv6SourceCidrIp - v6SourceCidrIp. optional.
    * @param {String} SourcePortRange - sourcePortRange. optional.
    * @param {String} Policy - policy. optional. default: accept.
    * @param {String} Priority - level. optional. default: 1.
@@ -520,6 +607,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -535,6 +623,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -554,6 +643,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -599,6 +689,32 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} RegionId - regionId. required.
+   * @param {RepeatList} EventId - eventIds. required.
+   */
+  cancelSimulatedSystemEvents(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EventId')) {
+      throw new TypeError('parameter "EventId" is required');
+    }
+
+    return this.request('CancelSimulatedSystemEvents', params, options);
+  }
+
+  /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} RegionId - regionNo. required.
    * @param {String} TaskId - taskId. required.
    */
@@ -615,6 +731,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -639,6 +756,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -657,6 +775,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -691,6 +810,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -710,6 +830,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -719,16 +840,7 @@ class Client extends RPCClient {
    * @param {String} RegionId - fromRegionNo. required.
    * @param {String} DestinationRegionId - toRegionNo. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
-   * @param {String} Tag.1.Key - tagKey1. optional.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. optional.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
    * @param {Boolean} Encrypted - toEncrypted. optional.
    */
   copyImage(params = {}, options = {}) {
@@ -807,11 +919,12 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} RegionId - regionNo. required.
-   * @param {String} ZoneId - izNo. required.
+   * @param {String} OnUnableToRedeployFailedInstance - onUnableToRedeployFailedInstance. optional.
    * @param {String} Description - description. optional.
    * @param {String} ClientToken - token. optional.
    * @param {String} DeploymentSetName - deploymentSetName. optional.
@@ -825,14 +938,11 @@ class Client extends RPCClient {
       throw new TypeError('parameter "RegionId" is required');
     }
 
-    if (!hasOwnProperty(params, 'ZoneId')) {
-      throw new TypeError('parameter "ZoneId" is required');
-    }
-
     return this.request('CreateDeploymentSet', params, options);
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -846,17 +956,9 @@ class Client extends RPCClient {
    * @param {Boolean} Encrypted - encrypted. optional.
    * @param {String} ClientToken - token. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
-   * @param {String} Tag.1.Key - tagKey1. optional.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. optional.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
    * @param {String} ResourceGroupId - resourceGroupId. optional.
+   * @param {String} KMSKeyId - kmsKeyId. optional.
    */
   createDisk(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -939,6 +1041,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -966,6 +1069,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {RepeatList} DiskDeviceMapping - diskDeviceMappingParams. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
@@ -980,16 +1084,7 @@ class Client extends RPCClient {
    * @param {String} Architecture - architecture. optional.
    * @param {String} ClientToken - token. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
-   * @param {String} Tag.1.Key - tagKey1. optional.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. optional.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
    * @param {String} ResourceGroupId - resourceGroupId. optional.
    */
   createImage(params = {}, options = {}) {
@@ -1001,6 +1096,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -1023,10 +1119,6 @@ class Client extends RPCClient {
    * @param {String} ClientToken - clientToken. optional.
    * @param {String} VlanId - vlanNo. optional.
    * @param {String} InnerIpAddress - innerIp. optional.
-   * @param {Integer} SystemDisk.Size - systemDiskSize. optional.
-   * @param {String} SystemDisk.Category - systemDiskCategory. optional.
-   * @param {String} SystemDisk.DiskName - systemDiskName. optional.
-   * @param {String} SystemDisk.Description - systemDiskDescription. optional.
    * @param {RepeatList} DataDisk - createDataDiskParams. optional.
    * @param {String} NodeControllerId - nodeControllerId. optional.
    * @param {String} Description - description. optional.
@@ -1038,16 +1130,7 @@ class Client extends RPCClient {
    * @param {String} InstanceChargeType - instanceChargeType. optional.
    * @param {Integer} Period - period. optional.
    * @param {String} PeriodUnit - periodUnit. optional.
-   * @param {String} Tag.1.Key - tagKey1. optional.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. optional.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
    * @param {String} UserData - userData. optional.
    * @param {String} SpotStrategy - spotStrategy. optional.
    * @param {String} KeyPairName - keyPairName. optional.
@@ -1059,6 +1142,11 @@ class Client extends RPCClient {
    * @param {String} HpcClusterId - hpcClusterId. optional.
    * @param {Boolean} DryRun - dryRun. optional.
    * @param {String} DedicatedHostId - dedicatedHostId. optional.
+   * @param {String} CreditSpecification - creditSpecification. optional.
+   * @param {Boolean} DeletionProtection - deletionProtection. optional.
+   * @param {String} CapacityReservationId - capacityReservationId. optional.
+   * @param {String} CapacityReservationPreference - capacityReservationPreference. optional.
+   * @param {SystemDisk} SystemDisk - undefined. optional.
    */
   createInstance(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -1077,21 +1165,13 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} RegionId - regionId. required.
    * @param {String} KeyPairName - keyPairName. required.
-   * @param {String} Tag.1.Key - tagKey1. optional.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. optional.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
    * @param {String} ResourceGroupId - resourceGroupId. optional.
    */
   createKeyPair(params = {}, options = {}) {
@@ -1107,26 +1187,19 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} RegionId - regionId. required.
-   * @param {String} TemplateTag.1.Key - tagKey1. optional.
-   * @param {String} TemplateTag.2.Key - tagKey2. optional.
-   * @param {String} TemplateTag.3.Key - tagKey3. optional.
-   * @param {String} TemplateTag.4.Key - tagKey4. optional.
-   * @param {String} TemplateTag.5.Key - tagKey5. optional.
-   * @param {String} TemplateTag.1.Value - tagValue1. optional.
-   * @param {String} TemplateTag.2.Value - tagValue2. optional.
-   * @param {String} TemplateTag.3.Value - tagValue3. optional.
-   * @param {String} TemplateTag.4.Value - tagValue4. optional.
-   * @param {String} TemplateTag.5.Value - tagValue5. optional.
+   * @param {RepeatList} TemplateTag - tagKeyValueParams. optional.
    * @param {String} RegionId - regionId. required.
    * @param {String} LaunchTemplateName - launchTemplateName. required.
    * @param {String} VersionDescription - versionDescription. optional.
    * @param {String} ImageId - imageId. optional.
    * @param {String} ImageOwnerAlias - imageOwnerAlias. optional.
+   * @param {Boolean} PasswordInherit - passwordInherit. optional.
    * @param {String} InstanceType - instanceType. optional.
    * @param {String} SecurityGroupId - securityGroupId. optional.
    * @param {String} VpcId - vpcId. optional.
@@ -1137,11 +1210,6 @@ class Client extends RPCClient {
    * @param {Integer} InternetMaxBandwidthOut - internetMaxBandwidthOut. optional.
    * @param {String} HostName - hostName. optional.
    * @param {String} ZoneId - izNo. optional.
-   * @param {String} SystemDisk.Category - systemDiskCategory. optional.
-   * @param {Integer} SystemDisk.Size - systemDiskSize. optional.
-   * @param {String} SystemDisk.DiskName - systemDiskName. optional.
-   * @param {String} SystemDisk.Description - systemDiskDescription. optional.
-   * @param {Integer} SystemDisk.Iops - systemDiskIops. optional.
    * @param {RepeatList} DataDisk - dataDisks. optional.
    * @param {String} IoOptimized - ioOptimized. optional.
    * @param {RepeatList} NetworkInterface - enis. optional.
@@ -1161,6 +1229,7 @@ class Client extends RPCClient {
    * @param {String} TemplateResourceGroupId - templateResourceGroupId. optional.
    * @param {String} SecurityEnhancementStrategy - securityEnhancementStrategy. optional.
    * @param {RepeatList} Tag - tagList. optional.
+   * @param {SystemDisk} SystemDisk - undefined. optional.
    */
   createLaunchTemplate(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -1179,6 +1248,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -1190,6 +1260,7 @@ class Client extends RPCClient {
    * @param {String} VersionDescription - versionDescription. optional.
    * @param {String} ImageId - imageId. optional.
    * @param {String} ImageOwnerAlias - imageOwnerAlias. optional.
+   * @param {Boolean} PasswordInherit - passwordInherit. optional.
    * @param {String} InstanceType - instanceType. optional.
    * @param {String} SecurityGroupId - securityGroupId. optional.
    * @param {String} VpcId - vpcId. optional.
@@ -1200,11 +1271,6 @@ class Client extends RPCClient {
    * @param {Integer} InternetMaxBandwidthOut - internetMaxBandwidthOut. optional.
    * @param {String} HostName - hostName. optional.
    * @param {String} ZoneId - izNo. optional.
-   * @param {String} SystemDisk.Category - systemDiskCategory. optional.
-   * @param {Integer} SystemDisk.Size - systemDiskSize. optional.
-   * @param {String} SystemDisk.DiskName - systemDiskName. optional.
-   * @param {String} SystemDisk.Description - systemDiskDescription. optional.
-   * @param {Integer} SystemDisk.Iops - systemDiskIops. optional.
    * @param {RepeatList} DataDisk - dataDisks. optional.
    * @param {String} IoOptimized - ioOptimized. optional.
    * @param {RepeatList} NetworkInterface - enis. optional.
@@ -1223,6 +1289,7 @@ class Client extends RPCClient {
    * @param {String} ResourceGroupId - resourceGroupId. optional.
    * @param {String} SecurityEnhancementStrategy - securityEnhancementStrategy. optional.
    * @param {RepeatList} Tag - tagList. optional.
+   * @param {SystemDisk} SystemDisk - undefined. optional.
    */
   createLaunchTemplateVersion(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -1265,21 +1332,13 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} RegionId - regionId. required.
-   * @param {String} Tag.1.Key - tagKey1. optional.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. optional.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
    * @param {String} RegionId - regionId. required.
    * @param {String} ResourceGroupId - resourceGroupId. optional.
    * @param {String} VSwitchId - vswitchId. required.
@@ -1310,6 +1369,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -1392,6 +1452,7 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionNo. optional.
    * @param {String} RouteTableId - tableInstanceId. required.
    * @param {String} DestinationCidrBlock - destinationCidrBlock. required.
    * @param {String} NextHopId - nextRouterInstanceId. optional.
@@ -1470,6 +1531,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -1479,16 +1541,7 @@ class Client extends RPCClient {
    * @param {String} SecurityGroupName - groupName. optional.
    * @param {String} VpcId - vpcInstanceId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
-   * @param {String} Tag.1.Key - tagKey1. optional.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. optional.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
    * @param {String} ResourceGroupId - resourceGroupId. optional.
    */
   createSecurityGroup(params = {}, options = {}) {
@@ -1503,21 +1556,48 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} RegionId - regionId. required.
+   * @param {RepeatList} InstanceId - instanceIds. required.
+   * @param {String} EventType - eventType. required.
+   * @param {String} NotBefore - notBeforeStr. required.
+   */
+  createSimulatedSystemEvents(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EventType')) {
+      throw new TypeError('parameter "EventType" is required');
+    }
+
+    if (!hasOwnProperty(params, 'NotBefore')) {
+      throw new TypeError('parameter "NotBefore" is required');
+    }
+
+    return this.request('CreateSimulatedSystemEvents', params, options);
+  }
+
+  /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} DiskId - diskId. required.
    * @param {String} SnapshotName - snapshotNickname. optional.
    * @param {String} Description - description. optional.
    * @param {String} ClientToken - token. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
-   * @param {String} Tag.1.Key - tagKey1. optional.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. optional.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
    */
   createSnapshot(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DiskId')) {
@@ -1528,6 +1608,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -1568,6 +1649,7 @@ class Client extends RPCClient {
    * @param {String} ZoneId - izNo. required.
    * @param {String} CidrBlock - cidrBlock. required.
    * @param {String} VpcId - vpcInstanceId. required.
+   * @param {String} RegionId - regionNo. optional.
    * @param {String} VSwitchName - name. optional.
    * @param {String} Description - description. optional.
    * @param {String} ClientToken - token. optional.
@@ -1629,6 +1711,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -1642,16 +1725,8 @@ class Client extends RPCClient {
    * @param {Boolean} VolumeEncrypted - encrypted. optional.
    * @param {String} ClientToken - token. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
-   * @param {String} Tag.1.Key - tagKey1. optional.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. optional.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
+   * @param {String} KMSKeyId - kmsKeyId. optional.
    */
   createVolume(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -1705,6 +1780,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -1784,6 +1860,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -1845,6 +1922,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -1892,6 +1970,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -1909,6 +1988,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -1928,6 +2008,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -1945,6 +2026,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -1987,6 +2069,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2012,6 +2095,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2045,7 +2129,6 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} ClientToken - token. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
-   * @param {String} UserCidr - userCidr. optional.
    */
   deletePhysicalConnection(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -2060,6 +2143,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2084,6 +2168,7 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionNo. optional.
    * @param {String} RouteTableId - tableInstanceId. required.
    * @param {String} DestinationCidrBlock - destinationCidrBlock. required.
    * @param {String} NextHopId - nextHopId. optional.
@@ -2124,6 +2209,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2144,6 +2230,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2164,6 +2251,7 @@ class Client extends RPCClient {
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} VSwitchId - instanceId. required.
+   * @param {String} RegionId - regionNo. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    */
   deleteVSwitch(params = {}, options = {}) {
@@ -2197,6 +2285,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2221,6 +2310,7 @@ class Client extends RPCClient {
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} VpcId - vpcId. required.
+   * @param {String} RegionId - regionNo. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    */
   deleteVpc(params = {}, options = {}) {
@@ -2250,6 +2340,24 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} ZoneId - zoneId. optional.
+   * @param {RepeatList} AttributeName - attributeNames. optional.
+   */
+  describeAccountAttributes(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    return this.request('DescribeAccountAttributes', params, options);
+  }
+
+  /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2260,6 +2368,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2274,11 +2383,11 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
-   * @param {String} RegionId - regionNo. required.
    * @param {String} RegionId - regionNo. required.
    * @param {String} InstanceChargeType - instanceChargeType. optional.
    * @param {String} SpotStrategy - spotStrategy. optional.
@@ -2291,13 +2400,11 @@ class Client extends RPCClient {
    * @param {String} DataDiskCategory - dataDiskCategory. optional.
    * @param {String} NetworkCategory - networkCategory. optional.
    * @param {Integer} Cores - cpu. optional.
-   * @param {Integer} Memory - mem. optional.
+   * @param {Float} Memory - mem. optional.
+   * @param {String} ResourceType - resourceType. optional.
+   * @param {String} Scope - scope. optional.
    */
   describeAvailableResource(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'RegionId')) {
-      throw new TypeError('parameter "RegionId" is required');
-    }
-
     if (!hasOwnProperty(params, 'RegionId')) {
       throw new TypeError('parameter "RegionId" is required');
     }
@@ -2349,6 +2456,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2367,6 +2475,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2387,6 +2496,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2402,6 +2512,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2423,6 +2534,99 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DedicatedHostIds - instanceIds. required.
+   * @param {String} RegionId - regionId. required.
+   */
+  describeDedicatedHostAutoRenew(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DedicatedHostIds')) {
+      throw new TypeError('parameter "DedicatedHostIds" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    return this.request('DescribeDedicatedHostAutoRenew', params, options);
+  }
+
+  /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} DedicatedHostType - hostType. optional.
+   * @param {String} SupportedInstanceTypeFamily - supportInstanceTypeFamily. optional.
+   */
+  describeDedicatedHostTypes(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    return this.request('DescribeDedicatedHostTypes', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionNo. required.
+   * @param {String} ZoneId - izNo. optional.
+   * @param {String} DedicatedHostIds - dedicatedHostIds. optional.
+   * @param {String} DedicatedHostName - dedicatedHostName. optional.
+   * @param {String} Status - status. optional.
+   * @param {String} DedicatedHostType - dedicatedHostType. optional.
+   * @param {String} LockReason - lockReason. optional.
+   * @param {Integer} PageNumber - pageNo. optional.
+   * @param {Integer} PageSize - pageSize. optional. default: 10.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
+   * @param {String} ResourceGroupId - resourceGroupId. optional.
+   */
+  describeDedicatedHosts(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    return this.request('DescribeDedicatedHosts', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
+   * @param {Integer} PageNumber - pageNo. optional.
+   * @param {Integer} PageSize - pageSize. optional. default: 10.
+   * @param {Boolean} DryRun - dryRun. optional.
+   * @param {String} RegionId - regionNo. required.
+   * @param {String} ZoneId - zoneNo. optional.
+   * @param {String} InstanceTypeFamily - instanceTypeFamily. optional.
+   * @param {String} InstanceType - instanceType. optional.
+   * @param {String} InstanceChargeType - instancePayType. optional.
+   * @param {RepeatList} DemandStatus - demandStatusLists. optional.
+   */
+  describeDemands(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    return this.request('DescribeDemands', params, options);
+  }
+
+  /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2470,14 +2674,15 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} DiskId - resourceId. required.
    * @param {String} StartTime - startTime. required.
    * @param {String} EndTime - endTime. required.
-   * @param {Integer} Period - period. optional.
-   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {Integer} Period - period. optional. default: 60.
    */
   describeDiskMonitorData(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DiskId')) {
@@ -2496,6 +2701,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2519,25 +2725,14 @@ class Client extends RPCClient {
    * @param {Boolean} EnableAutomatedSnapshotPolicy - enableAutomatedSnapshotPolicy. optional.
    * @param {String} DiskChargeType - diskChargeType. optional.
    * @param {String} LockReason - lockReason. optional.
-   * @param {String} Filter.1.Key - filter1Key. optional.
-   * @param {String} Filter.2.Key - filter2Key. optional.
-   * @param {String} Filter.1.Value - creationStartTime. optional.
-   * @param {String} Filter.2.Value - creationEndTime. optional.
-   * @param {String} Tag.1.Key - tagKey1. optional.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. optional.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
    * @param {String} ResourceGroupId - resourceGroupId. optional.
    * @param {Boolean} EnableShared - enableShared. optional.
    * @param {Boolean} Encrypted - encrypted. optional.
    * @param {RepeatList} AdditionalAttributes - additionalAttributes. optional.
    * @param {Boolean} DryRun - dryRun. optional.
+   * @param {String} KMSKeyId - kmsKeyId. optional.
+   * @param {Filter} Filter - undefined. optional.
    */
   describeDisks(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -2548,6 +2743,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2559,10 +2755,9 @@ class Client extends RPCClient {
    * @param {String} Status - lifeCycleStatus. optional.
    * @param {String} HealthStatus - healthStatus. optional.
    * @param {String} EventType - eventType. optional.
-   * @param {String} EventTime.Start - eventTimeFromStr. optional.
-   * @param {String} EventTime.End - eventTimeToStr. optional.
    * @param {Integer} PageNumber - pageNumber. optional.
    * @param {Integer} PageSize - pageSize. optional.
+   * @param {EventTime} EventTime - undefined. optional.
    */
   describeDisksFullStatus(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -2584,17 +2779,15 @@ class Client extends RPCClient {
    * @param {String} Status - status. optional.
    * @param {String} EipAddress - eipAddress. optional.
    * @param {String} AllocationId - allocationId. optional.
+   * @param {String} ISP - isp. optional.
    * @param {Integer} PageNumber - pageNo. optional. default: 1.
    * @param {Integer} PageSize - pageSize. optional. default: 10.
    * @param {String} OwnerAccount - ownerAccount. optional.
-   * @param {String} Filter.1.Key - filter1Key. optional.
-   * @param {String} Filter.2.Key - filter2Key. optional.
-   * @param {String} Filter.1.Value - createStartTime. optional.
-   * @param {String} Filter.2.Value - createEndTime. optional.
    * @param {String} LockReason - reason. optional.
    * @param {String} AssociatedInstanceType - associatedInstanceType. optional.
    * @param {String} AssociatedInstanceId - associatedInstanceId. optional.
    * @param {String} ChargeType - chargeType. optional.
+   * @param {Filter} Filter - undefined. optional.
    */
   describeEipAddresses(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -2608,6 +2801,7 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionNo. optional.
    * @param {String} AllocationId - allocationId. required.
    * @param {String} StartTime - startTime. required.
    * @param {String} EndTime - endTime. required.
@@ -2631,6 +2825,40 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} EniId - resourceId. optional.
+   * @param {String} RegionId - regionNo. required.
+   * @param {String} InstanceId - connectedResourceId. required.
+   * @param {String} StartTime - startTime. required.
+   * @param {String} EndTime - endTime. required.
+   * @param {Integer} Period - period. optional. default: 60.
+   */
+  describeEniMonitorData(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    return this.request('DescribeEniMonitorData', params, options);
+  }
+
+  /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2650,6 +2878,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2717,6 +2946,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2741,6 +2971,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2780,6 +3011,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2799,16 +3031,7 @@ class Client extends RPCClient {
    * @param {Integer} PageSize - pageSize. optional. default: 10.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} Usage - usage. optional.
-   * @param {String} Tag.1.Key - tagKey1. optional.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. optional.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
    * @param {Boolean} DryRun - dryRun. optional.
    * @param {String} ActionType - actionType. optional.
    * @param {RepeatList} Filter - filterKeyValueModels. optional.
@@ -2823,6 +3046,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2838,6 +3062,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2857,6 +3082,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2869,12 +3095,10 @@ class Client extends RPCClient {
    * @param {String} EventCycleStatus - eventCycleStatus. optional.
    * @param {RepeatList} InstanceEventType - eventTypes. optional.
    * @param {String} EventType - eventType. optional.
-   * @param {String} NotBefore.Start - eventPlanExeTimeFromStr. optional.
-   * @param {String} NotBefore.End - eventPlanExeTimeToStr. optional.
-   * @param {String} EventPublishTime.Start - eventPublishTimeFromStr. optional.
-   * @param {String} EventPublishTime.End - eventPublishTimeToStr. optional.
    * @param {Integer} PageNumber - pageNumber. optional.
    * @param {Integer} PageSize - pageSize. optional.
+   * @param {NotBefore} NotBefore - undefined. optional.
+   * @param {EventPublishTime} EventPublishTime - undefined. optional.
    */
   describeInstanceHistoryEvents(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -2889,14 +3113,15 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} InstanceId - resourceId. required.
    * @param {String} StartTime - startTime. required.
    * @param {String} EndTime - endTime. required.
    * @param {Integer} Period - period. optional.
-   * @param {String} OwnerAccount - ownerAccount. optional.
    */
   describeInstanceMonitorData(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'InstanceId')) {
@@ -2915,6 +3140,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2930,6 +3156,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2948,6 +3175,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2967,6 +3195,23 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} InstanceIds - instanceIds. optional.
+   */
+  describeInstanceTopology(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    return this.request('DescribeInstanceTopology', params, options);
+  }
+
+  /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2983,6 +3228,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -2994,6 +3240,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3014,6 +3261,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3034,6 +3282,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3057,26 +3306,10 @@ class Client extends RPCClient {
    * @param {String} ImageId - imageId. optional.
    * @param {String} Status - status. optional.
    * @param {String} LockReason - lockReason. optional.
-   * @param {String} Filter.1.Key - filter1Key. optional.
-   * @param {String} Filter.2.Key - filter2Key. optional.
-   * @param {String} Filter.3.Key - filter3Key. optional.
-   * @param {String} Filter.4.Key - filter4Key. optional.
-   * @param {String} Filter.1.Value - creationStartTime. optional.
-   * @param {String} Filter.2.Value - creationEndTime. optional.
-   * @param {String} Filter.3.Value - expiredStartTime. optional.
-   * @param {String} Filter.4.Value - expiredEndTime. optional.
    * @param {Boolean} DeviceAvailable - deviceAvailable. optional.
    * @param {Boolean} IoOptimized - ioOptimized. optional.
-   * @param {String} Tag.1.Key - tagKey1. optional.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. optional.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {Boolean} NeedSaleCycle - needSaleCycle. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
    * @param {String} InstanceType - instanceType. optional.
    * @param {String} InstanceTypeFamily - instanceTypeFamily. optional.
    * @param {String} KeyPairName - keyPairName. optional.
@@ -3084,6 +3317,7 @@ class Client extends RPCClient {
    * @param {String} HpcClusterId - hpcClusterId. optional.
    * @param {String} RdmaIpAddresses - ecsRdmaIps. optional.
    * @param {Boolean} DryRun - dryRun. optional.
+   * @param {Filter} Filter - undefined. optional.
    */
   describeInstances(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -3106,12 +3340,10 @@ class Client extends RPCClient {
    * @param {String} HealthStatus - healthStatus. optional.
    * @param {RepeatList} InstanceEventType - eventTypes. optional.
    * @param {String} EventType - eventType. optional.
-   * @param {String} NotBefore.Start - eventPlanExeTimeFromStr. optional.
-   * @param {String} NotBefore.End - eventPlanExeTimeToStr. optional.
-   * @param {String} EventPublishTime.Start - eventPublishTimeFromStr. optional.
-   * @param {String} EventPublishTime.End - eventPublishTimeToStr. optional.
    * @param {Integer} PageNumber - pageNumber. optional.
    * @param {Integer} PageSize - pageSize. optional.
+   * @param {NotBefore} NotBefore - undefined. optional.
+   * @param {EventPublishTime} EventPublishTime - undefined. optional.
    */
   describeInstancesFullStatus(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -3126,6 +3358,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3141,6 +3374,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3162,6 +3396,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3221,16 +3456,7 @@ class Client extends RPCClient {
    * @param {String} KeyPairFingerPrint - keyPairFingerPrint. optional.
    * @param {Integer} PageNumber - pageNo. optional.
    * @param {Integer} PageSize - pageSize. optional.
-   * @param {String} Tag.1.Key - tagKey1. optional.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. optional.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
    * @param {String} ResourceGroupId - resourceGroupId. optional.
    */
   describeKeyPairs(params = {}, options = {}) {
@@ -3242,6 +3468,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3266,21 +3493,13 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} RegionId - regionId. required.
-   * @param {String} TemplateTag.1.Key - tagKey1. optional.
-   * @param {String} TemplateTag.2.Key - tagKey2. optional.
-   * @param {String} TemplateTag.3.Key - tagKey3. optional.
-   * @param {String} TemplateTag.4.Key - tagKey4. optional.
-   * @param {String} TemplateTag.5.Key - tagKey5. optional.
-   * @param {String} TemplateTag.1.Value - tagValue1. optional.
-   * @param {String} TemplateTag.2.Value - tagValue2. optional.
-   * @param {String} TemplateTag.3.Value - tagValue3. optional.
-   * @param {String} TemplateTag.4.Value - tagValue4. optional.
-   * @param {String} TemplateTag.5.Value - tagValue5. optional.
+   * @param {RepeatList} TemplateTag - tagKeyValueParams. optional.
    * @param {RepeatList} LaunchTemplateId - launchTemplateIds. optional.
    * @param {RepeatList} LaunchTemplateName - launchTemplateNames. optional.
    * @param {Integer} PageNumber - pageNo. optional.
@@ -3330,6 +3549,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3354,21 +3574,14 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} RegionId - regionId. required.
-   * @param {String} Tag.1.Key - tagKey1. optional.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. optional.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
+   * @param {String} ResourceGroupId - resourceGroupId. optional.
    * @param {String} RegionId - regionId. required.
    * @param {String} ResourceGroupId - resourceGroupId. optional.
    * @param {String} VSwitchId - vswitchId. optional.
@@ -3398,6 +3611,7 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionNo. optional.
    * @param {String} AllocationId - allocationId. required.
    * @param {String} StartTime - startTime. required.
    * @param {String} EndTime - endTime. required.
@@ -3441,6 +3655,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
@@ -3453,19 +3668,11 @@ class Client extends RPCClient {
    * @param {String} InstanceNetworkType - networkType. optional.
    * @param {String} InternetChargeType - internetChargeType. optional.
    * @param {Integer} InternetMaxBandwidthOut - internetMaxBandwidthOut. optional.
-   * @param {String} SystemDisk.Category - systemDiskCategory. optional.
-   * @param {Integer} SystemDisk.Size - systemDiskSize. optional.
-   * @param {Integer} DataDisk.1.Size - dataDiskSize1. optional.
-   * @param {String} DataDisk.1.Category - dataDiskCategory1. optional.
-   * @param {Integer} DataDisk.2.Size - dataDiskSize2. optional.
-   * @param {String} DataDisk.2.Category - dataDiskCategory2. optional.
-   * @param {Integer} DataDisk.3.Size - dataDiskSize3. optional.
-   * @param {String} DataDisk.3.Category - dataDiskCategory3. optional.
-   * @param {Integer} DataDisk.4.Size - dataDiskSize4. optional.
-   * @param {String} DataDisk.4.Category - dataDiskCategory4. optional.
    * @param {Integer} Period - period. optional.
    * @param {String} PriceUnit - priceUnit. optional.
    * @param {Integer} Amount - amount. optional.
+   * @param {SystemDisk} SystemDisk - undefined. optional.
+   * @param {DataDisk} DataDisk - undefined. optional.
    */
   describePrice(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -3476,6 +3683,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
@@ -3525,6 +3733,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3561,6 +3770,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3568,16 +3778,7 @@ class Client extends RPCClient {
    * @param {Integer} PageNumber - pageNumber. optional. default: 1.
    * @param {String} ResourceType - resourceType. optional.
    * @param {String} RegionId - regionId. required.
-   * @param {String} Tag.1.Key - tagKey1. optional.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. optional.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
    */
   describeResourceByTags(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -3588,6 +3789,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3599,7 +3801,7 @@ class Client extends RPCClient {
    * @param {String} OperationType - operationType. optional.
    * @param {String} InstanceType - instanceType. optional.
    * @param {Integer} Cores - cpu. optional.
-   * @param {Integer} Memory - mem. optional.
+   * @param {Float} Memory - mem. optional.
    */
   describeResourcesModification(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -3621,6 +3823,7 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionNo. optional.
    * @param {String} VRouterId - routerInstanceId. optional.
    * @param {String} RouteTableId - instanceId. optional.
    * @param {String} RouterType - routerType. optional.
@@ -3674,6 +3877,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {String} RegionId - regionId. required.
    * @param {RepeatList} SecurityGroupId - groupNos. required.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
@@ -3694,6 +3898,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3703,16 +3908,7 @@ class Client extends RPCClient {
    * @param {Integer} PageSize - pageSize. optional. default: 10.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} SecurityGroupIds - securityGroupIds. optional.
-   * @param {String} Tag.1.Key - tagKey1. optional.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. optional.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
    * @param {String} ResourceGroupId - resourceGroupId. optional.
    * @param {String} NetworkType - networkType. optional.
    * @param {String} SecurityGroupId - securityGroupId. optional.
@@ -3730,6 +3926,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3750,6 +3947,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3776,6 +3974,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3793,6 +3992,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3807,25 +4007,14 @@ class Client extends RPCClient {
    * @param {String} SnapshotName - snapshotName. optional.
    * @param {String} Status - status. optional.
    * @param {String} SnapshotType - snapshotType. optional.
-   * @param {String} Filter.1.Key - filter1Key. optional.
-   * @param {String} Filter.2.Key - filter2Key. optional.
-   * @param {String} Filter.1.Value - creationStartTime. optional.
-   * @param {String} Filter.2.Value - creationEndTime. optional.
    * @param {String} Usage - usage. optional.
    * @param {String} SourceDiskType - diskType. optional.
-   * @param {String} Tag.1.Key - tagKey1. optional.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. optional.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
    * @param {Boolean} Encrypted - encrypted. optional.
    * @param {String} ResourceGroupId - resourceGroupId. optional.
    * @param {Boolean} DryRun - dryRun. optional.
+   * @param {String} KMSKeyId - kmsKeyId. optional.
+   * @param {Filter} Filter - undefined. optional.
    */
   describeSnapshots(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -3836,6 +4025,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3856,6 +4046,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3892,6 +4083,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3918,16 +4110,7 @@ class Client extends RPCClient {
    * @param {String} ResourceType - resourceType. optional.
    * @param {String} ResourceId - resourceId. optional.
    * @param {String} RegionId - regionId. required.
-   * @param {String} Tag.1.Key - tagKey1. optional.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. optional.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
    */
   describeTags(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -3957,6 +4140,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3979,6 +4163,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -3995,6 +4180,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -4088,6 +4274,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -4104,16 +4291,9 @@ class Client extends RPCClient {
    * @param {Integer} PageNumber - pageNo. optional.
    * @param {Integer} PageSize - pageSize. optional. default: 10.
    * @param {String} OwnerAccount - ownerAccount. optional.
-   * @param {String} Tag.1.Key - tagKey1. optional.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. optional.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
+   * @param {String} KMSKeyId - kmsKeyId. optional.
+   * @param {Boolean} Encrypted - encrypted. optional.
    */
   describeVolumes(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -4143,6 +4323,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -4151,6 +4332,7 @@ class Client extends RPCClient {
    * @param {Boolean} Verbose - verbose. optional. default: true.
    * @param {String} InstanceChargeType - instanceChargeType. optional.
    * @param {String} SpotStrategy - spotStrategy. optional.
+   * @param {String} AcceptLanguage - acceptLanguage. optional.
    */
   describeZones(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -4161,6 +4343,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -4185,6 +4368,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -4249,6 +4433,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -4279,6 +4464,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -4381,6 +4567,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -4411,6 +4598,32 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} SnapshotId - snapshotId. required.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} OssBucket - ossBucket. required.
+   * @param {String} RoleName - roleName. optional.
+   */
+  exportSnapshot(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'SnapshotId')) {
+      throw new TypeError('parameter "SnapshotId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'OssBucket')) {
+      throw new TypeError('parameter "OssBucket" is required');
+    }
+
+    return this.request('ExportSnapshot', params, options);
+  }
+
+  /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} RegionId - regionId. required.
    * @param {String} RegionId - regionId. required.
@@ -4433,6 +4646,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -4459,6 +4673,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {RepeatList} DiskDeviceMapping - dataDiskDeviceMappingParam. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
@@ -4480,6 +4695,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -4504,6 +4720,37 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} SnapshotName - snapshotName. required.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} OssBucket - ossBucket. required.
+   * @param {String} OssObject - ossObject. required.
+   * @param {String} RoleName - roleName. optional.
+   */
+  importSnapshot(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'SnapshotName')) {
+      throw new TypeError('parameter "SnapshotName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'OssBucket')) {
+      throw new TypeError('parameter "OssBucket" is required');
+    }
+
+    if (!hasOwnProperty(params, 'OssObject')) {
+      throw new TypeError('parameter "OssObject" is required');
+    }
+
+    return this.request('ImportSnapshot', params, options);
+  }
+
+  /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -4565,6 +4812,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -4585,6 +4833,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -4608,6 +4857,34 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} RegionId - regionId. required.
+   * @param {RepeatList} ResourceId - resourceIds. optional.
+   * @param {RepeatList} Tag - tags. optional.
+   * @param {String} NextToken - nextToken. optional.
+   * @param {String} ResourceType - resourceType. required.
+   */
+  listTagResources(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ResourceType')) {
+      throw new TypeError('parameter "ResourceType" is required');
+    }
+
+    return this.request('ListTagResources', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {Boolean} SystemDiskPolicyEnabled - systemDiskPolicyEnabled. optional.
    * @param {Integer} SystemDiskPolicyTimePeriod - systemDiskPolicyTimePeriod. optional.
    * @param {Integer} SystemDiskPolicyRetentionDays - systemDiskPolicyRetentionDays. optional.
@@ -4623,6 +4900,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -4671,6 +4949,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -4693,6 +4972,76 @@ class Client extends RPCClient {
     }
 
     return this.request('ModifyCommand', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} DedicatedHostId - dedicatedHostId. required.
+   * @param {String} DedicatedHostName - dedicatedHostName. optional.
+   * @param {String} Description - description. optional.
+   * @param {String} ActionOnMaintenance - actionOnMaintenance. optional.
+   * @param {NetworkAttributes} NetworkAttributes - undefined. optional.
+   */
+  modifyDedicatedHostAttribute(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DedicatedHostId')) {
+      throw new TypeError('parameter "DedicatedHostId" is required');
+    }
+
+    return this.request('ModifyDedicatedHostAttribute', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} DedicatedHostId - instanceId. required.
+   * @param {String} AutoReleaseTime - autoReleaseTime. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   */
+  modifyDedicatedHostAutoReleaseTime(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DedicatedHostId')) {
+      throw new TypeError('parameter "DedicatedHostId" is required');
+    }
+
+    return this.request('ModifyDedicatedHostAutoReleaseTime', params, options);
+  }
+
+  /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DedicatedHostIds - instanceIds. required.
+   * @param {String} RegionId - regionId. required.
+   * @param {Integer} Duration - duration. optional.
+   * @param {String} PeriodUnit - periodUnit. optional.
+   * @param {Boolean} AutoRenew - autoRenew. optional.
+   * @param {String} RenewalStatus - renewalStatus. optional.
+   */
+  modifyDedicatedHostAutoRenewAttribute(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DedicatedHostIds')) {
+      throw new TypeError('parameter "DedicatedHostIds" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    return this.request('ModifyDedicatedHostAutoRenewAttribute', params, options);
   }
 
   /**
@@ -4738,6 +5087,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -4769,6 +5119,7 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionNo. optional.
    * @param {String} AllocationId - allocationId. required.
    * @param {String} Bandwidth - bandwidth. required.
    * @param {String} OwnerAccount - ownerAccount. optional.
@@ -4838,6 +5189,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -4866,6 +5218,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -4888,14 +5241,15 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} RegionId - regionNo. required.
    * @param {String} ImageId - imageId. required.
-   * @param {String} AddGroup.1 - addGroup1. optional.
-   * @param {String} RemoveGroup.1 - removeGroup1. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {AddGroup} AddGroup - undefined. optional.
+   * @param {RemoveGroup} RemoveGroup - undefined. optional.
    */
   modifyImageShareGroupPermission(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -4915,26 +5269,8 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} RegionId - regionNo. required.
    * @param {String} ImageId - imageId. required.
-   * @param {String} AddAccount.1 - addAccount1. optional.
-   * @param {String} AddAccount.2 - addAccount2. optional.
-   * @param {String} AddAccount.3 - addAccount3. optional.
-   * @param {String} AddAccount.4 - addAccount4. optional.
-   * @param {String} AddAccount.5 - addAccount5. optional.
-   * @param {String} AddAccount.6 - addAccount6. optional.
-   * @param {String} AddAccount.7 - addAccount7. optional.
-   * @param {String} AddAccount.8 - addAccount8. optional.
-   * @param {String} AddAccount.9 - addAccount9. optional.
-   * @param {String} AddAccount.10 - addAccount10. optional.
-   * @param {String} RemoveAccount.1 - removeAccount1. optional.
-   * @param {String} RemoveAccount.2 - removeAccount2. optional.
-   * @param {String} RemoveAccount.3 - removeAccount3. optional.
-   * @param {String} RemoveAccount.4 - removeAccount4. optional.
-   * @param {String} RemoveAccount.5 - removeAccount5. optional.
-   * @param {String} RemoveAccount.6 - removeAccount6. optional.
-   * @param {String} RemoveAccount.7 - removeAccount7. optional.
-   * @param {String} RemoveAccount.8 - removeAccount8. optional.
-   * @param {String} RemoveAccount.9 - removeAccount9. optional.
-   * @param {String} RemoveAccount.10 - removeAccount10. optional.
+   * @param {RepeatList} AddAccount - addAccounts. optional.
+   * @param {RepeatList} RemoveAccount - removeAccounts. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    */
   modifyImageSharePermission(params = {}, options = {}) {
@@ -4950,6 +5286,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -4961,6 +5298,8 @@ class Client extends RPCClient {
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} UserData - userData. optional.
    * @param {Boolean} Recyclable - recyclable. optional.
+   * @param {String} CreditSpecification - creditSpecification. optional.
+   * @param {Boolean} DeletionProtection - deletionProtection. optional.
    */
   modifyInstanceAttribute(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'InstanceId')) {
@@ -4971,6 +5310,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -4988,6 +5328,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5012,6 +5353,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5039,6 +5381,31 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} DedicatedHostId - dedicatedHostId. optional.
+   * @param {String} DeploymentSetId - deploymentSetId. optional.
+   * @param {Boolean} Force - force. optional.
+   */
+  modifyInstanceDeployment(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    return this.request('ModifyInstanceDeployment', params, options);
+  }
+
+  /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5062,6 +5429,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5070,13 +5438,11 @@ class Client extends RPCClient {
    * @param {Integer} InternetMaxBandwidthOut - internetMaxBandwidthOut. optional.
    * @param {Integer} InternetMaxBandwidthIn - internetMaxBandwidthIn. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
-   * @param {String} Temporary.StartTime - temporaryStartTime. optional.
-   * @param {String} Temporary.EndTime - temporaryEndTime. optional.
-   * @param {Integer} Temporary.InternetMaxBandwidthOut - temporaryInternetMaxBandwidthOut. optional.
    * @param {Boolean} Async - async. optional. default: false.
    * @param {Boolean} AllowMigrateAcrossZone - canMigrateAcrossZone. optional. default: false.
-   * @param {String} SystemDisk.Category - systemDiskCategory. optional.
    * @param {String} ClientToken - clientToken. optional.
+   * @param {Temporary} Temporary - undefined. optional.
+   * @param {SystemDisk} SystemDisk - undefined. optional.
    */
   modifyInstanceSpec(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'InstanceId')) {
@@ -5087,6 +5453,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5112,6 +5479,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5133,6 +5501,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5150,6 +5519,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5231,6 +5601,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5241,8 +5612,8 @@ class Client extends RPCClient {
    * @param {String} ClientToken - clientToken. optional.
    * @param {Boolean} AutoPay - autoPay. optional. default: true.
    * @param {Boolean} MigrateAcrossZone - canMigrateAcrossZone. optional. default: false.
-   * @param {String} SystemDisk.Category - systemDiskCategory. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {SystemDisk} SystemDisk - undefined. optional.
    */
   modifyPrepayInstanceSpec(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'InstanceId')) {
@@ -5315,6 +5686,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5337,6 +5709,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5350,7 +5723,9 @@ class Client extends RPCClient {
    * @param {Long} DestGroupOwnerId - groupOwnerAliUid. optional.
    * @param {String} DestGroupOwnerAccount - groupOwnerAccount. optional.
    * @param {String} DestCidrIp - destCidrIp. optional.
+   * @param {String} Ipv6DestCidrIp - v6DestCidrIp. optional.
    * @param {String} SourceCidrIp - sourceCidrIp. optional.
+   * @param {String} Ipv6SourceCidrIp - v6SourceCidrIp. optional.
    * @param {String} SourcePortRange - sourcePortRange. optional.
    * @param {String} Policy - policy. optional. default: accept.
    * @param {String} Priority - level. optional. default: 1.
@@ -5383,6 +5758,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {String} SecurityGroupId - groupNo. required.
    * @param {String} RegionId - regionNo. required.
    * @param {String} InnerAccessPolicy - policy. required.
@@ -5409,6 +5785,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5422,8 +5799,10 @@ class Client extends RPCClient {
    * @param {Long} SourceGroupOwnerId - groupOwnerAliUid. optional.
    * @param {String} SourceGroupOwnerAccount - groupOwnerAccount. optional.
    * @param {String} SourceCidrIp - sourceCidrIp. optional.
+   * @param {String} Ipv6SourceCidrIp - v6SourceCidrIp. optional.
    * @param {String} SourcePortRange - sourcePortRange. optional.
    * @param {String} DestCidrIp - destCidrIp. optional.
+   * @param {String} Ipv6DestCidrIp - v6DestCidrIp. optional.
    * @param {String} Policy - policy. optional. default: accept.
    * @param {String} Priority - level. optional. default: 1.
    * @param {String} NicType - nic. optional. default: internet.
@@ -5455,6 +5834,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5493,6 +5873,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5530,6 +5911,7 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionNo. optional.
    * @param {String} VRouterId - instanceId. required.
    * @param {String} VRouterName - name. optional.
    * @param {String} Description - description. optional.
@@ -5549,6 +5931,7 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} VSwitchId - instanceId. required.
    * @param {String} VSwitchName - name. optional.
+   * @param {String} RegionId - regionNo. optional.
    * @param {String} Description - description. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    */
@@ -5590,6 +5973,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5618,6 +6002,8 @@ class Client extends RPCClient {
    * @param {String} VpcId - instanceId. required.
    * @param {String} Description - description. optional.
    * @param {String} VpcName - name. optional.
+   * @param {String} CidrBlock - cidrBlock. optional.
+   * @param {String} RegionId - regionId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} UserCidr - userCidr. optional.
    */
@@ -5630,6 +6016,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5646,6 +6033,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5665,6 +6053,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5686,12 +6075,14 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {Boolean} ForceStop - kill. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {Boolean} DryRun - dryRun. optional.
    */
   rebootInstance(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'InstanceId')) {
@@ -5724,9 +6115,48 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {Boolean} ForceStop - kill. optional.
+   */
+  redeployInstance(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    return this.request('RedeployInstance', params, options);
+  }
+
+  /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} DedicatedHostId - dedicatedHostId. required.
+   */
+  releaseDedicatedHost(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DedicatedHostId')) {
+      throw new TypeError('parameter "DedicatedHostId" is required');
+    }
+
+    return this.request('ReleaseDedicatedHost', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionNo. optional.
    * @param {String} AllocationId - allocationId. required.
    * @param {String} OwnerAccount - ownerAccount. optional.
    */
@@ -5739,6 +6169,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5781,22 +6212,14 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} RegionId - regionId. required.
    * @param {String} ResourceType - resourceType. required.
    * @param {String} ResourceId - resourceId. required.
-   * @param {String} Tag.1.Key - tagKey1. optional.
-   * @param {String} Tag.2.Key - tagKey2. optional.
-   * @param {String} Tag.3.Key - tagKey3. optional.
-   * @param {String} Tag.4.Key - tagKey4. optional.
-   * @param {String} Tag.5.Key - tagKey5. optional.
-   * @param {String} Tag.1.Value - tagValue1. optional.
-   * @param {String} Tag.2.Value - tagValue2. optional.
-   * @param {String} Tag.3.Value - tagValue3. optional.
-   * @param {String} Tag.4.Value - tagValue4. optional.
-   * @param {String} Tag.5.Value - tagValue5. optional.
+   * @param {RepeatList} Tag - tagKeyValueParams. optional.
    */
   removeTags(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -5815,6 +6238,35 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DedicatedHostIds - dedicatedHostIds. required.
+   * @param {String} RegionId - regionNo. required.
+   * @param {Integer} Period - period. required.
+   * @param {String} PeriodUnit - periodUnit. optional.
+   * @param {String} ClientToken - clientToken. optional.
+   */
+  renewDedicatedHosts(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DedicatedHostIds')) {
+      throw new TypeError('parameter "DedicatedHostIds" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Period')) {
+      throw new TypeError('parameter "Period" is required');
+    }
+
+    return this.request('RenewDedicatedHosts', params, options);
+  }
+
+  /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {String} ClientToken - clientToken. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
@@ -5837,12 +6289,12 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} ImageId - imageId. optional.
-   * @param {Integer} SystemDisk.Size - systemDiskSize. optional.
    * @param {String} ClientToken - clientToken. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {Boolean} UseAdditionalService - enableVmOsConfig. optional.
@@ -5853,6 +6305,7 @@ class Client extends RPCClient {
    * @param {String} Platform - platform. optional.
    * @param {String} Architecture - architecture. optional.
    * @param {String} SecurityEnhancementStrategy - securityEnhancementStrategy. optional.
+   * @param {SystemDisk} SystemDisk - undefined. optional.
    */
   replaceSystemDisk(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'InstanceId')) {
@@ -5863,6 +6316,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5883,10 +6337,12 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} DiskId - diskId. required.
+   * @param {String} Type - type. optional. default: offline.
    * @param {Integer} NewSize - newSize. required.
    * @param {String} ClientToken - token. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
@@ -5938,12 +6394,14 @@ class Client extends RPCClient {
    * @param {String} RegionId - regionNo. required.
    * @param {String} SecurityGroupId - groupNo. required.
    * @param {String} DestCidrIp - destCidrIp. optional.
+   * @param {String} Ipv6DestCidrIp - v6DestCidrIp. optional.
    * @param {String} PortRange - portRange. required.
    * @param {String} IpProtocol - ipProtocol. required.
    * @param {String} SourceGroupId - sourceGroupNo. optional.
    * @param {Long} SourceGroupOwnerId - groupOwnerAliUid. optional.
    * @param {String} SourceGroupOwnerAccount - groupOwnerAccount. optional.
    * @param {String} SourceCidrIp - sourceCidrIp. optional.
+   * @param {String} Ipv6SourceCidrIp - v6SourceCidrIp. optional.
    * @param {String} SourcePortRange - sourcePortRange. optional.
    * @param {String} Policy - policy. optional. default: accept.
    * @param {String} Priority - level. optional.
@@ -5976,6 +6434,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -5989,7 +6448,9 @@ class Client extends RPCClient {
    * @param {Long} DestGroupOwnerId - groupOwnerAliUid. optional.
    * @param {String} DestGroupOwnerAccount - groupOwnerAccount. optional.
    * @param {String} DestCidrIp - destCidrIp. optional.
+   * @param {String} Ipv6DestCidrIp - v6DestCidrIp. optional.
    * @param {String} SourceCidrIp - sourceCidrIp. optional.
+   * @param {String} Ipv6SourceCidrIp - v6SourceCidrIp. optional.
    * @param {String} SourcePortRange - sourcePortRange. optional.
    * @param {String} Policy - policy. optional. default: accept.
    * @param {String} Priority - level. optional.
@@ -6047,6 +6508,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -6067,17 +6529,14 @@ class Client extends RPCClient {
    * @param {Boolean} PasswordInherit - passwdInherit. optional.
    * @param {String} ZoneId - izNo. optional.
    * @param {String} InternetChargeType - internetChargeType. optional.
-   * @param {String} SystemDisk.Size - systemDiskSize. optional.
-   * @param {String} SystemDisk.Category - systemDiskCategory. optional.
-   * @param {String} SystemDisk.DiskName - systemDiskName. optional.
-   * @param {String} SystemDisk.Description - systemDiskDescription. optional.
    * @param {RepeatList} DataDisk - createDataDiskParams. optional.
    * @param {String} IoOptimized - ioOptimized. optional.
    * @param {RepeatList} NetworkInterface - createEniParams. optional.
    * @param {String} UserData - userData. optional.
    * @param {String} KeyPairName - keyPairName. optional.
    * @param {String} RamRoleName - ramRoleName. optional.
-   * @param {Integer} Amount - minAmount. optional. default: 1.
+   * @param {Integer} Amount - maxAmount. optional. default: 1.
+   * @param {Integer} MinAmount - minAmount. optional.
    * @param {String} AutoReleaseTime - autoReleaseTime. optional.
    * @param {String} SpotStrategy - spotStrategy. optional.
    * @param {Float} SpotPriceLimit - spotPriceLimit. optional.
@@ -6097,6 +6556,16 @@ class Client extends RPCClient {
    * @param {Boolean} AutoRenew - autoRenew. optional.
    * @param {Integer} AutoRenewPeriod - autoRenewPeriod. optional.
    * @param {String} InstanceChargeType - instanceChargeType. optional.
+   * @param {String} DeploymentSetId - deploymentSetId. optional.
+   * @param {String} PrivateIpAddress - privateIpAddress. optional.
+   * @param {String} CreditSpecification - creditSpecification. optional.
+   * @param {RepeatList} Ipv6Address - ipv6Addresses. optional.
+   * @param {Integer} Ipv6AddressCount - ipv6AddressCount. optional.
+   * @param {Boolean} DeletionProtection - deletionProtection. optional.
+   * @param {Boolean} HibernationConfigured - hibernationConfigured. optional.
+   * @param {String} CapacityReservationId - capacityReservationId. optional.
+   * @param {String} CapacityReservationPreference - capacityReservationPreference. optional.
+   * @param {SystemDisk} SystemDisk - undefined. optional.
    */
   runInstances(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -6111,6 +6580,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -6126,12 +6596,14 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {Boolean} InitLocalDisk - initLocalDisk. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {Boolean} DryRun - dryRun. optional.
    */
   startInstance(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'InstanceId')) {
@@ -6142,6 +6614,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -6150,6 +6623,8 @@ class Client extends RPCClient {
    * @param {Boolean} ForceStop - kill. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} StoppedMode - stoppedMode. optional.
+   * @param {Boolean} DryRun - dryRun. optional.
+   * @param {Boolean} Hibernate - hibernate. optional.
    */
   stopInstance(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'InstanceId')) {
@@ -6160,6 +6635,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -6178,6 +6654,40 @@ class Client extends RPCClient {
     }
 
     return this.request('StopInvocation', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} ResourceType - resourceType. required.
+   * @param {RepeatList} ResourceId - resourceIds. required.
+   * @param {RepeatList} Tag - tags. required.
+   */
+  tagResources(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ResourceType')) {
+      throw new TypeError('parameter "ResourceType" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ResourceId')) {
+      throw new TypeError('parameter "ResourceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Tag')) {
+      throw new TypeError('parameter "Tag" is required');
+    }
+
+    return this.request('TagResources', params, options);
   }
 
   /**
@@ -6225,6 +6735,38 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionNo. required.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} NetworkInterfaceId - eniId. required.
+   * @param {RepeatList} Ipv6Address - ipv6Addresses. required.
+   */
+  unassignIpv6Addresses(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'NetworkInterfaceId')) {
+      throw new TypeError('parameter "NetworkInterfaceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Ipv6Address')) {
+      throw new TypeError('parameter "Ipv6Address" is required');
+    }
+
+    return this.request('UnassignIpv6Addresses', params, options);
+  }
+
+  /**
+   * @param {String} SourceRegionId - sourceRegionId. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
@@ -6258,6 +6800,7 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionNo. optional.
    * @param {String} AllocationId - allocationId. required.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} OwnerAccount - ownerAccount. optional.
@@ -6320,6 +6863,38 @@ class Client extends RPCClient {
     }
 
     return this.request('UnbindIpRange', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} RegionId - regionId. required.
+   * @param {RepeatList} ResourceId - resourceIds. required.
+   * @param {String} ResourceType - resourceType. required.
+   * @param {RepeatList} TagKey - tagKeys. optional.
+   * @param {Boolean} All - deleteAll. optional.
+   */
+  untagResources(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ResourceId')) {
+      throw new TypeError('parameter "ResourceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ResourceType')) {
+      throw new TypeError('parameter "ResourceType" is required');
+    }
+
+    return this.request('UntagResources', params, options);
   }
 
   /**

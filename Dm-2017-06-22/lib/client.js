@@ -519,6 +519,23 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} DomainName - domainName. required.
+   * @param {String} Password - password. required.
+   * @param {String} ResourceOwnerId - resourceOwnerId. optional.
+   */
+  modifyPWByDomain(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DomainName')) {
+      throw new TypeError('parameter "DomainName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Password')) {
+      throw new TypeError('parameter "Password" is required');
+    }
+
+    return this.request('ModifyPWByDomain', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.

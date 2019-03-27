@@ -20,20 +20,17 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} PoolKey - poolKey. optional.
    * @param {String} PhoneNoA - phoneNoA. required.
-   * @param {String} PhoneNoB - phoneNoB. required.
+   * @param {String} PhoneNoB - phoneNoB. optional.
    * @param {String} PhoneNoX - phoneNoX. optional.
    * @param {String} Expiration - expireDate. required.
    * @param {String} ExpectCity - expectCity. optional.
    * @param {Boolean} IsRecordingEnabled - needRecord. optional.
    * @param {String} OutId - outId. optional.
+   * @param {String} OutOrderId - outOrderId. optional.
    */
   bindAxb(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'PhoneNoA')) {
       throw new TypeError('parameter "PhoneNoA" is required');
-    }
-
-    if (!hasOwnProperty(params, 'PhoneNoB')) {
-      throw new TypeError('parameter "PhoneNoB" is required');
     }
 
     if (!hasOwnProperty(params, 'Expiration')) {
@@ -50,6 +47,38 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} PoolKey - poolKey. optional.
    * @param {String} PhoneNoA - phoneNoA. required.
+   * @param {String} GroupId - groupId. required.
+   * @param {String} PhoneNoB - phoneNoB. optional.
+   * @param {String} PhoneNoX - phoneNoX. optional.
+   * @param {String} Expiration - expireDate. required.
+   * @param {String} ExpectCity - expectCity. optional.
+   * @param {Boolean} IsRecordingEnabled - needRecord. optional.
+   * @param {String} OutId - outId. optional.
+   * @param {String} OutOrderId - outOrderId. optional.
+   */
+  bindAxg(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'PhoneNoA')) {
+      throw new TypeError('parameter "PhoneNoA" is required');
+    }
+
+    if (!hasOwnProperty(params, 'GroupId')) {
+      throw new TypeError('parameter "GroupId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Expiration')) {
+      throw new TypeError('parameter "Expiration" is required');
+    }
+
+    return this.request('BindAxg', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} PoolKey - poolKey. optional.
+   * @param {String} PhoneNoA - phoneNoA. required.
    * @param {String} PhoneNoB - phoneNoB. optional.
    * @param {String} PhoneNoX - phoneNoX. optional.
    * @param {String} Expiration - expireDate. required.
@@ -57,6 +86,7 @@ class Client extends RPCClient {
    * @param {Boolean} IsRecordingEnabled - needRecord. optional.
    * @param {String} NoType - noType. optional.
    * @param {String} OutId - outId. optional.
+   * @param {String} OutOrderId - outOrderId. optional.
    */
   bindAxn(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'PhoneNoA')) {
@@ -84,6 +114,7 @@ class Client extends RPCClient {
    * @param {String} ExpectCity - expectCity. optional.
    * @param {Boolean} IsRecordingEnabled - needRecord. optional.
    * @param {String} OutId - outId. optional.
+   * @param {String} OutOrderId - outOrderId. optional.
    */
   bindAxnExtension(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'PhoneNoA')) {
@@ -106,6 +137,7 @@ class Client extends RPCClient {
    * @param {Long} SpecId - specId. required.
    * @param {String} City - city. required.
    * @param {String} SecretNo - secretNo. optional.
+   * @param {Boolean} DisplayPool - displayPool. optional.
    */
   buySecretNo(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'PoolKey')) {
@@ -128,6 +160,71 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} PoolKey - poolKey. required.
+   * @param {String} Name - name. optional.
+   * @param {String} Remark - remark. optional.
+   * @param {String} Numbers - numbers. optional.
+   */
+  createAxgGroup(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'PoolKey')) {
+      throw new TypeError('parameter "PoolKey" is required');
+    }
+
+    return this.request('CreateAxgGroup', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} PoolKey - poolKey. required.
+   * @param {Long} GroupId - groupId. required.
+   * @param {String} OperateType - operateType. required.
+   * @param {String} Numbers - numbers. required.
+   */
+  operateAxgGroup(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'PoolKey')) {
+      throw new TypeError('parameter "PoolKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'GroupId')) {
+      throw new TypeError('parameter "GroupId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'OperateType')) {
+      throw new TypeError('parameter "OperateType" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Numbers')) {
+      throw new TypeError('parameter "Numbers" is required');
+    }
+
+    return this.request('OperateAxgGroup', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} PoolKey - poolKey. optional.
+   * @param {String} SubsId - subsId. required.
+   * @param {String} CallNo - callNo. optional.
+   */
+  queryCallStatus(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'SubsId')) {
+      throw new TypeError('parameter "SubsId" is required');
+    }
+
+    return this.request('QueryCallStatus', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} PoolKey - poolKey. optional.
    * @param {String} ProductType - productType. optional.
    * @param {String} CallId - callId. required.
@@ -139,6 +236,27 @@ class Client extends RPCClient {
     }
 
     return this.request('QueryRecordFileDownloadUrl', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {Long} SpecId - specId. required.
+   * @param {String} City - city. required.
+   * @param {String} SecretNo - secretNo. optional.
+   */
+  querySecretNoRemain(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'SpecId')) {
+      throw new TypeError('parameter "SpecId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'City')) {
+      throw new TypeError('parameter "City" is required');
+    }
+
+    return this.request('QuerySecretNoRemain', params, options);
   }
 
   /**
@@ -216,6 +334,8 @@ class Client extends RPCClient {
    * @param {String} PhoneNoX - phoneNoX. required.
    * @param {String} PhoneNoA - phoneNoA. optional.
    * @param {String} PhoneNoB - phoneNoB. optional.
+   * @param {String} GroupId - groupId. optional.
+   * @param {String} CallRestrict - callRestrict. optional.
    * @param {String} Expiration - expireDate. optional.
    * @param {String} OperateType - operateType. required.
    */

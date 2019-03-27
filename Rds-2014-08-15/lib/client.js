@@ -45,17 +45,8 @@ class Client extends RPCClient {
    * @param {String} RegionId - regionId. required.
    * @param {String} DBInstanceId - dbInstanceId. required.
    * @param {String} Tags - tags. optional.
-   * @param {String} Tag.1.key - tagKey1. optional.
-   * @param {String} Tag.2.key - tagKey2. optional.
-   * @param {String} Tag.3.key - tagKey3. optional.
-   * @param {String} Tag.4.key - tagKey4. optional.
-   * @param {String} Tag.5.key - tagKey5. optional.
-   * @param {String} Tag.1.value - tagValue1. optional.
-   * @param {String} Tag.2.value - tagValue2. optional.
-   * @param {String} Tag.3.value - tagValue3. optional.
-   * @param {String} Tag.4.value - tagValue4. optional.
-   * @param {String} Tag.5.value - tagValue5. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {Tag} Tag - undefined. optional.
    */
   addTagsToResource(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -67,6 +58,36 @@ class Client extends RPCClient {
     }
 
     return this.request('AddTagsToResource', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} RetainClassic - retainClassic. optional. default: False.
+   * @param {String} ClassicExpiredDays - classicExpiredDays. optional.
+   * @param {String} InstanceNetworkType - instanceNetworkType. optional.
+   */
+  allocateClassicNetworkType(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('AllocateClassicNetworkType', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   */
+  allocateCloudInstanceIp(params = {}, options = {}) {
+    return this.request('AllocateCloudInstanceIp', params, options);
   }
 
   /**
@@ -131,10 +152,47 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} TargetRegionId - targetRegionId. required.
+   * @param {String} TargetZoneId - targetZoneId. required.
+   * @param {String} TargetVpcId - targetVpcId. required.
+   * @param {String} TargetVSwitchId - targetVSwitchId. required.
+   */
+  allocateInstanceVpcNetworkType(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TargetRegionId')) {
+      throw new TypeError('parameter "TargetRegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TargetZoneId')) {
+      throw new TypeError('parameter "TargetZoneId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TargetVpcId')) {
+      throw new TypeError('parameter "TargetVpcId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TargetVSwitchId')) {
+      throw new TypeError('parameter "TargetVSwitchId" is required');
+    }
+
+    return this.request('AllocateInstanceVpcNetworkType', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
    * @param {String} ConnectionStringPrefix - connectionString. optional.
    * @param {String} Port - port. optional.
    * @param {String} MaxDelayTime - maxDelayTime. optional.
-   * @param {String} IPType - dbInstanceNetType. optional. default: 0.
+   * @param {String} NetType - dbInstanceNetType. optional. default: 0.
    * @param {String} DistributionType - distributionType. optional. default: 0.
    * @param {String} Weight - weight. optional.
    */
@@ -269,6 +327,41 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   */
+  checkCloudResourceAuthorized(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('CheckCloudResourceAuthorized', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   */
+  checkDBInstances(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('CheckDBInstances', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
@@ -288,6 +381,38 @@ class Client extends RPCClient {
     }
 
     return this.request('CheckDBNameAvailable', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   */
+  checkInstanceExist(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('CheckInstanceExist', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   */
+  checkInstanceExsit(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('CheckInstanceExsit', params, options);
   }
 
   /**
@@ -351,15 +476,37 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   */
+  checkSqlLogHistoryEnable(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('CheckSqlLogHistoryEnable', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} ClientToken - token. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} ZoneId - zoneId. optional.
    * @param {String} DBInstanceClass - dbInstanceClass. optional.
    * @param {Integer} DBInstanceStorage - dbInstanceStorage. optional.
    * @param {String} DBInstanceDescription - dbInstanceDescription. optional.
+   * @param {String} DbNames - dbNames. optional.
    * @param {String} PayType - payType. required.
    * @param {String} InstanceNetworkType - instanceNetworkType. optional.
    * @param {String} DBInstanceId - sourceDBInstanceName. optional.
@@ -413,6 +560,32 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} TargetRegionId - targetRegionId. required.
+   * @param {String} ParameterGroupId - parameterGroupId. required.
+   */
+  cloneParameterGroup(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TargetRegionId')) {
+      throw new TypeError('parameter "TargetRegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ParameterGroupId')) {
+      throw new TypeError('parameter "ParameterGroupId" is required');
+    }
+
+    return this.request('CloneParameterGroup', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
    * @param {String} RegionId - regionId. required.
    * @param {String} ZoneId - zoneId. required.
@@ -447,6 +620,39 @@ class Client extends RPCClient {
    */
   copyDatabase(params = {}, options = {}) {
     return this.request('CopyDatabase', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} ClientToken - token. optional.
+   * @param {String} PayType - payType. optional. default: Postpaid.
+   * @param {String} DBInstanceId - sourceDBInstanceName. required.
+   * @param {String} TargetDBInstanceId - targetDBInstanceName. required.
+   * @param {String} DbNames - backupDbNames. required.
+   * @param {String} BackupId - backupSetId. optional.
+   * @param {String} RestoreTime - restoreTime. optional.
+   * @param {String} SyncUserPrivilege - syncUserPrivilege. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} ResourceGroupId - resourceGroupId. optional.
+   */
+  copyDatabaseBetweenInstances(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TargetDBInstanceId')) {
+      throw new TypeError('parameter "TargetDBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DbNames')) {
+      throw new TypeError('parameter "DbNames" is required');
+    }
+
+    return this.request('CopyDatabaseBetweenInstances', params, options);
   }
 
   /**
@@ -491,6 +697,7 @@ class Client extends RPCClient {
    * @param {String} AccountPrivilege - accountPrivilege. optional.
    * @param {String} AccountDescription - accountDescription. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} AccountType - accountType. optional.
    */
   createAccountForInner(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DBInstanceId')) {
@@ -509,6 +716,26 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceName. required.
+   * @param {String} AccountName - accountName. required.
+   * @param {String} AccountPassword - accountPassword. optional.
+   * @param {String} AccountDescription - accountDescription. optional.
+   * @param {String} AccountType - adminType. optional.
+   */
+  createAdminAccount(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'AccountName')) {
+      throw new TypeError('parameter "AccountName" is required');
+    }
+
+    return this.request('CreateAdminAccount', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
@@ -516,6 +743,7 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
    * @param {String} DBName - dbName. optional.
+   * @param {String} BackupStrategy - backupStrategy. optional.
    * @param {String} BackupMethod - backupMethod. optional.
    * @param {String} BackupType - backupType. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
@@ -873,6 +1101,71 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} TriggerId - triggerId. required.
+   * @param {String} TriggerArn - triggerArn. required.
+   * @param {String} FunctionArn - functionArn. required.
+   * @param {String} SourceArn - sourceArn. required.
+   * @param {String} InvocationRoleArn - invocationRoleArn. required.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {RepeatList} SubscriptionObjects - subscriptionObjects. optional.
+   * @param {String} EventFormat - eventFormat. required.
+   * @param {Integer} Concurrency - concurrency. required.
+   * @param {Integer} Retry - retry. required.
+   * @param {String} Region - region. required.
+   */
+  createFCTrigger(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'TriggerId')) {
+      throw new TypeError('parameter "TriggerId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TriggerArn')) {
+      throw new TypeError('parameter "TriggerArn" is required');
+    }
+
+    if (!hasOwnProperty(params, 'FunctionArn')) {
+      throw new TypeError('parameter "FunctionArn" is required');
+    }
+
+    if (!hasOwnProperty(params, 'SourceArn')) {
+      throw new TypeError('parameter "SourceArn" is required');
+    }
+
+    if (!hasOwnProperty(params, 'InvocationRoleArn')) {
+      throw new TypeError('parameter "InvocationRoleArn" is required');
+    }
+
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EventFormat')) {
+      throw new TypeError('parameter "EventFormat" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Concurrency')) {
+      throw new TypeError('parameter "Concurrency" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Retry')) {
+      throw new TypeError('parameter "Retry" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Region')) {
+      throw new TypeError('parameter "Region" is required');
+    }
+
+    return this.request('CreateFCTrigger', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
@@ -882,8 +1175,10 @@ class Client extends RPCClient {
    * @param {String} DBName - dbName. required.
    * @param {String} BackupMode - taskType. required.
    * @param {String} IsOnlineDB - isOnlineDB. required.
+   * @param {String} CheckDBMode - checkDbMode. optional. default: 0.
    * @param {String} OssObjectPositions - OssObjectPositions. optional.
    * @param {String} OSSUrls - ossUrls. optional.
+   * @param {String} MigrateTaskId - migrateTaskId. optional.
    */
   createMigrateTask(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DBInstanceId')) {
@@ -982,6 +1277,75 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} ClientToken - token. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} DBName - dbName. required.
+   * @param {String} MigrateTaskId - migrateTaskId. required.
+   * @param {String} CheckDBMode - dbCheckModel. required.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   */
+  createOnlineDatabaseTask(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DBName')) {
+      throw new TypeError('parameter "DBName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'MigrateTaskId')) {
+      throw new TypeError('parameter "MigrateTaskId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'CheckDBMode')) {
+      throw new TypeError('parameter "CheckDBMode" is required');
+    }
+
+    return this.request('CreateOnlineDatabaseTask', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} LcuQuota - lcuQuota. required.
+   * @param {String} StorageQuota - storageQuota. required.
+   * @param {String} SpecQuota - specQuota. required.
+   * @param {String} SearchType - searchType. required.
+   */
+  createOpenSearchDBInstance(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'LcuQuota')) {
+      throw new TypeError('parameter "LcuQuota" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StorageQuota')) {
+      throw new TypeError('parameter "StorageQuota" is required');
+    }
+
+    if (!hasOwnProperty(params, 'SpecQuota')) {
+      throw new TypeError('parameter "SpecQuota" is required');
+    }
+
+    if (!hasOwnProperty(params, 'SearchType')) {
+      throw new TypeError('parameter "SearchType" is required');
+    }
+
+    return this.request('CreateOpenSearchDBInstance', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - appKey. optional.
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {Long} OwnerId - ownerId. optional.
@@ -1022,7 +1386,11 @@ class Client extends RPCClient {
    * @param {String} RestoreTime - restoreTime. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} DBInstanceStorageType - dbInstanceStorageType. optional.
+   * @param {String} NodeType - nodeType. optional.
    * @param {String} ResourceGroupId - resourceGroupId. optional.
+   * @param {String} Category - categroy. optional.
+   * @param {String} ZoneIdSlave1 - zoneIdSlave1. optional.
+   * @param {String} ZoneIdSlave2 - zoneIdSlave2. optional.
    */
   createOrder(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'CommodityCode')) {
@@ -1092,10 +1460,14 @@ class Client extends RPCClient {
    * @param {String} BusinessInfo - businessInfo. optional.
    * @param {String} CloneInstanceDefaultValue - cloneInstance. optional. default: true.
    * @param {String} DBInstanceDescription - dbInstanceDescription. optional.
+   * @param {String} DBNames - dbNames. optional.
    * @param {String} BackupId - backupSetId. optional.
    * @param {String} RestoreTime - restoreTime. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} ResourceGroupId - resourceGroupId. optional.
+   * @param {String} TableMeta - tableMeta. optional.
+   * @param {String} RestoreTable - restoreTable. optional.
+   * @param {String} NodeType - nodeType. optional.
    */
   createOrderForClone(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'CommodityCode')) {
@@ -1172,6 +1544,7 @@ class Client extends RPCClient {
    * @param {String} UsedTime - usedTime. optional.
    * @param {String} TimeType - timeType. optional.
    * @param {String} PayType - payType. optional.
+   * @param {String} EffectiveTime - effectiveTime. optional.
    * @param {Integer} DBInstanceStorage - dbInstanceStorage. required.
    * @param {String} Resource - resource. optional.
    * @param {Boolean} AutoPay - autoPay. optional.
@@ -1214,7 +1587,13 @@ class Client extends RPCClient {
    * @param {String} Resource - resource. optional.
    * @param {Boolean} AutoPay - autoPay. optional.
    * @param {String} PromotionCode - promotionCode. optional.
+   * @param {String} EngineVersion - engineVersion. optional.
+   * @param {String} InstanceNetworkType - instanceNetworkType. optional.
+   * @param {String} DBInstanceStorageType - dbInstanceStorageType. optional.
+   * @param {String} NodeType - nodeType. optional.
    * @param {String} BusinessInfo - businessInfo. optional.
+   * @param {String} VpcId - vpcId. optional.
+   * @param {String} VSwitchId - vswitchId. optional.
    */
   createOrderForModify(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'CommodityCode')) {
@@ -1230,6 +1609,47 @@ class Client extends RPCClient {
     }
 
     return this.request('CreateOrderForModify', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} ClientToken - token. optional.
+   * @param {String} CommodityCode - commodity. required.
+   * @param {String} DBInstanceId - dbInstanceId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} ZoneId - zoneId. optional.
+   * @param {String} DBInstanceClass - dbInstanceClass. optional.
+   * @param {String} PayType - payType. optional.
+   * @param {String} InstanceNetworkType - instanceNetworkType. optional.
+   * @param {String} UsedTime - usedTime. optional.
+   * @param {String} TimeType - timeType. optional.
+   * @param {Boolean} AutoPay - autoPay. optional.
+   * @param {String} Resource - resource. optional. default: buy.
+   * @param {String} VPCId - vpcId. optional.
+   * @param {String} VSwitchId - vswitchId. optional.
+   * @param {String} AutoRenew - autoRenew. optional.
+   * @param {String} AgentId - agentId. optional.
+   * @param {String} PromotionCode - promotionCode. optional.
+   * @param {String} BusinessInfo - businessInfo. optional.
+   * @param {String} DBInstanceDescription - dbInstanceDescription. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} ResourceGroupId - resourceGroupId. optional.
+   * @param {Boolean} RebuildInstanceFlag - rebuildInstance. optional. default: true.
+   */
+  createOrderForRebuild(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'CommodityCode')) {
+      throw new TypeError('parameter "CommodityCode" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    return this.request('CreateOrderForRebuild', params, options);
   }
 
   /**
@@ -1275,6 +1695,43 @@ class Client extends RPCClient {
     }
 
     return this.request('CreateOrderForTempUpgrade', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} ParameterGroupName - parameterGroupName. required.
+   * @param {String} Engine - engine. required.
+   * @param {String} EngineVersion - engineVersion. required.
+   * @param {String} Parameters - parameters. required.
+   * @param {String} ParameterGroupDesc - parameterGroupDesc. optional.
+   */
+  createParameterGroup(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ParameterGroupName')) {
+      throw new TypeError('parameter "ParameterGroupName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Engine')) {
+      throw new TypeError('parameter "Engine" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EngineVersion')) {
+      throw new TypeError('parameter "EngineVersion" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Parameters')) {
+      throw new TypeError('parameter "Parameters" is required');
+    }
+
+    return this.request('CreateParameterGroup', params, options);
   }
 
   /**
@@ -1428,6 +1885,8 @@ class Client extends RPCClient {
    * @param {String} PrivateIpAddress - cloudInstanceIp. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} ResourceGroupId - resourceGroupId. optional.
+   * @param {String} Category - category. optional.
+   * @param {String} DBInstanceStorageType - dbInstanceStorageType. optional.
    */
   createReadOnlyDBInstance(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -1554,6 +2013,25 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   */
+  decribeSqlLogDumpStatus(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('DecribeSqlLogDumpStatus', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
@@ -1623,6 +2101,17 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   */
+  deleteCloudInstanceIp(params = {}, options = {}) {
+    return this.request('DeleteCloudInstanceIp', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} ClientToken - token. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
    * @param {String} OwnerAccount - ownerAccount. optional.
@@ -1682,6 +2171,62 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} TriggerId - triggerId. required.
+   */
+  deleteFCTrigger(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'TriggerId')) {
+      throw new TypeError('parameter "TriggerId" is required');
+    }
+
+    return this.request('DeleteFCTrigger', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   */
+  deleteOpenSearchDBInstance(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('DeleteOpenSearchDBInstance', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} ParameterGroupId - parameterGroupId. required.
+   */
+  deleteParameterGroup(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ParameterGroupId')) {
+      throw new TypeError('parameter "ParameterGroupId" is required');
+    }
+
+    return this.request('DeleteParameterGroup', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
@@ -1729,17 +2274,8 @@ class Client extends RPCClient {
    * @param {Integer} PageSize - pageSize. optional. default: 30.
    * @param {Integer} PageNumber - page. optional. default: 1.
    * @param {String} Tags - tags. optional.
-   * @param {String} Tag.1.key - tagKey1. optional.
-   * @param {String} Tag.2.key - tagKey2. optional.
-   * @param {String} Tag.3.key - tagKey3. optional.
-   * @param {String} Tag.4.key - tagKey4. optional.
-   * @param {String} Tag.5.key - tagKey5. optional.
-   * @param {String} Tag.1.value - tagValue1. optional.
-   * @param {String} Tag.2.value - tagValue2. optional.
-   * @param {String} Tag.3.value - tagValue3. optional.
-   * @param {String} Tag.4.value - tagValue4. optional.
-   * @param {String} Tag.5.value - tagValue5. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {Tag} Tag - undefined. optional.
    */
   describeAbnormalDBInstances(params = {}, options = {}) {
     return this.request('DescribeAbnormalDBInstances', params, options);
@@ -1766,12 +2302,173 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} Region - region. required.
+   * @param {String} TaskType - taskType. required.
+   * @param {Integer} IsHistory - isHistory. optional.
+   * @param {Integer} PageSize - maxRecordsPerPage. optional. default: 30.
+   * @param {Integer} PageNumber - pageNumber. optional. default: 1.
+   */
+  describeActiveOperationTask(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Region')) {
+      throw new TypeError('parameter "Region" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TaskType')) {
+      throw new TypeError('parameter "TaskType" is required');
+    }
+
+    return this.request('DescribeActiveOperationTask', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   */
+  describeActiveOperationTaskCount(params = {}, options = {}) {
+    return this.request('DescribeActiveOperationTaskCount', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} TaskType - taskType. required.
+   * @param {Integer} IsHistory - isHistory. optional.
+   */
+  describeActiveOperationTaskRegion(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'TaskType')) {
+      throw new TypeError('parameter "TaskType" is required');
+    }
+
+    return this.request('DescribeActiveOperationTaskRegion', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Integer} IsHistory - isHistory. optional.
+   */
+  describeActiveOperationTaskType(params = {}, options = {}) {
+    return this.request('DescribeActiveOperationTaskType', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} ArchiveJobID - archiveJobID. required.
+   * @param {String} OssTableName - ossTableName. required.
+   */
+  describeArchiveSQLLogFromKepler(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ArchiveJobID')) {
+      throw new TypeError('parameter "ArchiveJobID" is required');
+    }
+
+    if (!hasOwnProperty(params, 'OssTableName')) {
+      throw new TypeError('parameter "OssTableName" is required');
+    }
+
+    return this.request('DescribeArchiveSQLLogFromKepler', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} ZoneId - zoneId. optional.
+   * @param {String} InstanceChargeType - chargeType. optional.
+   * @param {String} Engine - engine. optional.
+   * @param {String} EngineVersion - version. optional.
+   * @param {String} DBInstanceId - dbInstanceId. optional.
+   * @param {String} OrderType - orderType. optional. default: BUY.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   */
+  describeAvailableInstanceClass(params = {}, options = {}) {
+    return this.request('DescribeAvailableInstanceClass', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} ZoneId - zoneId. optional.
+   * @param {String} InstanceChargeType - chargeType. optional.
+   * @param {String} Engine - engine. optional.
+   * @param {String} EngineVersion - version. optional.
+   * @param {String} DBInstanceId - dbInstanceId. optional.
+   * @param {String} OrderType - orderType. optional. default: BUY.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   */
+  describeAvailableResource(params = {}, options = {}) {
+    return this.request('DescribeAvailableResource', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} BackupId - backupId. optional.
+   */
+  describeBackupDatabase(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('DescribeBackupDatabase', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} BackupPolicyMode - backupPolicyMode. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    */
   describeBackupPolicy(params = {}, options = {}) {
@@ -1850,8 +2547,8 @@ class Client extends RPCClient {
    * @param {String} BackupLocation - backupsetLocation. optional. default: OSS.
    * @param {String} BackupStatus - backupSetStatus. optional.
    * @param {String} BackupMode - jobMode. optional.
-   * @param {String} StartTime - startTime. required.
-   * @param {String} EndTime - endTime. required.
+   * @param {String} StartTime - startTime. optional.
+   * @param {String} EndTime - endTime. optional.
    * @param {Integer} PageSize - maxRecordsPerPage. optional. default: 30.
    * @param {Integer} PageNumber - pageNumbers. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
@@ -1859,14 +2556,6 @@ class Client extends RPCClient {
   describeBackups(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DBInstanceId')) {
       throw new TypeError('parameter "DBInstanceId" is required');
-    }
-
-    if (!hasOwnProperty(params, 'StartTime')) {
-      throw new TypeError('parameter "StartTime" is required');
-    }
-
-    if (!hasOwnProperty(params, 'EndTime')) {
-      throw new TypeError('parameter "EndTime" is required');
     }
 
     return this.request('DescribeBackups', params, options);
@@ -1959,6 +2648,68 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} ServiceRequestType - serviceRequestType. required.
+   * @param {String} ServiceRequestParam - serviceRequestParam. required.
+   */
+  describeCloudDBAService(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ServiceRequestType')) {
+      throw new TypeError('parameter "ServiceRequestType" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ServiceRequestParam')) {
+      throw new TypeError('parameter "ServiceRequestParam" is required');
+    }
+
+    return this.request('DescribeCloudDBAService', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} ServiceRequestType - serviceRequestType. required.
+   * @param {String} ServiceRequestParam - serviceRequestParam. required.
+   */
+  describeCloudDbExpertService(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ServiceRequestType')) {
+      throw new TypeError('parameter "ServiceRequestType" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ServiceRequestParam')) {
+      throw new TypeError('parameter "ServiceRequestParam" is required');
+    }
+
+    return this.request('DescribeCloudDbExpertService', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   */
+  describeCollationTimeZones(params = {}, options = {}) {
+    return this.request('DescribeCollationTimeZones', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
@@ -2000,6 +2751,7 @@ class Client extends RPCClient {
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} Expired - expired. optional. default: False.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} ResourceGroupId - resourceGroupId. optional.
    */
@@ -2051,6 +2803,25 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   */
+  describeDBInstanceEncryptionKey(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('DescribeDBInstanceEncryptionKey', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
@@ -2098,6 +2869,21 @@ class Client extends RPCClient {
     }
 
     return this.request('DescribeDBInstanceIPArrayList', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} ClientToken - token. optional.
+   * @param {String} DBInstanceId - dbInstanceId. optional.
+   * @param {String} AddressIP - addressIP. optional.
+   * @param {String} AddressPort - addressPort. optional.
+   */
+  describeDBInstanceInfo(params = {}, options = {}) {
+    return this.request('DescribeDBInstanceInfo', params, options);
   }
 
   /**
@@ -2251,6 +3037,22 @@ class Client extends RPCClient {
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
+   */
+  describeDBInstanceProxyConfiguration(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('DescribeDBInstanceProxyConfiguration', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
    * @param {String} OwnerAccount - ownerAccount. optional.
    */
   describeDBInstanceSSL(params = {}, options = {}) {
@@ -2325,7 +3127,10 @@ class Client extends RPCClient {
    * @param {String} ClientToken - token. optional.
    * @param {String} proxyId - proxyId. optional.
    * @param {String} Engine - dbType. optional.
+   * @param {String} ZoneId - zoneId. optional.
+   * @param {String} ResourceGroupId - resourceGroupId. optional.
    * @param {String} DBInstanceStatus - dbInstanceStatusDesc. optional.
+   * @param {String} Expired - expired. optional. default: False.
    * @param {String} SearchKey - description. optional.
    * @param {String} DBInstanceId - dbInstanceId. optional.
    * @param {String} DBInstanceType - instanceUsedType. optional.
@@ -2335,19 +3140,13 @@ class Client extends RPCClient {
    * @param {String} InstanceNetworkType - instanceNetworkType. optional.
    * @param {String} VpcId - vpcId. optional.
    * @param {String} VSwitchId - vswitchId. optional.
+   * @param {String} DBInstanceClass - dbInstanceClass. optional.
+   * @param {String} EngineVersion - engineVersion. optional.
+   * @param {String} PayType - chargeType. optional.
    * @param {String} ConnectionMode - connectionMode. optional.
-   * @param {String} Tag.1.key - tagKey1. optional.
-   * @param {String} Tag.2.key - tagKey2. optional.
-   * @param {String} Tag.3.key - tagKey3. optional.
-   * @param {String} Tag.4.key - tagKey4. optional.
-   * @param {String} Tag.5.key - tagKey5. optional.
-   * @param {String} Tag.1.value - tagValue1. optional.
-   * @param {String} Tag.2.value - tagValue2. optional.
-   * @param {String} Tag.3.value - tagValue3. optional.
-   * @param {String} Tag.4.value - tagValue4. optional.
-   * @param {String} Tag.5.value - tagValue5. optional.
    * @param {String} Tags - tags. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {Tag} Tag - undefined. optional.
    */
   describeDBInstances(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -2407,20 +3206,28 @@ class Client extends RPCClient {
    * @param {String} SortMethod - sortMethod. optional. default: ASC.
    * @param {String} SortKey - sortKey. optional. default: CPUUsage.
    * @param {String} Tags - tags. optional.
-   * @param {String} Tag.1.key - tagKey1. optional.
-   * @param {String} Tag.2.key - tagKey2. optional.
-   * @param {String} Tag.3.key - tagKey3. optional.
-   * @param {String} Tag.4.key - tagKey4. optional.
-   * @param {String} Tag.5.key - tagKey5. optional.
-   * @param {String} Tag.1.value - tagValue1. optional.
-   * @param {String} Tag.2.value - tagValue2. optional.
-   * @param {String} Tag.3.value - tagValue3. optional.
-   * @param {String} Tag.4.value - tagValue4. optional.
-   * @param {String} Tag.5.value - tagValue5. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {Tag} Tag - undefined. optional.
    */
   describeDBInstancesByPerformance(params = {}, options = {}) {
     return this.request('DescribeDBInstancesByPerformance', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} EncryptionKey - encryptionKey. optional.
+   * @param {String} RoleArn - roleARN. optional.
+   * @param {Integer} PageSize - pageSize. optional. default: 30.
+   * @param {Integer} PageNumber - page. optional. default: 1.
+   */
+  describeDBInstancesWithCloudResource(params = {}, options = {}) {
+    return this.request('DescribeDBInstancesWithCloudResource', params, options);
   }
 
   /**
@@ -2546,6 +3353,37 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} ReplicaId - replicaId. required.
+   * @param {String} StartTime - startTime. required.
+   * @param {String} EndTime - endTime. required.
+   * @param {Integer} PageNumber - pageNumber. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   */
+  describeDynamicVerificationList(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ReplicaId')) {
+      throw new TypeError('parameter "ReplicaId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    return this.request('DescribeDynamicVerificationList', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
@@ -2572,6 +3410,21 @@ class Client extends RPCClient {
     }
 
     return this.request('DescribeErrorLogs', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} TriggerId - triggerId. optional.
+   */
+  describeFCTrigger(params = {}, options = {}) {
+    return this.request('DescribeFCTrigger', params, options);
   }
 
   /**
@@ -2679,9 +3532,106 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} Key - key. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   */
+  describeInstanceKeywords(params = {}, options = {}) {
+    return this.request('DescribeInstanceKeywords', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   */
+  describeInstanceLevelList(params = {}, options = {}) {
+    return this.request('DescribeInstanceLevelList', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} ClientToken - token. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DBInstanceId - dbInstanceName. required.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} VpcId - vpcId. optional.
+   */
+  describeInstanceVpcMigrateInfo(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('DescribeInstanceVpcMigrateInfo', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} StartTime - startTime. required.
+   * @param {String} EndTime - endTime. required.
+   * @param {Integer} PageSize - maxRecordsPerPage. optional. default: 30.
+   * @param {Integer} PageNumber - pageNumbers. optional. default: 1.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   */
+  describeLogBackupFiles(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    return this.request('DescribeLogBackupFiles', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    */
   describeLogicDBInstanceTopology(params = {}, options = {}) {
     return this.request('DescribeLogicDBInstanceTopology', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} ClientToken - token. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} RestoreType - restoreType. optional. default: 0.
+   * @param {String} BackupSetID - backupSetID. optional.
+   * @param {String} RestoreTime - restoreTime. optional.
+   * @param {String} GetDbName - dbName. optional.
+   * @param {String} Pattern - pattern. optional.
+   * @param {String} PageSize - pageSize. optional.
+   * @param {String} PageIndex - pageIndex. optional.
+   */
+  describeMetaList(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('DescribeMetaList', params, options);
   }
 
   /**
@@ -2767,6 +3717,22 @@ class Client extends RPCClient {
     }
 
     return this.request('DescribeModifyParameterLog', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   */
+  describeOpenSearchDBInstance(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('DescribeOpenSearchDBInstance', params, options);
   }
 
   /**
@@ -2975,10 +3941,48 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} ParameterGroupId - parameterGroupId. required.
+   * @param {String} RegionId - regionId. required.
+   */
+  describeParameterGroup(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ParameterGroupId')) {
+      throw new TypeError('parameter "ParameterGroupId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    return this.request('DescribeParameterGroup', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} RegionId - regionId. required.
+   */
+  describeParameterGroups(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    return this.request('DescribeParameterGroups', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} ClientToken - token. optional.
    * @param {String} Engine - engine. required.
    * @param {String} EngineVersion - engineVersion. required.
    * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} Category - category. optional.
    */
   describeParameterTemplates(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'Engine')) {
@@ -3081,6 +4085,80 @@ class Client extends RPCClient {
     }
 
     return this.request('DescribePrice', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   */
+  describeProxyFunctionSupport(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('DescribeProxyFunctionSupport', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} VpcId - vpcId. optional.
+   * @param {String} ZoneId - zoneId. optional.
+   */
+  describeRdsVSwitchs(params = {}, options = {}) {
+    return this.request('DescribeRdsVSwitchs', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} ZoneId - zoneId. optional.
+   */
+  describeRdsVpcs(params = {}, options = {}) {
+    return this.request('DescribeRdsVpcs', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceName. required.
+   * @param {String} ReadInstanceId - readInstanceName. required.
+   */
+  describeReadDBInstanceDelay(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ReadInstanceId')) {
+      throw new TypeError('parameter "ReadInstanceId" is required');
+    }
+
+    return this.request('DescribeReadDBInstanceDelay', params, options);
   }
 
   /**
@@ -3247,6 +4325,7 @@ class Client extends RPCClient {
    * @param {String} AccessKeyId - appKey. optional.
    * @param {String} ReplicaId - replicaId. required.
    * @param {String} SourceDBInstanceId - sourceDBInstanceId. required.
+   * @param {String} DestinationDBInstanceId - destinationDBInstanceId. optional.
    * @param {String} Key - key. required.
    * @param {String} StartTime - startTime. required.
    * @param {String} EndTime - endTime. required.
@@ -3286,6 +4365,7 @@ class Client extends RPCClient {
    * @param {String} AccessKeyId - appKey. optional.
    * @param {String} ReplicaId - replicaId. required.
    * @param {String} SourceDBInstanceId - sourceDBInstanceId. required.
+   * @param {String} DestinationDBInstanceId - destinationDBInstanceId. optional.
    */
   describeReplicaUsage(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ReplicaId')) {
@@ -3309,6 +4389,7 @@ class Client extends RPCClient {
    * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {String} ReplicaId - replicaId. optional.
+   * @param {Boolean} AttachDbInstanceData - attachDbInstanceData. optional.
    * @param {Integer} PageSize - pageSize. optional.
    * @param {Integer} PageNumber - pageNumber. optional.
    */
@@ -3372,6 +4453,44 @@ class Client extends RPCClient {
     }
 
     return this.request('DescribeSQLCollectorPolicy', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   */
+  describeSQLCollectorRetention(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('DescribeSQLCollectorRetention', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   */
+  describeSQLCollectorVersion(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('DescribeSQLCollectorVersion', params, options);
   }
 
   /**
@@ -3488,6 +4607,62 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} StartTime - StartTime. required.
+   * @param {String} EndTime - endTime. required.
+   * @param {Integer} MaxRecordsPerPage - maxRecordsPerPage. required.
+   * @param {Integer} PageNumbers - pageNumbers. required.
+   * @param {String} QueryKeyword - queryKeyword. optional.
+   * @param {String} HostAddress - hostAddress. optional.
+   * @param {String} DBName - dbName. optional.
+   * @param {String} TableName - tableName. optional.
+   * @param {String} SortKey - sortKey. optional.
+   * @param {String} SortMethod - sortMethod. optional.
+   * @param {Long} MinConsume - minConsume. optional.
+   * @param {Long} MaxConsume - maxConsume. optional.
+   * @param {Long} MinScanRows - minScanRows. optional.
+   * @param {Long} MaxScanRows - maxScanRows. optional.
+   * @param {String} State - state. optional.
+   * @param {String} SqlType - sqlType. optional.
+   * @param {String} AccountName - accountName. optional.
+   * @param {String} ThreadID - threadID. optional.
+   * @param {String} PagingID - pagingID. optional.
+   * @param {String} LogicalOperator - logicalOperator. optional.
+   * @param {String} JobId - jobId. optional.
+   */
+  describeSQLLogRecordsList(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'MaxRecordsPerPage')) {
+      throw new TypeError('parameter "MaxRecordsPerPage" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageNumbers')) {
+      throw new TypeError('parameter "PageNumbers" is required');
+    }
+
+    return this.request('DescribeSQLLogRecordsList', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
@@ -3580,6 +4755,20 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} ClientToken - token. optional.
+   * @param {String} DBInstanceId - dbInstanceId. optional.
+   * @param {String} EngineVersion - engineVersion. optional.
+   */
+  describeSQLServerUpgradeVersions(params = {}, options = {}) {
+    return this.request('DescribeSQLServerUpgradeVersions', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
    */
   describeSecurityGroupConfiguration(params = {}, options = {}) {
@@ -3591,13 +4780,35 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} ServiceRequestType - serviceRequestType. required.
+   * @param {String} ServiceRequestParam - serviceRequestParam. required.
+   */
+  describeServiceOfCloudDBA(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ServiceRequestType')) {
+      throw new TypeError('parameter "ServiceRequestType" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ServiceRequestParam')) {
+      throw new TypeError('parameter "ServiceRequestParam" is required');
+    }
+
+    return this.request('DescribeServiceOfCloudDBA', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
-   * @param {Long} SQLId - sqlId. optional.
+   * @param {String} SQLHASH - sqlhash. optional.
    * @param {String} StartTime - startTime. required.
    * @param {String} EndTime - endTime. required.
    * @param {String} DBName - dbName. optional.
@@ -3653,6 +4864,186 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   */
+  describeSqlLogDetailArchiveStatus(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('DescribeSqlLogDetailArchiveStatus', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   */
+  describeSqlLogDumpStatus(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('DescribeSqlLogDumpStatus', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} StartTime - startTime. required.
+   * @param {String} EndTime - endTime. required.
+   * @param {Integer} MaxRecordsPerPage - maxRecordsPerPage. required.
+   * @param {Integer} PageNumbers - pageNumbers. required.
+   * @param {Float} MinAvgConsume - minAvgConsume. optional.
+   * @param {Float} MaxAvgConsume - maxAvgConsume. optional.
+   * @param {Float} MinAvgScanRows - minAvgScanRows. optional.
+   * @param {Float} MaxAvgScanRows - maxAvgScanRows. optional.
+   * @param {String} PagingId - pagingId. optional.
+   * @param {String} SortKey - sortKey. optional.
+   * @param {String} SortMethod - sortMethod. optional.
+   * @param {String} SqlType - sqlType. optional.
+   * @param {String} JobId - jobId. optional.
+   */
+  describeSqlLogTemplatesList(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'MaxRecordsPerPage')) {
+      throw new TypeError('parameter "MaxRecordsPerPage" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageNumbers')) {
+      throw new TypeError('parameter "PageNumbers" is required');
+    }
+
+    return this.request('DescribeSqlLogTemplatesList', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} StartTime - startTime. required.
+   * @param {String} EndTime - endTime. required.
+   * @param {String} TimeLevel - timeLevel. optional.
+   * @param {String} TemplateHash - templateHash. optional.
+   * @param {String} SortKey - sortKey. optional.
+   * @param {String} JobId - jobId. optional.
+   */
+  describeSqlLogTemplatesTimeDistribution(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    return this.request('DescribeSqlLogTemplatesTimeDistribution', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} StartTime - startTime. required.
+   * @param {String} EndTime - endTime. required.
+   * @param {String} TimeLevel - timeLevel. optional.
+   * @param {String} JobId - jobId. optional.
+   */
+  describeSqlLogTimeDistribution(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    return this.request('DescribeSqlLogTimeDistribution', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} StartTime - startTime. required.
+   * @param {String} EndTime - endTime. required.
+   * @param {String} JobId - jobId. optional.
+   */
+  describeSqlTemplatesConsumeAndScanRows(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    return this.request('DescribeSqlTemplatesConsumeAndScanRows', params, options);
+  }
+
+  /**
    * @param {String} SecurityToken - stsSecurityToken. optional.
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {Long} OwnerId - ownerId. optional.
@@ -3698,6 +5089,38 @@ class Client extends RPCClient {
     }
 
     return this.request('DescribeStrategy', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceName - dbInstanceName. required.
+   */
+  describeSyncAccountForInner(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceName')) {
+      throw new TypeError('parameter "DBInstanceName" is required');
+    }
+
+    return this.request('DescribeSyncAccountForInner', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   */
+  describeSyncAccounts(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('DescribeSyncAccounts', params, options);
   }
 
   /**
@@ -3768,6 +5191,185 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} StartTime - startTime. required.
+   * @param {String} EndTime - endTime. required.
+   * @param {Integer} MaxRecordsPerPage - maxRecordsPerPage. required.
+   * @param {Integer} PageNumbers - pageNumbers. required.
+   * @param {String} PagingId - pagingId. optional.
+   * @param {Long} TemplateHash - templateHash. required.
+   * @param {String} SortKey - sortKey. optional.
+   * @param {String} SortMethod - sortMethod. optional.
+   * @param {String} JobId - jobId. optional.
+   */
+  describeTemplateSqlDetail(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'MaxRecordsPerPage')) {
+      throw new TypeError('parameter "MaxRecordsPerPage" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageNumbers')) {
+      throw new TypeError('parameter "PageNumbers" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TemplateHash')) {
+      throw new TypeError('parameter "TemplateHash" is required');
+    }
+
+    return this.request('DescribeTemplateSqlDetail', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} StartTime - startTime. required.
+   * @param {String} EndTime - endTime. required.
+   */
+  describeTemplatesConsumeAndScanRows(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    return this.request('DescribeTemplatesConsumeAndScanRows', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} StartTime - startTime. required.
+   * @param {String} EndTime - endTime. required.
+   * @param {Integer} MaxRecordsPerPage - maxRecordsPerPage. required.
+   * @param {Integer} PageNumbers - pageNumbers. required.
+   * @param {Integer} MinAvgConsume - minAvgConsume. optional.
+   * @param {Integer} MaxAvgConsume - maxAvgConsume. optional.
+   * @param {Integer} MinAvgScanRows - minAvgScanRows. optional.
+   * @param {Integer} MaxAvgScanRows - maxAvgScanRows. optional.
+   * @param {String} PagingId - pagingId. optional.
+   * @param {String} SortKey - sortKey. optional.
+   * @param {String} SortMethod - sortMethod. optional.
+   * @param {String} SqType - sqType. optional.
+   */
+  describeTemplatesList(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'MaxRecordsPerPage')) {
+      throw new TypeError('parameter "MaxRecordsPerPage" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageNumbers')) {
+      throw new TypeError('parameter "PageNumbers" is required');
+    }
+
+    return this.request('DescribeTemplatesList', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} StartTime - startTime. required.
+   * @param {String} EndTime - endTime. required.
+   * @param {String} MinConsume - minConsume. optional.
+   * @param {String} MaxConsume - maxConsume. optional.
+   * @param {String} MinScanRows - minScanRows. optional.
+   * @param {String} MaxScanRows - maxScanRows. optional.
+   * @param {String} PagingId - pagingId. optional.
+   * @param {String} SortKey - sortKey. optional.
+   * @param {String} SortMethod - sortMethod. optional.
+   */
+  describeTemplatesSqlType(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    return this.request('DescribeTemplatesSqlType', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   */
+  describeUserEncryptionKeyList(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('DescribeUserEncryptionKeyList', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
@@ -3833,6 +5435,99 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} ClientToken - token. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   */
+  destroyDBInstance(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('DestroyDBInstance', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} ReplicaId - replicaId. required.
+   */
+  evaluateFailOverSwitch(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ReplicaId')) {
+      throw new TypeError('parameter "ReplicaId" is required');
+    }
+
+    return this.request('EvaluateFailOverSwitch', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} ReplicaId - replicaId. required.
+   */
+  evaluateFailover(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ReplicaId')) {
+      throw new TypeError('parameter "ReplicaId" is required');
+    }
+
+    return this.request('EvaluateFailover', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} ZoneId - zoneId. required.
+   * @param {String} Engine - engine. required.
+   * @param {String} EngineVersion - engineVersion. required.
+   * @param {String} DBInstanceClass - dbInstanceClass. required.
+   * @param {String} DBInstanceStorage - storage. optional.
+   * @param {String} ShardsInfo - shardsInfo. optional.
+   * @param {String} DBInstanceId - dbInstanceId. optional.
+   */
+  evaluateResource(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ZoneId')) {
+      throw new TypeError('parameter "ZoneId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Engine')) {
+      throw new TypeError('parameter "Engine" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EngineVersion')) {
+      throw new TypeError('parameter "EngineVersion" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DBInstanceClass')) {
+      throw new TypeError('parameter "DBInstanceClass" is required');
+    }
+
+    return this.request('EvaluateResource', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} ClientToken - token. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
    * @param {String} BackupId - backupSetId. required.
    * @param {String} OwnerAccount - ownerAccount. optional.
    */
@@ -3846,6 +5541,26 @@ class Client extends RPCClient {
     }
 
     return this.request('ExtractBackupFromOAS', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} ReplicaId - replicaId. required.
+   * @param {String} PrimaryInstanceId - primaryInstanceId. optional.
+   */
+  failover(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ReplicaId')) {
+      throw new TypeError('parameter "ReplicaId" is required');
+    }
+
+    return this.request('Failover', params, options);
   }
 
   /**
@@ -4059,10 +5774,69 @@ class Client extends RPCClient {
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
+   */
+  migrateSecurityIPMode(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('MigrateSecurityIPMode', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} TargetRegionId - targetRegionId. required.
+   * @param {String} TargetZoneId - targetZoneId. required.
+   * @param {String} TargetVpcId - targetVpcId. required.
+   * @param {String} TargetVSwitchId - targetVSwitchId. required.
+   * @param {String} SwitchTime - switchTime. optional.
+   * @param {String} EffectiveTime - effectiveTime. optional.
+   */
+  migrateToOtherRegion(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TargetRegionId')) {
+      throw new TypeError('parameter "TargetRegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TargetZoneId')) {
+      throw new TypeError('parameter "TargetZoneId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TargetVpcId')) {
+      throw new TypeError('parameter "TargetVpcId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TargetVSwitchId')) {
+      throw new TypeError('parameter "TargetVSwitchId" is required');
+    }
+
+    return this.request('MigrateToOtherRegion', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} VPCId - vpcId. optional.
    * @param {String} ZoneId - zoneId. required.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} EffectiveTime - effectiveTime. optional.
    * @param {String} VSwitchId - vswitchId. optional.
+   * @param {String} Category - category. optional.
+   * @param {String} ZoneIdSlave1 - zoneIdSlave1. optional.
+   * @param {String} ZoneIdSlave2 - zoneIdSlave2. optional.
    */
   migrateToOtherZone(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DBInstanceId')) {
@@ -4104,33 +5878,76 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} Ids - ids. required.
+   * @param {String} SwitchTime - switchTime. required.
+   */
+  modifyActiveOperationTask(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Ids')) {
+      throw new TypeError('parameter "Ids" is required');
+    }
+
+    if (!hasOwnProperty(params, 'SwitchTime')) {
+      throw new TypeError('parameter "SwitchTime" is required');
+    }
+
+    return this.request('ModifyActiveOperationTask', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
-   * @param {String} PreferredBackupTime - backupTime. required.
-   * @param {String} PreferredBackupPeriod - backupPeriod. required.
+   * @param {String} BackupPolicyMode - backupPolicyMode. optional.
+   * @param {String} PreferredBackupTime - backupTime. optional.
+   * @param {String} PreferredBackupPeriod - backupPeriod. optional.
    * @param {String} BackupRetentionPeriod - backupRetentionPeriod. optional.
    * @param {String} BackupLog - backupLog. optional.
    * @param {String} LogBackupRetentionPeriod - logBackupRetentionPeriod. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} EnableBackupLog - enableBackupLog. optional.
+   * @param {String} LocalLogRetentionHours - logBackupLocalRetentionPeriod. optional.
+   * @param {String} LocalLogRetentionSpace - logBackupLocalRetentionSpace. optional.
+   * @param {String} HighSpaceUsageProtection - forceCleanOnHighSpaceUsage. optional.
+   * @param {String} Duplication - dumpBinlogEnable. optional.
+   * @param {String} DuplicationContent - duplicationContent. optional.
+   * @param {String} DuplicationLocation - duplicationLocation. optional.
+   * @param {String} LogBackupFrequency - logBackupFrequency. optional.
    */
   modifyBackupPolicy(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DBInstanceId')) {
       throw new TypeError('parameter "DBInstanceId" is required');
     }
 
-    if (!hasOwnProperty(params, 'PreferredBackupTime')) {
-      throw new TypeError('parameter "PreferredBackupTime" is required');
-    }
-
-    if (!hasOwnProperty(params, 'PreferredBackupPeriod')) {
-      throw new TypeError('parameter "PreferredBackupPeriod" is required');
-    }
-
     return this.request('ModifyBackupPolicy', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} Collation - collation. optional.
+   * @param {String} Timezone - timezone. optional.
+   */
+  modifyCollationTimeZone(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('ModifyCollationTimeZone', params, options);
   }
 
   /**
@@ -4187,6 +6004,28 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceId - jstInstanceName. required.
+   * @param {String} ChargeType - chargeType. optional. default: PREPAY.
+   * @param {Long} JuShiTaInstanceUid - jstInstanceUid. required.
+   */
+  modifyDBInstanceChargeTypeForJuShiTa(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'JuShiTaInstanceUid')) {
+      throw new TypeError('parameter "JuShiTaInstanceUid" is required');
+    }
+
+    return this.request('ModifyDBInstanceChargeTypeForJuShiTa', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
    * @param {String} ConnectionMode - connectionMode. required.
    * @param {String} OwnerAccount - ownerAccount. optional.
@@ -4233,6 +6072,48 @@ class Client extends RPCClient {
     }
 
     return this.request('ModifyDBInstanceConnectionString', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} ReadSQLReplicationTime - sqlDelay. required.
+   */
+  modifyDBInstanceDelayReplicationTime(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ReadSQLReplicationTime')) {
+      throw new TypeError('parameter "ReadSQLReplicationTime" is required');
+    }
+
+    return this.request('ModifyDBInstanceDelayReplicationTime', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} ReadSQLReplicationTime - sqlDelay. required.
+   */
+  modifyDBInstanceDelayedReplicationTime(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ReadSQLReplicationTime')) {
+      throw new TypeError('parameter "ReadSQLReplicationTime" is required');
+    }
+
+    return this.request('ModifyDBInstanceDelayedReplicationTime', params, options);
   }
 
   /**
@@ -4467,7 +6348,7 @@ class Client extends RPCClient {
    * @param {String} PayType - payType. required.
    * @param {String} Period - timeType. required.
    * @param {String} AutoPay - autoPay. optional. default: false.
-   * @param {String} Resource - resource. optional. default: openapi.
+   * @param {String} Resource - resource. optional. default: buy.
    * @param {String} AgentId - agentId. optional.
    * @param {String} BusinessInfo - businessInfo. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
@@ -4549,6 +6430,7 @@ class Client extends RPCClient {
    * @param {String} PayType - payType. required.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} EffectiveTime - effectiveTime. optional.
+   * @param {String} EngineVersion - engineVersion. optional.
    */
   modifyDBInstanceSpec(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DBInstanceId')) {
@@ -4572,6 +6454,8 @@ class Client extends RPCClient {
    * @param {String} TDEStatus - tdeStatus. required.
    * @param {String} DBName - dbName. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} EncryptionKey - encryptionKey. optional.
+   * @param {String} RoleArn - roleARN. optional.
    */
   modifyDBInstanceTDE(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DBInstanceId')) {
@@ -4611,6 +6495,80 @@ class Client extends RPCClient {
     }
 
     return this.request('ModifyDampPolicy', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} ReplicaId - replicaId. required.
+   * @param {String} DynamicMode - dynamicMode. required.
+   */
+  modifyDynamicMode(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ReplicaId')) {
+      throw new TypeError('parameter "ReplicaId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DynamicMode')) {
+      throw new TypeError('parameter "DynamicMode" is required');
+    }
+
+    return this.request('ModifyDynamicMode', params, options);
+  }
+
+  /**
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} TriggerId - triggerId. required.
+   * @param {String} TriggerArn - triggerArn. required.
+   * @param {String} FunctionArn - functionArn. required.
+   * @param {String} InvocationRoleArn - invocationRoleArn. required.
+   * @param {RepeatList} SubscriptionObjects - subscriptionObjects. optional.
+   * @param {String} EventFormat - eventFormat. required.
+   * @param {Integer} Concurrency - concurrency. required.
+   * @param {Integer} Retry - retry. required.
+   */
+  modifyFCTrigger(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'TriggerId')) {
+      throw new TypeError('parameter "TriggerId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TriggerArn')) {
+      throw new TypeError('parameter "TriggerArn" is required');
+    }
+
+    if (!hasOwnProperty(params, 'FunctionArn')) {
+      throw new TypeError('parameter "FunctionArn" is required');
+    }
+
+    if (!hasOwnProperty(params, 'InvocationRoleArn')) {
+      throw new TypeError('parameter "InvocationRoleArn" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EventFormat')) {
+      throw new TypeError('parameter "EventFormat" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Concurrency')) {
+      throw new TypeError('parameter "Concurrency" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Retry')) {
+      throw new TypeError('parameter "Retry" is required');
+    }
+
+    return this.request('ModifyFCTrigger', params, options);
   }
 
   /**
@@ -4693,6 +6651,59 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} SqlDelay - sqlDelay. required.
+   */
+  modifyMySQLDBInstanceDelay(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'SqlDelay')) {
+      throw new TypeError('parameter "SqlDelay" is required');
+    }
+
+    return this.request('ModifyMySQLDBInstanceDelay', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} LcuQuota - lcuQuota. required.
+   * @param {String} StorageQuota - storageQuota. required.
+   * @param {String} SpecQuota - specQuota. optional.
+   * @param {String} SearchType - searchType. required.
+   */
+  modifyOpenSearchDBInstance(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'LcuQuota')) {
+      throw new TypeError('parameter "LcuQuota" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StorageQuota')) {
+      throw new TypeError('parameter "StorageQuota" is required');
+    }
+
+    if (!hasOwnProperty(params, 'SearchType')) {
+      throw new TypeError('parameter "SearchType" is required');
+    }
+
+    return this.request('ModifyOpenSearchDBInstance', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} ClientToken - token. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
    * @param {String} Parameters - parameters. required.
@@ -4709,6 +6720,30 @@ class Client extends RPCClient {
     }
 
     return this.request('ModifyParameter', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} ParameterGroupId - parameterGroupId. required.
+   * @param {String} ParameterGroupName - parameterGroupName. optional.
+   * @param {String} ParameterGroupDesc - parameterGroupDesc. optional.
+   * @param {String} Parameters - parameters. optional.
+   * @param {String} RegionId - regionId. required.
+   */
+  modifyParameterGroup(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ParameterGroupId')) {
+      throw new TypeError('parameter "ParameterGroupId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    return this.request('ModifyParameterGroup', params, options);
   }
 
   /**
@@ -4754,6 +6789,27 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} ReadSQLReplicationTime - sqlDelay. required.
+   */
+  modifyReadonlyInstanceDelayReplicationTime(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ReadSQLReplicationTime')) {
+      throw new TypeError('parameter "ReadSQLReplicationTime" is required');
+    }
+
+    return this.request('ModifyReadonlyInstanceDelayReplicationTime', params, options);
+  }
+
+  /**
    * @param {String} SecurityToken - stsSecurityToken. optional.
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {Long} OwnerId - ownerId. optional.
@@ -4787,6 +6843,50 @@ class Client extends RPCClient {
    * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {String} ReplicaId - replicaId. required.
+   * @param {String} DynamicMode - dynamicMode. required.
+   */
+  modifyReplicaDynamicMode(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ReplicaId')) {
+      throw new TypeError('parameter "ReplicaId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DynamicMode')) {
+      throw new TypeError('parameter "DynamicMode" is required');
+    }
+
+    return this.request('ModifyReplicaDynamicMode', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} ReplicaId - replicaId. required.
+   * @param {String} FillterDDL - fillterDDL. optional.
+   */
+  modifyReplicaFilterMode(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ReplicaId')) {
+      throw new TypeError('parameter "ReplicaId" is required');
+    }
+
+    return this.request('ModifyReplicaFilterMode', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} ReplicaId - replicaId. required.
    * @param {String} ReplicaMode - replicaMode. required.
    * @param {String} PrimaryInstanceId - primaryInstanceId. optional.
    * @param {String} DomainMode - domainMode. optional.
@@ -4801,6 +6901,30 @@ class Client extends RPCClient {
     }
 
     return this.request('ModifyReplicaMode', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} ReplicaId - replicaId. required.
+   * @param {String} RecoverMode - recoverMode. required.
+   */
+  modifyReplicaRecoverMode(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ReplicaId')) {
+      throw new TypeError('parameter "ReplicaId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RecoverMode')) {
+      throw new TypeError('parameter "RecoverMode" is required');
+    }
+
+    return this.request('ModifyReplicaRecoverMode', params, options);
   }
 
   /**
@@ -4918,6 +7042,30 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} ConfigValue - configValue. required.
+   */
+  modifySQLCollectorRetention(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ConfigValue')) {
+      throw new TypeError('parameter "ConfigValue" is required');
+    }
+
+    return this.request('ModifySQLCollectorRetention', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
@@ -4950,6 +7098,7 @@ class Client extends RPCClient {
    * @param {String} SecurityIps - securityIPList. required.
    * @param {String} DBInstanceIPArrayName - groupName. optional.
    * @param {String} DBInstanceIPArrayAttribute - groupTag. optional.
+   * @param {String} SecurityIPType - securityIPType. optional. default: IPv4.
    * @param {String} WhitelistNetworkType - whitelistNetType. optional.
    * @param {String} SecurityGroupId - securityGroupName. optional.
    * @param {String} ModifyMode - modifyMode. optional. default: 0.
@@ -4977,8 +7126,9 @@ class Client extends RPCClient {
    * @param {String} SecurityIps - securityIPList. required.
    * @param {String} DBInstanceIPArrayName - groupName. optional.
    * @param {String} DBInstanceIPArrayAttribute - groupTag. optional.
+   * @param {String} SecurityIPType - securityIPType. optional.
    * @param {String} WhitelistNetworkType - whitelistNetType. optional.
-   * @param {String} SecurityGroupName - securityGroupName. optional.
+   * @param {String} SecurityGroupId - securityGroupName. optional.
    * @param {String} ModifyMode - modifyMode. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    */
@@ -5061,6 +7211,25 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   */
+  queryOssBuckets(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('QueryOssBuckets', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - appKey. optional.
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {Long} OwnerId - ownerId. optional.
@@ -5069,13 +7238,12 @@ class Client extends RPCClient {
    * @param {String} ClientToken - token. optional.
    * @param {String} CommodityCode - commodity. required.
    * @param {String} DBInstanceId - dbInstanceId. optional.
-   * @param {String} RegionId - regionId. required.
+   * @param {String} RegionId - regionId. optional.
    * @param {String} Engine - engine. required.
    * @param {String} EngineVersion - engineVersion. required.
    * @param {String} DBInstanceClass - dbInstanceClass. required.
-   * @param {Integer} DBInstanceStorage - dbInstanceStorage. required.
    * @param {String} SystemDBCharset - systemDBCharset. optional.
-   * @param {String} DBInstanceNetType - dbInstanceNetType. required.
+   * @param {String} DBInstanceNetType - dbInstanceNetType. optional. default: 0.
    * @param {String} DBInstanceDescription - dbInstanceDescription. optional.
    * @param {String} SecurityIPList - securityIPList. optional.
    * @param {String} PayType - payType. optional.
@@ -5087,7 +7255,7 @@ class Client extends RPCClient {
    * @param {Boolean} AutoPay - autoPay. optional.
    * @param {Integer} InstanceUsedType - dbInstanceUsedType. optional.
    * @param {String} Resource - resource. optional.
-   * @param {String} ConnectionMode - connectionMode. optional.
+   * @param {String} ConnectionMode - connectionMode. optional. default: proxy.
    * @param {String} VPCId - vpcId. optional.
    * @param {String} VSwitchId - vswitchId. optional.
    * @param {String} PrivateIpAddress - cloudInstanceIp. optional.
@@ -5095,16 +7263,15 @@ class Client extends RPCClient {
    * @param {String} OrderType - orderType. required.
    * @param {String} CountryCode - countryCode. optional.
    * @param {String} CurrencyCode - currencyCode. optional.
+   * @param {String} DBInstanceStorageType - dbInstanceStorageType. optional.
+   * @param {Integer} DBInstanceStorage - dbInstanceStorage. optional.
    * @param {String} PromotionCode - promotionCode. optional.
    * @param {String} BusinessInfo - businessInfo. optional.
+   * @param {String} OrderParamOut - lxOrderParamOut. optional. default: No.
    */
   queryPrice(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'CommodityCode')) {
       throw new TypeError('parameter "CommodityCode" is required');
-    }
-
-    if (!hasOwnProperty(params, 'RegionId')) {
-      throw new TypeError('parameter "RegionId" is required');
     }
 
     if (!hasOwnProperty(params, 'Engine')) {
@@ -5117,14 +7284,6 @@ class Client extends RPCClient {
 
     if (!hasOwnProperty(params, 'DBInstanceClass')) {
       throw new TypeError('parameter "DBInstanceClass" is required');
-    }
-
-    if (!hasOwnProperty(params, 'DBInstanceStorage')) {
-      throw new TypeError('parameter "DBInstanceStorage" is required');
-    }
-
-    if (!hasOwnProperty(params, 'DBInstanceNetType')) {
-      throw new TypeError('parameter "DBInstanceNetType" is required');
     }
 
     if (!hasOwnProperty(params, 'Quantity')) {
@@ -5337,6 +7496,39 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} ClientToken - token. optional.
+   * @param {String} DBInstanceClass - dbInstanceClass. optional.
+   * @param {Integer} DBInstanceStorage - dbInstanceStorage. optional.
+   * @param {String} DBInstanceDescription - dbInstanceDescription. optional.
+   * @param {String} PayType - payType. optional.
+   * @param {String} InstanceNetworkType - instanceNetworkType. optional.
+   * @param {String} DBInstanceId - sourceDBInstanceName. optional.
+   * @param {String} TargetDBInstanceId - targetDBInstanceName. optional.
+   * @param {String} DbNames - backupDbNames. required.
+   * @param {String} BackupId - backupSetId. optional.
+   * @param {String} RestoreTime - restoreTime. optional.
+   * @param {String} VPCId - vpcId. optional.
+   * @param {String} VSwitchId - vswitchId. optional.
+   * @param {String} PrivateIpAddress - cloudInstanceIp. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} UsedTime - usedTime. optional.
+   * @param {String} Period - timeType. optional.
+   * @param {String} ResourceGroupId - resourceGroupId. optional.
+   */
+  recoveryDBInstance(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DbNames')) {
+      throw new TypeError('parameter "DbNames" is required');
+    }
+
+    return this.request('RecoveryDBInstance', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
    * @param {String} CurrentConnectionString - connectionString. required.
    * @param {String} OwnerAccount - ownerAccount. optional.
@@ -5400,17 +7592,8 @@ class Client extends RPCClient {
    * @param {String} RegionId - regionId. required.
    * @param {String} DBInstanceId - dbInstanceId. required.
    * @param {String} Tags - tags. optional.
-   * @param {String} Tag.1.key - tagKey1. optional.
-   * @param {String} Tag.2.key - tagKey2. optional.
-   * @param {String} Tag.3.key - tagKey3. optional.
-   * @param {String} Tag.4.key - tagKey4. optional.
-   * @param {String} Tag.5.key - tagKey5. optional.
-   * @param {String} Tag.1.value - tagValue1. optional.
-   * @param {String} Tag.2.value - tagValue2. optional.
-   * @param {String} Tag.3.value - tagValue3. optional.
-   * @param {String} Tag.4.value - tagValue4. optional.
-   * @param {String} Tag.5.value - tagValue5. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {Tag} Tag - undefined. optional.
    */
   removeTagsFromResource(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -5491,6 +7674,28 @@ class Client extends RPCClient {
     }
 
     return this.request('RequestServiceOfCloudDBA', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} ServiceRequestType - serviceRequestType. required.
+   * @param {String} ServiceRequestParam - serviceRequestParam. required.
+   */
+  requestServiceOfCloudDBExpert(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ServiceRequestType')) {
+      throw new TypeError('parameter "ServiceRequestType" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ServiceRequestParam')) {
+      throw new TypeError('parameter "ServiceRequestParam" is required');
+    }
+
+    return this.request('RequestServiceOfCloudDBExpert', params, options);
   }
 
   /**
@@ -5627,7 +7832,8 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} ClientToken - token. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
-   * @param {String} BackupId - backupId. required.
+   * @param {String} BackupId - backupId. optional.
+   * @param {String} RestoreTime - restoreTime. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    */
   restoreDBInstance(params = {}, options = {}) {
@@ -5635,11 +7841,28 @@ class Client extends RPCClient {
       throw new TypeError('parameter "DBInstanceId" is required');
     }
 
-    if (!hasOwnProperty(params, 'BackupId')) {
-      throw new TypeError('parameter "BackupId" is required');
+    return this.request('RestoreDBInstance', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} ClientToken - token. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} BackupId - backupId. optional.
+   * @param {String} RestoreTime - restoreTime. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} TableMeta - tableMeta. optional.
+   */
+  restoreTable(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
     }
 
-    return this.request('RestoreDBInstance', params, options);
+    return this.request('RestoreTable', params, options);
   }
 
   /**
@@ -5733,6 +7956,96 @@ class Client extends RPCClient {
     }
 
     return this.request('StartDBInstanceDiagnose', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} StartTime - startTime. required.
+   * @param {String} EndTime - endTime. required.
+   * @param {String} QueryKeyword - queryKeyword. optional.
+   * @param {String} HostAddress - hostAddress. optional.
+   * @param {String} DBName - dbName. optional.
+   * @param {String} TableName - tableName. optional.
+   * @param {Long} MinConsume - minConsume. optional.
+   * @param {Long} MaxConsume - maxConsume. optional.
+   * @param {Long} MinScanRows - minScanRows. optional.
+   * @param {Long} MaxScanRows - maxScanRows. optional.
+   * @param {String} State - state. optional.
+   * @param {String} SqlType - sqlType. optional.
+   * @param {String} AccountName - accountName. optional.
+   * @param {String} ThreadID - threadID. optional.
+   * @param {String} Columns - columns. optional.
+   */
+  startSqlLogDetailArchive(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    return this.request('StartSqlLogDetailArchive', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} ConfigValue - configValue. required.
+   * @param {String} Bucket - bucket. required.
+   */
+  startSqlLogDump(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ConfigValue')) {
+      throw new TypeError('parameter "ConfigValue" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Bucket')) {
+      throw new TypeError('parameter "Bucket" is required');
+    }
+
+    return this.request('StartSqlLogDump', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
+   */
+  startSqlLogTrail(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('StartSqlLogTrail', params, options);
   }
 
   /**
@@ -5832,6 +8145,26 @@ class Client extends RPCClient {
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
+   * @param {String} VPCId - vpcId. optional.
+   * @param {String} VSwitchId - vswitchId. optional.
+   * @param {String} PrivateIpAddress - cloudInstanceIp. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   */
+  switchDBInstanceVpc(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBInstanceId')) {
+      throw new TypeError('parameter "DBInstanceId" is required');
+    }
+
+    return this.request('SwitchDBInstanceVpc', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} DBInstanceId - dbInstanceId. required.
    * @param {String} OwnerAccount - ownerAccount. optional.
    */
   switchGuardToMasterInstance(params = {}, options = {}) {
@@ -5840,6 +8173,26 @@ class Client extends RPCClient {
     }
 
     return this.request('SwitchGuardToMasterInstance', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} ReplicaId - replicaId. required.
+   * @param {String} PrimaryInstanceId - primaryInstanceId. optional.
+   */
+  switchOver(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ReplicaId')) {
+      throw new TypeError('parameter "ReplicaId" is required');
+    }
+
+    return this.request('SwitchOver', params, options);
   }
 
   /**
@@ -5890,16 +8243,12 @@ class Client extends RPCClient {
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
-   * @param {String} SwitchTimeMode - switchTimeMode. optional.
-   * @param {String} SwitchTime - switchTime. required.
+   * @param {String} UpgradeTime - switchTimeMode. optional.
+   * @param {String} SwitchTime - switchTime. optional.
    */
   upgradeDBInstanceKernelVersion(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DBInstanceId')) {
       throw new TypeError('parameter "DBInstanceId" is required');
-    }
-
-    if (!hasOwnProperty(params, 'SwitchTime')) {
-      throw new TypeError('parameter "SwitchTime" is required');
     }
 
     return this.request('UpgradeDBInstanceKernelVersion', params, options);

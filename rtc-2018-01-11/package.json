@@ -7,6 +7,6 @@
   "author": "Jackson Tian",
   "license": "MIT",
   "dependencies": {
-    "@alicloud/pop-core": "^1.5.1"
+    "@alicloud/pop-core": "^1.7.1"
   }
 }

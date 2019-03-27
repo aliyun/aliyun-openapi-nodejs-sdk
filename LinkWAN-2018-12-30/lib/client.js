@@ -28,6 +28,7 @@ class Client extends RPCClient {
   /**
    * @param {Long} FreqBandPlanGroupId - freqBandPlanGroupId. required.
    * @param {String} ClassMode - classMode. required.
+   * @param {String} JoinPermissionName - joinPermissionName. required.
    */
   applyRoamingJoinPermission(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'FreqBandPlanGroupId')) {
@@ -36,6 +37,10 @@ class Client extends RPCClient {
 
     if (!hasOwnProperty(params, 'ClassMode')) {
       throw new TypeError('parameter "ClassMode" is required');
+    }
+
+    if (!hasOwnProperty(params, 'JoinPermissionName')) {
+      throw new TypeError('parameter "JoinPermissionName" is required');
     }
 
     return this.request('ApplyRoamingJoinPermission', params, options);
@@ -136,15 +141,6 @@ class Client extends RPCClient {
 
   /**
    * @param {String} NodeGroupId - nodeGroupId. optional.
-   * @param {String} FuzzyJoinEui - fuzzyJoinEui. optional.
-   * @param {String} FuzzyDevEui - fuzzyDevEui. optional.
-   */
-  countNodes(params = {}, options = {}) {
-    return this.request('CountNodes', params, options);
-  }
-
-  /**
-   * @param {String} NodeGroupId - nodeGroupId. optional.
    * @param {String} FuzzyDevEui - fuzzyDevEui. optional.
    */
   countNodesByNodeGroupId(params = {}, options = {}) {
@@ -174,6 +170,7 @@ class Client extends RPCClient {
    * @param {String} FuzzyRenterAliyunId - fuzzyRenterAliyunId. optional.
    * @param {String} FuzzyJoinEui - fuzzyJoinEui. optional.
    * @param {Boolean} Enabled - enabled. optional.
+   * @param {String} FuzzyJoinPermissionName - fuzzyJoinPermissionName. optional.
    */
   countOwnedJoinPermissions(params = {}, options = {}) {
     return this.request('CountOwnedJoinPermissions', params, options);
@@ -185,7 +182,7 @@ class Client extends RPCClient {
    * @param {Boolean} Enabled - enabled. optional.
    * @param {Boolean} BoundNodeGroup - boundNodeGroup. optional.
    * @param {String} Type - type. optional.
-   * @param {String} FuzzyNodeGroupName - fuzzyNodeGroupName. optional.
+   * @param {String} FuzzyJoinPermissionName - fuzzyJoinPermissionName. optional.
    */
   countRentedJoinPermissions(params = {}, options = {}) {
     return this.request('CountRentedJoinPermissions', params, options);
@@ -306,6 +303,8 @@ class Client extends RPCClient {
   /**
    * @param {Long} FreqBandPlanGroupId - freqBandPlanGroupId. required.
    * @param {String} ClassMode - classMode. required.
+   * @param {Boolean} UseDefaultJoinEui - useDefaultJoinEui. required.
+   * @param {String} JoinPermissionName - joinPermissionName. required.
    */
   createLocalJoinPermission(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'FreqBandPlanGroupId')) {
@@ -314,6 +313,14 @@ class Client extends RPCClient {
 
     if (!hasOwnProperty(params, 'ClassMode')) {
       throw new TypeError('parameter "ClassMode" is required');
+    }
+
+    if (!hasOwnProperty(params, 'UseDefaultJoinEui')) {
+      throw new TypeError('parameter "UseDefaultJoinEui" is required');
+    }
+
+    if (!hasOwnProperty(params, 'JoinPermissionName')) {
+      throw new TypeError('parameter "JoinPermissionName" is required');
     }
 
     return this.request('CreateLocalJoinPermission', params, options);
@@ -601,6 +608,12 @@ class Client extends RPCClient {
    */
   getNodeMulticastConfig(params = {}, options = {}) {
     return this.request('GetNodeMulticastConfig', params, options);
+  }
+
+  /**
+   */
+  getNodeTransferPacket(params = {}, options = {}) {
+    return this.request('GetNodeTransferPacket', params, options);
   }
 
   /**
@@ -993,6 +1006,22 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Integer} PageNumber - pageNumber. required.
+   * @param {Integer} PageSize - pageSize. required.
+   */
+  listNodeTransferPacketPaths(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'PageNumber')) {
+      throw new TypeError('parameter "PageNumber" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    return this.request('ListNodeTransferPacketPaths', params, options);
+  }
+
+  /**
    * @param {Boolean} IsKpm - isKpm. optional.
    * @param {RepeatList} State - states. optional.
    * @param {Long} Offset - offset. required.
@@ -1008,28 +1037,6 @@ class Client extends RPCClient {
     }
 
     return this.request('ListNodeTupleOrders', params, options);
-  }
-
-  /**
-   * @param {String} NodeGroupId - nodeGroupId. required.
-   * @param {String} FuzzyDevEui - fuzzyDevEui. optional.
-   * @param {Long} Offset - offset. required.
-   * @param {Long} Limit - limit. required.
-   */
-  listNodes(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'NodeGroupId')) {
-      throw new TypeError('parameter "NodeGroupId" is required');
-    }
-
-    if (!hasOwnProperty(params, 'Offset')) {
-      throw new TypeError('parameter "Offset" is required');
-    }
-
-    if (!hasOwnProperty(params, 'Limit')) {
-      throw new TypeError('parameter "Limit" is required');
-    }
-
-    return this.request('ListNodes', params, options);
   }
 
   /**
@@ -1106,8 +1113,7 @@ class Client extends RPCClient {
    * @param {String} FuzzyRenterAliyunId - fuzzyRenterAliyunId. optional.
    * @param {String} FuzzyJoinEui - fuzzyJoinEui. optional.
    * @param {Boolean} Enabled - enabled. optional.
-   * @param {Boolean} BoundNodeGroup - boundNodeGroup. optional.
-   * @param {String} JoinPermissionType - joinPermissionType. optional.
+   * @param {String} FuzzyJoinPermissionName - fuzzyJoinPermissionName. optional.
    * @param {Long} Offset - offset. required.
    * @param {Long} Limit - limit. required.
    */
@@ -1129,7 +1135,7 @@ class Client extends RPCClient {
    * @param {Boolean} Enabled - enabled. optional.
    * @param {Boolean} BoundNodeGroup - boundNodeGroup. optional.
    * @param {String} Type - type. optional.
-   * @param {String} FuzzyNodeGroupName - fuzzyNodeGroupName. optional.
+   * @param {String} FuzzyJoinPermissionName - fuzzyJoinPermissionName. optional.
    * @param {Long} Offset - offset. required.
    * @param {Long} Limit - limit. required.
    */
@@ -1377,25 +1383,6 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {String} JoinPermissionId - joinPermissionId. required.
-   * @param {Long} FreqBandPlanGroupId - freqBandPlanGroupId. optional.
-   * @param {String} ClassMode - classMode. optional.
-   */
-  updateLocalJoinPermission(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'JoinPermissionId')) {
-      throw new TypeError('parameter "JoinPermissionId" is required');
-    }
-
-    return this.request('UpdateLocalJoinPermission', params, options);
-  }
-
-  /**
-   */
-  updateLocalJoinPermissionEnablingState(params = {}, options = {}) {
-    return this.request('UpdateLocalJoinPermissionEnablingState', params, options);
-  }
-
-  /**
    * @param {String} NodeGroupId - nodeGroupId. required.
    * @param {String} NodeGroupName - nodeGroupName. optional.
    */
@@ -1411,6 +1398,44 @@ class Client extends RPCClient {
    */
   updateNotificationsHandleState(params = {}, options = {}) {
     return this.request('UpdateNotificationsHandleState', params, options);
+  }
+
+  /**
+   * @param {String} JoinPermissionId - joinPermissionId. required.
+   * @param {Long} FreqBandPlanGroupId - freqBandPlanGroupId. optional.
+   * @param {String} ClassMode - classMode. optional.
+   * @param {String} JoinPermissionName - joinPermissionName. optional.
+   */
+  updateOwnedLocalJoinPermission(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'JoinPermissionId')) {
+      throw new TypeError('parameter "JoinPermissionId" is required');
+    }
+
+    return this.request('UpdateOwnedLocalJoinPermission', params, options);
+  }
+
+  /**
+   */
+  updateOwnedLocalJoinPermissionEnablingState(params = {}, options = {}) {
+    return this.request('UpdateOwnedLocalJoinPermissionEnablingState', params, options);
+  }
+
+  /**
+   * @param {String} JoinPermissionId - joinPermissionId. required.
+   * @param {String} JoinPermissionName - joinPermissionName. optional.
+   */
+  updateRoamingJoinPermission(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'JoinPermissionId')) {
+      throw new TypeError('parameter "JoinPermissionId" is required');
+    }
+
+    return this.request('UpdateRoamingJoinPermission', params, options);
+  }
+
+  /**
+   */
+  updateRoamingJoinPermissionEnablingState(params = {}, options = {}) {
+    return this.request('UpdateRoamingJoinPermissionEnablingState', params, options);
   }
 
 }

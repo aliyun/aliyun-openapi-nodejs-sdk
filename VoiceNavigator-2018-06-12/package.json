@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/voicenavigator-2018-06-12",
+  "version": "1.0.0",
+  "description": "VoiceNavigator 2018-06-12 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.1"
+  }
+}

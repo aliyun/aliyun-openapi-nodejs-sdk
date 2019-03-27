@@ -269,6 +269,8 @@ class Client extends RPCClient {
    * @param {String} HwAppKey - hwAppKey. optional.
    * @param {String} HwAppSecretKey - hwAppSecretKey. optional.
    * @param {String} GcmToken - gcmToken. optional.
+   * @param {String} OppoAppKey - oppoAppKey. optional.
+   * @param {String} OppoMasterSecret - oppoMasterSecret. optional.
    */
   modifyAppExtensions(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'AppKey')) {

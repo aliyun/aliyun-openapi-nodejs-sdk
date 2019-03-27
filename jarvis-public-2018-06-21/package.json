@@ -1,0 +1,12 @@
+{
+  "name": "@alicloud/jarvis-public-2018-06-21",
+  "version": "1.0.0",
+  "description": "jarvis-public 2018-06-21 Node.js SDK",
+  "main": "lib/client.js",
+  "scripts": {},
+  "author": "Jackson Tian",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.1"
+  }
+}

@@ -68,6 +68,8 @@ class Client extends RPCClient {
    * @param {Long} CatId - catId. optional.
    * @param {String} ExtProps - extProps. optional.
    * @param {String} SecurityPolicy - securityPolicy. optional. default: P_D.
+   * @param {Boolean} Id2 - id2. optional. default: false.
+   * @param {Integer} PayType - payType. optional. default: 0.
    */
   createProduct(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'Name')) {
@@ -156,6 +158,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {Long} RuleId - ruleId. optional.
    * @param {String} Sql - sql. required.
    * @param {String} JsonInfo - jsonInfo. required.
    */
@@ -339,6 +342,23 @@ class Client extends RPCClient {
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    */
+  disableSubDevice(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeviceName')) {
+      throw new TypeError('parameter "DeviceName" is required');
+    }
+
+    return this.request('DisableSubDevice', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {String} DeviceName - deviceName. required.
+   */
   enableDevice(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
       throw new TypeError('parameter "ProductKey" is required');
@@ -349,6 +369,23 @@ class Client extends RPCClient {
     }
 
     return this.request('EnableDevice', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {String} DeviceName - deviceName. required.
+   */
+  enableSubDevice(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeviceName')) {
+      throw new TypeError('parameter "DeviceName" is required');
+    }
+
+    return this.request('EnableSubDevice', params, options);
   }
 
   /**
@@ -373,6 +410,23 @@ class Client extends RPCClient {
     }
 
     return this.request('GetCats', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} DeviceName - deviceName. required.
+   * @param {String} ProductKey - productKey. required.
+   */
+  getDeviceProp(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DeviceName')) {
+      throw new TypeError('parameter "DeviceName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    return this.request('GetDeviceProp', params, options);
   }
 
   /**
@@ -575,8 +629,8 @@ class Client extends RPCClient {
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} ProductKey - productKey. required.
-   * @param {Integer} PageSize - pageSize. optional.
-   * @param {Integer} CurrentPage - currentPage. optional.
+   * @param {Integer} PageSize - pageSize. optional. default: 10.
+   * @param {Integer} CurrentPage - currentPage. optional. default: 1.
    */
   queryDevice(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -843,6 +897,7 @@ class Client extends RPCClient {
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} Timeout - timeout. required.
    * @param {String} DeviceName - deviceName. required.
+   * @param {String} Topic - topic. optional.
    * @param {String} RequestBase64Byte - requestBase64Byte. required.
    */
   rRpc(params = {}, options = {}) {
@@ -863,6 +918,13 @@ class Client extends RPCClient {
     }
 
     return this.request('RRpc', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   */
+  ramAuth(params = {}, options = {}) {
+    return this.request('RamAuth', params, options);
   }
 
   /**
@@ -957,6 +1019,28 @@ class Client extends RPCClient {
     }
 
     return this.request('SaveUserServeStatus', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} DeviceName - deviceName. required.
+   * @param {String} ProductKey - productKey. required.
+   * @param {String} Props - props. required.
+   */
+  setDeviceProp(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DeviceName')) {
+      throw new TypeError('parameter "DeviceName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Props')) {
+      throw new TypeError('parameter "Props" is required');
+    }
+
+    return this.request('SetDeviceProp', params, options);
   }
 
   /**
