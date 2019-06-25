@@ -33,6 +33,29 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} ApiProduct - apiProduct. optional. default: Iot.
+   * @param {String} ApiRevision - apiRevision. optional. default: 1.0.0.
+   * @param {Json} Option - option. required.
+   */
+  add3DOption(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Option')) {
+      throw new TypeError('parameter "Option" is required');
+    }
+
+    return this.request('Add3DOption', params, options);
+  }
+
+  /**
+   * @param {String} ModelId - modelId. optional.
+   * @param {String} Properties - properties. optional.
+   * @param {String} AppId - appId. optional.
+   * @param {String} ModelVersion - modelVersion. optional.
+   */
+  addAppInstanceData(params = {}, options = {}) {
+    return this.request('AddAppInstanceData', params, options);
+  }
+
+  /**
    * @param {String} IotId - iotId. required.
    */
   addEventRecordPlanDevice(params = {}, options = {}) {
@@ -128,6 +151,55 @@ class Client extends RPCClient {
     }
 
     return this.request('AddThingConfigPop', params, options);
+  }
+
+  /**
+   * @param {Integer} TaskId - taskId. required.
+   * @param {Integer} FrameId - frameId. required.
+   */
+  annotatorGetTaskFrame(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'TaskId')) {
+      throw new TypeError('parameter "TaskId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'FrameId')) {
+      throw new TypeError('parameter "FrameId" is required');
+    }
+
+    return this.request('AnnotatorGetTaskFrame', params, options);
+  }
+
+  /**
+   * @param {String} AppUuid - appUuid. required.
+   * @param {String} ProviderUid - providerUid. optional.
+   * @param {String} AccepterUid - accepterUid. optional.
+   * @param {String} AccepterAliyunId - accepterAliyunId. optional.
+   * @param {RepeatList} PermissionCodes - permissionCodes. required.
+   */
+  appPermissionBinding(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppUuid')) {
+      throw new TypeError('parameter "AppUuid" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PermissionCodes')) {
+      throw new TypeError('parameter "PermissionCodes" is required');
+    }
+
+    return this.request('AppPermissionBinding', params, options);
+  }
+
+  /**
+   * @param {String} AppUuid - appUuid. required.
+   * @param {String} ProviderUid - providerUid. optional.
+   * @param {String} AccepterUid - accepterUid. optional.
+   * @param {String} AccepterAliyunId - accepterAliyunId. optional.
+   */
+  appPermissionUnbind(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppUuid')) {
+      throw new TypeError('parameter "AppUuid" is required');
+    }
+
+    return this.request('AppPermissionUnbind', params, options);
   }
 
   /**
@@ -242,6 +314,7 @@ class Client extends RPCClient {
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
+   * @param {String} BizType - bizType. optional.
    */
   authorizeProduct(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -325,6 +398,47 @@ class Client extends RPCClient {
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} DriverId - driverId. required.
+   * @param {RepeatList} IotIds - iotIds. required.
+   */
+  batchBindDeviceToEdgeInstanceWithDriver(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DriverId')) {
+      throw new TypeError('parameter "DriverId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'IotIds')) {
+      throw new TypeError('parameter "IotIds" is required');
+    }
+
+    return this.request('BatchBindDeviceToEdgeInstanceWithDriver', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {RepeatList} DriverIds - driverIds. required.
+   */
+  batchBindDriverToEdgeInstance(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DriverIds')) {
+      throw new TypeError('parameter "DriverIds" is required');
+    }
+
+    return this.request('BatchBindDriverToEdgeInstance', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {RepeatList} DeviceName - deviceNames. optional.
    */
@@ -334,6 +448,42 @@ class Client extends RPCClient {
     }
 
     return this.request('BatchCheckDeviceNames', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {RepeatList} IotIds - iotIds. required.
+   */
+  batchClearEdgeInstanceDeviceConfig(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'IotIds')) {
+      throw new TypeError('parameter "IotIds" is required');
+    }
+
+    return this.request('BatchClearEdgeInstanceDeviceConfig', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {RepeatList} PropertyInfoList - propertyInfoList. required.
+   */
+  batchCreateCustomProperty(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PropertyInfoList')) {
+      throw new TypeError('parameter "PropertyInfoList" is required');
+    }
+
+    return this.request('BatchCreateCustomProperty', params, options);
   }
 
   /**
@@ -370,6 +520,24 @@ class Client extends RPCClient {
    */
   batchDeleteBlankProductKeyFirmware(params = {}, options = {}) {
     return this.request('BatchDeleteBlankProductKeyFirmware', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {RepeatList} PropertyInfoList - propertyInfoList. required.
+   */
+  batchDeleteCustomProperty(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PropertyInfoList')) {
+      throw new TypeError('parameter "PropertyInfoList" is required');
+    }
+
+    return this.request('BatchDeleteCustomProperty', params, options);
   }
 
   /**
@@ -453,6 +621,7 @@ class Client extends RPCClient {
    * @param {Long} FireTime - fireTime. optional.
    * @param {Long} RetryInterval - retryInterval. optional.
    * @param {Integer} RetryCount - retryCount. optional.
+   * @param {String} PushType - pushType. optional.
    */
   batchDeviceUpgrade(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'FirmwareName')) {
@@ -495,6 +664,47 @@ class Client extends RPCClient {
     }
 
     return this.request('BatchForceUpdateProductTag', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} DriverId - driverId. required.
+   * @param {RepeatList} IotIds - iotIds. required.
+   */
+  batchGetDeviceChannel(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DriverId')) {
+      throw new TypeError('parameter "DriverId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'IotIds')) {
+      throw new TypeError('parameter "IotIds" is required');
+    }
+
+    return this.request('BatchGetDeviceChannel', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {RepeatList} IotIds - iotIds. required.
+   */
+  batchGetDeviceDriver(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'IotIds')) {
+      throw new TypeError('parameter "IotIds" is required');
+    }
+
+    return this.request('BatchGetDeviceDriver', params, options);
   }
 
   /**
@@ -638,14 +848,70 @@ class Client extends RPCClient {
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
-   * @param {String} Devices - devices. required.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} DriverId - driverId. required.
+   * @param {RepeatList} ChannelIds - channelIds. required.
    */
-  batchGetEdgeInstanceDeviceStatus(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'Devices')) {
-      throw new TypeError('parameter "Devices" is required');
+  batchGetEdgeInstanceChannel(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
     }
 
+    if (!hasOwnProperty(params, 'DriverId')) {
+      throw new TypeError('parameter "DriverId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ChannelIds')) {
+      throw new TypeError('parameter "ChannelIds" is required');
+    }
+
+    return this.request('BatchGetEdgeInstanceChannel', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {RepeatList} IotIds - iotIds. required.
+   */
+  batchGetEdgeInstanceDeviceConfig(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'IotIds')) {
+      throw new TypeError('parameter "IotIds" is required');
+    }
+
+    return this.request('BatchGetEdgeInstanceDeviceConfig', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} Devices - devices. optional.
+   * @param {RepeatList} IotIds - iotIds. optional.
+   */
+  batchGetEdgeInstanceDeviceStatus(params = {}, options = {}) {
     return this.request('BatchGetEdgeInstanceDeviceStatus', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {RepeatList} DriverIds - driverIds. required.
+   */
+  batchGetEdgeInstanceDriverConfigs(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DriverIds')) {
+      throw new TypeError('parameter "DriverIds" is required');
+    }
+
+    return this.request('BatchGetEdgeInstanceDriverConfigs', params, options);
   }
 
   /**
@@ -785,6 +1051,26 @@ class Client extends RPCClient {
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {RepeatList} ExclusionServe - exclusionServes. optional.
+   * @param {String} TagKey - tagKey. required.
+   * @param {RepeatList} ProductKey - productKeyList. required.
+   */
+  batchGetProductTagListConsole(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'TagKey')) {
+      throw new TypeError('parameter "TagKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    return this.request('BatchGetProductTagListConsole', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {Integer} Count - count. required.
    */
@@ -893,6 +1179,142 @@ class Client extends RPCClient {
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} DriverId - driverId. required.
+   * @param {String} ChannelId - channelId. required.
+   * @param {RepeatList} IotIds - iotIds. required.
+   */
+  batchSetDeviceChannel(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DriverId')) {
+      throw new TypeError('parameter "DriverId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ChannelId')) {
+      throw new TypeError('parameter "ChannelId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'IotIds')) {
+      throw new TypeError('parameter "IotIds" is required');
+    }
+
+    return this.request('BatchSetDeviceChannel', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} DriverId - driverId. required.
+   * @param {RepeatList} IotIds - iotIds. required.
+   */
+  batchSetDeviceDriver(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DriverId')) {
+      throw new TypeError('parameter "DriverId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'IotIds')) {
+      throw new TypeError('parameter "IotIds" is required');
+    }
+
+    return this.request('BatchSetDeviceDriver', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {RepeatList} DeviceConfigs - deviceConfigs. required.
+   */
+  batchSetEdgeInstanceDeviceConfig(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeviceConfigs')) {
+      throw new TypeError('parameter "DeviceConfigs" is required');
+    }
+
+    return this.request('BatchSetEdgeInstanceDeviceConfig', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {RepeatList} IotIds - iotIds. required.
+   */
+  batchUnbindDeviceFromEdgeInstance(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'IotIds')) {
+      throw new TypeError('parameter "IotIds" is required');
+    }
+
+    return this.request('BatchUnbindDeviceFromEdgeInstance', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {RepeatList} DriverIds - driverIds. required.
+   */
+  batchUnbindDriverFromEdgeInstance(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DriverIds')) {
+      throw new TypeError('parameter "DriverIds" is required');
+    }
+
+    return this.request('BatchUnbindDriverFromEdgeInstance', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {RepeatList} PropertyInfoList - propertyInfoList. required.
+   */
+  batchUpdateCustomProperty(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PropertyInfoList')) {
+      throw new TypeError('parameter "PropertyInfoList" is required');
+    }
+
+    return this.request('BatchUpdateCustomProperty', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {RepeatList} DeviceNicknameInfo - simpleDeviceNicknameInfoList. required.
+   */
+  batchUpdateDeviceNickname(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DeviceNicknameInfo')) {
+      throw new TypeError('parameter "DeviceNicknameInfo" is required');
+    }
+
+    return this.request('BatchUpdateDeviceNickname', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {RepeatList} Firmware - firmwares. optional.
    */
   batchUpdateFirmware(params = {}, options = {}) {
@@ -967,20 +1389,13 @@ class Client extends RPCClient {
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
-   * @param {String} ProductKey - productKey. required.
-   * @param {String} DeviceName - deviceName. required.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} IotId - iotId. optional.
    */
   bindDeviceToEdgeInstance(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'InstanceId')) {
       throw new TypeError('parameter "InstanceId" is required');
-    }
-
-    if (!hasOwnProperty(params, 'ProductKey')) {
-      throw new TypeError('parameter "ProductKey" is required');
-    }
-
-    if (!hasOwnProperty(params, 'DeviceName')) {
-      throw new TypeError('parameter "DeviceName" is required');
     }
 
     return this.request('BindDeviceToEdgeInstance', params, options);
@@ -1058,6 +1473,11 @@ class Client extends RPCClient {
    * @param {Integer} MemorySize - memorySize. optional.
    * @param {Integer} Timeout - timeout. optional.
    * @param {String} TriggerContent - triggerContent. optional.
+   * @param {String} Environment - environment. optional.
+   * @param {Integer} Privileged - privileged. optional.
+   * @param {String} PortMappings - portMappings. optional.
+   * @param {String} DevMappings - devMappings. optional.
+   * @param {String} VolumeMappings - volumeMappings. optional.
    */
   bindFunctionToEdgeInstance(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'InstanceId')) {
@@ -1123,20 +1543,13 @@ class Client extends RPCClient {
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
-   * @param {String} ProductKey - productKey. required.
-   * @param {String} DeviceName - deviceName. required.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} IotId - iotId. optional.
    */
   bindGatewayToEdgeInstance(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'InstanceId')) {
       throw new TypeError('parameter "InstanceId" is required');
-    }
-
-    if (!hasOwnProperty(params, 'ProductKey')) {
-      throw new TypeError('parameter "ProductKey" is required');
-    }
-
-    if (!hasOwnProperty(params, 'DeviceName')) {
-      throw new TypeError('parameter "DeviceName" is required');
     }
 
     return this.request('BindGatewayToEdgeInstance', params, options);
@@ -1162,6 +1575,33 @@ class Client extends RPCClient {
     }
 
     return this.request('BindGatewayToGroup', params, options);
+  }
+
+  /**
+   * @param {String} IotInstanceId - iotInstanceId. required.
+   * @param {String} AccessKeyId - accessKeyId. optional.
+   * @param {String} CustomerVpcId - customerVpcId. required.
+   * @param {String} CustomerVSwitchId - customerVSwitchId. required.
+   * @param {String} CustomerSecurityGroupId - customerSecurityGroupId. required.
+   */
+  bindInstanceToCustomerVpc(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'IotInstanceId')) {
+      throw new TypeError('parameter "IotInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'CustomerVpcId')) {
+      throw new TypeError('parameter "CustomerVpcId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'CustomerVSwitchId')) {
+      throw new TypeError('parameter "CustomerVSwitchId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'CustomerSecurityGroupId')) {
+      throw new TypeError('parameter "CustomerSecurityGroupId" is required');
+    }
+
+    return this.request('BindInstanceToCustomerVpc', params, options);
   }
 
   /**
@@ -1499,6 +1939,25 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} Name - name. optional.
+   * @param {String} Type - type. optional.
+   * @param {String} EndPoint - endPoint. optional.
+   * @param {String} AccessId - accessId. optional.
+   * @param {String} AccessKey - accessKey. optional.
+   * @param {String} Host - host. optional.
+   * @param {String} UserName - userName. optional.
+   * @param {String} Password - password. optional.
+   * @param {String} Port - port. optional.
+   * @param {String} DbName - dbName. optional.
+   * @param {String} InstanceId - instanceId. optional.
+   * @param {Long} DataSourcePK - dataSourcePK. optional.
+   */
+  checkDataSourceValidV2(params = {}, options = {}) {
+    return this.request('CheckDataSourceValidV2', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} SceneId - sceneId. required.
    */
   checkIsUnzipSuccess(params = {}, options = {}) {
@@ -1525,6 +1984,37 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} ApiProduct - apiProduct. optional. default: Iot.
+   * @param {String} ApiRevision - apiRevision. optional. default: 1.0.0.
+   * @param {String} ModelUuid - modelUuid. required.
+   */
+  checkUploadGeoModelSuccess(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ModelUuid')) {
+      throw new TypeError('parameter "ModelUuid" is required');
+    }
+
+    return this.request('CheckUploadGeoModelSuccess', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} DriverId - driverId. required.
+   */
+  clearEdgeInstanceDriverConfigs(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DriverId')) {
+      throw new TypeError('parameter "DriverId" is required');
+    }
+
+    return this.request('ClearEdgeInstanceDriverConfigs', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {Long} SourceId - sourceId. optional.
    * @param {String} Name - name. optional.
@@ -1532,6 +2022,51 @@ class Client extends RPCClient {
    */
   cloneTask(params = {}, options = {}) {
     return this.request('CloneTask', params, options);
+  }
+
+  /**
+   * @param {String} ClusterId - clusterId. required.
+   * @param {String} AccepterAliyunId - accepterAliyunId. required.
+   * @param {RepeatList} PermissionCodes - permissionCodes. required.
+   */
+  clusterPermissionBinding(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ClusterId')) {
+      throw new TypeError('parameter "ClusterId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'AccepterAliyunId')) {
+      throw new TypeError('parameter "AccepterAliyunId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PermissionCodes')) {
+      throw new TypeError('parameter "PermissionCodes" is required');
+    }
+
+    return this.request('ClusterPermissionBinding', params, options);
+  }
+
+  /**
+   * @param {String} ClusterId - clusterId. required.
+   * @param {String} AccepterAliyunId - accepterAliyunId. required.
+   */
+  clusterPermissionUnbind(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ClusterId')) {
+      throw new TypeError('parameter "ClusterId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'AccepterAliyunId')) {
+      throw new TypeError('parameter "AccepterAliyunId" is required');
+    }
+
+    return this.request('ClusterPermissionUnbind', params, options);
+  }
+
+  /**
+   * @param {String} PaymentMode - paymentMode. optional.
+   * @param {String} AppConfigId - appConfigId. optional.
+   */
+  computeAppConfigPrice(params = {}, options = {}) {
+    return this.request('ComputeAppConfigPrice', params, options);
   }
 
   /**
@@ -1600,6 +2135,7 @@ class Client extends RPCClient {
    * @param {String} ComparisonModel - comparisonModel. optional.
    * @param {RepeatList} ContactGroups - contactGroups. optional.
    * @param {Integer} EvaluationCount - evaluationCount. optional.
+   * @param {RepeatList} ContactList - contactList. optional.
    */
   createAppAlarm(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'AppUuid')) {
@@ -1655,13 +2191,13 @@ class Client extends RPCClient {
    * @param {String} DataModelId - dataModelId. optional.
    * @param {String} DataModelName - dataModelName. optional.
    * @param {String} DataModelVersion - dataModelVersion. optional.
+   * @param {String} DataModelDescription - dataModelDescription. optional.
    * @param {String} DeclareVersionId - declareVersionId. optional.
    * @param {String} Uuid - uuid. optional.
-   * @param {Integer} InsertOpt - insertOpt. optional.
-   * @param {Integer} UpdateOpt - updateOpt. optional.
-   * @param {Integer} DeleteOpt - deleteOpt. optional.
-   * @param {Integer} SelectOpt - selectOpt. optional.
-   * @param {Integer} SubscribeOpt - subscribeOpt. optional.
+   * @param {Integer} DataModelPermission - dataModelPermission. optional.
+   * @param {Boolean} IsSubscribe - isSubscribe. optional.
+   * @param {Integer} Deleted - deleted. optional.
+   * @param {String} Description - description. optional.
    */
   createAppDataModelDeclare(params = {}, options = {}) {
     return this.request('CreateAppDataModelDeclare', params, options);
@@ -1740,6 +2276,27 @@ class Client extends RPCClient {
    */
   createAppKey(params = {}, options = {}) {
     return this.request('CreateAppKey', params, options);
+  }
+
+  /**
+   * @param {String} ServiceCode - serviceCode. optional.
+   * @param {String} Consumer - consumer. optional.
+   * @param {String} ConsumeVersion - cVersion. optional.
+   * @param {String} Provider - provider. optional.
+   * @param {String} ProviderType - providerType. optional.
+   * @param {String} ProvideVersion - pVersion. optional.
+   */
+  createAppServiceDependency(params = {}, options = {}) {
+    return this.request('CreateAppServiceDependency', params, options);
+  }
+
+  /**
+   * @param {String} ConfigId - configId. optional.
+   * @param {String} DeclareType - declareType. optional.
+   * @param {String} ServiceModelList - serviceModelList. optional.
+   */
+  createAppServiceModelDeclare(params = {}, options = {}) {
+    return this.request('CreateAppServiceModelDeclare', params, options);
   }
 
   /**
@@ -2011,6 +2568,37 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} DisplayName - displayName. required.
+   * @param {String} ApiPath - apiPath. required.
+   * @param {String} FolderId - folderId. optional.
+   * @param {String} Desc - desc. optional.
+   * @param {String} OriginSql - originSql. required.
+   * @param {String} TemplateSql - templateSql. required.
+   * @param {RepeatList} RequestParam - requestParams. optional.
+   * @param {RepeatList} ResponseParam - responseParams. optional.
+   */
+  createDataAPIService(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DisplayName')) {
+      throw new TypeError('parameter "DisplayName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ApiPath')) {
+      throw new TypeError('parameter "ApiPath" is required');
+    }
+
+    if (!hasOwnProperty(params, 'OriginSql')) {
+      throw new TypeError('parameter "OriginSql" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TemplateSql')) {
+      throw new TypeError('parameter "TemplateSql" is required');
+    }
+
+    return this.request('CreateDataAPIService', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} Id - id. optional.
    * @param {String} Name - name. optional.
@@ -2027,6 +2615,7 @@ class Client extends RPCClient {
    * @param {String} GmtModified - gmtModified. optional.
    * @param {String} VpcId - vpcId. optional.
    * @param {String} InstanceId - instanceId. optional.
+   * @param {String} PurposeType - purposeType. optional.
    */
   createDataSource(params = {}, options = {}) {
     return this.request('CreateDataSource', params, options);
@@ -2064,20 +2653,23 @@ class Client extends RPCClient {
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} DriverName - name. required.
    * @param {String} Description - description. optional.
-   * @param {String} Url - ossAddress. required.
+   * @param {String} Protocol - protocol. optional.
    * @param {String} Runtime - runtime. required.
+   * @param {String} CpuArch - cpuArch. optional.
+   * @param {String} Handler - handler. optional.
+   * @param {String} Url - ossAddress. required.
    */
   createDriver(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DriverName')) {
       throw new TypeError('parameter "DriverName" is required');
     }
 
-    if (!hasOwnProperty(params, 'Url')) {
-      throw new TypeError('parameter "Url" is required');
-    }
-
     if (!hasOwnProperty(params, 'Runtime')) {
       throw new TypeError('parameter "Runtime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Url')) {
+      throw new TypeError('parameter "Url" is required');
     }
 
     return this.request('CreateDriver', params, options);
@@ -2128,6 +2720,7 @@ class Client extends RPCClient {
    * @param {String} Name - name. required.
    * @param {String} Tags - tags. optional.
    * @param {String} Source - source. optional.
+   * @param {Integer} Spec - spec. optional.
    */
   createEdgeClusterInstance(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'Name')) {
@@ -2144,6 +2737,8 @@ class Client extends RPCClient {
    * @param {String} Tags - tags. optional.
    * @param {String} ProductKey - productKey. optional.
    * @param {String} DeviceName - deviceName. optional.
+   * @param {String} IotId - iotId. optional.
+   * @param {Integer} Spec - spec. optional.
    */
   createEdgeInstance(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'Name')) {
@@ -2151,6 +2746,34 @@ class Client extends RPCClient {
     }
 
     return this.request('CreateEdgeInstance', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} DriverId - driverId. required.
+   * @param {String} ChannelName - channelName. required.
+   * @param {RepeatList} Configs - configs. required.
+   */
+  createEdgeInstanceChannel(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DriverId')) {
+      throw new TypeError('parameter "DriverId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ChannelName')) {
+      throw new TypeError('parameter "ChannelName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Configs')) {
+      throw new TypeError('parameter "Configs" is required');
+    }
+
+    return this.request('CreateEdgeInstanceChannel', params, options);
   }
 
   /**
@@ -2373,9 +2996,23 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} RepoName - repoName. optional.
+   * @param {String} Tag - tag. optional.
+   * @param {String} OS - os. optional.
+   * @param {String} BaseImageType - baseImageType. optional.
+   * @param {String} BaseImageVer - baseImageVer. optional.
+   * @param {String} Entrypoint - entrypoint. optional.
+   * @param {String} OssDir - ossdir. optional.
+   */
+  createImageBuildTask(params = {}, options = {}) {
+    return this.request('CreateImageBuildTask', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} FolderName - folderName. optional.
    * @param {String} ParentFolderId - parentFolderId. optional.
+   * @param {String} JobType - jobType. optional.
    */
   createJobFolder(params = {}, options = {}) {
     return this.request('CreateJobFolder', params, options);
@@ -2402,6 +3039,34 @@ class Client extends RPCClient {
     }
 
     return this.request('CreateLdpApp', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {RepeatList} DeviceInfo - deviceInfos. required.
+   */
+  createLoRaNodesTask(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeviceInfo')) {
+      throw new TypeError('parameter "DeviceInfo" is required');
+    }
+
+    return this.request('CreateLoRaNodesTask', params, options);
+  }
+
+  /**
+   * @param {String} SceneName - sceneName. optional.
+   * @param {String} BizKey - bizKey. optional.
+   * @param {String} ServiceId - serviceId. optional.
+   * @param {String} OperateType - operateType. optional.
+   */
+  createOrCancelApiPermissionDeclare(params = {}, options = {}) {
+    return this.request('CreateOrCancelApiPermissionDeclare', params, options);
   }
 
   /**
@@ -2754,6 +3419,18 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} DisplayName - displayName. optional.
+   * @param {String} FolderId - folderId. optional.
+   * @param {String} ApiPath - apiPath. optional.
+   * @param {String} Desc - desc. optional.
+   * @param {Json} SqlTemplate - sqlTemplate. optional.
+   */
+  createServeApiBySQL(params = {}, options = {}) {
+    return this.request('CreateServeApiBySQL', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} Name - name. optional.
    * @param {String} Desc - desc. optional.
    * @param {String} Type - type. optional.
@@ -2858,6 +3535,16 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} Consumer - consumer. optional.
+   * @param {String} ApiCode - apiCode. optional.
+   * @param {String} ApiVersion - apiVersion. optional.
+   * @param {String} Parameter - parameter. optional.
+   */
+  debugAppProvideService(params = {}, options = {}) {
+    return this.request('DebugAppProvideService', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} RuleId - ruleId. optional.
@@ -2877,6 +3564,24 @@ class Client extends RPCClient {
    */
   delAppVirtualDeviceConfig(params = {}, options = {}) {
     return this.request('DelAppVirtualDeviceConfig', params, options);
+  }
+
+  /**
+   * @param {String} ApiProduct - apiProduct. optional. default: Iot.
+   * @param {String} ApiRevision - apiRevision. optional. default: 1.0.0.
+   * @param {String} GeoProjectId - geoProjectId. required.
+   * @param {Long} Id - id. required.
+   */
+  delete3DOption(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'GeoProjectId')) {
+      throw new TypeError('parameter "GeoProjectId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    return this.request('Delete3DOption', params, options);
   }
 
   /**
@@ -2986,6 +3691,17 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} ModelId - modelId. optional.
+   * @param {String} Conditions - conditions. optional.
+   * @param {String} AppId - appId. optional.
+   * @param {String} ModelVersion - modelVersion. optional.
+   * @param {Boolean} ClearScope - clearScope. optional.
+   */
+  deleteAppInstanceData(params = {}, options = {}) {
+    return this.request('DeleteAppInstanceData', params, options);
+  }
+
+  /**
    * @param {String} AppUuid - appUuid. optional.
    */
   deleteAppKey(params = {}, options = {}) {
@@ -2998,6 +3714,24 @@ class Client extends RPCClient {
    */
   deleteAppRepoTag(params = {}, options = {}) {
     return this.request('DeleteAppRepoTag', params, options);
+  }
+
+  /**
+   * @param {String} ServiceCode - serviceCode. optional.
+   * @param {String} Consumer - consumer. optional.
+   * @param {String} ConsumeVersion - cVersion. optional.
+   */
+  deleteAppServiceDependency(params = {}, options = {}) {
+    return this.request('DeleteAppServiceDependency', params, options);
+  }
+
+  /**
+   * @param {String} ConfigId - configId. optional.
+   * @param {String} DeclareType - declareType. optional.
+   * @param {String} ModelCode - modelCode. optional.
+   */
+  deleteAppServiceModelDeclare(params = {}, options = {}) {
+    return this.request('DeleteAppServiceModelDeclare', params, options);
   }
 
   /**
@@ -3067,6 +3801,22 @@ class Client extends RPCClient {
    */
   deleteDevice(params = {}, options = {}) {
     return this.request('DeleteDevice', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} FileId - fileId. required.
+   * @param {String} IotId - iotId. optional.
+   */
+  deleteDeviceFile(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'FileId')) {
+      throw new TypeError('parameter "FileId" is required');
+    }
+
+    return this.request('DeleteDeviceFile', params, options);
   }
 
   /**
@@ -3188,6 +3938,25 @@ class Client extends RPCClient {
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
+   * @param {String} DriverId - driverId. optional.
+   * @param {String} ChannelId - channelId. required.
+   */
+  deleteEdgeInstanceChannel(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ChannelId')) {
+      throw new TypeError('parameter "ChannelId" is required');
+    }
+
+    return this.request('DeleteEdgeInstanceChannel', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
    * @param {Long} RouteId - routeId. required.
    */
   deleteEdgeInstanceMessageRoute(params = {}, options = {}) {
@@ -3302,6 +4071,14 @@ class Client extends RPCClient {
     }
 
     return this.request('DeleteGroupMessageRoute', params, options);
+  }
+
+  /**
+   * @param {String} RepoName - repoName. optional.
+   * @param {String} Tag - tag. optional.
+   */
+  deleteImageBuildTask(params = {}, options = {}) {
+    return this.request('DeleteImageBuildTask', params, options);
   }
 
   /**
@@ -3517,6 +4294,14 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} ApiSrn - apiSrn. optional.
+   */
+  deleteServeApi(params = {}, options = {}) {
+    return this.request('DeleteServeApi', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {Long} Id - id. optional.
    * @param {Long} TaskId - taskId. optional.
    */
@@ -3581,6 +4366,31 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} ApiCode - apiCode. optional.
+   * @param {String} ApiVersion - apiVersion. optional.
+   */
+  describeAppServiceApiDetail(params = {}, options = {}) {
+    return this.request('DescribeAppServiceApiDetail', params, options);
+  }
+
+  /**
+   * @param {String} ServiceCode - serviceCode. optional.
+   * @param {String} Consumer - consumer. optional.
+   * @param {String} ConsumeVersion - cVersion. optional.
+   */
+  describeAppServiceDependency(params = {}, options = {}) {
+    return this.request('DescribeAppServiceDependency', params, options);
+  }
+
+  /**
+   * @param {String} ModelCode - modelCode. optional.
+   * @param {String} ModelVersion - modelVersion. optional.
+   */
+  describeAppServiceModelVersion(params = {}, options = {}) {
+    return this.request('DescribeAppServiceModelVersion', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    */
@@ -3617,6 +4427,24 @@ class Client extends RPCClient {
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {String} DeviceName - deviceName. required.
+   */
+  disableDeviceRemoteDebug(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeviceName')) {
+      throw new TypeError('parameter "DeviceName" is required');
+    }
+
+    return this.request('DisableDeviceRemoteDebug', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} RuleId - sceneId. required.
    */
@@ -3646,6 +4474,27 @@ class Client extends RPCClient {
     }
 
     return this.request('DisableOperationIngress', params, options);
+  }
+
+  /**
+   * @param {String} AppUuid - appUuid. required.
+   * @param {String} ServiceName - serviceName. required.
+   * @param {String} OperationType - operationType. required.
+   */
+  disableServiceSlb(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppUuid')) {
+      throw new TypeError('parameter "AppUuid" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ServiceName')) {
+      throw new TypeError('parameter "ServiceName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'OperationType')) {
+      throw new TypeError('parameter "OperationType" is required');
+    }
+
+    return this.request('DisableServiceSlb', params, options);
   }
 
   /**
@@ -3769,6 +4618,24 @@ class Client extends RPCClient {
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {String} DeviceName - deviceName. required.
+   */
+  enableDeviceRemoteDebug(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeviceName')) {
+      throw new TypeError('parameter "DeviceName" is required');
+    }
+
+    return this.request('EnableDeviceRemoteDebug', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} RuleId - sceneId. required.
    */
@@ -3799,6 +4666,28 @@ class Client extends RPCClient {
     }
 
     return this.request('EnableOperationIngress', params, options);
+  }
+
+  /**
+   * @param {String} AppUuid - appUuid. required.
+   * @param {String} ServiceName - serviceName. required.
+   * @param {String} OperationType - operationType. required.
+   * @param {Long} ExpireInterval - expireInterval. optional.
+   */
+  enableServiceSlb(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppUuid')) {
+      throw new TypeError('parameter "AppUuid" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ServiceName')) {
+      throw new TypeError('parameter "ServiceName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'OperationType')) {
+      throw new TypeError('parameter "OperationType" is required');
+    }
+
+    return this.request('EnableServiceSlb', params, options);
   }
 
   /**
@@ -3886,6 +4775,7 @@ class Client extends RPCClient {
    * @param {String} CpuCapacityRequest - cpuCapacityRequest. optional.
    * @param {String} MemCapacityRequest - memCapacityRequest. optional.
    * @param {Integer} ReplicaCount - replicaCount. optional.
+   * @param {String} Spec - spec. optional.
    */
   expandAppResource(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'AppUuid')) {
@@ -3960,6 +4850,35 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} GeoProjectId - projectId. optional.
+   */
+  generateGISOssUploadUri(params = {}, options = {}) {
+    return this.request('GenerateGISOssUploadUri', params, options);
+  }
+
+  /**
+   * @param {String} ApiProduct - apiProduct. optional. default: Iot.
+   * @param {String} ApiRevision - apiRevision. optional. default: 1.0.0.
+   * @param {String} ModelUuid - modelUuid. required.
+   */
+  generateGeoModelUploadUri(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ModelUuid')) {
+      throw new TypeError('parameter "ModelUuid" is required');
+    }
+
+    return this.request('GenerateGeoModelUploadUri', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} JobUid - jobUid. optional.
+   */
+  generateJobExecuteTaskUid(params = {}, options = {}) {
+    return this.request('GenerateJobExecuteTaskUid', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
@@ -4000,6 +4919,23 @@ class Client extends RPCClient {
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
+   */
+  generateOtaUploadUri(params = {}, options = {}) {
+    return this.request('GenerateOtaUploadUri', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} SqlStatement - sqlStatement. optional.
+   * @param {String} ApiSrn - apiSrn. optional.
+   */
+  generateSQLTemplate(params = {}, options = {}) {
+    return this.request('GenerateSQLTemplate', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} ScriptType - scriptType. required.
    */
@@ -4034,9 +4970,73 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} GeoProjectId - geoProjectId. required.
+   */
+  geoBatchSetCoordinate(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'GeoProjectId')) {
+      throw new TypeError('parameter "GeoProjectId" is required');
+    }
+
+    return this.request('GeoBatchSetCoordinate', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} GeoProjectId - geoProjectId. required.
+   */
+  geoCheckSetCoordinateStatus(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'GeoProjectId')) {
+      throw new TypeError('parameter "GeoProjectId" is required');
+    }
+
+    return this.request('GeoCheckSetCoordinateStatus', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} Status - status. optional.
+   * @param {String} GroupId - groupId. optional.
+   * @param {String} AliyunCommodityCode - aliyunCommodityCode. optional.
+   * @param {Integer} CurrentPage - currentPage. optional. default: 1.
+   * @param {Integer} PageSize - pageSize. optional. default: 10.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   * @param {Boolean} Fuzzy - fuzzy. optional.
+   * @param {String} GeoProjectId - geoProjectId. required.
+   */
+  geoGetDeviceInfoListFile(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'GeoProjectId')) {
+      throw new TypeError('parameter "GeoProjectId" is required');
+    }
+
+    return this.request('GeoGetDeviceInfoListFile', params, options);
+  }
+
+  /**
    */
   getAccountBalance(params = {}, options = {}) {
     return this.request('GetAccountBalance', params, options);
+  }
+
+  /**
+   * @param {String} ApiProduct - apiProduct. optional. default: Iot.
+   * @param {String} ApiRevision - apiRevision. optional. default: 1.0.0.
+   * @param {String} SceneId - sceneId. required.
+   * @param {String} SysCode - sysCode. required.
+   */
+  getAllShareInfo(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'SceneId')) {
+      throw new TypeError('parameter "SceneId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'SysCode')) {
+      throw new TypeError('parameter "SysCode" is required');
+    }
+
+    return this.request('GetAllShareInfo', params, options);
   }
 
   /**
@@ -4096,6 +5096,13 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AppId - appId. optional.
+   */
+  getAppInitEnvDetail(params = {}, options = {}) {
+    return this.request('GetAppInitEnvDetail', params, options);
+  }
+
+  /**
    * @param {String} AppUuid - appUuid. optional.
    */
   getAppInstanceInfo(params = {}, options = {}) {
@@ -4132,6 +5139,28 @@ class Client extends RPCClient {
     }
 
     return this.request('GetAppPermissionList', params, options);
+  }
+
+  /**
+   * @param {String} AppUuid - appUuid. required.
+   */
+  getAppPermissionList4Accepter(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppUuid')) {
+      throw new TypeError('parameter "AppUuid" is required');
+    }
+
+    return this.request('GetAppPermissionList4Accepter', params, options);
+  }
+
+  /**
+   * @param {String} AppUuid - appUuid. required.
+   */
+  getAppPermissionList4Provider(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppUuid')) {
+      throw new TypeError('parameter "AppUuid" is required');
+    }
+
+    return this.request('GetAppPermissionList4Provider', params, options);
   }
 
   /**
@@ -4275,19 +5304,34 @@ class Client extends RPCClient {
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
-   * @param {String} ProductKey - productKey. required.
-   * @param {String} DeviceName - deviceName. required.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} iotId - IotId. optional.
    */
   getCloudMonitorNode(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ProductKey')) {
-      throw new TypeError('parameter "ProductKey" is required');
-    }
-
-    if (!hasOwnProperty(params, 'DeviceName')) {
-      throw new TypeError('parameter "DeviceName" is required');
-    }
-
     return this.request('GetCloudMonitorNode', params, options);
+  }
+
+  /**
+   * @param {String} ClusterId - clusterId. required.
+   */
+  getClusterPermissionList4Accepter(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ClusterId')) {
+      throw new TypeError('parameter "ClusterId" is required');
+    }
+
+    return this.request('GetClusterPermissionList4Accepter', params, options);
+  }
+
+  /**
+   * @param {String} ClusterId - clusterId. required.
+   */
+  getClusterPermissionList4Provider(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ClusterId')) {
+      throw new TypeError('parameter "ClusterId" is required');
+    }
+
+    return this.request('GetClusterPermissionList4Provider', params, options);
   }
 
   /**
@@ -4295,6 +5339,26 @@ class Client extends RPCClient {
    */
   getComponentList(params = {}, options = {}) {
     return this.request('GetComponentList', params, options);
+  }
+
+  /**
+   * @param {String} Uuid - uuid. optional.
+   * @param {String} AppUuid - appUuid. optional.
+   */
+  getContactList(params = {}, options = {}) {
+    return this.request('GetContactList', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} ApiSrn - apiSrn. required.
+   */
+  getDataAPIServiceDetail(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ApiSrn')) {
+      throw new TypeError('parameter "ApiSrn" is required');
+    }
+
+    return this.request('GetDataAPIServiceDetail', params, options);
   }
 
   /**
@@ -4319,12 +5383,14 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Json} IdList - idList. optional.
    * @param {Json} NameList - nameList. optional.
    * @param {String} Search - search. optional.
    * @param {String} Type - type. optional.
    * @param {Json} Page - page. optional.
    * @param {Json} Order - order. optional.
+   * @param {String} PurposeType - purposeType. optional.
    */
   getDataSourceList(params = {}, options = {}) {
     return this.request('GetDataSourceList', params, options);
@@ -4346,6 +5412,24 @@ class Client extends RPCClient {
     }
 
     return this.request('GetDeviceEventsForBim', params, options);
+  }
+
+  /**
+   * @param {Long} CurrentDate - currentDate. required.
+   * @param {Boolean} BizDate - bizDate. required.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   */
+  getDeviceMeasurementData(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'CurrentDate')) {
+      throw new TypeError('parameter "CurrentDate" is required');
+    }
+
+    if (!hasOwnProperty(params, 'BizDate')) {
+      throw new TypeError('parameter "BizDate" is required');
+    }
+
+    return this.request('GetDeviceMeasurementData', params, options);
   }
 
   /**
@@ -4574,6 +5658,28 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} ClusterId - clusterId. required.
+   */
+  getEdgeClusterInfo(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ClusterId')) {
+      throw new TypeError('parameter "ClusterId" is required');
+    }
+
+    return this.request('GetEdgeClusterInfo', params, options);
+  }
+
+  /**
+   * @param {String} ClusterId - clusterId. required.
+   */
+  getEdgeClusterKubeconfig(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ClusterId')) {
+      throw new TypeError('parameter "ClusterId" is required');
+    }
+
+    return this.request('GetEdgeClusterKubeconfig', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
@@ -4589,18 +5695,11 @@ class Client extends RPCClient {
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
-   * @param {String} ProductKey - productKey. required.
-   * @param {String} DeviceName - deviceName. required.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} IotId - iotId. optional.
    */
   getEdgeInstanceByGateway(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ProductKey')) {
-      throw new TypeError('parameter "ProductKey" is required');
-    }
-
-    if (!hasOwnProperty(params, 'DeviceName')) {
-      throw new TypeError('parameter "DeviceName" is required');
-    }
-
     return this.request('GetEdgeInstanceByGateway', params, options);
   }
 
@@ -4615,6 +5714,40 @@ class Client extends RPCClient {
     }
 
     return this.request('GetEdgeInstanceByName', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} IotId - iotId. optional.
+   */
+  getEdgeInstanceDriverDebugResponse(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    return this.request('GetEdgeInstanceDriverDebugResponse', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} FunctionId - functionId. required.
+   */
+  getEdgeInstanceFunction(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'FunctionId')) {
+      throw new TypeError('parameter "FunctionId" is required');
+    }
+
+    return this.request('GetEdgeInstanceFunction', params, options);
   }
 
   /**
@@ -4693,6 +5826,29 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} VersionId - versionId. required.
+   * @param {Boolean} IsDesensitized - isDesensitized. required.
+   */
+  getEdgeInstanceVersion(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'VersionId')) {
+      throw new TypeError('parameter "VersionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'IsDesensitized')) {
+      throw new TypeError('parameter "IsDesensitized" is required');
+    }
+
+    return this.request('GetEdgeInstanceVersion', params, options);
+  }
+
+  /**
    * @param {String} NodeId - nodeId. required.
    */
   getEdgeNode(params = {}, options = {}) {
@@ -4708,6 +5864,53 @@ class Client extends RPCClient {
    */
   getEdgeNodeBootstrapScript(params = {}, options = {}) {
     return this.request('GetEdgeNodeBootstrapScript', params, options);
+  }
+
+  /**
+   * @param {String} NodeId - nodeId. required.
+   * @param {String} DeviceAuthCode - deviceAuthCode. required.
+   */
+  getEdgeNodeId2(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'NodeId')) {
+      throw new TypeError('parameter "NodeId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeviceAuthCode')) {
+      throw new TypeError('parameter "DeviceAuthCode" is required');
+    }
+
+    return this.request('GetEdgeNodeId2', params, options);
+  }
+
+  /**
+   * @param {String} NodeId - nodeId. required.
+   * @param {String} Id2 - id2. required.
+   */
+  getEdgeNodeId2ServerRandom(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'NodeId')) {
+      throw new TypeError('parameter "NodeId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Id2')) {
+      throw new TypeError('parameter "Id2" is required');
+    }
+
+    return this.request('GetEdgeNodeId2ServerRandom', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {Integer} Id - id. optional.
+   */
+  getFuncDocsDetail(params = {}, options = {}) {
+    return this.request('GetFuncDocsDetail', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   */
+  getFuncDocsTree(params = {}, options = {}) {
+    return this.request('GetFuncDocsTree', params, options);
   }
 
   /**
@@ -4803,9 +6006,59 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} RepoName - repoName. optional.
+   * @param {String} Tag - tag. optional.
+   */
+  getImagePkgUploadPath(params = {}, options = {}) {
+    return this.request('GetImagePkgUploadPath', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} JobUid - jobUid. optional.
+   * @param {String} TaskUid - taskUid. optional.
+   */
+  getJobExecuteDetail(params = {}, options = {}) {
+    return this.request('GetJobExecuteDetail', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} Status - status. optional.
+   * @param {Integer} PageNo - pageNo. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   */
+  getJobExecuteRecordList(params = {}, options = {}) {
+    return this.request('GetJobExecuteRecordList', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} JobUid - jobUid. optional.
+   * @param {String} TaskUid - taskUid. optional.
+   * @param {Integer} Offset - offset. optional.
+   */
+  getJobHistoryExecLog(params = {}, options = {}) {
+    return this.request('GetJobHistoryExecLog', params, options);
+  }
+
+  /**
    */
   getLVCategoryList(params = {}, options = {}) {
     return this.request('GetLVCategoryList', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} TaskId - taskId. required.
+   */
+  getLoraNodesTask(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'TaskId')) {
+      throw new TypeError('parameter "TaskId" is required');
+    }
+
+    return this.request('GetLoraNodesTask', params, options);
   }
 
   /**
@@ -4859,6 +6112,16 @@ class Client extends RPCClient {
     }
 
     return this.request('GetNodesAddingTask', params, options);
+  }
+
+  /**
+   * @param {String} AppUuid - appUuid. optional.
+   * @param {String} ServiceName - serviceName. optional.
+   * @param {String} Port - port. optional.
+   * @param {String} Path - path. optional.
+   */
+  getOauthUrl(params = {}, options = {}) {
+    return this.request('GetOauthUrl', params, options);
   }
 
   /**
@@ -5007,7 +6270,9 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
-   * @param {String} RequestIdX - requestIdX. optional.
+   * @param {String} JobUid - jobUid. optional.
+   * @param {Integer} Offset - offset. optional.
+   * @param {String} TaskUid - taskUid. optional.
    */
   getQueryJobExecLog(params = {}, options = {}) {
     return this.request('GetQueryJobExecLog', params, options);
@@ -5026,6 +6291,14 @@ class Client extends RPCClient {
    */
   getQueryJobListByFolderUID(params = {}, options = {}) {
     return this.request('GetQueryJobListByFolderUID', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} JobId - jobId. optional.
+   */
+  getQueryJobV2(params = {}, options = {}) {
+    return this.request('GetQueryJobV2', params, options);
   }
 
   /**
@@ -5095,6 +6368,15 @@ class Client extends RPCClient {
     }
 
     return this.request('GetRuleAction', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} JobUid - jobUid. optional.
+   * @param {Json} ScheduleConfiguration - scheduleConfiguration. optional.
+   */
+  getSchedulerConfig(params = {}, options = {}) {
+    return this.request('GetSchedulerConfig', params, options);
   }
 
   /**
@@ -5202,10 +6484,54 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} ApiSrn - apiSrn. optional.
+   */
+  getServeApi(params = {}, options = {}) {
+    return this.request('GetServeApi', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} JobId - jobId. optional.
+   */
+  getServeApiByJobId(params = {}, options = {}) {
+    return this.request('GetServeApiByJobId', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   */
+  getServeApiFolderTree(params = {}, options = {}) {
+    return this.request('GetServeApiFolderTree', params, options);
+  }
+
+  /**
    * @param {String} AppConfigId - appConfigId. optional.
    */
   getServiceNameAndPort(params = {}, options = {}) {
     return this.request('GetServiceNameAndPort', params, options);
+  }
+
+  /**
+   * @param {String} AppUuid - appUuid. required.
+   * @param {String} ServiceName - serviceName. required.
+   * @param {String} OperationType - operationType. required.
+   */
+  getServiceSlb(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppUuid')) {
+      throw new TypeError('parameter "AppUuid" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ServiceName')) {
+      throw new TypeError('parameter "ServiceName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'OperationType')) {
+      throw new TypeError('parameter "OperationType" is required');
+    }
+
+    return this.request('GetServiceSlb', params, options);
   }
 
   /**
@@ -5223,6 +6549,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} IotInstanceId - iotInstanceId. required.
+   * @param {String} AccessKeyId - accessKeyId. optional.
    */
   getSolutionInstance(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'IotInstanceId')) {
@@ -5399,6 +6726,13 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AppId - appId. optional.
+   */
+  iniAppDebugEnv(params = {}, options = {}) {
+    return this.request('IniAppDebugEnv', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {Json} SceneDTO - sceneDTO. required.
    */
@@ -5415,6 +6749,30 @@ class Client extends RPCClient {
    */
   initializeAppImageRepoPassword(params = {}, options = {}) {
     return this.request('InitializeAppImageRepoPassword', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} ApiSrn - apiSrn. optional.
+   * @param {Json} ExtraParams - extraParams. optional.
+   * @param {Json} Params - params. optional.
+   * @param {String} TaskUid - taskUid. optional.
+   */
+  invokeAlgoServeApi(params = {}, options = {}) {
+    return this.request('InvokeAlgoServeApi', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} ApiSrn - apiSrn. required.
+   * @param {RepeatList} Param - params. optional.
+   */
+  invokeDataAPIService(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ApiSrn')) {
+      throw new TypeError('parameter "ApiSrn" is required');
+    }
+
+    return this.request('InvokeDataAPIService', params, options);
   }
 
   /**
@@ -5511,12 +6869,42 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AppUuid - appUuid. required.
+   * @param {String} ServiceName - serviceName. required.
+   * @param {String} OperationType - operationType. required.
+   */
+  isServiceOperable(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppUuid')) {
+      throw new TypeError('parameter "AppUuid" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ServiceName')) {
+      throw new TypeError('parameter "ServiceName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'OperationType')) {
+      throw new TypeError('parameter "OperationType" is required');
+    }
+
+    return this.request('IsServiceOperable', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} BizTenantId - bizTenantId. optional.
    */
   listAllCategory(params = {}, options = {}) {
     return this.request('ListAllCategory', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  listAllCategoryConsole(params = {}, options = {}) {
+    return this.request('ListAllCategoryConsole', params, options);
   }
 
   /**
@@ -5544,6 +6932,13 @@ class Client extends RPCClient {
    */
   listAppDataModelDeclare(params = {}, options = {}) {
     return this.request('ListAppDataModelDeclare', params, options);
+  }
+
+  /**
+   * @param {String} AppUuid - appUuId. optional.
+   */
+  listAppDependentService(params = {}, options = {}) {
+    return this.request('ListAppDependentService', params, options);
   }
 
   /**
@@ -5596,6 +6991,13 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AppUuid - appUuId. optional.
+   */
+  listAppProvideService(params = {}, options = {}) {
+    return this.request('ListAppProvideService', params, options);
+  }
+
+  /**
    * @param {String} RepoName - repoName. optional.
    * @param {Integer} PageNo - pageNo. optional.
    * @param {Integer} PageSize - pageSize. optional.
@@ -5609,6 +7011,29 @@ class Client extends RPCClient {
    */
   listAppServiceGroup(params = {}, options = {}) {
     return this.request('ListAppServiceGroup', params, options);
+  }
+
+  /**
+   * @param {String} ConfigId - configId. optional.
+   * @param {String} DeclareType - declareType. optional.
+   * @param {String} ModelName - name. optional.
+   * @param {String} ModelCode - modelCode. optional.
+   * @param {Integer} PageNo - pageNo. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   */
+  listAppServiceModel(params = {}, options = {}) {
+    return this.request('ListAppServiceModel', params, options);
+  }
+
+  /**
+   * @param {String} ConfigId - configId. optional.
+   * @param {String} ModelCode - modelCode. optional.
+   * @param {String} DeclareType - declareType. optional.
+   * @param {Integer} PageNo - pageNo. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   */
+  listAppServiceModelDeclare(params = {}, options = {}) {
+    return this.request('ListAppServiceModelDeclare', params, options);
   }
 
   /**
@@ -5675,6 +7100,23 @@ class Client extends RPCClient {
     }
 
     return this.request('ListCategoryStdAbility', params, options);
+  }
+
+  /**
+   * @param {String} UUID - uuid. optional.
+   * @param {Integer} PageNo - pageNo. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   */
+  listClusterUsers(params = {}, options = {}) {
+    return this.request('ListClusterUsers', params, options);
+  }
+
+  /**
+   * @param {Integer} PageNo - pageNo. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   */
+  listClusters(params = {}, options = {}) {
+    return this.request('ListClusters', params, options);
   }
 
   /**
@@ -6022,6 +7464,15 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} RepoName - repoName. optional.
+   * @param {Integer} PageNo - pageNo. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   */
+  listImageBuildTasks(params = {}, options = {}) {
+    return this.request('ListImageBuildTasks', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
@@ -6079,6 +7530,22 @@ class Client extends RPCClient {
     }
 
     return this.request('ListProductByTags', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {Integer} Page - page. optional. default: 1.
+   * @param {Integer} PageSize - pageSize. optional. default: 10.
+   * @param {String} AliyunCommodityCode - aliyunCommodityCode. optional.
+   * @param {String} Name - name. optional.
+   * @param {Integer} NodeType - nodeType. optional.
+   * @param {Integer} Status - status. optional.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   * @param {RepeatList} NetType - netTypeList. optional.
+   */
+  listProductConsole(params = {}, options = {}) {
+    return this.request('ListProductConsole', params, options);
   }
 
   /**
@@ -6148,10 +7615,19 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} ConfigId - configId. optional.
+   * @param {String} PortType - portType. optional.
+   */
+  listProviderServicePorts(params = {}, options = {}) {
+    return this.request('ListProviderServicePorts', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
+   * @param {String} SearchName - searchName. optional.
    */
   listRule(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'CurrentPage')) {
@@ -6190,6 +7666,15 @@ class Client extends RPCClient {
     }
 
     return this.request('ListServerCallbacks', params, options);
+  }
+
+  /**
+   * @param {Integer} PageNo - pageNo. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   * @param {String} AppKey - appKey. optional.
+   */
+  listServiceModelDebugLog(params = {}, options = {}) {
+    return this.request('ListServiceModelDebugLog', params, options);
   }
 
   /**
@@ -6309,6 +7794,15 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} ConfigId - configId. optional.
+   * @param {String} DeclareType - declareType. optional.
+   * @param {String} ServiceModel - serviceModel. optional.
+   */
+  modifyAppServiceModelDeclare(params = {}, options = {}) {
+    return this.request('ModifyAppServiceModelDeclare', params, options);
+  }
+
+  /**
    * @param {String} IotId - iotId. required.
    */
   modifyDeviceStatus(params = {}, options = {}) {
@@ -6321,6 +7815,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} IotInstanceId - iotInstanceId. required.
+   * @param {String} AccessKeyId - accessKeyId. optional.
    * @param {String} IotInstanceName - iotInstanceName. optional.
    */
   modifySolutionInstance(params = {}, options = {}) {
@@ -6768,7 +8263,8 @@ class Client extends RPCClient {
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} Identifier - identifier. required.
-   * @param {String} OutputJson - outputJson. required.
+   * @param {String} OutputJson - outputJson. optional.
+   * @param {String} OutputBase64 - outputBase64. optional.
    */
   postDeviceEvents(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -6783,10 +8279,6 @@ class Client extends RPCClient {
       throw new TypeError('parameter "Identifier" is required');
     }
 
-    if (!hasOwnProperty(params, 'OutputJson')) {
-      throw new TypeError('parameter "OutputJson" is required');
-    }
-
     return this.request('PostDeviceEvents', params, options);
   }
 
@@ -6796,13 +8288,14 @@ class Client extends RPCClient {
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} Identifier - identifier. required.
-   * @param {String} OutputJson - outputJson. required.
+   * @param {String} OutputJson - outputJson. optional.
    * @param {String} StartTime - startTime. optional.
    * @param {String} EndTime - endTime. optional.
    * @param {Integer} Delay - delay. optional.
    * @param {Integer} Interval - interval. optional.
    * @param {Integer} Count - count. optional.
    * @param {String} BizTenantId - bizTenantId. optional.
+   * @param {String} OutputBase64 - outputBase64. optional.
    */
   postDeviceEventsRegularly(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -6817,10 +8310,6 @@ class Client extends RPCClient {
       throw new TypeError('parameter "Identifier" is required');
     }
 
-    if (!hasOwnProperty(params, 'OutputJson')) {
-      throw new TypeError('parameter "OutputJson" is required');
-    }
-
     return this.request('PostDeviceEventsRegularly', params, options);
   }
 
@@ -6829,7 +8318,8 @@ class Client extends RPCClient {
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
-   * @param {String} PropertyJson - propertyJson. required.
+   * @param {String} PropertyJson - propertyJson. optional.
+   * @param {String} PropertyBase64 - propertyBase64. optional.
    */
   postDeviceProperties(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -6840,10 +8330,6 @@ class Client extends RPCClient {
       throw new TypeError('parameter "DeviceName" is required');
     }
 
-    if (!hasOwnProperty(params, 'PropertyJson')) {
-      throw new TypeError('parameter "PropertyJson" is required');
-    }
-
     return this.request('PostDeviceProperties', params, options);
   }
 
@@ -6852,13 +8338,14 @@ class Client extends RPCClient {
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
-   * @param {String} PropertyJson - propertyJson. required.
+   * @param {String} PropertyJson - propertyJson. optional.
    * @param {String} StartTime - startTime. optional.
    * @param {String} EndTime - endTime. optional.
    * @param {Integer} Delay - delay. optional.
    * @param {Integer} Interval - interval. optional.
    * @param {Integer} Count - count. optional.
    * @param {String} BizTenantId - bizTenantId. optional.
+   * @param {String} PropertyBase64 - propertyBase64. optional.
    */
   postDevicePropertiesRegularly(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -6867,10 +8354,6 @@ class Client extends RPCClient {
 
     if (!hasOwnProperty(params, 'DeviceName')) {
       throw new TypeError('parameter "DeviceName" is required');
-    }
-
-    if (!hasOwnProperty(params, 'PropertyJson')) {
-      throw new TypeError('parameter "PropertyJson" is required');
     }
 
     return this.request('PostDevicePropertiesRegularly', params, options);
@@ -6962,6 +8445,19 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} DisplayName - displayName. optional.
+   * @param {String} ApiSrn - apiSrn. optional.
+   * @param {String} ApiPath - apiPath. optional.
+   * @param {String} Desc - desc. optional.
+   * @param {Json} SqlTemplateDTO - sqlTemplateDTO. optional.
+   * @param {Json} ExtraParamDTO - extraParamDTO. optional.
+   */
+  publishServeApi(params = {}, options = {}) {
+    return this.request('PublishServeApi', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {Long} Id - id. optional.
    */
   publishTask(params = {}, options = {}) {
@@ -7008,6 +8504,38 @@ class Client extends RPCClient {
    */
   pushThingConfigPop(params = {}, options = {}) {
     return this.request('PushThingConfigPop', params, options);
+  }
+
+  /**
+   * @param {String} ApiProduct - apiProduct. optional. default: Iot.
+   * @param {String} ApiRevision - apiRevision. optional. default: 1.0.0.
+   * @param {String} ModelUuid - modelUuid. required.
+   */
+  query3DDefaultModel(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ModelUuid')) {
+      throw new TypeError('parameter "ModelUuid" is required');
+    }
+
+    return this.request('Query3DDefaultModel', params, options);
+  }
+
+  /**
+   * @param {String} ApiProduct - apiProduct. optional. default: Iot.
+   * @param {String} ApiRevision - apiRevision. optional. default: 1.0.0.
+   * @param {String} GeoProjectId - geoProjectId. required.
+   */
+  query3DOptions(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'GeoProjectId')) {
+      throw new TypeError('parameter "GeoProjectId" is required');
+    }
+
+    return this.request('Query3DOptions', params, options);
+  }
+
+  /**
+   */
+  queryAlgoSupportPlatform(params = {}, options = {}) {
+    return this.request('QueryAlgoSupportPlatform', params, options);
   }
 
   /**
@@ -7086,6 +8614,14 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} BizKey - bizKey. optional.
+   * @param {String} BizType - bizType. optional.
+   */
+  queryApiPermissionDeclare(params = {}, options = {}) {
+    return this.request('QueryApiPermissionDeclare', params, options);
+  }
+
+  /**
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
    * @param {String} AppId - appId. optional.
@@ -7131,9 +8667,31 @@ class Client extends RPCClient {
 
   /**
    * @param {String} DataModelId - dataModelId. optional.
+   * @param {String} DataModelVersion - dataModelVersion. optional.
+   */
+  queryAppDataModelAttribute(params = {}, options = {}) {
+    return this.request('QueryAppDataModelAttribute', params, options);
+  }
+
+  /**
+   * @param {String} DataModelId - dataModelId. optional.
+   * @param {String} DataModelVersion - dataModelVersion. optional.
    */
   queryAppDataModelDetail(params = {}, options = {}) {
     return this.request('QueryAppDataModelDetail', params, options);
+  }
+
+  /**
+   * @param {String} DataModelName - dataModelName. optional.
+   * @param {String} DataModelId - dataModeId. optional.
+   * @param {Integer} PageNo - pageNo. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   * @param {String} DeclareId - declareId. optional.
+   * @param {String} DeclareType - declareType. optional.
+   * @param {String} DeclareVersionId - declareVersionId. optional.
+   */
+  queryAppDataModelList(params = {}, options = {}) {
+    return this.request('QueryAppDataModelList', params, options);
   }
 
   /**
@@ -7157,6 +8715,19 @@ class Client extends RPCClient {
    */
   queryAppDeviceList(params = {}, options = {}) {
     return this.request('QueryAppDeviceList', params, options);
+  }
+
+  /**
+   * @param {String} AppId - appId. optional.
+   * @param {String} ModelId - modelId. optional.
+   * @param {String} ModelName - modelName. optional.
+   * @param {String} ModelVersion - modelVersion. optional.
+   * @param {String} Conditions - conditions. optional.
+   * @param {Integer} PageNo - pageNo. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   */
+  queryAppInstanceData(params = {}, options = {}) {
+    return this.request('QueryAppInstanceData', params, options);
   }
 
   /**
@@ -7277,6 +8848,14 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Integer} PageNo - pageNo. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   */
+  queryAuthorizedClusterList(params = {}, options = {}) {
+    return this.request('QueryAuthorizedClusterList', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RuleName - name. optional.
@@ -7293,6 +8872,16 @@ class Client extends RPCClient {
     }
 
     return this.request('QueryAutomationRule', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {RepeatList} ExclusionServe - exclusionServes. optional.
+   */
+  queryAvailableServeList(params = {}, options = {}) {
+    return this.request('QueryAvailableServeList', params, options);
   }
 
   /**
@@ -7419,6 +9008,32 @@ class Client extends RPCClient {
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} IotId - iotId. optional.
+   * @param {String} Code - code. required.
+   * @param {Integer} CurrentPage - currentPage. required.
+   * @param {Integer} PageSize - pageSize. required.
+   */
+  queryChannelDeviceList(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Code')) {
+      throw new TypeError('parameter "Code" is required');
+    }
+
+    if (!hasOwnProperty(params, 'CurrentPage')) {
+      throw new TypeError('parameter "CurrentPage" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    return this.request('QueryChannelDeviceList', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} GwProductKey - gwProductKey. required.
    * @param {String} GwDeviceName - gwDeviceName. required.
    * @param {String} ProductKey - productKey. required.
@@ -7478,6 +9093,24 @@ class Client extends RPCClient {
     }
 
     return this.request('QueryConfigByConfigIdPop', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} DeviceName - deviceName. required.
+   * @param {String} ProductKey - productKey. required.
+   */
+  queryConnectionExtensionInfo(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DeviceName')) {
+      throw new TypeError('parameter "DeviceName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    return this.request('QueryConnectionExtensionInfo', params, options);
   }
 
   /**
@@ -7596,6 +9229,7 @@ class Client extends RPCClient {
    * @param {Integer} CurrentPage - currentPage. optional.
    * @param {Integer} PageSize - pageSize. optional.
    * @param {String} BizTenantId - bizTenantId. optional.
+   * @param {String} Keywords - keywords. optional.
    */
   queryDebugOnlineLogContent(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -7806,6 +9440,85 @@ class Client extends RPCClient {
    */
   queryDeviceBatchList(params = {}, options = {}) {
     return this.request('QueryDeviceBatchList', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} DriverId - driverId. required.
+   * @param {String} ChannelId - channelId. required.
+   * @param {Integer} CurrentPage - currentPage. required.
+   * @param {Integer} PageSize - pageSize. required.
+   */
+  queryDeviceByChannel(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DriverId')) {
+      throw new TypeError('parameter "DriverId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ChannelId')) {
+      throw new TypeError('parameter "ChannelId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'CurrentPage')) {
+      throw new TypeError('parameter "CurrentPage" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    return this.request('QueryDeviceByChannel', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {RepeatList} ThingId - thingIdList. required.
+   * @param {String} TagName - tagName. required.
+   */
+  queryDeviceByDeviceListAndTag(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ThingId')) {
+      throw new TypeError('parameter "ThingId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TagName')) {
+      throw new TypeError('parameter "TagName" is required');
+    }
+
+    return this.request('QueryDeviceByDeviceListAndTag', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} DriverId - driverId. required.
+   * @param {Integer} CurrentPage - currentPage. required.
+   * @param {Integer} PageSize - pageSize. required.
+   */
+  queryDeviceByDriver(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DriverId')) {
+      throw new TypeError('parameter "DriverId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'CurrentPage')) {
+      throw new TypeError('parameter "CurrentPage" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    return this.request('QueryDeviceByDriver', params, options);
   }
 
   /**
@@ -8024,6 +9737,35 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} FileId - fileId. required.
+   * @param {String} IotId - iotId. optional.
+   */
+  queryDeviceFile(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'FileId')) {
+      throw new TypeError('parameter "FileId" is required');
+    }
+
+    return this.request('QueryDeviceFile', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {Integer} CurrentPage - currentPage. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   * @param {String} IotId - iotId. optional.
+   */
+  queryDeviceFileList(params = {}, options = {}) {
+    return this.request('QueryDeviceFileList', params, options);
+  }
+
+  /**
    * @param {String} IotId - iotId. required.
    */
   queryDeviceFileVod(params = {}, options = {}) {
@@ -8083,6 +9825,7 @@ class Client extends RPCClient {
    * @param {Integer} CurrentPage - currentPage. optional. default: 1.
    * @param {Integer} PageSize - pageSize. optional. default: 10.
    * @param {String} Scope - scope. required.
+   * @param {RepeatList} Tag - groupTags. optional.
    */
   queryDeviceGroupByFuzzyName(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'Scope')) {
@@ -8254,7 +9997,7 @@ class Client extends RPCClient {
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
-   * @param {String} GroupId - groupId. required.
+   * @param {String} ProductKey - groupId. required.
    * @param {String} Status - status. optional.
    */
   queryDeviceLocationByProductPage(params = {}, options = {}) {
@@ -8266,8 +10009,8 @@ class Client extends RPCClient {
       throw new TypeError('parameter "PageSize" is required');
     }
 
-    if (!hasOwnProperty(params, 'GroupId')) {
-      throw new TypeError('parameter "GroupId" is required');
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
     }
 
     return this.request('QueryDeviceLocationByProductPage', params, options);
@@ -8286,6 +10029,7 @@ class Client extends RPCClient {
    * @param {Integer} PageSize - pageSize. optional. default: 10.
    * @param {String} BizTenantId - bizTenantId. optional.
    * @param {Boolean} Fuzzy - fuzzy. optional.
+   * @param {String} Nickname - nickname. optional.
    */
   queryDevicePage(params = {}, options = {}) {
     return this.request('QueryDevicePage', params, options);
@@ -8424,6 +10168,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
    * @param {String} GroupId - groupId. optional.
@@ -8454,9 +10199,10 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
-   * @param {String} GroupId - groupId. required.
+   * @param {String} ProductKey - groupId. required.
    * @param {String} Status - status. optional.
    * @param {String} GeoProjectId - geoProjectId. optional.
    * @param {String} AttributeCode - attributeCode. required.
@@ -8470,8 +10216,8 @@ class Client extends RPCClient {
       throw new TypeError('parameter "PageSize" is required');
     }
 
-    if (!hasOwnProperty(params, 'GroupId')) {
-      throw new TypeError('parameter "GroupId" is required');
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
     }
 
     if (!hasOwnProperty(params, 'AttributeCode')) {
@@ -8856,6 +10602,19 @@ class Client extends RPCClient {
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   */
+  queryDeviceVersionCountByPkFromOTA(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    return this.request('QueryDeviceVersionCountByPkFromOTA', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} FirmwareName - firmwareName. required.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
@@ -8973,6 +10732,29 @@ class Client extends RPCClient {
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} DriverId - driverId. required.
+   * @param {Integer} CurrentPage - currentPage. required.
+   * @param {Integer} PageSize - pageSize. required.
+   */
+  queryEdgeInstanceByDriver(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DriverId')) {
+      throw new TypeError('parameter "DriverId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'CurrentPage')) {
+      throw new TypeError('parameter "CurrentPage" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    return this.request('QueryEdgeInstanceByDriver', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} FunctionId - functionId. required.
    * @param {Integer} PageSize - pageSize. required.
    * @param {Integer} CurrentPage - currentPage. required.
@@ -8991,6 +10773,34 @@ class Client extends RPCClient {
     }
 
     return this.request('QueryEdgeInstanceByFunction', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} DriverId - driverId. required.
+   * @param {Integer} CurrentPage - currentPage. required.
+   * @param {Integer} PageSize - pageSize. required.
+   */
+  queryEdgeInstanceChannel(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DriverId')) {
+      throw new TypeError('parameter "DriverId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'CurrentPage')) {
+      throw new TypeError('parameter "CurrentPage" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    return this.request('QueryEdgeInstanceChannel', params, options);
   }
 
   /**
@@ -9061,6 +10871,32 @@ class Client extends RPCClient {
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
+   * @param {String} DriverId - driverId. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {Integer} CurrentPage - currentPage. required.
+   * @param {Integer} PageSize - pageSize. required.
+   */
+  queryEdgeInstanceDeviceByDriverAndName(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'CurrentPage')) {
+      throw new TypeError('parameter "CurrentPage" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    return this.request('QueryEdgeInstanceDeviceByDriverAndName', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
    * @param {String} ProductKey - productKey. optional.
@@ -9080,6 +10916,29 @@ class Client extends RPCClient {
     }
 
     return this.request('QueryEdgeInstanceDeviceByName', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {Integer} CurrentPage - currentPage. required.
+   * @param {Integer} PageSize - pageSize. required.
+   */
+  queryEdgeInstanceDriver(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'CurrentPage')) {
+      throw new TypeError('parameter "CurrentPage" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    return this.request('QueryEdgeInstanceDriver', params, options);
   }
 
   /**
@@ -9271,6 +11130,35 @@ class Client extends RPCClient {
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} CpuArch - cpuArch. required.
+   * @param {String} Specification - specification. required.
+   * @param {String} VersionCode - versionCode. required.
+   * @param {String} OS - os. optional.
+   */
+  queryEdgeInstanceVersions(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'CpuArch')) {
+      throw new TypeError('parameter "CpuArch" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Specification')) {
+      throw new TypeError('parameter "Specification" is required');
+    }
+
+    if (!hasOwnProperty(params, 'VersionCode')) {
+      throw new TypeError('parameter "VersionCode" is required');
+    }
+
+    return this.request('QueryEdgeInstanceVersions', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} PageSize - pageSize. required.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {String} Name - name. optional.
@@ -9300,6 +11188,23 @@ class Client extends RPCClient {
     }
 
     return this.request('QueryEdgeNodeList', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} VersionParamKey - versionParamKey. required.
+   * @param {String} CpuArch - cpuArch. optional.
+   * @param {String} Specification - specification. optional.
+   * @param {String} VersionCode - versionCode. optional.
+   * @param {String} OS - os. optional.
+   */
+  queryEdgeVersionParams(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'VersionParamKey')) {
+      throw new TypeError('parameter "VersionParamKey" is required');
+    }
+
+    return this.request('QueryEdgeVersionParams', params, options);
   }
 
   /**
@@ -9440,6 +11345,19 @@ class Client extends RPCClient {
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   */
+  queryGatewayDescriptionByInstance(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    return this.request('QueryGatewayDescriptionByInstance', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} Code - code. required.
@@ -9465,7 +11383,7 @@ class Client extends RPCClient {
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} Start - start. required.
    * @param {Long} End - end. required.
-   * @param {Json} IotIds - iotIds. optional.
+   * @param {Json} IotIds - iotIds. required.
    */
   queryGeoDeviceLocationTimeline(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'Start')) {
@@ -9476,7 +11394,30 @@ class Client extends RPCClient {
       throw new TypeError('parameter "End" is required');
     }
 
+    if (!hasOwnProperty(params, 'IotIds')) {
+      throw new TypeError('parameter "IotIds" is required');
+    }
+
     return this.request('QueryGeoDeviceLocationTimeline', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} Status - status. optional.
+   * @param {RepeatList} Tag - tags. optional.
+   * @param {String} GroupId - groupId. optional.
+   * @param {String} AliyunCommodityCode - aliyunCommodityCode. optional.
+   * @param {Integer} CurrentPage - currentPage. optional. default: 1.
+   * @param {Integer} PageSize - pageSize. optional. default: 10.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   * @param {Boolean} Fuzzy - fuzzy. optional.
+   * @param {String} Nickname - nickname. optional.
+   */
+  queryGeoDevicePage(params = {}, options = {}) {
+    return this.request('QueryGeoDevicePage', params, options);
   }
 
   /**
@@ -9497,7 +11438,7 @@ class Client extends RPCClient {
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {Integer} CurrentPage - currentPage. required.
    * @param {Integer} PageSize - pageSize. required.
-   * @param {String} DeviceGroupId - deviceGroupId. optional.
+   * @param {String} GroupId - deviceGroupId. optional.
    * @param {String} Status - status. optional.
    * @param {String} GeoProjectId - geoProjectId. required.
    * @param {Json} ProductAttributesMap - productAttributesMap. required.
@@ -9545,6 +11486,20 @@ class Client extends RPCClient {
     }
 
     return this.request('QueryGeoMultiDeviceEventsByPage', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   * @param {String} BizTenantId - bizTenantId. optional.
+   */
+  queryGeoProductAbilityList(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    return this.request('QueryGeoProductAbilityList', params, options);
   }
 
   /**
@@ -9752,6 +11707,14 @@ class Client extends RPCClient {
     }
 
     return this.request('QueryLiveStreaming', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   */
+  queryLoRaJoinPermissions(params = {}, options = {}) {
+    return this.request('QueryLoRaJoinPermissions', params, options);
   }
 
   /**
@@ -10142,6 +12105,19 @@ class Client extends RPCClient {
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {Integer} Page - page. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   * @param {RepeatList} ProductTag - productTags. optional.
+   * @param {String} AliyunCommodityCode - aliyunCommodityCode. optional.
+   * @param {String} Name - name. optional.
+   */
+  queryProductListByTag(params = {}, options = {}) {
+    return this.request('QueryProductListByTag', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Integer} Page - page. required.
    * @param {Integer} PageSize - pageSize. required.
    * @param {String} AliyunCommodityCode - aliyunCommodityCode. optional.
@@ -10517,6 +12493,13 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} IotInstanceRegionId - iotInstanceRegionId. optional.
+   */
+  queryRunningIoTInstanceWithPublic(params = {}, options = {}) {
+    return this.request('QueryRunningIoTInstanceWithPublic', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
@@ -10585,6 +12568,7 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AccessKeyId - accessKeyId. optional.
    */
   querySolutionInstance(params = {}, options = {}) {
     return this.request('QuerySolutionInstance', params, options);
@@ -10971,7 +12955,7 @@ class Client extends RPCClient {
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {Long} ApplyId - applyId. required.
-   * @param {String} deviceName - deviceName. optional.
+   * @param {String} DeviceName - deviceName. optional.
    * @param {Integer} CurrentPage - currentPage. optional.
    * @param {Integer} PageSize - pageSize. optional.
    */
@@ -11016,6 +13000,19 @@ class Client extends RPCClient {
     }
 
     return this.request('QueryVersionsByPk', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} ProductKey - productKey. required.
+   */
+  queryVersionsByPkFromOTA(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProductKey')) {
+      throw new TypeError('parameter "ProductKey" is required');
+    }
+
+    return this.request('QueryVersionsByPkFromOTA', params, options);
   }
 
   /**
@@ -11171,6 +13168,29 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} ApiProduct - apiProduct. optional. default: Iot.
+   * @param {String} ApiRevision - apiRevision. optional. default: 1.0.0.
+   * @param {String} ProjectId - projectId. required.
+   * @param {String} BusinessId - businessId. required.
+   * @param {String} SysCode - sysCode. required.
+   */
+  refreshTokenAuth(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ProjectId')) {
+      throw new TypeError('parameter "ProjectId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'BusinessId')) {
+      throw new TypeError('parameter "BusinessId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'SysCode')) {
+      throw new TypeError('parameter "SysCode" is required');
+    }
+
+    return this.request('RefreshTokenAuth', params, options);
+  }
+
+  /**
    * @param {String} AppUuid - appUuid. optional.
    * @param {String} Domain - domain. optional.
    * @param {String} Protocol - protocol. optional.
@@ -11192,6 +13212,7 @@ class Client extends RPCClient {
    * @param {String} DeviceName - deviceName. optional.
    * @param {String} DevEui - devEui. optional.
    * @param {String} PinCode - pinCode. optional.
+   * @param {String} Nickname - nickname. optional.
    */
   registerDevice(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
@@ -11253,6 +13274,13 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AppId - appId. optional.
+   */
+  releaseAppDebugEnv(params = {}, options = {}) {
+    return this.request('ReleaseAppDebugEnv', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
@@ -11269,6 +13297,15 @@ class Client extends RPCClient {
     }
 
     return this.request('ReleaseProduct', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} SqlStatement - sqlStatement. optional.
+   * @param {String} ApiSrn - apiSrn. optional.
+   */
+  reloadSqlTemplate(params = {}, options = {}) {
+    return this.request('ReloadSqlTemplate', params, options);
   }
 
   /**
@@ -11401,6 +13438,14 @@ class Client extends RPCClient {
     }
 
     return this.request('RetryDiff', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} ApiSrn - apiSrn. optional.
+   */
+  rollbackServeApi(params = {}, options = {}) {
+    return this.request('RollbackServeApi', params, options);
   }
 
   /**
@@ -11628,6 +13673,66 @@ class Client extends RPCClient {
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} Data - data. required.
+   */
+  sendEdgeInstanceDriverDebugRequest(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Data')) {
+      throw new TypeError('parameter "Data" is required');
+    }
+
+    return this.request('SendEdgeInstanceDriverDebugRequest', params, options);
+  }
+
+  /**
+   * @param {String} ApiProduct - apiProduct. optional. default: Iot.
+   * @param {String} ApiRevision - apiRevision. optional. default: 1.0.0.
+   * @param {String} SceneId - sceneId. required.
+   * @param {String} SysCode - sysCode. required.
+   * @param {String} Phones - phones. required.
+   * @param {Long} PhoneExpiredTime - phoneExpiredTime. required.
+   * @param {Long} TokenExpiredTime - tokenExpiredTime. required.
+   */
+  setAllShareInfo(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'SceneId')) {
+      throw new TypeError('parameter "SceneId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'SysCode')) {
+      throw new TypeError('parameter "SysCode" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Phones')) {
+      throw new TypeError('parameter "Phones" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PhoneExpiredTime')) {
+      throw new TypeError('parameter "PhoneExpiredTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TokenExpiredTime')) {
+      throw new TypeError('parameter "TokenExpiredTime" is required');
+    }
+
+    return this.request('SetAllShareInfo', params, options);
+  }
+
+  /**
+   * @param {String} UUID - uuid. optional.
+   * @param {String} UserName - userNmae. optional.
+   * @param {String} Password - password. optional.
+   */
+  setClusterUserPassword(params = {}, options = {}) {
+    return this.request('SetClusterUserPassword', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} IotId - iotId. optional.
    * @param {String} DeviceName - deviceName. optional.
    * @param {String} ProductKey - productKey. optional.
@@ -11811,8 +13916,9 @@ class Client extends RPCClient {
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
-   * @param {String} ProductKey - productKey. required.
-   * @param {String} DeviceName - deviceName. required.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} IotId - iotId. optional.
    * @param {String} DriverId - driverId. required.
    */
   setEdgeInstanceDeviceDriver(params = {}, options = {}) {
@@ -11820,19 +13926,34 @@ class Client extends RPCClient {
       throw new TypeError('parameter "InstanceId" is required');
     }
 
-    if (!hasOwnProperty(params, 'ProductKey')) {
-      throw new TypeError('parameter "ProductKey" is required');
+    if (!hasOwnProperty(params, 'DriverId')) {
+      throw new TypeError('parameter "DriverId" is required');
     }
 
-    if (!hasOwnProperty(params, 'DeviceName')) {
-      throw new TypeError('parameter "DeviceName" is required');
+    return this.request('SetEdgeInstanceDeviceDriver', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} DriverId - driverId. required.
+   * @param {RepeatList} Configs - configs. required.
+   */
+  setEdgeInstanceDriverConfigs(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
     }
 
     if (!hasOwnProperty(params, 'DriverId')) {
       throw new TypeError('parameter "DriverId" is required');
     }
 
-    return this.request('SetEdgeInstanceDeviceDriver', params, options);
+    if (!hasOwnProperty(params, 'Configs')) {
+      throw new TypeError('parameter "Configs" is required');
+    }
+
+    return this.request('SetEdgeInstanceDriverConfigs', params, options);
   }
 
   /**
@@ -11875,6 +13996,24 @@ class Client extends RPCClient {
    */
   setRecordPlan(params = {}, options = {}) {
     return this.request('SetRecordPlan', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} JobUid - jobUid. optional.
+   * @param {Json} ScheduleConfiguration - scheduleConfiguration. optional.
+   */
+  setSchedulerConfig(params = {}, options = {}) {
+    return this.request('SetSchedulerConfig', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} JobUid - jobUid. optional.
+   * @param {Json} ScheduleConfiguration - scheduleConfiguration. optional.
+   */
+  setSchedulerStatus(params = {}, options = {}) {
+    return this.request('SetSchedulerStatus', params, options);
   }
 
   /**
@@ -12033,6 +14172,18 @@ class Client extends RPCClient {
    * @param {Json} Page - page. optional.
    * @param {Boolean} AsyncExecution - asyncExecution. optional.
    * @param {String} JobId - jobId. optional.
+   * @param {String} DraftSql - draftSql. optional.
+   */
+  syncExecDraftSQL(params = {}, options = {}) {
+    return this.request('SyncExecDraftSQL', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {Json} Page - page. optional.
+   * @param {Boolean} AsyncExecution - asyncExecution. optional.
+   * @param {String} JobId - jobId. optional.
+   * @param {String} TaskUid - taskUid. optional.
    */
   syncExecQueryJob(params = {}, options = {}) {
     return this.request('SyncExecQueryJob', params, options);
@@ -12072,6 +14223,14 @@ class Client extends RPCClient {
     }
 
     return this.request('TriggerRecord', params, options);
+  }
+
+  /**
+   * @param {String} RepoName - repoName. optional.
+   * @param {String} Tag - tag. optional.
+   */
+  tryRunImage(params = {}, options = {}) {
+    return this.request('TryRunImage', params, options);
   }
 
   /**
@@ -12121,21 +14280,14 @@ class Client extends RPCClient {
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
-   * @param {String} ProductKey - productKey. required.
-   * @param {String} DeviceName - deviceName. required.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} IotId - iotId. optional.
    * @param {String} DeviceType - deviceType. optional.
    */
   unbindDeviceFromEdgeInstance(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'InstanceId')) {
       throw new TypeError('parameter "InstanceId" is required');
-    }
-
-    if (!hasOwnProperty(params, 'ProductKey')) {
-      throw new TypeError('parameter "ProductKey" is required');
-    }
-
-    if (!hasOwnProperty(params, 'DeviceName')) {
-      throw new TypeError('parameter "DeviceName" is required');
     }
 
     return this.request('UnbindDeviceFromEdgeInstance', params, options);
@@ -12166,6 +14318,24 @@ class Client extends RPCClient {
     }
 
     return this.request('UnbindDeviceFromGroup', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {RepeatList} Devices - devices. required.
+   */
+  unbindDevicesFromEdgeInstance(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Devices')) {
+      throw new TypeError('parameter "Devices" is required');
+    }
+
+    return this.request('UnbindDevicesFromEdgeInstance', params, options);
   }
 
   /**
@@ -12224,23 +14394,28 @@ class Client extends RPCClient {
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
-   * @param {String} ProductKey - productKey. required.
-   * @param {String} DeviceName - deviceName. required.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
+   * @param {String} IotId - iotId. optional.
    */
   unbindGatewayFromEdgeInstance(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'InstanceId')) {
       throw new TypeError('parameter "InstanceId" is required');
     }
 
-    if (!hasOwnProperty(params, 'ProductKey')) {
-      throw new TypeError('parameter "ProductKey" is required');
-    }
-
-    if (!hasOwnProperty(params, 'DeviceName')) {
-      throw new TypeError('parameter "DeviceName" is required');
-    }
-
     return this.request('UnbindGatewayFromEdgeInstance', params, options);
+  }
+
+  /**
+   * @param {String} IotInstanceId - iotInstanceId. required.
+   * @param {String} AccessKeyId - accessKeyId. optional.
+   */
+  unbindInstanceCustomerVpc(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'IotInstanceId')) {
+      throw new TypeError('parameter "IotInstanceId" is required');
+    }
+
+    return this.request('UnbindInstanceCustomerVpc', params, options);
   }
 
   /**
@@ -12328,6 +14503,19 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} ApiProduct - apiProduct. optional. default: Iot.
+   * @param {String} ApiRevision - apiRevision. optional. default: 1.0.0.
+   * @param {Json} Option - option. required.
+   */
+  update3DOption(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Option')) {
+      throw new TypeError('parameter "Option" is required');
+    }
+
+    return this.request('Update3DOption', params, options);
+  }
+
+  /**
    * @param {String} Uuid - uuid. required.
    * @param {String} AppUuid - appUuid. required.
    * @param {String} Name - name. required.
@@ -12341,6 +14529,7 @@ class Client extends RPCClient {
    * @param {String} ComparisonModel - comparisonModel. optional.
    * @param {RepeatList} ContactGroups - contactGroups. optional.
    * @param {Integer} EvaluationCount - evaluationCount. optional.
+   * @param {RepeatList} ContactList - contactList. optional.
    */
   updateAppAlarm(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'Uuid')) {
@@ -12408,6 +14597,17 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} ModelId - modelId. optional.
+   * @param {String} Properties - properties. optional.
+   * @param {String} AppId - appId. optional.
+   * @param {String} ModelVersion - modelVersion. optional.
+   * @param {String} Conditions - conditions. optional.
+   */
+  updateAppInstanceData(params = {}, options = {}) {
+    return this.request('UpdateAppInstanceData', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} RuleId - sceneId. required.
@@ -12430,8 +14630,8 @@ class Client extends RPCClient {
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
-   * @param {String} GwProductKey - gwProductKey. required.
-   * @param {String} GwDeviceName - gwDeviceName. required.
+   * @param {String} GwProductKey - gwProductKey. optional.
+   * @param {String} GwDeviceName - gwDeviceName. optional.
    * @param {String} ProductKey - productKey. required.
    * @param {String} DeviceName - deviceName. required.
    * @param {String} Code - code. required.
@@ -12439,14 +14639,6 @@ class Client extends RPCClient {
    * @param {String} ConfigJson - configJson. required.
    */
   updateChildDeviceConfig(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'GwProductKey')) {
-      throw new TypeError('parameter "GwProductKey" is required');
-    }
-
-    if (!hasOwnProperty(params, 'GwDeviceName')) {
-      throw new TypeError('parameter "GwDeviceName" is required');
-    }
-
     if (!hasOwnProperty(params, 'ProductKey')) {
       throw new TypeError('parameter "ProductKey" is required');
     }
@@ -12473,19 +14665,12 @@ class Client extends RPCClient {
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
-   * @param {String} ProductKey - productKey. required.
-   * @param {String} DeviceName - deviceName. required.
+   * @param {String} ProductKey - productKey. optional.
+   * @param {String} DeviceName - deviceName. optional.
    * @param {Integer} SwitchStatus - switchStatus. required.
+   * @param {String} IotId - iotId. optional.
    */
   updateCloudMonitorSwitch(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ProductKey')) {
-      throw new TypeError('parameter "ProductKey" is required');
-    }
-
-    if (!hasOwnProperty(params, 'DeviceName')) {
-      throw new TypeError('parameter "DeviceName" is required');
-    }
-
     if (!hasOwnProperty(params, 'SwitchStatus')) {
       throw new TypeError('parameter "SwitchStatus" is required');
     }
@@ -12522,6 +14707,7 @@ class Client extends RPCClient {
    * @param {String} VpcId - vpcId. optional.
    * @param {String} InstanceId - instanceId. optional.
    * @param {String} SourceUid - sourceUid. optional.
+   * @param {String} PurposeType - purposeType. optional.
    */
   updateDataSource(params = {}, options = {}) {
     return this.request('UpdateDataSource', params, options);
@@ -12552,6 +14738,19 @@ class Client extends RPCClient {
     }
 
     return this.request('UpdateDeviceConfig', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} SceneId - sceneId. required.
+   * @param {String} DeviceEvents - deviceEventDTOs. optional.
+   */
+  updateDeviceEventsForBim(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'SceneId')) {
+      throw new TypeError('parameter "SceneId" is required');
+    }
+
+    return this.request('UpdateDeviceEventsForBim', params, options);
   }
 
   /**
@@ -12594,11 +14793,10 @@ class Client extends RPCClient {
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
-   * @param {String} DriverName - name. optional.
-   * @param {String} Description - description. optional.
-   * @param {String} Url - ossAddress. optional.
-   * @param {String} Runtime - runtime. optional.
    * @param {String} DriverId - driverId. required.
+   * @param {String} Description - description. optional.
+   * @param {String} Handler - handler. optional.
+   * @param {String} Url - ossAddress. optional.
    */
   updateDriver(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DriverId')) {
@@ -12641,6 +14839,7 @@ class Client extends RPCClient {
    * @param {String} InstanceId - instanceId. required.
    * @param {String} Name - name. required.
    * @param {String} Tags - tags. optional.
+   * @param {Integer} Spec - spec. optional.
    */
   updateEdgeInstance(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'InstanceId')) {
@@ -12658,11 +14857,49 @@ class Client extends RPCClient {
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} InstanceId - instanceId. required.
+   * @param {String} DriverId - driverId. required.
+   * @param {String} ChannelId - channelId. required.
+   * @param {String} ChannelName - channelName. required.
+   * @param {RepeatList} Configs - configs. required.
+   */
+  updateEdgeInstanceChannel(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DriverId')) {
+      throw new TypeError('parameter "DriverId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ChannelId')) {
+      throw new TypeError('parameter "ChannelId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ChannelName')) {
+      throw new TypeError('parameter "ChannelName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Configs')) {
+      throw new TypeError('parameter "Configs" is required');
+    }
+
+    return this.request('UpdateEdgeInstanceChannel', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
+   * @param {String} InstanceId - instanceId. required.
    * @param {String} FunctionId - functionId. required.
    * @param {String} RunMode - runMode. required.
    * @param {Integer} MemorySize - memorySize. optional.
    * @param {Integer} Timeout - timeout. optional.
    * @param {String} TriggerContent - triggerContent. optional.
+   * @param {String} Environment - environment. optional.
+   * @param {Integer} Privileged - privileged. optional.
+   * @param {String} PortMappings - portMappings. optional.
+   * @param {String} DevMappings - devMappings. optional.
+   * @param {String} VolumeMappings - volumeMappings. optional.
    */
   updateEdgeInstanceFunction(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'InstanceId')) {
@@ -12876,6 +15113,14 @@ class Client extends RPCClient {
     }
 
     return this.request('UpdateGatewayServerConfig', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} DeviceEvents - deviceEventDTOs. optional.
+   */
+  updateGeoDeviceEvent(params = {}, options = {}) {
+    return this.request('UpdateGeoDeviceEvent', params, options);
   }
 
   /**
@@ -13519,17 +15764,33 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} DisplayName - displayName. optional.
+   * @param {Json} SqlTemplateDTO - sqlTemplateDTO. optional.
+   * @param {String} ApiSrn - apiSrn. optional.
+   * @param {String} ApiPath - apiPath. optional.
+   * @param {String} Desc - desc. optional.
+   * @param {Json} ExtraParamDTO - extraParamDTO. optional.
+   */
+  updateServeApi(params = {}, options = {}) {
+    return this.request('UpdateServeApi', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} ProductKey - productKey. required.
-   * @param {Integer} CallbackType - callbackType. required.
+   * @param {Integer} CallbackType - callbackType. optional.
+   * @param {String} Mode - mode. optional.
+   * @param {Boolean} DeviceDataFlag - deviceDataFlag. optional.
+   * @param {Boolean} DeviceLifeCycleFlag - deviceLifeCycleFlag. optional.
+   * @param {Boolean} DeviceStatusChangeFlag - deviceStatusChangeFlag. optional.
+   * @param {Boolean} DeviceTopoLifeCycleFlag - deviceTopoLifeCycleFlag. optional.
+   * @param {Boolean} FoundDeviceListFlag - foundDeviceListFlag. optional.
+   * @param {String} Configuration - configuration. optional.
    */
   updateServerCallback(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ProductKey')) {
       throw new TypeError('parameter "ProductKey" is required');
-    }
-
-    if (!hasOwnProperty(params, 'CallbackType')) {
-      throw new TypeError('parameter "CallbackType" is required');
     }
 
     return this.request('UpdateServerCallback', params, options);
@@ -13687,7 +15948,28 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} ApiProduct - apiProduct. optional. default: Iot.
+   * @param {String} ApiRevision - apiRevision. optional. default: 1.0.0.
+   * @param {Integer} ScopeId - scopeId. optional.
+   * @param {String} PackageName - packageName. required.
+   * @param {String} ModelUuid - modelUuid. required.
+   * @param {Integer} Status - status. optional.
+   */
+  uploadGeoModel(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'PackageName')) {
+      throw new TypeError('parameter "PackageName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ModelUuid')) {
+      throw new TypeError('parameter "ModelUuid" is required');
+    }
+
+    return this.request('UploadGeoModel', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
+   * @param {String} IotInstanceId - iotInstanceId. optional.
    */
   validateLaUser(params = {}, options = {}) {
     return this.request('ValidateLaUser', params, options);
@@ -13703,6 +15985,28 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} NodeId - nodeId. required.
+   * @param {String} Id2 - id2. required.
+   * @param {String} AuthCode - authCode. required.
+   * @param {String} Extra - extra. optional.
+   */
+  verifyEdgeNodeId2(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'NodeId')) {
+      throw new TypeError('parameter "NodeId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Id2')) {
+      throw new TypeError('parameter "Id2" is required');
+    }
+
+    if (!hasOwnProperty(params, 'AuthCode')) {
+      throw new TypeError('parameter "AuthCode" is required');
+    }
+
+    return this.request('VerifyEdgeNodeId2', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - AccessKeyId. optional.
    * @param {String} IotInstanceId - iotInstanceId. optional.
    * @param {String} FirmwareName - firmwareName. required.
@@ -13710,6 +16014,7 @@ class Client extends RPCClient {
    * @param {RepeatList} DeviceName - deviceNames. required.
    * @param {Boolean} Diff - diff. optional.
    * @param {RepeatList} SrcFirmwareName - srcFirmwareNames. optional.
+   * @param {String} PushType - pushType. optional.
    */
   verifyFirmware(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'FirmwareName')) {
