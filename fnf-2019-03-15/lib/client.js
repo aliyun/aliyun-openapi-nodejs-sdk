@@ -127,6 +127,43 @@ class Client extends RPCClient {
 
   /**
    * @param {String} RequestId - RequestId. optional.
+   * @param {String} TaskToken - TaskToken. required.
+   * @param {String} Error - Error. required.
+   * @param {String} Cause - Cause. optional.
+   */
+  reportTaskFailed(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'TaskToken')) {
+      throw new TypeError('parameter "TaskToken" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Error')) {
+      throw new TypeError('parameter "Error" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('ReportTaskFailed', params, options);
+  }
+
+  /**
+   * @param {String} RequestId - RequestId. optional.
+   * @param {String} TaskToken - TaskToken. required.
+   * @param {String} Output - Output. required.
+   */
+  reportTaskSucceeded(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'TaskToken')) {
+      throw new TypeError('parameter "TaskToken" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Output')) {
+      throw new TypeError('parameter "Output" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('ReportTaskSucceeded', params, options);
+  }
+
+  /**
+   * @param {String} RequestId - RequestId. optional.
    * @param {String} FlowName - FlowName. required.
    * @param {String} ExecutionName - ExecutionName. optional.
    * @param {String} Input - Input. optional.
