@@ -32,6 +32,10 @@ class Client extends RPCClient {
    * @param {String} OperateName - operateName. required.
    * @param {String} FromAccountNo - fromAccountNo. optional.
    * @param {String} ToAccountNo - toAccountNo. required.
+   * @param {String} AccountManagerName - accountManagerName. optional.
+   * @param {String} AccountManagerNumber - accountManagerNumber. optional.
+   * @param {String} BpId - bpId. optional.
+   * @param {String} PriceVersion - priceVersion. optional.
    */
   accountOperate(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'FlowId')) {
@@ -76,6 +80,7 @@ class Client extends RPCClient {
    * @param {String} ContactName - contactName. required.
    * @param {String} ContactPhone - contactPhone. required.
    * @param {String} Industry - industry. optional.
+   * @param {String} Company - company. optional.
    */
   brandMessageMigrate(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'UserId')) {
@@ -129,6 +134,18 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} Message - message. required.
+   */
+  getConsoleInfo(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Message')) {
+      throw new TypeError('parameter "Message" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('GetConsoleInfo', params, options);
+  }
+
+  /**
    * @param {String} CommodityId - commodityId. optional.
    */
   getImageUrl(params = {}, options = {}) {
@@ -161,6 +178,19 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AlipayOpenId - alipayOpenId. optional.
+   * @param {String} ChannelId - channelId. optional.
+   * @param {String} Extra - extra. optional.
+   * @param {String} DeviceSn - deviceSn. optional.
+   * @param {String} CommodityId - commodityId. optional.
+   * @param {Float} SalePrice - salePrice. optional.
+   */
+  queryWithPay(params = {}, options = {}) {
+    options.method = 'POST';
+    return this.request('QueryWithPay', params, options);
+  }
+
+  /**
    * @param {Integer} Age - age. optional.
    * @param {Integer} ApplyPrice - applyPrice. optional.
    * @param {String} BizResult - bizResult. optional.
@@ -182,6 +212,8 @@ class Client extends RPCClient {
    * @param {String} TaskId - taskId. optional.
    * @param {String} V - v. optional.
    * @param {String} AlipayOpenId - alipayOpenId. optional.
+   * @param {String} ChargeTag - chargeType. optional.
+   * @param {String} TaskType - taskType. optional.
    */
   scanCodeNotification(params = {}, options = {}) {
     options.method = 'POST';

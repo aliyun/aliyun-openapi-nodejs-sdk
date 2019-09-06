@@ -16,6 +16,23 @@ class Client extends RPCClient {
   /**
    * @param {String} ChannelId - channelId. required.
    * @param {String} DeviceSn - deviceSn. required.
+   */
+  checkDevice(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ChannelId')) {
+      throw new TypeError('parameter "ChannelId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeviceSn')) {
+      throw new TypeError('parameter "DeviceSn" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('CheckDevice', params, options);
+  }
+
+  /**
+   * @param {String} ChannelId - channelId. required.
+   * @param {String} DeviceSn - deviceSn. required.
    * @param {Integer} NetworkType - networkType. required.
    * @param {String} Tac - tac. required.
    * @param {String} CellId - cellId. required.
