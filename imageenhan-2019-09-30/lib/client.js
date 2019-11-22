@@ -66,7 +66,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} Url - url. required.
-   * @param {String} Mode - mode. required.
+   * @param {String} Mode - mode. optional. default: AUTO.
    * @param {String} RefUrl - refUrl. optional.
    * @param {Integer} ColorCount - colorCount. optional. default: 1.
    * @param {RepeatList} ColorTemplate - colorTemplate. optional.
@@ -74,10 +74,6 @@ class Client extends RPCClient {
   recolorImage(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'Url')) {
       throw new TypeError('parameter "Url" is required');
-    }
-
-    if (!hasOwnProperty(params, 'Mode')) {
-      throw new TypeError('parameter "Mode" is required');
     }
 
     options.method = 'POST';
