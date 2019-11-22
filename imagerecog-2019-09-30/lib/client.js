@@ -27,7 +27,7 @@ class Client extends RPCClient {
 
   /**
    * @param {String} Url - url. required.
-   * @param {String} ColorCount - colorCount. optional. default: 3.
+   * @param {Integer} ColorCount - colorCount. optional. default: 3.
    */
   recognizeImageColor(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'Url')) {
