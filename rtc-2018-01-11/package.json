@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/rtc-2018-01-11",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "rtc 2018-01-11 Node.js SDK",
   "main": "lib/client.js",
   "scripts": {},

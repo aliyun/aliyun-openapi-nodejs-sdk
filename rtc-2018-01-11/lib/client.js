@@ -15,21 +15,6 @@ class Client extends RPCClient {
 
   /**
    * @param {Long} OwnerId - ownerId. optional.
-   * @param {String} AppName - appName. optional.
-   * @param {String} AppType - appType. optional.
-   * @param {String} ClientToken - clientToken. required.
-   * @param {RepeatList} ServiceAreas - serviceAreas. optional.
-   */
-  createApp(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ClientToken')) {
-      throw new TypeError('parameter "ClientToken" is required');
-    }
-
-    return this.request('CreateApp', params, options);
-  }
-
-  /**
-   * @param {Long} OwnerId - ownerId. optional.
    * @param {String} AppId - appId. required.
    * @param {String} ChannelId - channelId. required.
    */
@@ -49,7 +34,7 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} AppId - appId. required.
    * @param {String} ChannelId - channelId. required.
-   * @param {String} SessionId - sessionId. required.
+   * @param {String} SessionId - sessionId. optional.
    * @param {String} UId - uId. required.
    * @param {String} Nonce - nonce. required.
    */
@@ -60,10 +45,6 @@ class Client extends RPCClient {
 
     if (!hasOwnProperty(params, 'ChannelId')) {
       throw new TypeError('parameter "ChannelId" is required');
-    }
-
-    if (!hasOwnProperty(params, 'SessionId')) {
-      throw new TypeError('parameter "SessionId" is required');
     }
 
     if (!hasOwnProperty(params, 'UId')) {
@@ -268,6 +249,30 @@ class Client extends RPCClient {
 
   /**
    * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} AppId - appId. required.
+   */
+  describeAppKey(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppId')) {
+      throw new TypeError('parameter "AppId" is required');
+    }
+
+    return this.request('DescribeAppKey', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} AppId - appId. required.
+   */
+  describeAppQuota(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppId')) {
+      throw new TypeError('parameter "AppId" is required');
+    }
+
+    return this.request('DescribeAppQuota', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
    * @param {String} AppId - appId. optional.
    * @param {String} Status - status. optional.
    * @param {String} Order - order. optional.
@@ -276,6 +281,26 @@ class Client extends RPCClient {
    */
   describeApps(params = {}, options = {}) {
     return this.request('DescribeApps', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} AppId - appId. required.
+   * @param {String} ChannelId - channelId. required.
+   * @param {String} Order - order. optional.
+   * @param {Integer} PageNum - pageNum. optional.
+   * @param {Integer} PageSize - pageSize. optional.
+   */
+  describeChannelParticipants(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppId')) {
+      throw new TypeError('parameter "AppId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ChannelId')) {
+      throw new TypeError('parameter "ChannelId" is required');
+    }
+
+    return this.request('DescribeChannelParticipants', params, options);
   }
 
   /**
@@ -412,6 +437,83 @@ class Client extends RPCClient {
    */
   describeRtcChannelCntData(params = {}, options = {}) {
     return this.request('DescribeRtcChannelCntData', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} AppId - appId. optional.
+   * @param {String} TimePoint - timePoint. required.
+   * @param {String} SortType - sortBy. optional.
+   * @param {String} ServiceArea - serviceArea. optional.
+   * @param {String} UserId - clientUser. optional.
+   * @param {String} ChannelId - channelId. optional.
+   * @param {Long} PageNo - pageIndex. required.
+   * @param {Long} PageSize - pageSize. required.
+   */
+  describeRtcChannelList(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'TimePoint')) {
+      throw new TypeError('parameter "TimePoint" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageNo')) {
+      throw new TypeError('parameter "PageNo" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    return this.request('DescribeRtcChannelList', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} TimePoint - timePoint. required.
+   * @param {String} AppId - appId. required.
+   * @param {String} ChannelId - channelId. required.
+   */
+  describeRtcChannelMetric(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'TimePoint')) {
+      throw new TypeError('parameter "TimePoint" is required');
+    }
+
+    if (!hasOwnProperty(params, 'AppId')) {
+      throw new TypeError('parameter "AppId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ChannelId')) {
+      throw new TypeError('parameter "ChannelId" is required');
+    }
+
+    return this.request('DescribeRtcChannelMetric', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} AppId - appId. required.
+   * @param {String} ChannelId - channelId. optional.
+   * @param {Long} PageNo - pageIndex. required.
+   * @param {Long} PageSize - pageSize. required.
+   * @param {String} TimePoint - timePoint. required.
+   */
+  describeRtcChannelUserList(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppId')) {
+      throw new TypeError('parameter "AppId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageNo')) {
+      throw new TypeError('parameter "PageNo" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PageSize')) {
+      throw new TypeError('parameter "PageSize" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TimePoint')) {
+      throw new TypeError('parameter "TimePoint" is required');
+    }
+
+    return this.request('DescribeRtcChannelUserList', params, options);
   }
 
   /**
@@ -675,6 +777,23 @@ class Client extends RPCClient {
    * @param {String} AppId - appId. required.
    * @param {String} TaskId - taskId. required.
    */
+  getMPUTaskParam(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppId')) {
+      throw new TypeError('parameter "AppId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TaskId')) {
+      throw new TypeError('parameter "TaskId" is required');
+    }
+
+    return this.request('GetMPUTaskParam', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} AppId - appId. required.
+   * @param {String} TaskId - taskId. required.
+   */
   getMPUTaskStatus(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'AppId')) {
       throw new TypeError('parameter "AppId" is required');
@@ -690,7 +809,7 @@ class Client extends RPCClient {
   /**
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} AppId - appId. required.
-   * @param {Long} TaskId - taskId. required.
+   * @param {String} TaskId - taskId. required.
    */
   getTaskParam(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'AppId')) {
@@ -974,8 +1093,11 @@ class Client extends RPCClient {
    * @param {String} AppId - appId. required.
    * @param {String} ChannelId - channelId. required.
    * @param {String} TaskId - taskId. required.
+   * @param {String} TaskProfile - task_profile. optional.
+   * @param {Integer} CropMode - crop_mode. optional.
    * @param {Integer} MediaEncode - media_encode. required.
-   * @param {Integer} BackgroundColor - background_color. required.
+   * @param {Integer} BackgroundColor - background_color. optional.
+   * @param {RepeatList} SubSpecUsers - subSpecUsers. optional.
    * @param {RepeatList} LayoutIds - layoutIds. required.
    * @param {RepeatList} UserPanes - user_panes. optional.
    * @param {String} StreamURL - stream_url. required.
@@ -995,10 +1117,6 @@ class Client extends RPCClient {
 
     if (!hasOwnProperty(params, 'MediaEncode')) {
       throw new TypeError('parameter "MediaEncode" is required');
-    }
-
-    if (!hasOwnProperty(params, 'BackgroundColor')) {
-      throw new TypeError('parameter "BackgroundColor" is required');
     }
 
     if (!hasOwnProperty(params, 'LayoutIds')) {
@@ -1176,6 +1294,31 @@ class Client extends RPCClient {
   /**
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} AppId - appId. required.
+   * @param {String} TaskId - taskId. required.
+   * @param {Integer} CropMode - crop_mode. optional.
+   * @param {Integer} BackgroundColor - background_color. optional.
+   * @param {RepeatList} LayoutIds - layoutIds. required.
+   * @param {RepeatList} UserPanes - user_panes. optional.
+   */
+  updateMPULayout(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'AppId')) {
+      throw new TypeError('parameter "AppId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TaskId')) {
+      throw new TypeError('parameter "TaskId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'LayoutIds')) {
+      throw new TypeError('parameter "LayoutIds" is required');
+    }
+
+    return this.request('UpdateMPULayout', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} AppId - appId. required.
    * @param {String} ChannelId - channelId. required.
    */
   updateRTCChannel(params = {}, options = {}) {
@@ -1194,9 +1337,9 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} AppId - appId. required.
    * @param {String} ChannelId - channelId. required.
-   * @param {Long} TemplateId - templateId. required.
-   * @param {Long} TaskId - taskId. required.
-   * @param {RepeatList} MixPanes - mixPanes. required.
+   * @param {String} TaskId - taskId. required.
+   * @param {RepeatList} LayoutIds - layoutIds. required.
+   * @param {RepeatList} UserPanes - user_panes. required.
    */
   updateTaskParam(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'AppId')) {
@@ -1207,16 +1350,16 @@ class Client extends RPCClient {
       throw new TypeError('parameter "ChannelId" is required');
     }
 
-    if (!hasOwnProperty(params, 'TemplateId')) {
-      throw new TypeError('parameter "TemplateId" is required');
-    }
-
     if (!hasOwnProperty(params, 'TaskId')) {
       throw new TypeError('parameter "TaskId" is required');
     }
 
-    if (!hasOwnProperty(params, 'MixPanes')) {
-      throw new TypeError('parameter "MixPanes" is required');
+    if (!hasOwnProperty(params, 'LayoutIds')) {
+      throw new TypeError('parameter "LayoutIds" is required');
+    }
+
+    if (!hasOwnProperty(params, 'UserPanes')) {
+      throw new TypeError('parameter "UserPanes" is required');
     }
 
     return this.request('UpdateTaskParam', params, options);
