@@ -43,6 +43,7 @@ class Client extends RPCClient {
    * @param {String} EventMetaName - event_meta_name. required.
    * @param {String} EventMetaVersion - event_meta_version. required.
    * @param {String} SourceARN - source_arn. required.
+   * @param {String} FunctionARN - function_arn. optional.
    * @param {String} RoleARN - role. required.
    * @param {String} Notes - notes. required.
    */
@@ -243,6 +244,48 @@ class Client extends RPCClient {
 
   /**
    * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} Features - features. required.
+   * @param {String} FeatureVersion - featureVersion. required.
+   * @param {Boolean} ClearAll - clearAll. optional. default: false.
+   */
+  blockSinaUserCaches(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Features')) {
+      throw new TypeError('parameter "Features" is required');
+    }
+
+    if (!hasOwnProperty(params, 'FeatureVersion')) {
+      throw new TypeError('parameter "FeatureVersion" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('BlockSinaUserCaches', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} CommonName - common_name. required.
+   * @param {String} SANs - sans. required.
+   * @param {String} Organization - organization. optional. default: Alibaba Inc..
+   * @param {String} OrganizationUnit - organization_unit. optional. default: Aliyun CDN.
+   * @param {String} Country - country. optional. default: CN.
+   * @param {String} State - state. optional. default: Zhejiang.
+   * @param {String} City - city. optional. default: Hangzhou.
+   * @param {String} Email - email. optional.
+   */
+  createCdnCertificateSigningRequest(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'CommonName')) {
+      throw new TypeError('parameter "CommonName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'SANs')) {
+      throw new TypeError('parameter "SANs" is required');
+    }
+
+    return this.request('CreateCdnCertificateSigningRequest', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
    * @param {String} Project - project. required.
    * @param {String} Logstore - logstore. required.
    * @param {String} Region - region. required.
@@ -276,6 +319,7 @@ class Client extends RPCClient {
    * @param {String} DomainNames - domainName. optional.
    * @param {String} Type - dimension. required.
    * @param {String} TaskName - name. optional.
+   * @param {String} Language - language. optional. default: zh-cn.
    */
   createUsageDetailDataExportTask(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'StartTime')) {
@@ -377,6 +421,28 @@ class Client extends RPCClient {
 
   /**
    * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} Project - project. required.
+   * @param {String} Logstore - logstore. required.
+   * @param {String} Region - region. required.
+   */
+  deleteRealTimeLogLogstore(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Project')) {
+      throw new TypeError('parameter "Project" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Logstore')) {
+      throw new TypeError('parameter "Logstore" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Region')) {
+      throw new TypeError('parameter "Region" is required');
+    }
+
+    return this.request('DeleteRealTimeLogLogstore', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
    * @param {String} Domain - domain. required.
    * @param {String} Project - project. required.
    * @param {String} Logstore - logstore. required.
@@ -418,6 +484,24 @@ class Client extends RPCClient {
     }
 
     return this.request('DeleteSpecificConfig', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} SecurityToken - securityToken. optional.
+   * @param {String} DomainName - domainName. required.
+   * @param {String} ConfigId - configId. required.
+   */
+  deleteSpecificStagingConfig(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DomainName')) {
+      throw new TypeError('parameter "DomainName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ConfigId')) {
+      throw new TypeError('parameter "ConfigId" is required');
+    }
+
+    return this.request('DeleteSpecificStagingConfig', params, options);
   }
 
   /**
@@ -553,6 +637,26 @@ class Client extends RPCClient {
 
   /**
    * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} DomainName - domainName. required.
+   * @param {String} FunctionNames - functionNames. required.
+   */
+  describeCdnDomainStagingConfig(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DomainName')) {
+      throw new TypeError('parameter "DomainName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'FunctionNames')) {
+      throw new TypeError('parameter "FunctionNames" is required');
+    }
+
+    return this.request('DescribeCdnDomainStagingConfig', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {Integer} PageNumber - page. optional. default: 1.
+   * @param {Integer} PageSize - page_size. optional. default: 20.
+   * @param {String} Keyword - keyword. optional.
    */
   describeCdnHttpsDomainList(params = {}, options = {}) {
     return this.request('DescribeCdnHttpsDomainList', params, options);
@@ -604,6 +708,8 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} Dimension - dimension. required.
    * @param {String} Area - area. optional.
+   * @param {String} StartTime - startTime. optional.
+   * @param {String} EndTime - endTime. optional.
    */
   describeCdnUserBillPrediction(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'Dimension')) {
@@ -965,6 +1071,20 @@ class Client extends RPCClient {
 
   /**
    * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} DomainName - domainName. optional.
+   * @param {String} StartTime - startTime. optional.
+   * @param {String} EndTime - endTime. optional.
+   * @param {String} Interval - interval. optional.
+   * @param {String} IspNameEn - ispName. optional.
+   * @param {String} LocationNameEn - locName. optional.
+   * @param {String} Layer - layer. optional.
+   */
+  describeDomainQpsDataByLayer(params = {}, options = {}) {
+    return this.request('DescribeDomainQpsDataByLayer', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
    * @param {String} DomainName - domainName. required.
    * @param {String} IspNameEn - ispName. optional.
    * @param {String} LocationNameEn - locName. optional.
@@ -991,6 +1111,36 @@ class Client extends RPCClient {
     }
 
     return this.request('DescribeDomainRealTimeByteHitRateData', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} DomainName - domainName. required.
+   * @param {String} StartTime - startTime. required.
+   * @param {String} EndTime - endTime. required.
+   * @param {String} Field - cols. required.
+   * @param {String} LocationNameEn - locationName. optional.
+   * @param {String} IspNameEn - ispName. optional.
+   * @param {String} Merge - merge. optional.
+   */
+  describeDomainRealTimeDetailData(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DomainName')) {
+      throw new TypeError('parameter "DomainName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Field')) {
+      throw new TypeError('parameter "Field" is required');
+    }
+
+    return this.request('DescribeDomainRealTimeDetailData', params, options);
   }
 
   /**
@@ -1067,6 +1217,33 @@ class Client extends RPCClient {
     }
 
     return this.request('DescribeDomainRealTimeSrcBpsData', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} DomainName - domainName. required.
+   * @param {String} StartTime - startTime. required.
+   * @param {String} EndTime - endTime. required.
+   * @param {String} Field - cols. required.
+   */
+  describeDomainRealTimeSrcDetailData(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DomainName')) {
+      throw new TypeError('parameter "DomainName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Field')) {
+      throw new TypeError('parameter "Field" is required');
+    }
+
+    return this.request('DescribeDomainRealTimeSrcDetailData', params, options);
   }
 
   /**
@@ -1186,6 +1363,21 @@ class Client extends RPCClient {
 
   /**
    * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} DomainName - domainName. required.
+   * @param {String} StartTime - startTime. optional.
+   * @param {String} EndTime - endTime. optional.
+   * @param {String} SortBy - sortBy. optional.
+   */
+  describeDomainSrcTopUrlVisit(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DomainName')) {
+      throw new TypeError('parameter "DomainName" is required');
+    }
+
+    return this.request('DescribeDomainSrcTopUrlVisit', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
    * @param {String} DomainName - domainName. optional.
    * @param {String} StartTime - startTime. optional.
    * @param {String} EndTime - endTime. optional.
@@ -1197,8 +1389,22 @@ class Client extends RPCClient {
 
   /**
    * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} DomainName - domainName. optional.
+   * @param {String} LocationNameEn - locName. optional.
+   * @param {String} StartTime - startTime. optional.
+   * @param {String} EndTime - endTime. optional.
+   * @param {String} SortBy - sortBy. optional. default: traf.
+   * @param {String} Limit - pageSize. optional. default: 20.
+   */
+  describeDomainTopClientIpVisit(params = {}, options = {}) {
+    return this.request('DescribeDomainTopClientIpVisit', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
    * @param {String} DomainName - domainName. required.
    * @param {String} StartTime - startTime. optional.
+   * @param {String} EndTime - endTime. optional.
    * @param {String} SortBy - sortBy. optional.
    * @param {String} Percent - percent. optional. default: false.
    */
@@ -1216,7 +1422,6 @@ class Client extends RPCClient {
    * @param {String} StartTime - startTime. optional.
    * @param {String} EndTime - endTime. optional.
    * @param {String} SortBy - sortBy. optional.
-   * @param {String} Percent - percent. optional. default: false.
    */
   describeDomainTopUrlVisit(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DomainName')) {
@@ -1430,12 +1635,11 @@ class Client extends RPCClient {
 
   /**
    * @param {Long} OwnerId - ownerId. optional.
-   * @param {String} SecurityToken - securityToken. optional.
-   * @param {String} DomainNames - domainNames. required.
-   * @param {String} LocationNames - locationNames. optional.
-   * @param {String} IspNames - ispNames. optional.
+   * @param {String} DomainNames - domainName. required.
    * @param {String} StartTime - startTime. required.
    * @param {String} EndTime - endTime. required.
+   * @param {String} IspNames - ispName. optional.
+   * @param {String} LocationNames - locName. optional.
    */
   describeRangeDataByLocateAndIspService(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DomainNames')) {
@@ -1451,6 +1655,33 @@ class Client extends RPCClient {
     }
 
     return this.request('DescribeRangeDataByLocateAndIspService', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} DomainName - domainName. required.
+   * @param {String} StartTime - startTime. required.
+   * @param {String} EndTime - endTime. required.
+   * @param {String} Field - field. required.
+   */
+  describeRealTimeDomainDetailData(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DomainName')) {
+      throw new TypeError('parameter "DomainName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Field')) {
+      throw new TypeError('parameter "Field" is required');
+    }
+
+    return this.request('DescribeRealTimeDomainDetailData', params, options);
   }
 
   /**
@@ -1500,6 +1731,13 @@ class Client extends RPCClient {
 
   /**
    * @param {Long} OwnerId - ownerId. optional.
+   */
+  describeStagingIp(params = {}, options = {}) {
+    return this.request('DescribeStagingIp', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
    * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
    * @param {RepeatList} ResourceId - resourceId. required.
    * @param {String} ResourceType - resourceType. required.
@@ -1522,7 +1760,6 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} StartTime - startTime. optional.
    * @param {String} EndTime - endTime. optional.
-   * @param {String} Product - product. optional. default: cdn.
    * @param {Long} Limit - limit. optional. default: 20.
    */
   describeTopDomainsByFlow(params = {}, options = {}) {
@@ -1535,6 +1772,13 @@ class Client extends RPCClient {
    */
   describeUserCdnStatus(params = {}, options = {}) {
     return this.request('DescribeUserCdnStatus', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   */
+  describeUserCertificateExpireCount(params = {}, options = {}) {
+    return this.request('DescribeUserCertificateExpireCount', params, options);
   }
 
   /**
@@ -1568,6 +1812,8 @@ class Client extends RPCClient {
    * @param {String} CdnType - webSiteType. optional.
    * @param {Boolean} CheckDomainShow - checkDomainShow. optional.
    * @param {String} ResourceGroupId - resourceGroupId. optional.
+   * @param {String} ChangeStartTime - changeStartTime. optional.
+   * @param {String} ChangeEndTime - changeEndTime. optional.
    * @param {String} FuncId - funcId. optional.
    * @param {String} FuncFilter - funcFilter. optional.
    * @param {RepeatList} Tag - tag. optional.
@@ -1613,6 +1859,22 @@ class Client extends RPCClient {
     }
 
     return this.request('DescribeUserVipsByDomain', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} QueryTime - queryTime. optional.
+   */
+  describeViewAvailTraf(params = {}, options = {}) {
+    return this.request('DescribeViewAvailTraf', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} QueryTime - queryTime. optional.
+   */
+  describeViewUsedTraf(params = {}, options = {}) {
+    return this.request('DescribeViewUsedTraf', params, options);
   }
 
   /**
@@ -1764,6 +2026,23 @@ class Client extends RPCClient {
     }
 
     return this.request('ModifyCdnDomain', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} DomainName - domainName. required.
+   * @param {String} Property - property. required.
+   */
+  modifyCdnDomainSchdmByProperty(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DomainName')) {
+      throw new TypeError('parameter "DomainName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Property')) {
+      throw new TypeError('parameter "Property" is required');
+    }
+
+    return this.request('ModifyCdnDomainSchdmByProperty', params, options);
   }
 
   /**
@@ -1960,6 +2239,23 @@ class Client extends RPCClient {
 
   /**
    * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} DomainName - domainName. required.
+   * @param {String} FunctionName - functionName. required.
+   */
+  publishStagingConfigToProduction(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DomainName')) {
+      throw new TypeError('parameter "DomainName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'FunctionName')) {
+      throw new TypeError('parameter "FunctionName" is required');
+    }
+
+    return this.request('PublishStagingConfigToProduction', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
    * @param {String} SecurityToken - securityToken. optional.
    * @param {String} DomainName - domainName. required.
    * @param {String} ObjectPath - objectPath. required.
@@ -2003,6 +2299,23 @@ class Client extends RPCClient {
     }
 
     return this.request('RefreshObjectCaches', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} DomainName - domainName. required.
+   * @param {String} FunctionName - functionName. required.
+   */
+  rollbackStagingConfig(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DomainName')) {
+      throw new TypeError('parameter "DomainName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'FunctionName')) {
+      throw new TypeError('parameter "FunctionName" is required');
+    }
+
+    return this.request('RollbackStagingConfig', params, options);
   }
 
   /**
@@ -2056,6 +2369,40 @@ class Client extends RPCClient {
     }
 
     return this.request('SetCcConfig', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} Certificate - cert. required.
+   * @param {String} DomainName - domain. required.
+   */
+  setCdnDomainCSRCertificate(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Certificate')) {
+      throw new TypeError('parameter "Certificate" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DomainName')) {
+      throw new TypeError('parameter "DomainName" is required');
+    }
+
+    return this.request('SetCdnDomainCSRCertificate', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} DomainName - domainName. required.
+   * @param {String} Functions - configs. required.
+   */
+  setCdnDomainStagingConfig(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DomainName')) {
+      throw new TypeError('parameter "DomainName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Functions')) {
+      throw new TypeError('parameter "Functions" is required');
+    }
+
+    return this.request('SetCdnDomainStagingConfig', params, options);
   }
 
   /**
@@ -2120,10 +2467,11 @@ class Client extends RPCClient {
 
   /**
    * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} SecurityToken - securityToken. optional.
    * @param {String} DomainName - domainName. required.
-   * @param {Long} ConfigId - configId. optional.
-   * @param {String} CacheContent - file_type. required.
+   * @param {String} CacheContent - cacheContent. required.
    * @param {String} TTL - ttl. required.
+   * @param {String} Weight - weight. optional.
    */
   setFileCacheExpiredConfig(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DomainName')) {
@@ -2891,6 +3239,7 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} TriggerARN - trigger. required.
    * @param {String} SourceARN - source_arn. optional.
+   * @param {String} FunctionARN - function_arn. optional.
    * @param {String} RoleARN - role. optional.
    * @param {String} Notes - notes. optional.
    */
