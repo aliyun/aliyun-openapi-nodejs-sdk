@@ -80,18 +80,6 @@ class Client extends RPCClient {
     return this.request('RecolorImage', params, options);
   }
 
-  /**
-   * @param {String} Url - url. required.
-   */
-  segmentImage(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'Url')) {
-      throw new TypeError('parameter "Url" is required');
-    }
-
-    options.method = 'POST';
-    return this.request('SegmentImage', params, options);
-  }
-
 }
 
 module.exports = Client;
