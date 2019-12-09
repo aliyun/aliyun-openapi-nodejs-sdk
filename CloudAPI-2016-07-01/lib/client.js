@@ -147,6 +147,7 @@ class Client extends RPCClient {
    * @param {String} ResultBodyModel - apiResultBodyModel. optional.
    * @param {Boolean} ForceNonceCheck - forceNonceCheck. optional.
    * @param {Boolean} DisableInternet - disableInternet. optional.
+   * @param {String} AppCodeAuthType - appCodeAuthType. optional.
    */
   createApi(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'GroupId')) {
@@ -177,6 +178,7 @@ class Client extends RPCClient {
    * @param {String} AccessKeyId - accessKeyId. optional.
    * @param {String} GroupName - groupName. required.
    * @param {String} Description - description. optional.
+   * @param {String} InstanceId - instanceId. optional.
    */
   createApiGroup(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'GroupName')) {
@@ -374,6 +376,7 @@ class Client extends RPCClient {
    * @param {String} PluginType - pluginType. required.
    * @param {String} PluginData - pluginData. required.
    * @param {String} Description - description. optional.
+   * @param {RepeatList} Tag - tags. optional.
    */
   createPlugin(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'PluginName')) {
@@ -593,6 +596,17 @@ class Client extends RPCClient {
     }
 
     return this.request('DeleteDomainCertificate', params, options);
+  }
+
+  /**
+   * @param {String} InstanceId - instanceId. required.
+   */
+  deleteInstance(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    return this.request('DeleteInstance', params, options);
   }
 
   /**
@@ -869,6 +883,9 @@ class Client extends RPCClient {
    * @param {String} GroupName - groupName. optional.
    * @param {Integer} PageNumber - pageNumber. optional.
    * @param {Integer} PageSize - pageSize. optional.
+   * @param {Boolean} NotClassic - notClassic. optional.
+   * @param {Boolean} EnableTagAuth - enableTagAuth. optional.
+   * @param {RepeatList} Tag - tags. optional.
    */
   describeApiGroups(params = {}, options = {}) {
     return this.request('DescribeApiGroups', params, options);
@@ -1164,6 +1181,8 @@ class Client extends RPCClient {
    * @param {String} AppName - appName. optional.
    * @param {Integer} PageNumber - pageNumber. optional. default: 1.
    * @param {Integer} PageSize - pageSize. optional. default: 10.
+   * @param {Boolean} EnableTagAuth - enableTagAuth. optional.
+   * @param {RepeatList} Tag - tags. optional.
    */
   describeApps(params = {}, options = {}) {
     return this.request('DescribeApps', params, options);
@@ -1348,6 +1367,16 @@ class Client extends RPCClient {
    */
   describeHistoryApis(params = {}, options = {}) {
     return this.request('DescribeHistoryApis', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - securityToken. optional.
+   * @param {String} AccessKeyId - accessKeyId. optional.
+   * @param {String} InstanceId - instanceId. optional.
+   * @param {String} Language - language. optional.
+   */
+  describeInstances(params = {}, options = {}) {
+    return this.request('DescribeInstances', params, options);
   }
 
   /**
@@ -1625,6 +1654,18 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} DataFormat - dataFormat. optional.
+   * @param {String} ApiUid - apiUid. required.
+   */
+  exportSwagger(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ApiUid')) {
+      throw new TypeError('parameter "ApiUid" is required');
+    }
+
+    return this.request('ExportSwagger', params, options);
+  }
+
+  /**
    * @param {String} SecurityToken - securityToken. optional.
    * @param {String} AccessKeyId - accessKeyId. optional.
    * @param {String} GroupId - groupId. required.
@@ -1716,6 +1757,7 @@ class Client extends RPCClient {
    * @param {String} ResultBodyModel - apiResultBodyModel. optional.
    * @param {Boolean} ForceNonceCheck - forceNonceCheck. optional.
    * @param {Boolean} DisableInternet - disableInternet. optional.
+   * @param {String} AppCodeAuthType - appCodeAuthType. optional.
    */
   modifyApi(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ApiName')) {
@@ -1762,6 +1804,8 @@ class Client extends RPCClient {
    * @param {String} GroupId - groupId. required.
    * @param {String} TargetInstanceId - targetInstanceId. required.
    * @param {String} Remark - remark. optional.
+   * @param {Boolean} ReduceRpsLimit - reduceRpsLimit. optional.
+   * @param {Boolean} DryRun - dryRun. optional.
    */
   modifyApiGroupInstance(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'GroupId')) {
@@ -1804,6 +1848,37 @@ class Client extends RPCClient {
     }
 
     return this.request('ModifyApp', params, options);
+  }
+
+  /**
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} InstanceName - instanceName. optional.
+   * @param {String} HttpsPolicy - httpPolicy. optional.
+   * @param {String} Token - token. optional.
+   */
+  modifyInstanceAttribute(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    return this.request('ModifyInstanceAttribute', params, options);
+  }
+
+  /**
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} VpcId - vpcId. required.
+   * @param {String} Token - token. optional.
+   */
+  modifyInstanceVpcAttribute(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'VpcId')) {
+      throw new TypeError('parameter "VpcId" is required');
+    }
+
+    return this.request('ModifyInstanceVpcAttribute', params, options);
   }
 
   /**
@@ -2501,6 +2576,25 @@ class Client extends RPCClient {
     }
 
     return this.request('SetMockIntegration', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - securityToken. optional.
+   * @param {String} AccessKeyId - accessKeyId. optional.
+   * @param {String} GroupId - groupId. required.
+   * @param {String} DomainName - domainName. required.
+   * @param {String} WildcardDomainPatterns - wildcardDomainPatternsParam. optional.
+   */
+  setWildcardDomainPatterns(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'GroupId')) {
+      throw new TypeError('parameter "GroupId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DomainName')) {
+      throw new TypeError('parameter "DomainName" is required');
+    }
+
+    return this.request('SetWildcardDomainPatterns', params, options);
   }
 
   /**
