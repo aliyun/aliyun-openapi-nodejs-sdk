@@ -19,15 +19,10 @@ class Client extends RPCClient {
    * @param {String} ImageContentA - imageContentA. optional.
    * @param {String} ImageURLB - imageUrlB. optional.
    * @param {String} ImageContentB - imageContentB. optional.
-   * @param {Integer} Mode - mode. required.
    */
   compareFace(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ImageType')) {
       throw new TypeError('parameter "ImageType" is required');
-    }
-
-    if (!hasOwnProperty(params, 'Mode')) {
-      throw new TypeError('parameter "Mode" is required');
     }
 
     options.method = 'POST';
@@ -52,15 +47,10 @@ class Client extends RPCClient {
    * @param {Integer} ImageType - imageType. required.
    * @param {String} ImageURL - imageUrl. optional.
    * @param {String} ImageContent - imageContent. optional.
-   * @param {Integer} Mode - mode. required.
    */
   recognizeFace(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ImageType')) {
       throw new TypeError('parameter "ImageType" is required');
-    }
-
-    if (!hasOwnProperty(params, 'Mode')) {
-      throw new TypeError('parameter "Mode" is required');
     }
 
     options.method = 'POST';
