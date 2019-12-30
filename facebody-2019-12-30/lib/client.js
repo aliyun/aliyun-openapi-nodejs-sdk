@@ -14,15 +14,17 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {Integer} ImageType - imageType. required.
-   * @param {String} ImageURLA - imageUrlA. optional.
-   * @param {String} ImageContentA - imageContentA. optional.
-   * @param {String} ImageURLB - imageUrlB. optional.
-   * @param {String} ImageContentB - imageContentB. optional.
+   * @param {Integer} ImageType - imageType. optional. default: 0.
+   * @param {String} ImageURLA - imageUrlA. required.
+   * @param {String} ImageURLB - imageUrlB. required.
    */
   compareFace(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ImageType')) {
-      throw new TypeError('parameter "ImageType" is required');
+    if (!hasOwnProperty(params, 'ImageURLA')) {
+      throw new TypeError('parameter "ImageURLA" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ImageURLB')) {
+      throw new TypeError('parameter "ImageURLB" is required');
     }
 
     options.method = 'POST';
@@ -30,13 +32,12 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {Integer} ImageType - imageType. required.
-   * @param {String} ImageURL - imageUrl. optional.
-   * @param {String} ImageContent - imageContent. optional.
+   * @param {Integer} ImageType - imageType. optional. default: 0.
+   * @param {String} ImageURL - imageUrl. required.
    */
   detectFace(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ImageType')) {
-      throw new TypeError('parameter "ImageType" is required');
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
     }
 
     options.method = 'POST';
@@ -44,13 +45,12 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {Integer} ImageType - imageType. required.
-   * @param {String} ImageURL - imageUrl. optional.
-   * @param {String} ImageContent - imageContent. optional.
+   * @param {Integer} ImageType - imageType. optional. default: 0.
+   * @param {String} ImageURL - imageUrl. required.
    */
   recognizeFace(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ImageType')) {
-      throw new TypeError('parameter "ImageType" is required');
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
     }
 
     options.method = 'POST';

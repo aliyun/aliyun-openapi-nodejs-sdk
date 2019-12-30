@@ -14,13 +14,12 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {Integer} ImageType - imageType. required.
-   * @param {String} ImageURL - imageUrl. optional.
-   * @param {String} ImageContent - imageContent. optional.
+   * @param {Integer} ImageType - imageType. optional. default: 0.
+   * @param {String} ImageURL - imageUrl. required.
    */
   recognizeAccountPage(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ImageType')) {
-      throw new TypeError('parameter "ImageType" is required');
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
     }
 
     options.method = 'POST';
@@ -28,13 +27,12 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {Integer} ImageType - imageType. required.
-   * @param {String} ImageURL - imageUrl. optional.
-   * @param {String} ImageContent - imageContent. optional.
+   * @param {Integer} ImageType - imageType. optional. default: 0.
+   * @param {String} ImageURL - imageUrl. required.
    */
   recognizeBankCard(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ImageType')) {
-      throw new TypeError('parameter "ImageType" is required');
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
     }
 
     options.method = 'POST';
@@ -42,13 +40,12 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {Integer} ImageType - imageType. required.
-   * @param {String} ImageURL - imageUrl. optional.
-   * @param {String} ImageContent - imageContent. optional.
+   * @param {Integer} ImageType - imageType. optional. default: 0.
+   * @param {String} ImageURL - imageUrl. required.
    */
   recognizeBusinessCard(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ImageType')) {
-      throw new TypeError('parameter "ImageType" is required');
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
     }
 
     options.method = 'POST';
@@ -56,13 +53,12 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {Integer} ImageType - imageType. required.
-   * @param {String} ImageURL - imageUrl. optional.
-   * @param {String} ImageContent - imageContent. optional.
+   * @param {Integer} ImageType - imageType. optional. default: 0.
+   * @param {String} ImageURL - imageUrl. required.
    */
   recognizeBusinessLicense(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ImageType')) {
-      throw new TypeError('parameter "ImageType" is required');
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
     }
 
     options.method = 'POST';
@@ -70,15 +66,14 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {Integer} ImageType - imageType. required.
-   * @param {String} ImageURL - imageUrl. optional.
-   * @param {String} ImageContent - imageContent. optional.
+   * @param {Integer} ImageType - imageType. optional. default: 0.
+   * @param {String} ImageURL - imageUrl. required.
    * @param {Integer} MinHeight - minHeight. required.
    * @param {Boolean} OutputProbability - outputProbability. required.
    */
   recognizeCharacter(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ImageType')) {
-      throw new TypeError('parameter "ImageType" is required');
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
     }
 
     if (!hasOwnProperty(params, 'MinHeight')) {
@@ -94,14 +89,13 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {Integer} ImageType - imageType. required.
-   * @param {String} ImageURL - imageUrl. optional.
-   * @param {String} ImageContent - imageContent. optional.
+   * @param {Integer} ImageType - imageType. optional. default: 0.
+   * @param {String} ImageURL - imageUrl. required.
    * @param {String} Side - side. required.
    */
   recognizeDriverLicense(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ImageType')) {
-      throw new TypeError('parameter "ImageType" is required');
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
     }
 
     if (!hasOwnProperty(params, 'Side')) {
@@ -113,14 +107,13 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {Integer} ImageType - imageType. required.
-   * @param {String} ImageURL - imageUrl. optional.
-   * @param {String} ImageContent - imageContent. optional.
+   * @param {Integer} ImageType - imageType. optional. default: 0.
+   * @param {String} ImageURL - imageUrl. required.
    * @param {String} Side - side. required.
    */
   recognizeDrivingLicense(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ImageType')) {
-      throw new TypeError('parameter "ImageType" is required');
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
     }
 
     if (!hasOwnProperty(params, 'Side')) {
@@ -132,14 +125,13 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {Integer} ImageType - imageType. required.
-   * @param {String} ImageURL - imageUrl. optional.
-   * @param {String} ImageContent - imageContent. optional.
+   * @param {Integer} ImageType - imageType. optional. default: 0.
+   * @param {String} ImageURL - imageUrl. required.
    * @param {String} Side - side. required.
    */
   recognizeIdentityCard(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ImageType')) {
-      throw new TypeError('parameter "ImageType" is required');
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
     }
 
     if (!hasOwnProperty(params, 'Side')) {
@@ -151,13 +143,12 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {Integer} ImageType - imageType. required.
-   * @param {String} ImageURL - imageUrl. optional.
-   * @param {String} ImageContent - imageContent. optional.
+   * @param {Integer} ImageType - imageType. optional. default: 0.
+   * @param {String} ImageURL - imageUrl. required.
    */
   recognizeLicensePlate(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ImageType')) {
-      throw new TypeError('parameter "ImageType" is required');
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
     }
 
     options.method = 'POST';
@@ -165,13 +156,12 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {Integer} ImageType - imageType. required.
-   * @param {String} ImageURL - imageUrl. optional.
-   * @param {String} ImageContent - imageContent. optional.
+   * @param {Integer} ImageType - imageType. optional. default: 0.
+   * @param {String} ImageURL - imageUrl. required.
    */
   recognizeStamp(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ImageType')) {
-      throw new TypeError('parameter "ImageType" is required');
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
     }
 
     options.method = 'POST';
@@ -179,9 +169,8 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {Integer} ImageType - imageType. required.
-   * @param {String} ImageURL - imageUrl. optional.
-   * @param {String} ImageContent - imageContent. optional.
+   * @param {Integer} ImageType - imageType. optional. default: 0.
+   * @param {String} ImageURL - imageUrl. required.
    * @param {String} OutputFormat - outputFormat. required.
    * @param {Boolean} UseFinanceModel - useFinanceModel. required.
    * @param {Boolean} AssureDirection - assureDirection. required.
@@ -189,8 +178,8 @@ class Client extends RPCClient {
    * @param {Boolean} SkipDetection - skipDetection. required.
    */
   recognizeTable(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ImageType')) {
-      throw new TypeError('parameter "ImageType" is required');
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
     }
 
     if (!hasOwnProperty(params, 'OutputFormat')) {
@@ -218,13 +207,12 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {Integer} ImageType - imageType. required.
-   * @param {String} ImageURL - imageUrl. optional.
-   * @param {String} ImageContent - imageContent. optional.
+   * @param {Integer} ImageType - imageType. optional. default: 0.
+   * @param {String} ImageURL - imageUrl. required.
    */
   recognizeTaxiInvoice(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ImageType')) {
-      throw new TypeError('parameter "ImageType" is required');
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
     }
 
     options.method = 'POST';
@@ -232,13 +220,12 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {Integer} ImageType - imageType. required.
-   * @param {String} ImageURL - imageUrl. optional.
-   * @param {String} ImageContent - imageContent. optional.
+   * @param {Integer} ImageType - imageType. optional. default: 0.
+   * @param {String} ImageURL - imageUrl. required.
    */
   recognizeTrainTicket(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ImageType')) {
-      throw new TypeError('parameter "ImageType" is required');
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
     }
 
     options.method = 'POST';
@@ -246,13 +233,12 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {Integer} ImageType - imageType. required.
-   * @param {String} ImageURL - imageUrl. optional.
-   * @param {String} ImageContent - imageContent. optional.
+   * @param {Integer} ImageType - imageType. optional. default: 0.
+   * @param {String} ImageURL - imageUrl. required.
    */
   recognizeVINCode(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ImageType')) {
-      throw new TypeError('parameter "ImageType" is required');
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
     }
 
     options.method = 'POST';
