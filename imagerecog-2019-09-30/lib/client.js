@@ -50,6 +50,34 @@ class Client extends RPCClient {
     return this.request('RecognizeImageStyle', params, options);
   }
 
+  /**
+   * @param {Integer} ImageType - imageType. required.
+   * @param {String} ImageURL - imageUrl. optional.
+   * @param {String} ImageContent - imageContent. optional.
+   */
+  recognizeScene(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageType')) {
+      throw new TypeError('parameter "ImageType" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('RecognizeScene', params, options);
+  }
+
+  /**
+   * @param {Integer} ImageType - imageType. required.
+   * @param {String} ImageURL - imageUrl. optional.
+   * @param {String} ImageContent - imageContent. optional.
+   */
+  taggingImage(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageType')) {
+      throw new TypeError('parameter "ImageType" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('TaggingImage', params, options);
+  }
+
 }
 
 module.exports = Client;

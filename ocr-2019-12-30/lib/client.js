@@ -72,10 +72,9 @@ class Client extends RPCClient {
   /**
    * @param {Integer} ImageType - imageType. required.
    * @param {String} ImageURL - imageUrl. optional.
-   * @param {String} ImageContent - ImageContent. optional.
+   * @param {String} ImageContent - imageContent. optional.
    * @param {Integer} MinHeight - minHeight. required.
    * @param {Boolean} OutputProbability - outputProbability. required.
-   * @param {Boolean} OutputKeyPoints - outputKeyPoints. required.
    */
   recognizeCharacter(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ImageType')) {
@@ -88,10 +87,6 @@ class Client extends RPCClient {
 
     if (!hasOwnProperty(params, 'OutputProbability')) {
       throw new TypeError('parameter "OutputProbability" is required');
-    }
-
-    if (!hasOwnProperty(params, 'OutputKeyPoints')) {
-      throw new TypeError('parameter "OutputKeyPoints" is required');
     }
 
     options.method = 'POST';
@@ -187,7 +182,7 @@ class Client extends RPCClient {
    * @param {Integer} ImageType - imageType. required.
    * @param {String} ImageURL - imageUrl. optional.
    * @param {String} ImageContent - imageContent. optional.
-   * @param {String} Format - format. required.
+   * @param {String} OutputFormat - outputFormat. required.
    * @param {Boolean} UseFinanceModel - useFinanceModel. required.
    * @param {Boolean} AssureDirection - assureDirection. required.
    * @param {Boolean} HasLine - hasLine. required.
@@ -198,8 +193,8 @@ class Client extends RPCClient {
       throw new TypeError('parameter "ImageType" is required');
     }
 
-    if (!hasOwnProperty(params, 'Format')) {
-      throw new TypeError('parameter "Format" is required');
+    if (!hasOwnProperty(params, 'OutputFormat')) {
+      throw new TypeError('parameter "OutputFormat" is required');
     }
 
     if (!hasOwnProperty(params, 'UseFinanceModel')) {
