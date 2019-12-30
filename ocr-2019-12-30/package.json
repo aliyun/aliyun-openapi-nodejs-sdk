@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/ocr-2019-12-30",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "ocr 2019-12-30 Node.js SDK",
   "main": "lib/client.js",
   "scripts": {},

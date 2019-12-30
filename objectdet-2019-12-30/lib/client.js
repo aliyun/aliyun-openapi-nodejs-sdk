@@ -25,13 +25,12 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {Integer} ImageType - imageType. required.
-   * @param {String} ImageURL - imageUrl. optional.
-   * @param {String} ImageContent - imageContent. optional.
+   * @param {Integer} ImageType - imageType. optional. default: 0.
+   * @param {String} ImageURL - imageUrl. required.
    */
   detectVehicle(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'ImageType')) {
-      throw new TypeError('parameter "ImageType" is required');
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
     }
 
     options.method = 'POST';
