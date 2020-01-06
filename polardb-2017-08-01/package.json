@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/polardb-2017-08-01",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "polardb 2017-08-01 Node.js SDK",
   "main": "lib/client.js",
   "scripts": {},
