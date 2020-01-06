@@ -14,6 +14,25 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   */
+  abortDBClusterMigration(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    return this.request('AbortDBClusterMigration', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
@@ -237,6 +256,76 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} DBClusterId - dbClusterId. required.
+   * @param {String} DBName - dbName. required.
+   * @param {String} AccountName - accountName. required.
+   * @param {String} DBTemplate - dbTemplate. required.
+   */
+  cloneDatabase(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DBName')) {
+      throw new TypeError('parameter "DBName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'AccountName')) {
+      throw new TypeError('parameter "AccountName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DBTemplate')) {
+      throw new TypeError('parameter "DBTemplate" is required');
+    }
+
+    return this.request('CloneDatabase', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   * @param {Boolean} ContinueEnableBinlog - continueEnableBinlog. optional.
+   */
+  closeDBClusterMigration(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    return this.request('CloseDBClusterMigration', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   */
+  continueDBClusterMigration(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    return this.request('ContinueDBClusterMigration', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
    * @param {String} AccountName - accountName. required.
    * @param {String} AccountPassword - accountPassword. required.
    * @param {String} AccountType - accountType. optional. default: Super.
@@ -293,11 +382,16 @@ class Client extends RPCClient {
    * @param {String} ClusterNetworkType - clusterNetworkType. optional. default: VPC.
    * @param {String} DBClusterDescription - dbClusterDescription. optional.
    * @param {String} PayType - payType. required.
+   * @param {Boolean} AutoRenew - autoRenew. optional. default: false.
    * @param {String} Period - period. optional.
    * @param {String} UsedTime - usedTime. optional.
    * @param {String} VPCId - vpcId. optional.
    * @param {String} VSwitchId - vswitchId. optional.
+   * @param {String} CreationOption - creationOption. optional.
+   * @param {String} SourceResourceId - sourceResourceId. optional.
+   * @param {String} CloneDataPoint - cloneDataPoint. optional.
    * @param {String} ClientToken - token. optional.
+   * @param {String} ResourceGroupId - resourceGroupId. optional.
    */
   createDBCluster(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DBType')) {
@@ -328,7 +422,10 @@ class Client extends RPCClient {
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} DBClusterId - dbClusterId. required.
    * @param {String} EndpointType - endpointType. required.
-   * @param {String} Nodes - nodes. optional. default: Auto.
+   * @param {String} Nodes - nodes. optional.
+   * @param {String} ReadWriteMode - readWriteMode. optional.
+   * @param {String} AutoAddNewNodes - autoAddNewNodes. optional.
+   * @param {String} EndpointConfig - endpointConfig. optional.
    * @param {String} ClientToken - token. optional.
    */
   createDBClusterEndpoint(params = {}, options = {}) {
@@ -379,23 +476,19 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} DBClusterId - dbClusterId. required.
-   * @param {String} DBInstanceClass - dbInstanceClass. required.
-   * @param {String} DBInstanceDescription - dbInstanceDescription. optional.
-   * @param {String} SecurityIPList - securityIPList. required.
-   * @param {String} VSwitchId - vSwitchId. optional.
-   * @param {String} PrivateIpAddress - privateIpAddress. optional.
-   * @param {String} ClientToken - clientToken. optional.
+   * @param {RepeatList} DBNode - dbNodes. required.
+   * @param {String} ClientToken - token. optional.
    */
-  createDBInstance(params = {}, options = {}) {
-    if (!hasOwnProperty(params, 'DBInstanceClass')) {
-      throw new TypeError('parameter "DBInstanceClass" is required');
+  createDBNodes(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
     }
 
-    if (!hasOwnProperty(params, 'SecurityIPList')) {
-      throw new TypeError('parameter "SecurityIPList" is required');
+    if (!hasOwnProperty(params, 'DBNode')) {
+      throw new TypeError('parameter "DBNode" is required');
     }
 
-    return this.request('CreateDBInstance', params, options);
+    return this.request('CreateDBNodes', params, options);
   }
 
   /**
@@ -411,6 +504,8 @@ class Client extends RPCClient {
    * @param {String} DBDescription - dbDescription. optional.
    * @param {String} AccountName - accountName. optional.
    * @param {String} AccountPrivilege - accountPrivilege. optional.
+   * @param {String} Collate - collate. optional.
+   * @param {String} Ctype - ctype. optional.
    */
   createDatabase(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DBClusterId')) {
@@ -426,6 +521,50 @@ class Client extends RPCClient {
     }
 
     return this.request('CreateDatabase', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   * @param {String} DBName - dbName. required.
+   * @param {String} CharacterSetName - characterSetName. required.
+   * @param {String} DBDescription - dbDescription. required.
+   * @param {String} AccountName - accountName. required.
+   * @param {String} AccountPassword - accountPassword. required.
+   */
+  createProtectedDB(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DBName')) {
+      throw new TypeError('parameter "DBName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'CharacterSetName')) {
+      throw new TypeError('parameter "CharacterSetName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DBDescription')) {
+      throw new TypeError('parameter "DBDescription" is required');
+    }
+
+    if (!hasOwnProperty(params, 'AccountName')) {
+      throw new TypeError('parameter "AccountName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'AccountPassword')) {
+      throw new TypeError('parameter "AccountPassword" is required');
+    }
+
+    return this.request('CreateProtectedDB', params, options);
   }
 
   /**
@@ -536,6 +675,29 @@ class Client extends RPCClient {
     }
 
     return this.request('DeleteDBEndpointAddress', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   * @param {RepeatList} DBNodeId - dbNodeIds. required.
+   * @param {String} ClientToken - token. optional.
+   */
+  deleteDBNodes(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DBNodeId')) {
+      throw new TypeError('parameter "DBNodeId" is required');
+    }
+
+    return this.request('DeleteDBNodes', params, options);
   }
 
   /**
@@ -661,6 +823,26 @@ class Client extends RPCClient {
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} DBClusterIds - dbClusterIds. optional.
+   * @param {Integer} PageSize - pageSize. optional. default: 30.
+   * @param {Integer} PageNumber - pageNumber. optional. default: 1.
+   */
+  describeAutoRenewAttribute(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    return this.request('DescribeAutoRenewAttribute', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} DBClusterId - dbClusterId. required.
    */
   describeBackupPolicy(params = {}, options = {}) {
@@ -731,6 +913,7 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} RegionId - regionId. required.
+   * @param {String} DBClusterId - dbClusterId. optional.
    */
   describeCharacterSetName(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -741,6 +924,8 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
@@ -867,6 +1052,24 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   */
+  describeDBClusterMigration(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    return this.request('DescribeDBClusterMigration', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
@@ -940,6 +1143,40 @@ class Client extends RPCClient {
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   */
+  describeDBClusterSSL(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    return this.request('DescribeDBClusterSSL', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   */
+  describeDBClusterZones(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    return this.request('DescribeDBClusterZones', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} RegionId - regionId. required.
    * @param {String} DBClusterIds - dbClusterIds. optional.
    * @param {String} DBClusterDescription - dbClusterDescription. optional.
@@ -948,6 +1185,7 @@ class Client extends RPCClient {
    * @param {RepeatList} Tag - tags. optional.
    * @param {Integer} PageSize - pageSize. optional. default: 30.
    * @param {Integer} PageNumber - pageNumber. optional. default: 1.
+   * @param {String} ResourceGroupId - resourceGroupId. optional.
    */
   describeDBClusters(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'RegionId')) {
@@ -955,6 +1193,25 @@ class Client extends RPCClient {
     }
 
     return this.request('DescribeDBClusters', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DBType - dbType. optional.
+   * @param {String} DBVersion - dbVersion. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   */
+  describeDBInitializeVariable(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    return this.request('DescribeDBInitializeVariable', params, options);
   }
 
   /**
@@ -1092,6 +1349,39 @@ class Client extends RPCClient {
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DBNodeId - dbInstanceId. required.
+   * @param {String} Key - key. required.
+   * @param {String} Metric - metric. optional.
+   * @param {String} StartTime - startTime. required.
+   * @param {String} EndTime - endTime. required.
+   */
+  describeDBNodePerformanceDup(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBNodeId')) {
+      throw new TypeError('parameter "DBNodeId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Key')) {
+      throw new TypeError('parameter "Key" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    return this.request('DescribeDBNodePerformanceDup', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} DBClusterId - dbClusterId. required.
    * @param {String} DBName - dbName. optional.
    */
@@ -1197,6 +1487,64 @@ class Client extends RPCClient {
     }
 
     return this.request('DescribeParameters', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   * @param {String} DBName - dbName. optional.
+   * @param {String} QueryProtectedDB - queryProtectedDB. optional. default: true.
+   */
+  describeProtectedDBs(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    return this.request('DescribeProtectedDBs', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} VpcId - vpcId. optional.
+   * @param {String} ZoneId - zoneId. optional.
+   */
+  describeRdsVSwitchs(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    return this.request('DescribeRdsVSwitchs', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} ZoneId - zoneId. optional.
+   */
+  describeRdsVpcs(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    return this.request('DescribeRdsVpcs', params, options);
   }
 
   /**
@@ -1522,19 +1870,29 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
-   * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
-   * @param {String} DBInstanceId - instanceId. optional.
-   * @param {String} DBNodeId - dbInstanceId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBClusterId - dbInstanceId. required.
    * @param {String} StartTime - startTime. required.
    * @param {String} EndTime - endTime. required.
-   * @param {Integer} PageSize - pageSize. optional. default: 30.
-   * @param {Integer} PageNumber - pageNumber. optional.
+   * @param {String} DBName - dbName. optional.
+   * @param {Integer} PageSize - maxRecordsPerPage. optional. default: 30.
+   * @param {Integer} PageNumber - pageNumbers. optional. default: 1.
+   * @param {String} SQLHASH - sqlhash. optional.
    */
   describeSlowLogRecords(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
     if (!hasOwnProperty(params, 'StartTime')) {
       throw new TypeError('parameter "StartTime" is required');
     }
@@ -1548,19 +1906,28 @@ class Client extends RPCClient {
 
   /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
-   * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
-   * @param {String} DBInstanceId - instanceId. optional.
-   * @param {String} DBNodeId - dbInstanceId. optional.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBClusterId - dbInstanceId. required.
    * @param {String} StartTime - startTime. required.
    * @param {String} EndTime - endTime. required.
-   * @param {Integer} PageSize - pageSize. optional. default: 30.
-   * @param {Integer} PageNumber - pageNumber. optional.
+   * @param {String} DBName - dbName. optional.
+   * @param {Integer} PageSize - maxRecordsPerPage. optional. default: 30.
+   * @param {Integer} PageNumber - pageNumbers. optional. default: 1.
    */
   describeSlowLogs(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
     if (!hasOwnProperty(params, 'StartTime')) {
       throw new TypeError('parameter "StartTime" is required');
     }
@@ -1757,6 +2124,25 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional. default: cn-hangzhou.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} CurrentAVZ - currentAVZ. required.
+   */
+  describeTargetAVZ(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'CurrentAVZ')) {
+      throw new TypeError('parameter "CurrentAVZ" is required');
+    }
+
+    return this.request('DescribeTargetAVZ', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
@@ -1857,16 +2243,12 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} DBClusterId - dbClusterId. required.
-   * @param {String} TargetDBNodeId - dbInstanceId. required.
+   * @param {String} TargetDBNodeId - dbInstanceId. optional.
    * @param {String} ClientToken - clientToken. optional.
    */
   failoverDBCluster(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DBClusterId')) {
       throw new TypeError('parameter "DBClusterId" is required');
-    }
-
-    if (!hasOwnProperty(params, 'TargetDBNodeId')) {
-      throw new TypeError('parameter "TargetDBNodeId" is required');
     }
 
     return this.request('FailoverDBCluster', params, options);
@@ -1930,6 +2312,23 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   */
+  lockDBClusterDeletion(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    return this.request('LockDBClusterDeletion', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - appKey. optional.
    * @param {String} RegionId - regionId. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
@@ -1988,6 +2387,34 @@ class Client extends RPCClient {
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} DBClusterId - dbClusterId. required.
    * @param {String} AccountName - accountName. required.
+   * @param {String} AccountLockState - accountLockState. required.
+   * @param {String} AccountPasswordValidTime - accountPwdValidTime. optional.
+   */
+  modifyAccountLockState(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'AccountName')) {
+      throw new TypeError('parameter "AccountName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'AccountLockState')) {
+      throw new TypeError('parameter "AccountLockState" is required');
+    }
+
+    return this.request('ModifyAccountLockState', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   * @param {String} AccountName - accountName. required.
    * @param {String} NewAccountPassword - accountPassword. required.
    */
   modifyAccountPassword(params = {}, options = {}) {
@@ -2004,6 +2431,72 @@ class Client extends RPCClient {
     }
 
     return this.request('ModifyAccountPassword', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   * @param {String} AccountName - accountName. required.
+   * @param {String} AccountType - accountType. required.
+   */
+  modifyAccountType(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'AccountName')) {
+      throw new TypeError('parameter "AccountName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'AccountType')) {
+      throw new TypeError('parameter "AccountType" is required');
+    }
+
+    return this.request('ModifyAccountType', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} TaskIdList - taskIdList. required.
+   * @param {String} SwitchTime - switchTime. required.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} Region - region. required.
+   * @param {String} VpcId - vpcId. optional.
+   * @param {String} VSwitchId - vSwitchId. optional.
+   * @param {Integer} TunnelId - tunnelId. optional.
+   * @param {String} VpcTaskIdList - vpcTaskIdList. optional.
+   * @param {String} VpcInstanceId - vpcInstanceId. optional.
+   * @param {String} IpAddress - ipAddress. optional.
+   */
+  modifyActiveOperationPendingTask(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'TaskIdList')) {
+      throw new TypeError('parameter "TaskIdList" is required');
+    }
+
+    if (!hasOwnProperty(params, 'SwitchTime')) {
+      throw new TypeError('parameter "SwitchTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Region')) {
+      throw new TypeError('parameter "Region" is required');
+    }
+
+    return this.request('ModifyActiveOperationPendingTask', params, options);
   }
 
   /**
@@ -2028,6 +2521,31 @@ class Client extends RPCClient {
     }
 
     return this.request('ModifyActiveOperationTask', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DBClusterIds - dbClusterIds. required.
+   * @param {String} RegionId - regionId. required.
+   * @param {String} RenewalStatus - renewalStatus. optional. default: AutoRenewal.
+   * @param {String} Duration - duration. optional. default: 1.
+   * @param {String} PeriodUnit - periodUnit. optional. default: Month.
+   */
+  modifyAutoRenewAttribute(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterIds')) {
+      throw new TypeError('parameter "DBClusterIds" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RegionId')) {
+      throw new TypeError('parameter "RegionId" is required');
+    }
+
+    return this.request('ModifyAutoRenewAttribute', params, options);
   }
 
   /**
@@ -2066,17 +2584,16 @@ class Client extends RPCClient {
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} DBClusterId - dbClusterId. required.
-   * @param {String} SecurityIps - securityIps. required.
+   * @param {String} SecurityIps - securityIps. optional.
    * @param {String} DBClusterIPArrayName - groupName. optional.
    * @param {String} DBClusterIPArrayAttribute - groupAttribute. optional.
+   * @param {String} WhiteListType - whitelistType. optional.
+   * @param {String} SecurityGroupIds - securityGroupIds. optional.
+   * @param {String} ModifyMode - modifyMode. optional.
    */
   modifyDBClusterAccessWhitelist(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DBClusterId')) {
       throw new TypeError('parameter "DBClusterId" is required');
-    }
-
-    if (!hasOwnProperty(params, 'SecurityIps')) {
-      throw new TypeError('parameter "SecurityIps" is required');
     }
 
     return this.request('ModifyDBClusterAccessWhitelist', params, options);
@@ -2137,6 +2654,8 @@ class Client extends RPCClient {
    * @param {String} DBClusterId - dbClusterId. required.
    * @param {String} DBEndpointId - endpointId. required.
    * @param {String} Nodes - nodes. optional.
+   * @param {String} ReadWriteMode - readWriteMode. optional.
+   * @param {String} AutoAddNewNodes - autoAddNewNodes. optional.
    * @param {String} EndpointConfig - endpointConfig. optional.
    */
   modifyDBClusterEndpoint(params = {}, options = {}) {
@@ -2174,6 +2693,35 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   * @param {String} SourceRDSDBInstanceId - sourceDBInstanceId. required.
+   * @param {String} NewMasterInstanceId - newMasterInstanceId. required.
+   */
+  modifyDBClusterMigration(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'SourceRDSDBInstanceId')) {
+      throw new TypeError('parameter "SourceRDSDBInstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'NewMasterInstanceId')) {
+      throw new TypeError('parameter "NewMasterInstanceId" is required');
+    }
+
+    return this.request('ModifyDBClusterMigration', params, options);
+  }
+
+  /**
    * @param {String} AccessKeyId - stsAccessKeyId. optional.
    * @param {String} AccessKeyId - appKey. optional.
    * @param {Long} OwnerId - ownerId. optional.
@@ -2194,6 +2742,73 @@ class Client extends RPCClient {
     }
 
     return this.request('ModifyDBClusterParameters', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   * @param {String} ZoneId - zoneId. required.
+   * @param {String} VSwitchId - vSwitchId. optional.
+   */
+  modifyDBClusterPrimaryZone(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ZoneId')) {
+      throw new TypeError('parameter "ZoneId" is required');
+    }
+
+    return this.request('ModifyDBClusterPrimaryZone', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   * @param {String} NewResourceGroupId - newResourceGroupId. required.
+   */
+  modifyDBClusterResourceGroup(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'NewResourceGroupId')) {
+      throw new TypeError('parameter "NewResourceGroupId" is required');
+    }
+
+    return this.request('ModifyDBClusterResourceGroup', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   * @param {String} SSLEnabled - sslEnabled. required.
+   */
+  modifyDBClusterSSL(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'SSLEnabled')) {
+      throw new TypeError('parameter "SSLEnabled" is required');
+    }
+
+    return this.request('ModifyDBClusterSSL', params, options);
   }
 
   /**
@@ -2329,6 +2944,68 @@ class Client extends RPCClient {
    * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
    * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
    * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   * @param {String} ModifyType - modifyType. required.
+   * @param {String} DBNodeTargetClass - dbNodeClass. required.
+   * @param {String} ClientToken - token. optional.
+   */
+  modifyDBNodeClass(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ModifyType')) {
+      throw new TypeError('parameter "ModifyType" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DBNodeTargetClass')) {
+      throw new TypeError('parameter "DBNodeTargetClass" is required');
+    }
+
+    return this.request('ModifyDBNodeClass', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   * @param {String} DBNodeId - dbNodeId. required.
+   * @param {String} ConfigName - configName. required.
+   * @param {String} ConfigValue - configValue. required.
+   */
+  modifyDBNodeConfig(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DBNodeId')) {
+      throw new TypeError('parameter "DBNodeId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ConfigName')) {
+      throw new TypeError('parameter "ConfigName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ConfigValue')) {
+      throw new TypeError('parameter "ConfigValue" is required');
+    }
+
+    return this.request('ModifyDBNodeConfig', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
    * @param {String} DBInstanceId - dbInstanceId. required.
    * @param {String} Parameters - parameters. required.
    * @param {Boolean} Forcerestart - forcerestart. optional.
@@ -2343,6 +3020,40 @@ class Client extends RPCClient {
     }
 
     return this.request('ModifyParameter', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - stsSecurityToken. optional.
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} RegionId - regionId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   * @param {String} DBName - dbName. required.
+   * @param {String} AccountName - accountName. required.
+   * @param {String} AccountPassword - accountPassword. required.
+   */
+  modifyProtectedDBPassword(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DBName')) {
+      throw new TypeError('parameter "DBName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'AccountName')) {
+      throw new TypeError('parameter "AccountName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'AccountPassword')) {
+      throw new TypeError('parameter "AccountPassword" is required');
+    }
+
+    return this.request('ModifyProtectedDBPassword', params, options);
   }
 
   /**
@@ -2805,6 +3516,23 @@ class Client extends RPCClient {
     }
 
     return this.request('TagResources', params, options);
+  }
+
+  /**
+   * @param {String} AccessKeyId - stsAccessKeyId. optional.
+   * @param {String} AccessKeyId - appKey. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ResourceOwnerAccount - resourceOwnerAccount. optional.
+   * @param {Long} ResourceOwnerId - resourceOwnerId. optional.
+   * @param {String} OwnerAccount - ownerAccount. optional.
+   * @param {String} DBClusterId - dbClusterId. required.
+   */
+  unlockDBClusterDeletion(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DBClusterId')) {
+      throw new TypeError('parameter "DBClusterId" is required');
+    }
+
+    return this.request('UnlockDBClusterDeletion', params, options);
   }
 
   /**
