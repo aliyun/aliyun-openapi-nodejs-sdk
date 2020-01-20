@@ -46,6 +46,39 @@ class Client extends RPCClient {
     return this.request('SegmentCommonImage', params, options);
   }
 
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  segmentFace(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    return this.request('SegmentFace', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  segmentHair(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    return this.request('SegmentHair', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  segmentHead(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    return this.request('SegmentHead', params, options);
+  }
+
 }
 
 module.exports = Client;
