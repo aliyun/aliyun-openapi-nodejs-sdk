@@ -52,6 +52,7 @@ class Client extends RPCClient {
       throw new TypeError('parameter "ImageURL" is required');
     }
 
+    options.method = 'POST';
     return this.request('DetectMask', params, options);
   }
 
