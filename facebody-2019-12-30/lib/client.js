@@ -45,6 +45,17 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  detectMask(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    return this.request('DetectMask', params, options);
+  }
+
+  /**
    * @param {Integer} ImageType - imageType. optional. default: 0.
    * @param {String} ImageURL - imageUrl. required.
    */
