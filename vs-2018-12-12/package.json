@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/vs-2018-12-12",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "vs 2018-12-12 Node.js SDK",
   "main": "lib/client.js",
   "scripts": {},

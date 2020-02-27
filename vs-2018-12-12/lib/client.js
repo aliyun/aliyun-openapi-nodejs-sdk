@@ -16,6 +16,62 @@ class Client extends RPCClient {
   /**
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ShowLog - showLog. optional.
+   * @param {String} DomainName - domain. required.
+   * @param {String} AppName - app. required.
+   * @param {String} StreamName - stream. required.
+   * @param {String} SourceUrl - source_url. required.
+   * @param {String} StartTime - start_time. required.
+   * @param {String} EndTime - end_time. required.
+   */
+  addVsPullStreamInfoConfig(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DomainName')) {
+      throw new TypeError('parameter "DomainName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'AppName')) {
+      throw new TypeError('parameter "AppName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StreamName')) {
+      throw new TypeError('parameter "StreamName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'SourceUrl')) {
+      throw new TypeError('parameter "SourceUrl" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    return this.request('AddVsPullStreamInfoConfig', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} DirectoryId - directoryId. required.
+   * @param {String} DeviceId - deviceId. required.
+   */
+  batchBindDirectories(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DirectoryId')) {
+      throw new TypeError('parameter "DirectoryId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeviceId')) {
+      throw new TypeError('parameter "DeviceId" is required');
+    }
+
+    return this.request('BatchBindDirectories', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
    * @param {String} TemplateId - templateId. required.
    * @param {String} InstanceId - instanceId. required.
    * @param {String} InstanceType - instanceType. required.
@@ -36,6 +92,44 @@ class Client extends RPCClient {
     }
 
     return this.request('BatchBindTemplate', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} TemplateId - templateId. required.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} InstanceType - instanceType. required.
+   * @param {Boolean} ApplyAll - applyAll. optional.
+   * @param {Boolean} Replace - replace. optional.
+   */
+  batchBindTemplates(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'TemplateId')) {
+      throw new TypeError('parameter "TemplateId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'InstanceType')) {
+      throw new TypeError('parameter "InstanceType" is required');
+    }
+
+    return this.request('BatchBindTemplates', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   */
+  batchDeleteDevices(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    return this.request('BatchDeleteDevices', params, options);
   }
 
   /**
@@ -127,6 +221,78 @@ class Client extends RPCClient {
   /**
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   */
+  batchStartDevices(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    return this.request('BatchStartDevices', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   */
+  batchStartStreams(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    return this.request('BatchStartStreams', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   * @param {String} StartTime - startTime. optional.
+   */
+  batchStopDevices(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    return this.request('BatchStopDevices', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   * @param {String} StartTime - startTime. optional.
+   */
+  batchStopStreams(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    return this.request('BatchStopStreams', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} DirectoryId - directoryId. required.
+   * @param {String} DeviceId - deviceId. required.
+   */
+  batchUnbindDirectories(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DirectoryId')) {
+      throw new TypeError('parameter "DirectoryId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeviceId')) {
+      throw new TypeError('parameter "DeviceId" is required');
+    }
+
+    return this.request('BatchUnbindDirectories', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
    * @param {String} TemplateId - templateId. optional.
    * @param {String} TemplateType - templateType. optional.
    * @param {String} InstanceId - instanceId. required.
@@ -142,6 +308,44 @@ class Client extends RPCClient {
     }
 
     return this.request('BatchUnbindTemplate', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} TemplateId - templateId. optional.
+   * @param {String} TemplateType - templateType. optional.
+   * @param {String} InstanceId - instanceId. required.
+   * @param {String} InstanceType - instanceType. required.
+   */
+  batchUnbindTemplates(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'InstanceId')) {
+      throw new TypeError('parameter "InstanceId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'InstanceType')) {
+      throw new TypeError('parameter "InstanceType" is required');
+    }
+
+    return this.request('BatchUnbindTemplates', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} DirectoryId - directoryId. required.
+   * @param {String} DeviceId - deviceId. required.
+   */
+  bindDirectory(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DirectoryId')) {
+      throw new TypeError('parameter "DirectoryId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeviceId')) {
+      throw new TypeError('parameter "DeviceId" is required');
+    }
+
+    return this.request('BindDirectory', params, options);
   }
 
   /**
@@ -172,10 +376,42 @@ class Client extends RPCClient {
   /**
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   * @param {String} Iris - iris. optional.
+   * @param {String} Focus - focus. optional.
+   */
+  continuousAdjust(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    return this.request('ContinuousAdjust', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   * @param {String} Pan - pan. optional.
+   * @param {String} Tilt - tilt. optional.
+   * @param {String} Zoom - zoom. optional.
+   */
+  continuousMove(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    return this.request('ContinuousMove', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
    * @param {String} Name - name. optional.
    * @param {String} Description - description. optional.
    * @param {String} GroupId - groupId. required.
    * @param {String} ParentId - parentId. optional.
+   * @param {String} DirectoryId - directoryId. optional.
    * @param {String} Type - type. required.
    * @param {Boolean} AutoStart - autoStart. optional.
    * @param {String} GbId - gbId. optional.
@@ -185,6 +421,12 @@ class Client extends RPCClient {
    * @param {String} Username - username. optional.
    * @param {String} Password - password. optional.
    * @param {String} Vendor - vendor. optional.
+   * @param {String} Dsn - dsn. optional.
+   * @param {String} Longitude - longitude. optional.
+   * @param {String} Latitude - latitude. optional.
+   * @param {Boolean} AutoPos - autoPos. optional.
+   * @param {Long} PosInterval - posInterval. optional.
+   * @param {String} Params - params. optional.
    */
   createDevice(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'GroupId')) {
@@ -203,20 +445,42 @@ class Client extends RPCClient {
    * @param {String} ShowLog - showLog. optional.
    * @param {String} Name - name. required.
    * @param {String} Description - description. optional.
-   * @param {String} App - app. optional.
-   * @param {String} Region - region. required.
-   * @param {String} InProtocol - inProtocol. required.
-   * @param {String} OutProtocol - outProtocol. optional.
-   * @param {String} PushDomain - pushDomain. optional.
-   * @param {String} PlayDomain - playDomain. optional.
+   * @param {String} GroupId - groupId. required.
+   * @param {String} ParentId - parentId. required.
    */
-  createGroup(params = {}, options = {}) {
+  createDirectory(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'Name')) {
       throw new TypeError('parameter "Name" is required');
     }
 
-    if (!hasOwnProperty(params, 'Region')) {
-      throw new TypeError('parameter "Region" is required');
+    if (!hasOwnProperty(params, 'GroupId')) {
+      throw new TypeError('parameter "GroupId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ParentId')) {
+      throw new TypeError('parameter "ParentId" is required');
+    }
+
+    return this.request('CreateDirectory', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Name - name. required.
+   * @param {String} Description - description. optional.
+   * @param {String} App - app. optional.
+   * @param {String} Region - region. optional.
+   * @param {String} InProtocol - inProtocol. required.
+   * @param {String} OutProtocol - outProtocol. optional.
+   * @param {String} PushDomain - pushDomain. optional.
+   * @param {String} PlayDomain - playDomain. optional.
+   * @param {Boolean} LazyPull - lazyPull. optional.
+   * @param {String} Callback - callback. optional.
+   */
+  createGroup(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Name')) {
+      throw new TypeError('parameter "Name" is required');
     }
 
     if (!hasOwnProperty(params, 'InProtocol')) {
@@ -294,24 +558,54 @@ class Client extends RPCClient {
   /**
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   */
+  createStreamSnapshot(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    return this.request('CreateStreamSnapshot', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} SubscriberName - SubscriberName. required.
+   */
+  createSubscriber(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'SubscriberName')) {
+      throw new TypeError('parameter "SubscriberName" is required');
+    }
+
+    return this.request('CreateSubscriber', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
    * @param {String} Name - name. required.
    * @param {String} Description - description. optional.
    * @param {String} Type - type. required.
-   * @param {String} Region - region. required.
-   * @param {String} OssBucket - ossBucket. required.
-   * @param {String} OssEndpoint - ossEndpoint. required.
+   * @param {String} Region - region. optional.
+   * @param {String} OssBucket - ossBucket. optional.
+   * @param {String} OssEndpoint - ossEndpoint. optional.
    * @param {String} OssFilePrefix - ossFilePrefix. optional.
+   * @param {String} Trigger - trigger. optional.
    * @param {String} StartTime - startTime. optional.
    * @param {String} EndTime - endTime. optional.
-   * @param {Long} Interval - interval. required.
-   * @param {String} FileFormat - fileFormat. required.
+   * @param {Long} Interval - interval. optional.
+   * @param {Long} Retention - retention. optional.
+   * @param {String} FileFormat - fileFormat. optional.
    * @param {String} JpgOverwrite - jpgOverwrite. optional.
    * @param {String} JpgSequence - jpgSequence. optional.
+   * @param {String} JpgOnDemand - jpgOnDemand. optional.
    * @param {String} Mp4 - mp4. optional.
    * @param {String} Flv - flv. optional.
    * @param {String} HlsM3u8 - hlsM3u8. optional.
    * @param {String} HlsTs - hlsTs. optional.
    * @param {String} Callback - callback. optional.
+   * @param {String} TransConfigsJSON - transConfigsJSON. optional.
    */
   createTemplate(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'Name')) {
@@ -320,26 +614,6 @@ class Client extends RPCClient {
 
     if (!hasOwnProperty(params, 'Type')) {
       throw new TypeError('parameter "Type" is required');
-    }
-
-    if (!hasOwnProperty(params, 'Region')) {
-      throw new TypeError('parameter "Region" is required');
-    }
-
-    if (!hasOwnProperty(params, 'OssBucket')) {
-      throw new TypeError('parameter "OssBucket" is required');
-    }
-
-    if (!hasOwnProperty(params, 'OssEndpoint')) {
-      throw new TypeError('parameter "OssEndpoint" is required');
-    }
-
-    if (!hasOwnProperty(params, 'Interval')) {
-      throw new TypeError('parameter "Interval" is required');
-    }
-
-    if (!hasOwnProperty(params, 'FileFormat')) {
-      throw new TypeError('parameter "FileFormat" is required');
     }
 
     return this.request('CreateTemplate', params, options);
@@ -363,12 +637,43 @@ class Client extends RPCClient {
    * @param {String} ShowLog - showLog. optional.
    * @param {String} Id - id. required.
    */
+  deleteDirectory(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    return this.request('DeleteDirectory', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   */
   deleteGroup(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'Id')) {
       throw new TypeError('parameter "Id" is required');
     }
 
     return this.request('DeleteGroup', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   * @param {String} PresetId - presetId. required.
+   */
+  deletePreset(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PresetId')) {
+      throw new TypeError('parameter "PresetId" is required');
+    }
+
+    return this.request('DeletePreset', params, options);
   }
 
   /**
@@ -413,6 +718,29 @@ class Client extends RPCClient {
   /**
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ShowLog - showLog. optional.
+   * @param {String} DomainName - domain. required.
+   * @param {String} AppName - app. required.
+   * @param {String} StreamName - stream. required.
+   */
+  deleteVsPullStreamInfoConfig(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DomainName')) {
+      throw new TypeError('parameter "DomainName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'AppName')) {
+      throw new TypeError('parameter "AppName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StreamName')) {
+      throw new TypeError('parameter "StreamName" is required');
+    }
+
+    return this.request('DeleteVsPullStreamInfoConfig', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
    * @param {String} DomainName - DomainName. required.
    * @param {String} ConfigId - ConfigId. required.
    */
@@ -444,7 +772,18 @@ class Client extends RPCClient {
   /**
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. optional.
+   */
+  describeAccountStat(params = {}, options = {}) {
+    return this.request('DescribeAccountStat', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
    * @param {String} Id - id. required.
+   * @param {Boolean} IncludeStats - includeStats. optional.
+   * @param {Boolean} IncludeDirectory - includeDirectory. optional.
    */
   describeDevice(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'Id')) {
@@ -457,20 +796,86 @@ class Client extends RPCClient {
   /**
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   * @param {Long} PageSize - pageSize. optional.
+   * @param {Long} PageNum - pageNum. optional.
+   */
+  describeDeviceChannels(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    return this.request('DescribeDeviceChannels', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   * @param {String} ClientIp - clientIp. optional.
+   * @param {Long} Expire - expire. optional.
+   */
+  describeDeviceGateway(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    return this.request('DescribeDeviceGateway', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
    * @param {String} Id - id. optional.
    * @param {String} Name - name. optional.
    * @param {String} Type - type. optional.
    * @param {String} GroupId - groupId. optional.
    * @param {String} ParentId - parentId. optional.
+   * @param {String} DirectoryId - directoryId. optional.
+   * @param {String} GbId - gbId. optional.
    * @param {String} Status - status. optional.
    * @param {String} Vendor - vendor. optional.
    * @param {String} SortBy - sortBy. optional.
    * @param {String} SortDirection - sortDirection. optional.
    * @param {Long} PageSize - pageSize. optional.
    * @param {Long} PageNum - pageNum. optional.
+   * @param {Boolean} IncludeStats - includeStats. optional.
+   * @param {Boolean} IncludeDirectory - includeDirectory. optional.
    */
   describeDevices(params = {}, options = {}) {
     return this.request('DescribeDevices', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} GroupId - groupId. required.
+   * @param {String} ParentId - parentId. optional.
+   * @param {String} SortBy - sortBy. optional.
+   * @param {String} SortDirection - sortDirection. optional.
+   * @param {Long} PageSize - pageSize. optional.
+   * @param {Long} PageNum - pageNum. optional.
+   * @param {Boolean} NoPagination - noPagination. optional.
+   */
+  describeDirectories(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'GroupId')) {
+      throw new TypeError('parameter "GroupId" is required');
+    }
+
+    return this.request('DescribeDirectories', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   */
+  describeDirectory(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    return this.request('DescribeDirectory', params, options);
   }
 
   /**
@@ -510,6 +915,19 @@ class Client extends RPCClient {
    * @param {String} ShowLog - showLog. optional.
    * @param {String} Id - id. required.
    */
+  describePresets(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    return this.request('DescribePresets', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   */
   describeRecord(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'Id')) {
       throw new TypeError('parameter "Id" is required');
@@ -534,17 +952,32 @@ class Client extends RPCClient {
   /**
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ShowLog - showLog. optional.
-   * @param {String} Id - id. optional.
-   * @param {String} Type - type. optional.
-   * @param {String} StreamId - streamId. optional.
-   * @param {String} StartTime - startTime. optional.
-   * @param {String} EndTime - endTime. optional.
+   * @param {String} Type - type. required.
+   * @param {String} StreamId - streamId. required.
+   * @param {String} StartTime - startTime. required.
+   * @param {String} EndTime - endTime. required.
    * @param {String} SortBy - sortBy. optional.
    * @param {String} SortDirection - sortDirection. optional.
    * @param {Long} PageSize - pageSize. optional.
    * @param {Long} PageNum - pageNum. optional.
    */
   describeRecords(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Type')) {
+      throw new TypeError('parameter "Type" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StreamId')) {
+      throw new TypeError('parameter "StreamId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
     return this.request('DescribeRecords', params, options);
   }
 
@@ -564,9 +997,60 @@ class Client extends RPCClient {
   /**
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   * @param {String} Type - type. optional. default: live.
+   * @param {String} OutProtocol - outProtocol. required.
+   * @param {String} OutHostType - outHostType. optional. default: host.
+   * @param {String} Location - location. optional. default: edge.
+   * @param {Boolean} Auth - auth. optional. default: true.
+   * @param {String} AuthKey - authKey. optional.
+   * @param {Long} Expire - expire. optional.
+   * @param {Long} StartTime - startTime. optional.
+   * @param {Long} EndTime - endTime. optional.
+   * @param {String} Transcode - transcode. optional.
+   */
+  describeStreamURL(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    if (!hasOwnProperty(params, 'OutProtocol')) {
+      throw new TypeError('parameter "OutProtocol" is required');
+    }
+
+    return this.request('DescribeStreamURL', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   * @param {Long} StartTime - startTime. required.
+   * @param {Long} EndTime - endTime. required.
+   */
+  describeStreamVodList(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    return this.request('DescribeStreamVodList', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
    * @param {String} Id - id. optional.
    * @param {String} GroupId - groupId. optional.
    * @param {String} DeviceId - deviceId. optional.
+   * @param {String} ParentId - parentId. optional.
    * @param {String} Name - name. optional.
    * @param {String} Domain - domain. optional.
    * @param {String} App - app. optional.
@@ -605,6 +1089,20 @@ class Client extends RPCClient {
    */
   describeTemplates(params = {}, options = {}) {
     return this.request('DescribeTemplates', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Url - url. required.
+   * @param {String} TxId - txid. optional.
+   */
+  describeVodStreamURL(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Url')) {
+      throw new TypeError('parameter "Url" is required');
+    }
+
+    return this.request('DescribeVodStreamURL', params, options);
   }
 
   /**
@@ -664,6 +1162,19 @@ class Client extends RPCClient {
    */
   describeVsDomainBpsData(params = {}, options = {}) {
     return this.request('DescribeVsDomainBpsData', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} DomainName - domain. required.
+   */
+  describeVsDomainCertificateInfo(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DomainName')) {
+      throw new TypeError('parameter "DomainName" is required');
+    }
+
+    return this.request('DescribeVsDomainCertificateInfo', params, options);
   }
 
   /**
@@ -777,14 +1288,39 @@ class Client extends RPCClient {
   /**
    * @param {String} SecurityToken - securityToken. optional.
    * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
    */
   describeVsInstanceStatus(params = {}, options = {}) {
     return this.request('DescribeVsInstanceStatus', params, options);
   }
 
   /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} DomainName - domain. required.
+   */
+  describeVsPullStreamInfoConfig(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DomainName')) {
+      throw new TypeError('parameter "DomainName" is required');
+    }
+
+    return this.request('DescribeVsPullStreamInfoConfig', params, options);
+  }
+
+  /**
    * @param {String} SecurityToken - securityToken. optional.
    * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Language - language. optional.
+   */
+  describeVsRegions(params = {}, options = {}) {
+    return this.request('DescribeVsRegions', params, options);
+  }
+
+  /**
+   * @param {String} SecurityToken - securityToken. optional.
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
    */
   describeVsServiceStatus(params = {}, options = {}) {
     return this.request('DescribeVsServiceStatus', params, options);
@@ -808,6 +1344,31 @@ class Client extends RPCClient {
     }
 
     return this.request('DescribeVsStreamBlackList', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} DomainName - Vhost. required.
+   * @param {String} AppName - App. required.
+   * @param {String} StreamName - Vname. required.
+   * @param {String} StartTime - StartTime. optional.
+   * @param {String} EndTime - EndTime. optional.
+   */
+  describeVsStreamPublishPlayData(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DomainName')) {
+      throw new TypeError('parameter "DomainName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'AppName')) {
+      throw new TypeError('parameter "AppName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StreamName')) {
+      throw new TypeError('parameter "StreamName" is required');
+    }
+
+    return this.request('DescribeVsStreamPublishPlayData', params, options);
   }
 
   /**
@@ -858,8 +1419,8 @@ class Client extends RPCClient {
    * @param {Integer} PageSize - rows. optional. default: 2000.
    * @param {Integer} PageNum - page. optional. default: 1.
    * @param {String} StreamType - stream_type. optional.
-   * @param {String} StartTime - startTime. optional.
-   * @param {String} EndTime - endTime. optional.
+   * @param {String} StartTime - start_time. optional.
+   * @param {String} EndTime - end_time. optional.
    * @param {String} QueryType - query_type. optional.
    * @param {String} OrderBy - order_by. optional.
    */
@@ -939,6 +1500,7 @@ class Client extends RPCClient {
   /**
    * @param {String} SecurityToken - securityToken. optional.
    * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
    */
   describeVsUserResourcePackage(params = {}, options = {}) {
     return this.request('DescribeVsUserResourcePackage', params, options);
@@ -979,10 +1541,29 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ShowLog - showLog. optional.
    * @param {String} Id - id. required.
+   * @param {String} PresetId - presetId. required.
+   */
+  gotoPreset(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PresetId')) {
+      throw new TypeError('parameter "PresetId" is required');
+    }
+
+    return this.request('GotoPreset', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
    * @param {String} Name - name. optional.
    * @param {String} Description - description. optional.
    * @param {String} GroupId - groupId. optional.
    * @param {String} ParentId - parentId. optional.
+   * @param {String} DirectoryId - directoryId. optional.
    * @param {String} Type - type. optional.
    * @param {Boolean} AutoStart - autoStart. optional.
    * @param {String} GbId - gbId. optional.
@@ -992,6 +1573,11 @@ class Client extends RPCClient {
    * @param {String} Username - username. optional.
    * @param {String} Password - password. optional.
    * @param {String} Vendor - vendor. optional.
+   * @param {String} Longitude - longitude. optional.
+   * @param {String} Latitude - latitude. optional.
+   * @param {Boolean} AutoPos - autoPos. optional.
+   * @param {Long} PosInterval - posInterval. optional.
+   * @param {String} Params - params. optional.
    */
   modifyDevice(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'Id')) {
@@ -1005,15 +1591,49 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ShowLog - showLog. optional.
    * @param {String} Id - id. required.
+   * @param {String} Channels - channels. required.
+   */
+  modifyDeviceChannels(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Channels')) {
+      throw new TypeError('parameter "Channels" is required');
+    }
+
+    return this.request('ModifyDeviceChannels', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
    * @param {String} Name - name. optional.
    * @param {String} Description - description. optional.
-   * @param {String} App - app. optional.
+   */
+  modifyDirectory(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    return this.request('ModifyDirectory', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   * @param {String} Name - name. optional.
+   * @param {String} Description - description. optional.
    * @param {String} Region - region. optional.
    * @param {String} InProtocol - inProtocol. optional.
    * @param {String} OutProtocol - outProtocol. optional.
    * @param {Boolean} Enabled - enabled. optional.
    * @param {String} PushDomain - pushDomain. optional.
    * @param {String} PlayDomain - playDomain. optional.
+   * @param {Boolean} LazyPull - lazyPull. optional.
+   * @param {String} Callback - callback. optional.
    */
   modifyGroup(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'Id')) {
@@ -1068,30 +1688,29 @@ class Client extends RPCClient {
    * @param {String} Id - id. required.
    * @param {String} Name - name. optional.
    * @param {String} Description - description. optional.
-   * @param {String} Type - type. optional.
    * @param {String} Region - region. optional.
    * @param {String} OssBucket - ossBucket. optional.
    * @param {String} OssEndpoint - ossEndpoint. optional.
    * @param {String} OssFilePrefix - ossFilePrefix. optional.
+   * @param {String} Trigger - trigger. optional.
    * @param {String} StartTime - startTime. optional.
    * @param {String} EndTime - endTime. optional.
-   * @param {Long} Interval - interval. required.
+   * @param {Long} Interval - interval. optional.
+   * @param {Long} Retention - retention. optional.
    * @param {String} FileFormat - fileFormat. optional.
    * @param {String} JpgOverwrite - jpgOverwrite. optional.
    * @param {String} JpgSequence - jpgSequence. optional.
+   * @param {String} JpgOnDemand - jpgOnDemand. optional.
    * @param {String} Mp4 - mp4. optional.
    * @param {String} Flv - flv. optional.
    * @param {String} HlsM3u8 - hlsM3u8. optional.
    * @param {String} HlsTs - hlsTs. optional.
    * @param {String} Callback - callback. optional.
+   * @param {String} TransConfigsJSON - transConfigsJSON. optional.
    */
   modifyTemplate(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'Id')) {
       throw new TypeError('parameter "Id" is required');
-    }
-
-    if (!hasOwnProperty(params, 'Interval')) {
-      throw new TypeError('parameter "Interval" is required');
     }
 
     return this.request('ModifyTemplate', params, options);
@@ -1124,6 +1743,24 @@ class Client extends RPCClient {
     }
 
     return this.request('ResumeVsStream', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   * @param {String} PresetId - presetId. required.
+   */
+  setPreset(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    if (!hasOwnProperty(params, 'PresetId')) {
+      throw new TypeError('parameter "PresetId" is required');
+    }
+
+    return this.request('SetPreset', params, options);
   }
 
   /**
@@ -1186,6 +1823,18 @@ class Client extends RPCClient {
   /**
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. optional.
+   * @param {String} PlayDomain - playDomain. optional.
+   * @param {String} App - app. optional.
+   * @param {String} Name - name. optional.
+   */
+  startRecordStream(params = {}, options = {}) {
+    return this.request('StartRecordStream', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
    * @param {String} Id - id. required.
    */
   startStream(params = {}, options = {}) {
@@ -1200,6 +1849,41 @@ class Client extends RPCClient {
    * @param {Long} OwnerId - ownerId. optional.
    * @param {String} ShowLog - showLog. optional.
    * @param {String} Id - id. required.
+   * @param {String} Url - url. required.
+   * @param {String} Transcode - transcode. optional.
+   */
+  startTransferStream(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Url')) {
+      throw new TypeError('parameter "Url" is required');
+    }
+
+    return this.request('StartTransferStream', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   * @param {Boolean} Iris - iris. optional.
+   * @param {Boolean} Focus - focus. optional.
+   */
+  stopAdjust(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    return this.request('StopAdjust', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   * @param {String} StartTime - startTime. optional.
    */
   stopDevice(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'Id')) {
@@ -1207,6 +1891,34 @@ class Client extends RPCClient {
     }
 
     return this.request('StopDevice', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   * @param {Boolean} Pan - pan. optional.
+   * @param {Boolean} Tilt - tilt. optional.
+   * @param {Boolean} Zoom - zoom. optional.
+   */
+  stopMove(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    return this.request('StopMove', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. optional.
+   * @param {String} PlayDomain - playDomain. optional.
+   * @param {String} App - app. optional.
+   * @param {String} Name - name. optional.
+   */
+  stopRecordStream(params = {}, options = {}) {
+    return this.request('StopRecordStream', params, options);
   }
 
   /**
@@ -1221,6 +1933,51 @@ class Client extends RPCClient {
     }
 
     return this.request('StopStream', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   * @param {String} Transcode - transcode. optional.
+   */
+  stopTransferStream(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    return this.request('StopTransferStream', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   */
+  syncCatalogs(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    return this.request('SyncCatalogs', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} DirectoryId - directoryId. required.
+   * @param {String} DeviceId - deviceId. required.
+   */
+  unbindDirectory(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DirectoryId')) {
+      throw new TypeError('parameter "DirectoryId" is required');
+    }
+
+    if (!hasOwnProperty(params, 'DeviceId')) {
+      throw new TypeError('parameter "DeviceId" is required');
+    }
+
+    return this.request('UnbindDirectory', params, options);
   }
 
   /**
@@ -1241,6 +1998,57 @@ class Client extends RPCClient {
     }
 
     return this.request('UnbindTemplate', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} Id - id. required.
+   */
+  unlockDevice(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Id')) {
+      throw new TypeError('parameter "Id" is required');
+    }
+
+    return this.request('UnlockDevice', params, options);
+  }
+
+  /**
+   * @param {Long} OwnerId - ownerId. optional.
+   * @param {String} ShowLog - showLog. optional.
+   * @param {String} DomainName - domain. required.
+   * @param {String} AppName - app. required.
+   * @param {String} StreamName - stream. required.
+   * @param {String} SourceUrl - source_url. required.
+   * @param {String} StartTime - start_time. required.
+   * @param {String} EndTime - end_time. required.
+   */
+  updateVsPullStreamInfoConfig(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DomainName')) {
+      throw new TypeError('parameter "DomainName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'AppName')) {
+      throw new TypeError('parameter "AppName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StreamName')) {
+      throw new TypeError('parameter "StreamName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'SourceUrl')) {
+      throw new TypeError('parameter "SourceUrl" is required');
+    }
+
+    if (!hasOwnProperty(params, 'StartTime')) {
+      throw new TypeError('parameter "StartTime" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EndTime')) {
+      throw new TypeError('parameter "EndTime" is required');
+    }
+
+    return this.request('UpdateVsPullStreamInfoConfig', params, options);
   }
 
 }
