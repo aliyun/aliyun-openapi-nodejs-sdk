@@ -53,6 +53,19 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Integer} NumBoxes - numBoxes. optional.
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  intelligentComposition(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('IntelligentComposition', params, options);
+  }
+
+  /**
    * @param {String} Url - url. required.
    */
   makeSuperResolutionImage(params = {}, options = {}) {

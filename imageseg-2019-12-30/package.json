@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/imageseg-2019-12-30",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "imageseg 2019-12-30 Node.js SDK",
   "main": "lib/client.js",
   "scripts": {},

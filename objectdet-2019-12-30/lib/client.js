@@ -16,6 +16,18 @@ class Client extends RPCClient {
   /**
    * @param {String} ImageURL - imageUrl. required.
    */
+  classifyVehicleInsurance(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('ClassifyVehicleInsurance', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
   detectMainBody(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ImageURL')) {
       throw new TypeError('parameter "ImageURL" is required');
@@ -35,6 +47,42 @@ class Client extends RPCClient {
 
     options.method = 'POST';
     return this.request('DetectVehicle', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  recognizeVehicleDamage(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('RecognizeVehicleDamage', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  recognizeVehicleDashboard(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('RecognizeVehicleDashboard', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  recognizeVehicleParts(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('RecognizeVehicleParts', params, options);
   }
 
 }

@@ -156,6 +156,18 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {RepeatList} Tasks - tasks. required.
+   */
+  recognizeQrCode(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Tasks')) {
+      throw new TypeError('parameter "Tasks" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('RecognizeQrCode', params, options);
+  }
+
+  /**
    * @param {Integer} ImageType - imageType. optional. default: 0.
    * @param {String} ImageURL - imageUrl. required.
    */
@@ -230,6 +242,23 @@ class Client extends RPCClient {
 
     options.method = 'POST';
     return this.request('RecognizeTrainTicket', params, options);
+  }
+
+  /**
+   * @param {String} FileURL - fileUrl. required.
+   * @param {String} FileType - fileType. required.
+   */
+  recognizeVATInvoice(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'FileURL')) {
+      throw new TypeError('parameter "FileURL" is required');
+    }
+
+    if (!hasOwnProperty(params, 'FileType')) {
+      throw new TypeError('parameter "FileType" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('RecognizeVATInvoice', params, options);
   }
 
   /**
