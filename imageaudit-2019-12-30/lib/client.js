@@ -30,6 +30,23 @@ class Client extends RPCClient {
     return this.request('ScanImage', params, options);
   }
 
+  /**
+   * @param {RepeatList} Tasks - tasks. required.
+   * @param {RepeatList} Labels - labels. required.
+   */
+  scanText(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Tasks')) {
+      throw new TypeError('parameter "Tasks" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Labels')) {
+      throw new TypeError('parameter "Labels" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('ScanText', params, options);
+  }
+
 }
 
 module.exports = Client;

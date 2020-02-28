@@ -51,6 +51,18 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {RepeatList} Tasks - tasks. required.
+   */
+  recognizeLogo(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Tasks')) {
+      throw new TypeError('parameter "Tasks" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('RecognizeLogo', params, options);
+  }
+
+  /**
    * @param {Integer} ImageType - imageType. optional. default: 0.
    * @param {String} ImageURL - imageUrl. required.
    */

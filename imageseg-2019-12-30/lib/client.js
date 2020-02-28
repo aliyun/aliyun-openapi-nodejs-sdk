@@ -16,6 +16,17 @@ class Client extends RPCClient {
   /**
    * @param {String} ImageURL - imageUrl. required.
    */
+  parseFace(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    return this.request('ParseFace', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
   segmentBody(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ImageURL')) {
       throw new TypeError('parameter "ImageURL" is required');
@@ -77,6 +88,18 @@ class Client extends RPCClient {
     }
 
     return this.request('SegmentHead', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  segmentVehicle(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('SegmentVehicle', params, options);
   }
 
 }
