@@ -25,6 +25,23 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} MaskImageURL - maskImageUrl. required.
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  refineMask(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'MaskImageURL')) {
+      throw new TypeError('parameter "MaskImageURL" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('RefineMask', params, options);
+  }
+
+  /**
    * @param {String} ImageURL - imageUrl. required.
    */
   segmentBody(params = {}, options = {}) {
@@ -66,6 +83,18 @@ class Client extends RPCClient {
     }
 
     return this.request('SegmentFace', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  segmentFurniture(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('SegmentFurniture', params, options);
   }
 
   /**
