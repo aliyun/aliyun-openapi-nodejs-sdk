@@ -14,6 +14,18 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  classifyingRubbish(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('ClassifyingRubbish', params, options);
+  }
+
+  /**
    * @param {String} Url - url. required.
    */
   detectImageElements(params = {}, options = {}) {
@@ -73,6 +85,18 @@ class Client extends RPCClient {
 
     options.method = 'POST';
     return this.request('RecognizeScene', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  recognizeVehicleType(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('RecognizeVehicleType', params, options);
   }
 
   /**

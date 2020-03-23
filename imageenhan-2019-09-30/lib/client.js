@@ -53,6 +53,56 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} FunctionType - functionType. required.
+   * @param {String} Text - text. optional.
+   * @param {String} WatermarkImageURL - watermarkImageUrl. optional.
+   * @param {String} OutputFileType - outputFileType. optional.
+   * @param {Integer} QualityFactor - qualityFactor. required.
+   * @param {String} OriginImageURL - originImageUrl. required.
+   */
+  imageBlindCharacterWatermark(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'FunctionType')) {
+      throw new TypeError('parameter "FunctionType" is required');
+    }
+
+    if (!hasOwnProperty(params, 'QualityFactor')) {
+      throw new TypeError('parameter "QualityFactor" is required');
+    }
+
+    if (!hasOwnProperty(params, 'OriginImageURL')) {
+      throw new TypeError('parameter "OriginImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('ImageBlindCharacterWatermark', params, options);
+  }
+
+  /**
+   * @param {String} FunctionType - functionType. required.
+   * @param {String} LogoURL - logoUrl. optional.
+   * @param {String} WatermarkImageURL - watermarkImageUrl. optional.
+   * @param {String} OutputFileType - outputFileType. optional.
+   * @param {Integer} QualityFactor - qualityFactor. required.
+   * @param {String} OriginImageURL - originImageUrl. required.
+   */
+  imageBlindPicWatermark(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'FunctionType')) {
+      throw new TypeError('parameter "FunctionType" is required');
+    }
+
+    if (!hasOwnProperty(params, 'QualityFactor')) {
+      throw new TypeError('parameter "QualityFactor" is required');
+    }
+
+    if (!hasOwnProperty(params, 'OriginImageURL')) {
+      throw new TypeError('parameter "OriginImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('ImageBlindPicWatermark', params, options);
+  }
+
+  /**
    * @param {Integer} NumBoxes - numBoxes. optional.
    * @param {String} ImageURL - imageUrl. required.
    */
@@ -91,6 +141,34 @@ class Client extends RPCClient {
 
     options.method = 'POST';
     return this.request('RecolorImage', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   * @param {Float} BX - bx. optional.
+   * @param {Float} BY - by. optional.
+   * @param {Float} BW - bw. optional.
+   * @param {Float} BH - bh. optional.
+   */
+  removeImageSubtitles(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('RemoveImageSubtitles', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  removeImageWatermark(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('RemoveImageWatermark', params, options);
   }
 
 }

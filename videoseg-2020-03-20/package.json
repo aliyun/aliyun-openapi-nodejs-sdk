@@ -1,7 +1,7 @@
 {
-  "name": "@alicloud/imageseg-2019-12-30",
-  "version": "1.0.3",
-  "description": "imageseg 2019-12-30 Node.js SDK",
+  "name": "@alicloud/videoseg-2020-03-20",
+  "version": "1.0.0",
+  "description": "videoseg 2020-03-20 Node.js SDK",
   "main": "lib/client.js",
   "scripts": {},
   "author": "Jackson Tian",

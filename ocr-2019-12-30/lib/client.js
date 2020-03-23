@@ -14,6 +14,19 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Boolean} Async - async. optional. default: true.
+   * @param {String} JobId - jobId. required.
+   */
+  getAsyncJobResult(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'JobId')) {
+      throw new TypeError('parameter "JobId" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('GetAsyncJobResult', params, options);
+  }
+
+  /**
    * @param {Integer} ImageType - imageType. optional. default: 0.
    * @param {String} ImageURL - imageUrl. required.
    */
@@ -89,6 +102,18 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  recognizeChinapassport(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('RecognizeChinapassport', params, options);
+  }
+
+  /**
    * @param {Integer} ImageType - imageType. optional. default: 0.
    * @param {String} ImageURL - imageUrl. required.
    * @param {String} Side - side. required.
@@ -156,6 +181,18 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  recognizePassportMRZ(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('RecognizePassportMRZ', params, options);
+  }
+
+  /**
    * @param {RepeatList} Tasks - tasks. required.
    */
   recognizeQrCode(params = {}, options = {}) {
@@ -219,6 +256,18 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  recognizeTakeoutOrder(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('RecognizeTakeoutOrder', params, options);
+  }
+
+  /**
    * @param {Integer} ImageType - imageType. optional. default: 0.
    * @param {String} ImageURL - imageUrl. required.
    */
@@ -272,6 +321,41 @@ class Client extends RPCClient {
 
     options.method = 'POST';
     return this.request('RecognizeVINCode', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  recognizeVerificationcode(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('RecognizeVerificationcode', params, options);
+  }
+
+  /**
+   * @param {String} FileURL - fileUrl. required.
+   * @param {String} FileType - fileType. required.
+   * @param {String} OutputType - outputType. required.
+   * @param {Boolean} Async - async. optional. default: true.
+   */
+  trimDocument(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'FileURL')) {
+      throw new TypeError('parameter "FileURL" is required');
+    }
+
+    if (!hasOwnProperty(params, 'FileType')) {
+      throw new TypeError('parameter "FileType" is required');
+    }
+
+    if (!hasOwnProperty(params, 'OutputType')) {
+      throw new TypeError('parameter "OutputType" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('TrimDocument', params, options);
   }
 
 }

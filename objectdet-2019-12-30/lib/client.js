@@ -37,6 +37,30 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  detectObject(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('DetectObject', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  detectTransparentImage(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('DetectTransparentImage', params, options);
+  }
+
+  /**
    * @param {Integer} ImageType - imageType. optional. default: 0.
    * @param {String} ImageURL - imageUrl. required.
    */
@@ -47,6 +71,18 @@ class Client extends RPCClient {
 
     options.method = 'POST';
     return this.request('DetectVehicle', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  detectWhiteBaseImage(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('DetectWhiteBaseImage', params, options);
   }
 
   /**
