@@ -15,7 +15,6 @@ class Client extends RPCClient {
 
   /**
    * @param {String} DbName - dbName. required.
-   * @param {String} DataId - dataId. required.
    * @param {String} ImageUrl - imageUrl. required.
    * @param {String} ExtraData - extraData. optional.
    * @param {String} EntityId - entityId. required.
@@ -23,10 +22,6 @@ class Client extends RPCClient {
   addImage(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DbName')) {
       throw new TypeError('parameter "DbName" is required');
-    }
-
-    if (!hasOwnProperty(params, 'DataId')) {
-      throw new TypeError('parameter "DataId" is required');
     }
 
     if (!hasOwnProperty(params, 'ImageUrl')) {
@@ -53,15 +48,15 @@ class Client extends RPCClient {
 
   /**
    * @param {String} DbName - dbName. required.
-   * @param {String} DataId - dataId. required.
+   * @param {String} EntityId - entityId. required.
    */
   deleteImage(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DbName')) {
       throw new TypeError('parameter "DbName" is required');
     }
 
-    if (!hasOwnProperty(params, 'DataId')) {
-      throw new TypeError('parameter "DataId" is required');
+    if (!hasOwnProperty(params, 'EntityId')) {
+      throw new TypeError('parameter "EntityId" is required');
     }
 
     return this.request('DeleteImage', params, options);
@@ -86,7 +81,11 @@ class Client extends RPCClient {
 
   /**
    * @param {String} DbName - dbName. required.
-   * @param {String} FromScrollId - fromScrollId. optional.
+   * @param {String} Token - token. optional.
+   * @param {Integer} Offset - offset. optional.
+   * @param {Integer} Limit - limit. optional.
+   * @param {String} Order - order. optional.
+   * @param {String} EntityIdPrefix - entityIdPrefix. optional.
    */
   listImages(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DbName')) {

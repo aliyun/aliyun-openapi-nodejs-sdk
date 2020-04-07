@@ -15,7 +15,6 @@ class Client extends RPCClient {
 
   /**
    * @param {String} DbName - dbName. required.
-   * @param {String} FaceId - faceId. required.
    * @param {String} ImageUrl - imageUrl. required.
    * @param {String} EntityId - entityId. required.
    * @param {String} ExtraData - extraData. optional.
@@ -23,10 +22,6 @@ class Client extends RPCClient {
   addFace(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DbName')) {
       throw new TypeError('parameter "DbName" is required');
-    }
-
-    if (!hasOwnProperty(params, 'FaceId')) {
-      throw new TypeError('parameter "FaceId" is required');
     }
 
     if (!hasOwnProperty(params, 'ImageUrl')) {
@@ -38,6 +33,23 @@ class Client extends RPCClient {
     }
 
     return this.request('AddFace', params, options);
+  }
+
+  /**
+   * @param {String} DbName - dbName. required.
+   * @param {String} EntityId - entityId. required.
+   * @param {String} Labels - labels. optional.
+   */
+  addFaceEntity(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DbName')) {
+      throw new TypeError('parameter "DbName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EntityId')) {
+      throw new TypeError('parameter "EntityId" is required');
+    }
+
+    return this.request('AddFaceEntity', params, options);
   }
 
   /**
@@ -106,6 +118,22 @@ class Client extends RPCClient {
     }
 
     return this.request('DeleteFaceDb', params, options);
+  }
+
+  /**
+   * @param {String} DbName - dbName. required.
+   * @param {String} EntityId - entityId. required.
+   */
+  deleteFaceEntity(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DbName')) {
+      throw new TypeError('parameter "DbName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EntityId')) {
+      throw new TypeError('parameter "EntityId" is required');
+    }
+
+    return this.request('DeleteFaceEntity', params, options);
   }
 
   /**
@@ -291,6 +319,22 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} DbName - dbName. required.
+   * @param {String} EntityId - entityId. required.
+   */
+  getFaceEntity(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DbName')) {
+      throw new TypeError('parameter "DbName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EntityId')) {
+      throw new TypeError('parameter "EntityId" is required');
+    }
+
+    return this.request('GetFaceEntity', params, options);
+  }
+
+  /**
    * @param {String} ImageURL - imageUrl. required.
    */
   handPosture(params = {}, options = {}) {
@@ -310,14 +354,31 @@ class Client extends RPCClient {
 
   /**
    * @param {String} DbName - dbName. required.
-   * @param {String} FromScrollId - fromScrollId. optional.
+   * @param {Integer} Offset - offset. optional.
+   * @param {Integer} Limit - limit. optional.
+   * @param {String} Token - token. optional.
+   * @param {String} Labels - labels. optional.
+   * @param {String} EntityIdPrefix - entityIdPrefix. optional.
+   * @param {String} Order - order. optional.
    */
-  listFaces(params = {}, options = {}) {
+  listFaceEntities(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'DbName')) {
       throw new TypeError('parameter "DbName" is required');
     }
 
-    return this.request('ListFaces', params, options);
+    return this.request('ListFaceEntities', params, options);
+  }
+
+  /**
+   * @param {String} DbName - dbName. required.
+   * @param {String} Keyword - keyword. optional.
+   */
+  listFaceLabels(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DbName')) {
+      throw new TypeError('parameter "DbName" is required');
+    }
+
+    return this.request('ListFaceLabels', params, options);
   }
 
   /**
@@ -376,6 +437,23 @@ class Client extends RPCClient {
     }
 
     return this.request('SearchFace', params, options);
+  }
+
+  /**
+   * @param {String} DbName - dbName. required.
+   * @param {String} EntityId - entityId. required.
+   * @param {String} Labels - labels. optional.
+   */
+  updateFaceEntity(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'DbName')) {
+      throw new TypeError('parameter "DbName" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EntityId')) {
+      throw new TypeError('parameter "EntityId" is required');
+    }
+
+    return this.request('UpdateFaceEntity', params, options);
   }
 
 }

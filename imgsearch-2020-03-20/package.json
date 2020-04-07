@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/imgsearch-2020-03-20",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "imgsearch 2020-03-20 Node.js SDK",
   "main": "lib/client.js",
   "scripts": {},
