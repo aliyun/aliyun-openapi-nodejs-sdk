@@ -14,6 +14,42 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  assessComposition(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('AssessComposition', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  assessExposure(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('AssessExposure', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  assessSharpness(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('AssessSharpness', params, options);
+  }
+
+  /**
    * @param {Integer} Width - width. required.
    * @param {Integer} Height - height. required.
    * @param {String} Url - url. required.

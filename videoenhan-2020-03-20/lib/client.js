@@ -55,7 +55,7 @@ class Client extends RPCClient {
    * @param {String} VideoUrl - videoUrl. required.
    * @param {Boolean} Async - async. optional. default: true.
    * @param {String} VideoBitrate - videoBitrate. optional.
-   * @param {String} VideoCode - videoCode. optional.
+   * @param {String} VideoCodec - videoCodec. optional.
    * @param {String} VideoFormat - videoFormat. optional.
    * @param {String} Mode - mode. required.
    */
@@ -73,11 +73,15 @@ class Client extends RPCClient {
   }
 
   /**
-   * @param {String} VideoUrl - videoUrl. optional.
+   * @param {String} VideoUrl - videoUrl. required.
    * @param {RepeatList} Boxes - boxes. optional.
    * @param {Boolean} Async - async. optional. default: true.
    */
   eraseVideoLogo(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'VideoUrl')) {
+      throw new TypeError('parameter "VideoUrl" is required');
+    }
+
     options.method = 'POST';
     return this.request('EraseVideoLogo', params, options);
   }
@@ -97,6 +101,29 @@ class Client extends RPCClient {
 
     options.method = 'POST';
     return this.request('EraseVideoSubtitles', params, options);
+  }
+
+  /**
+   * @param {Boolean} Async - async. optional. default: true.
+   * @param {RepeatList} FileList - fileList. required.
+   * @param {String} Scene - scene. optional.
+   * @param {Integer} Width - width. optional.
+   * @param {Integer} Height - height. optional.
+   * @param {String} Style - style. optional.
+   * @param {Float} Duration - duration. optional.
+   * @param {Boolean} DurationAdaption - durationAdaption. optional.
+   * @param {String} TransitionStyle - transitionStyle. optional.
+   * @param {Boolean} SmartEffect - smartEffect. optional.
+   * @param {Boolean} PuzzleEffect - puzzleEffect. optional.
+   * @param {Boolean} Mute - mute. optional.
+   */
+  generateVideo(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'FileList')) {
+      throw new TypeError('parameter "FileList" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('GenerateVideo', params, options);
   }
 
   /**
