@@ -440,6 +440,28 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} SourceImageURL - sourceImageUrl. required.
+   * @param {String} EditPart - editPart. required.
+   * @param {String} TargetImageURL - targetImageUrl. required.
+   */
+  swapFacialFeatures(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'SourceImageURL')) {
+      throw new TypeError('parameter "SourceImageURL" is required');
+    }
+
+    if (!hasOwnProperty(params, 'EditPart')) {
+      throw new TypeError('parameter "EditPart" is required');
+    }
+
+    if (!hasOwnProperty(params, 'TargetImageURL')) {
+      throw new TypeError('parameter "TargetImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('SwapFacialFeatures', params, options);
+  }
+
+  /**
    * @param {String} DbName - dbName. required.
    * @param {String} EntityId - entityId. required.
    * @param {String} Labels - labels. optional.
