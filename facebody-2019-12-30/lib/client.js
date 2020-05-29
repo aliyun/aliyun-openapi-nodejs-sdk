@@ -198,6 +198,18 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} VideoUrl - videoUrl. required.
+   */
+  detectVideoLivingFace(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'VideoUrl')) {
+      throw new TypeError('parameter "VideoUrl" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('DetectVideoLivingFace', params, options);
+  }
+
+  /**
    * @param {String} ImageURL - imageUrl. required.
    */
   enhanceFace(params = {}, options = {}) {
