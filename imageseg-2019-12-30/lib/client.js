@@ -14,6 +14,18 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {Boolean} Async - async. optional. default: true.
+   * @param {String} JobId - jobId. required.
+   */
+  getAsyncJobResult(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'JobId')) {
+      throw new TypeError('parameter "JobId" is required');
+    }
+
+    return this.request('GetAsyncJobResult', params, options);
+  }
+
+  /**
    * @param {String} ImageURL - imageUrl. required.
    */
   parseFace(params = {}, options = {}) {
@@ -43,6 +55,18 @@ class Client extends RPCClient {
 
   /**
    * @param {String} ImageURL - imageUrl. required.
+   */
+  segmentAnimal(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    return this.request('SegmentAnimal', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   * @param {Boolean} Async - async. optional. default: false.
    */
   segmentBody(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ImageURL')) {
@@ -100,6 +124,17 @@ class Client extends RPCClient {
   /**
    * @param {String} ImageURL - imageUrl. required.
    */
+  segmentHDBody(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    return this.request('SegmentHDBody', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
   segmentHair(params = {}, options = {}) {
     if (!hasOwnProperty(params, 'ImageURL')) {
       throw new TypeError('parameter "ImageURL" is required');
@@ -117,6 +152,17 @@ class Client extends RPCClient {
     }
 
     return this.request('SegmentHead', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  segmentSky(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    return this.request('SegmentSky', params, options);
   }
 
   /**
