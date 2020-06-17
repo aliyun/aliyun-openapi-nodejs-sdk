@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/fnf-2019-03-15",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "fnf 2019-03-15 Node.js SDK",
   "main": "lib/client.js",
   "scripts": {},
