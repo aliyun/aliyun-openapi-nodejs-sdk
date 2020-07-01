@@ -72,6 +72,28 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} ImageURL - imageUrl. required.
+   * @param {String} OutputFormat - outputFormat. required.
+   * @param {String} Mode - mode. required.
+   */
+  enhanceImageColor(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    if (!hasOwnProperty(params, 'OutputFormat')) {
+      throw new TypeError('parameter "OutputFormat" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Mode')) {
+      throw new TypeError('parameter "Mode" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('EnhanceImageColor', params, options);
+  }
+
+  /**
    * @param {String} StyleUrl - styleUrl. required.
    * @param {String} MajorUrl - majorUrl. required.
    */
@@ -86,6 +108,19 @@ class Client extends RPCClient {
 
     options.method = 'POST';
     return this.request('ExtendImageStyle', params, options);
+  }
+
+  /**
+   * @param {Boolean} Async - async. optional. default: true.
+   * @param {String} JobId - jobId. required.
+   */
+  getAsyncJobResult(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'JobId')) {
+      throw new TypeError('parameter "JobId" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('GetAsyncJobResult', params, options);
   }
 
   /**
@@ -139,6 +174,23 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {String} StyleUrl - styleUrl. required.
+   * @param {String} ImageURL - imageUrl. required.
+   */
+  imitatePhotoStyle(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'StyleUrl')) {
+      throw new TypeError('parameter "StyleUrl" is required');
+    }
+
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('ImitatePhotoStyle', params, options);
+  }
+
+  /**
    * @param {Integer} NumBoxes - numBoxes. optional.
    * @param {String} ImageURL - imageUrl. required.
    */
@@ -161,6 +213,28 @@ class Client extends RPCClient {
 
     options.method = 'POST';
     return this.request('MakeSuperResolutionImage', params, options);
+  }
+
+  /**
+   * @param {String} Url - url. required.
+   * @param {String} Mode - mode. optional. default: AUTO.
+   * @param {String} RefUrl - refUrl. optional.
+   * @param {Integer} ColorCount - colorCount. optional. default: 1.
+   * @param {RepeatList} ColorTemplate - colorTemplate. optional.
+   * @param {String} Degree - degree. required.
+   * @param {Boolean} Async - async. optional. default: true.
+   */
+  recolorHDImage(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Url')) {
+      throw new TypeError('parameter "Url" is required');
+    }
+
+    if (!hasOwnProperty(params, 'Degree')) {
+      throw new TypeError('parameter "Degree" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('RecolorHDImage', params, options);
   }
 
   /**
