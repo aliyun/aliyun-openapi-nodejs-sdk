@@ -27,6 +27,19 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {RepeatList} URLList - urlList. required.
+   * @param {Boolean} Async - async. optional. default: true.
+   */
+  detectLungNodule(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'URLList')) {
+      throw new TypeError('parameter "URLList" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('DetectLungNodule', params, options);
+  }
+
+  /**
    * @param {Boolean} Async - async. optional. default: true.
    * @param {String} JobId - jobId. required.
    */

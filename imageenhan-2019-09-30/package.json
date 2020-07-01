@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/imageenhan-2019-09-30",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "imageenhan 2019-09-30 Node.js SDK",
   "main": "lib/client.js",
   "scripts": {},

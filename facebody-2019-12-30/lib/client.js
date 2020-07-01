@@ -394,6 +394,20 @@ class Client extends RPCClient {
   }
 
   /**
+   * @param {RepeatList} URLList - urlList. optional.
+   * @param {Integer} Type - type. required.
+   * @param {String} VideoUrl - videoUrl. optional.
+   */
+  recognizeAction(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'Type')) {
+      throw new TypeError('parameter "Type" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('RecognizeAction', params, options);
+  }
+
+  /**
    * @param {String} ImageURL - imageUrl. required.
    */
   recognizeExpression(params = {}, options = {}) {
@@ -488,6 +502,23 @@ class Client extends RPCClient {
     }
 
     return this.request('UpdateFaceEntity', params, options);
+  }
+
+  /**
+   * @param {String} ImageURL - imageUrl. required.
+   * @param {String} RefUrl - refUrl. required.
+   */
+  verifyFaceMask(params = {}, options = {}) {
+    if (!hasOwnProperty(params, 'ImageURL')) {
+      throw new TypeError('parameter "ImageURL" is required');
+    }
+
+    if (!hasOwnProperty(params, 'RefUrl')) {
+      throw new TypeError('parameter "RefUrl" is required');
+    }
+
+    options.method = 'POST';
+    return this.request('VerifyFaceMask', params, options);
   }
 
 }
