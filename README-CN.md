@@ -9,6 +9,10 @@
 欢迎使用 Alibaba Cloud SDK for Node.js ，适用于阿里云的 Node.js SDK 让您不用复杂编程即可访问云服务器、云监控等多个阿里云服务。
 
 
+## 使用诊断
+[Troubleshoot](https://troubleshoot.api.aliyun.com/?source=github_sdk) 提供 OpenAPI 使用诊断服务，通过 `RequestID` 或 `报错信息` ，帮助开发者快速定位，为开发者提供解决方案。
+
+
 ## 使用 Demo 及其示例
 您可以在 [OpenAPI Explorer](https://api.aliyun.com/#/?product=Ecs&api=DescribeAccessPoints&params={}&tab=DEMO&lang=NODEJS) 中查看您所使用的产品代码示例。
 
