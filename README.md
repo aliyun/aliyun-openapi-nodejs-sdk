@@ -11,7 +11,7 @@ The Alibaba Cloud SDK for Node.js allows you to access Alibaba Cloud services su
 
 
 ## Online Demo
-[OpenAPI Explorer](https://api.aliyun.com/#/?product=Ecs&api=DescribeAccessPoints&params={}&tab=DEMO&lang=NODEJS) provides the ability to call the cloud product OpenAPI online, and dynamically generate SDK Example code and quick retrieval interface, which can significantly reduce the difficulty of using the cloud API.
+[OpenAPI Developer Portal](https://next.api.aliyun.com/#/?product=Ecs&api=DescribeAccessPoints&params={}&tab=DEMO&lang=NODEJS) provides the ability to call the cloud product OpenAPI online, and dynamically generate SDK Example code and quick retrieval interface, which can significantly reduce the difficulty of using the cloud API.
 
 
 ## Installation
